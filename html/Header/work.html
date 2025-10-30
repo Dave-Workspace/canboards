@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work - Digital Gateway to Canada</title>
+    <link rel="icon" type="image/png" href="/html/images/Index/Favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/reorganized_css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        /* Add additional top spacing so the hero visual doesn't sit flush under the sticky header */
+        .hero-section {
+            padding-top: 7rem; /* base spacing for small screens */
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                padding-top: 4.5rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .hero-section {
+                padding-top: 9rem; /* larger spacing for desktop where header is horizontal */
+            }
+
+            .work-hero-visual {
+                margin-top: 4rem; /* slight additional offset for the image column */
+            }
+        }
+    </style>
+</head>
+<body class="work-page">
+    <!-- Header/Navbar -->
+    <header role="banner">
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-header" role="navigation" aria-label="Main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="../images/Index/Banner_1.png" alt="Canboards" class="navbar-brand-img">
+                </a>
+                <!-- Hamburger menu button for mobile/tablet (stays right) -->
+                <button class="navbar-toggler d-flex d-md-none ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Keep the collapsed nav on the right side by using justify-content-end -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-md-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="study.html">Study</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="work.html">Work</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="visit.html">Visit</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="settle.html">Settle</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="other.html">Other</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="../auth/register.html">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="../auth/login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="calculator.html">Calculator</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero (re-uses index hero structure and background) -->
+    <section class="hero-section py-4 py-md-5" style="background: linear-gradient(135deg, #f3f6fb 0%, #e9eafc 100%); position:relative;">
+        <div class="container position-relative">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-lg-5 text-center text-lg-start mb-4 mb-lg-0 hero-content">
+                    <h1 class="fw-bold mb-3 hero-main-text" style="font-size:2.8rem; line-height:1.02;">Build Your Career:<br>Work in Canada</h1>
+                    <p class="services-intro mb-4">Canada offers a robust job market, diverse industries, and pathways to permanent residency for skilled workers. Discover how you can thrive professionally in Canada.</p>
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                        <a href="../auth/register.html" class="btn btn-primary px-4 py-2">Register Now</a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7 d-flex justify-content-center">
+                    <div class="work-hero-visual">
+                        <!-- Motion frame: gives the image its own positioned area to move freely -->
+                        <div class="work-hero-frame">
+                            <div class="work-hero-floater">
+                                <img src="../images/Work/Can_Work_1.png" alt="Work visual" class="work-hero-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Services section (reuses .service-box styles) -->
+    <section class="services-section my-5">
+        <div class="container">
+            <div class="services-header text-center">
+                <!-- Removed the Can_Services image and subtext per request -->
+                <h1 class="fw-bold mb-2" style="font-size:2.4rem;">Can</h1>
+                <h2 class="fw-bold mb-2 gradient-text" id="work-anim" style="font-size:2rem; margin-bottom:0.25rem;">Work Services</h2>
+                <h3 class="fw-bold mb-3" style="font-size:1.6rem;">with Licensed <span class="rcic-accent">R.C.I.C.</span></h3>
+            </div>
+
+            <div class="row mt-4 g-4 justify-content-center">
+                <div class="col-md-4 col-sm-6">
+                    <div class="service-box h-100 p-4 text-center border rounded-4">
+                        <div class="mb-3"><i class="bi bi-briefcase fs-1" style="color:#2f2e78;"></i></div>
+                        <h5 class="fw-bold mb-2">Work Permit Application</h5>
+                        <p class="mb-3 text-secondary">Expert assistance for various work permit applications, including employer-specific and open work permits.</p>
+                        <a class="fw-bold text-danger text-decoration-none" href="../Services/Work/Work_Permit_App.html">APPLY NOW <i class="bi bi-arrow-right-short"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="service-box h-100 p-4 text-center border rounded-4">
+                        <div class="mb-3"><i class="bi bi-mortarboard fs-1" style="color:#2f2e78;"></i></div>
+                        <h5 class="fw-bold mb-2">Post-Graduation Work Permit (PGWP)</h5>
+                        <p class="mb-3 text-secondary">Assistance for international students to apply for a PGWP after graduating from a Canadian institution.</p>
+                        <a class="fw-bold text-danger text-decoration-none" href="../Services/Study/PGWP.html">APPLY NOW <i class="bi bi-arrow-right-short"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="service-box h-100 p-4 text-center border rounded-4">
+                        <div class="mb-3"><i class="bi bi-list fs-1" style="color:#2f2e78;"></i></div>
+                        <h5 class="fw-bold mb-2">Bridging Open Work Permit (BOWP)</h5>
+                        <p class="mb-3 text-secondary">Assistance for eligible permanent resident applicants to apply for a BOWP while awaiting a decision.</p>
+                        <a class="fw-bold text-danger text-decoration-none" href="../Services/Work/BOWP.html">APPLY NOW <i class="bi bi-arrow-right-short"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="service-box h-100 p-4 text-center border rounded-4">
+                        <div class="mb-3"><i class="bi bi-people fs-1" style="color:#2f2e78;"></i></div>
+                        <h5 class="fw-bold mb-2">Dependent Work Permit</h5>
+                        <p class="mb-3 text-secondary">Enabling spouses and common-law partners of eligible workers/students to obtain open work permits.</p>
+                        <a class="fw-bold text-danger text-decoration-none" href="../Services/Work/Dependent_Work_Permit.html">APPLY NOW <i class="bi bi-arrow-right-short"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: Canboard Steps with alternating layout -->
+    <section class="canboard-steps">
+        <div class="container">
+            <div class="canboard-steps-header">
+                <h2 class="canboard-steps-title">How Canboards Works</h2>
+                <p class="canboard-steps-subtitle">Our simple process guides you through every step of securing your Canadian work permit</p>
+            </div>
+
+            <!-- Step 1: Register -->
+            <div class="row align-items-center mb-5">
+                <!-- Text column - always first on mobile -->
+                <div class="col-md-6">
+                    <div class="step-content-wrapper">
+                        <div class="step-bar step-bar-1"></div>
+                        <div class="step-label">REGISTER</div>
+                        <h3 class="step-title">Sign Up for Free</h3>
+                        <div class="step-content">
+                            <p>Create your account, share your Career Goals, and get personalized recommendations all in just a few minutes!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image column - always second on mobile -->
+                <div class="col-md-6">
+                    <div class="step-img-container">
+                        <img src="../images/General/Sign_Up.png" alt="Create your account" class="step-img img-fluid">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Select -->
+            <div class="row align-items-center mb-5">
+                <!-- Text column - always first on mobile, but second on desktop -->
+                <div class="col-md-6 order-md-2">
+                    <div class="step-content-wrapper">
+                        <div class="step-bar step-bar-2"></div>
+                        <div class="step-label">SEARCH</div>
+                        <h3 class="step-title">Select a Work Service</h3>
+                        <div class="step-content">
+                            <p>Easily search and explore programs worldwide that match your interests and career goals all in one place.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image column - always second on mobile, but first on desktop -->
+                <div class="col-md-6 order-md-1">
+                    <div class="step-img-container">
+                        <img src="../images/Work/Search_Work.png" alt="Create your account" class="step-img img-fluid">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Submit -->
+            <div class="row align-items-center mb-5">
+                <!-- Text column - always first -->
+                <div class="col-md-6">
+                    <div class="step-content-wrapper">
+                        <div class="step-bar step-bar-3"></div>
+                        <div class="step-label">APPLY</div>
+                        <h3 class="step-title">Submit Your Application</h3>
+                        <div class="step-content">
+                            <p>Upload your documents and get your work permit securely through our Canboards RCIC portal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image column - always second -->
+                <div class="col-md-6">
+                    <div class="step-img-container">
+                        <img src="../images/General/Submit.png" alt="Create your account" class="step-img img-fluid">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Approved -->
+            <div class="row align-items-center">
+                <!-- Text column - always first on mobile, but second on desktop -->
+                <div class="col-md-6 order-md-2">
+                    <div class="step-content-wrapper">
+                        <div class="step-bar step-bar-4"></div>
+                        <div class="step-label">APPROVAL</div>
+                        <h3 class="step-title">Pay After Your Application Gets Approved</h3>
+                        <div class="step-content">
+                            <p>With Canboards, you only pay once your application is officially approved for risk-free upfront cost.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image column - always second on mobile, but first on desktop -->
+                <div class="col-md-6 order-md-1">
+                    <div class="step-img-container">
+                        <img src="../images/General/Visa.png" alt="Create your account" class="step-img img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updated Celebrate Section with yellowish background and more spread-out sprites -->
+    <section class="celebrate-section">
+        <!-- Floating animated sprites - more spread out with additional sprites -->
+        <div class="celebrate-sprite celebrate-sprite-1"></div>
+        <div class="celebrate-sprite celebrate-sprite-2"></div>
+        <div class="celebrate-sprite celebrate-sprite-3"></div>
+        <div class="celebrate-sprite celebrate-sprite-4"></div>
+        <div class="celebrate-sprite celebrate-sprite-5"></div>
+        <div class="celebrate-sprite celebrate-sprite-6"></div>
+        <div class="celebrate-sprite celebrate-sprite-7"></div>
+        <div class="celebrate-sprite celebrate-sprite-8"></div>
+
+        <div class="celebrate-container">
+            <h2 class="celebrate-title">Your Career in Canada Awaits</h2>
+            <p class="celebrate-subtitle">Begin your journey to work in Canada with trusted RCIC experts. Secure the right permit and unlock global opportunities.</p>
+            <a href="../auth/register.html" class="btn-primary celebrate-cta">Apply for Work Permit</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="site-footer" class="mt-5">
+        <div class="container py-5">
+            <!-- Top row (above the line) -->
+            <div class="row footer-top gy-4">
+                <!-- Column1: logo + address + social stacked -->
+                <div class="col-12 col-lg-4">
+                    <div class="row g-3">
+                        <!-- Row1: Logo -->
+                        <div class="col-12">
+                            <div class="footer-logo d-flex align-items-center">
+                                <img src="../images/General/Logo_White.png" alt="Canboards logo" class="footer-logo-large">
+                            </div>
+                        </div>
+                        <!-- Row2: Address -->
+                        <div class="col-12">
+                            <address>
+                                Suite 505, 171 Queens Ave<br>
+                                London, ON<br>
+                                N6A 5J7
+                            </address>
+                        </div>
+                        <!-- Row3: Social icons -->
+                        <div class="col-12">
+                            <div class="footer-social">
+                                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grouped link columns: evenly spaced on large screens, stacked on small -->
+                <div class="col-12 col-lg-8">
+                    <div class="row g-4">
+                        <!-- Can Services -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Can Services</h6>
+                            <ul>
+                                <li><a class="footer-link" href="study.html">Study</a></li>
+                                <li><a class="footer-link" href="work.html">Work</a></li>
+                                <li><a class="footer-link" href="visit.html">Visit</a></li>
+                                <li><a class="footer-link" href="settle.html">Settle</a></li>
+                                <li><a class="footer-link" href="other.html">Other</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Important Links -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Important Links</h6>
+                            <ul>
+                                <li><a class="footer-link" href="/html/Footer/our-story.html">Our Story</a></li>
+                                <li><a class="footer-link" href="/html/Footer/careers.html">Careers</a></li>
+                                <li><a class="footer-link" href="/html/Footer/press-media.html">Press and Media</a></li>
+                                <li><a class="footer-link" href="/html/Footer/contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Can Resources -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Can Resources</h6>
+                            <ul>
+                                <li><a class="footer-link" href="#">Blog</a></li>
+                                <li><a class="footer-link" href="#">Webinar</a></li>
+                                <li><a class="footer-link" href="#">Can Insight</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom row (under the line) -->
+            <div class="row footer-bottom align-items-center pt-3 mt-4">
+                <div class="col-md-6 text-md-start text-white-50">©2025 Canboards Inc.</div>
+                <div class="col-md-6 text-md-end mt-2 mt-md-0"><a href="/html/Footer/privacy-policy.html">Privacy Policy</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

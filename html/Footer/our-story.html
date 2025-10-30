@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Digital Gateway to Canada</title>
+    <link rel="icon" type="image/png" href="/html/images/Index/Favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/reorganized_css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        /* Add additional top spacing so the hero visual doesn't sit flush under the sticky header */
+        .hero-section {
+            padding-top: 3.5rem;
+            /* base spacing for small screens */
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                padding-top: 4.5rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .hero-section {
+                padding-top: 6rem;
+                /* larger spacing for desktop where header is horizontal */
+            }
+
+            .work-hero-visual {
+                margin-top: 1rem;
+                /* slight additional offset for the image column */
+            }
+        }
+
+        /* History Accordion Styles */
+        .history-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            /* Add spacing between items */
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .history-item {
+            position: relative;
+            border: none;
+            /* Remove all borders */
+            background: transparent;
+            z-index: 0;
+            /* baseline stacking */
+            padding: 1rem 0;
+            /* Add vertical padding to each item */
+            flex: 1;
+            /* Make each item take equal space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+            /* Light grey baseline for each row (visible behind the purple accent) */
+            .history-item::before {
+                content: '';
+                position: absolute;
+                left: -2rem;
+                top: 0;
+                width: 3px;
+                height: 100%;
+                background-color: #e5e7eb;
+                /* light grey baseline */
+                z-index: 0;
+                pointer-events: none;
+            }
+
+            /* Purple accent overlay which animates in on active */
+            .history-item::after {
+                content: '';
+                position: absolute;
+                left: -2rem;
+                top: 0;
+                width: 3px;
+                height: 100%;
+                background-color: #8067ff;
+                transform: scaleY(0);
+                transform-origin: bottom center;
+                /* Slowed down to approximately half a second */
+                transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+                will-change: transform;
+                z-index: 2;
+            }
+
+            /* Use an explicit class toggled by JS rather than relying on :has() so that
+        only one item becomes active after the collapse transition completes. */
+            .history-item.is-active::after {
+                transform: scaleY(1);
+                transform-origin: top center;
+            }
+
+        .history-accordion .accordion-button {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: none;
+        }
+
+            .history-accordion .accordion-button:focus {
+                outline: none;
+                box-shadow: none;
+                border: none;
+            }
+
+            .history-accordion .accordion-button::after {
+                display: none;
+            }
+
+        /* Remove the circular indicator */
+        .history-indicator {
+            display: none;
+        }
+
+        .history-year-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .history-year {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2f3b57;
+            line-height: 1.2;
+        }
+
+        .history-title-text {
+            font-size: 0.95rem;
+            color: #6b7a95;
+            margin-top: 0.25rem;
+        }
+
+        /* Keep text colors consistent - don't change on active */
+        .history-accordion .accordion-button:not(.collapsed) .history-year {
+            color: #2f3b57;
+            /* Same as default */
+        }
+
+        .history-accordion .accordion-button:not(.collapsed) .history-title-text {
+            color: #6b7a95;
+            /* Same as default */
+        }
+
+        .history-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: #2f3b57;
+            line-height: 1.2;
+        }
+
+        .history-image-wrapper {
+            width: 100%;
+            height: auto;
+        }
+
+            .history-image-wrapper img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+        @media (max-width: 991px) {
+            .history-title {
+                font-size: 2rem;
+            }
+
+            .history-year {
+                font-size: 1.1rem;
+            }
+
+            .history-title-text {
+                font-size: 0.9rem;
+            }
+
+            .history-accordion {
+                padding-left: 1.5rem;
+                gap: 1.5rem;
+                /* Slightly less spacing on mobile */
+                min-height: 300px;
+                /* Smaller minimum height on mobile */
+            }
+
+            .history-item::before,
+            .history-item::after {
+                left: -1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="work-page">
+    <!-- Header/Navbar -->
+    <header role="banner">
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-header" role="navigation" aria-label="Main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="/html/Header/index.html">
+                    <img src="../images/Index/Banner_1.png" alt="Canboards" class="navbar-brand-img">
+                </a>
+                <!-- Hamburger menu button for mobile/tablet (stays right) -->
+                <button class="navbar-toggler d-flex d-md-none ms-auto" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Keep the collapsed nav on the right side by using justify-content-end -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-md-center">
+                        <li class="nav-item"><a class="nav-link" href="/html/Header/study.html">Study</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/html/Header/work.html">Work</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/html/Header/visit.html">Visit</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/html/Header/settle.html">Settle</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/html/Header/other.html">Other</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="../auth/register.html">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="../auth/login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="/html/Header/calculator.html">Calculator</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero (re-uses index hero structure and background) -->
+    <section class="hero-section py-4 py-md-5"
+             style="background: linear-gradient(135deg, #f3f6fb 0%, #e9eafc 100%); position:relative;">
+        <div class="container position-relative">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-lg-5 text-center text-lg-start mb-4 mb-lg-0 hero-content">
+                    <h1 class="fw-bold mb-3 hero-main-text" style="font-size:2.8rem; line-height:1.02;">
+                        Unlock
+                        Potential
+                    </h1>
+                    <p class="services-intro mb-4">
+                        Where expert guidance, smart tools, and unwavering support turn your
+                        Canadian dreams into reality.
+                    </p>
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                        <a href="../auth/register.html" class="btn btn-primary px-4 py-2">Partner With Us</a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7 d-flex justify-content-center">
+                    <div class="work-hero-visual">
+                        <!-- Motion frame: gives the image its own positioned area to move freely -->
+                        <div class="work-hero-frame">
+                            <div class="work-hero-floater">
+                                <img src="../images/Footer/About.png" alt="Work visual" class="work-hero-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="our-story-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Left Column - Text Content -->
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="our-story-content pe-lg-4">
+                        <!-- Title with underline -->
+                        <h2 class="our-story-title mb-3">
+                            Our Story
+                        </h2>
+                        <div class="title-underline mb-4"></div>
+
+                        <!-- First paragraph -->
+                        <p class="our-story-text mb-4">
+                            Since our inception, Canboards has been on a mission to make immigration simpler, smarter, and more
+                            accessible. Born from firsthand experience navigating complex processes, our founders saw an
+                            opportunity to remove barriers and create a clear, supportive path to Canada.
+                        </p>
+
+                        <!-- Second paragraph -->
+                        <p class="our-story-text mb-4">
+                            Today, Canboards combines licensed RCIC expertise with cutting-edge technology, earning recognition
+                            for its innovation, transparency, and results. Our growth reflects a simple truth: when you put
+                            people first and processes second, success follows.
+                        </p>
+
+                        <!-- Call to Action Button -->
+                        <a class="nav-link nav-btn nav-btn--filled" href="../auth/login.html">Join The Canboards Team</a>
+                    </div>
+                </div>
+
+                <!-- Right Column - Team Image -->
+                <div class="col-lg-6">
+                    <div class="our-story-image-wrapper">
+                        <img src="../images/Footer/Team.jpg" alt="Canboards Team" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section (Mission & Vision) -->
+    <section class="goals-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Mission Card -->
+                <div class="col-lg-6">
+                    <div class="goal-card h-100 p-5">
+                        <div class="d-flex align-items-start">
+                            <!-- Icon on the left -->
+                            <div class="goal-icon me-4 flex-shrink-0">
+                                <!-- Paper plane icon for Mission -->
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 2L11 13" stroke="#2f3b57" stroke-width="2" stroke-linecap="round"
+                                          stroke-linejoin="round" />
+                                    <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="#2f3b57" stroke-width="2" stroke-linecap="round"
+                                          stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <!-- Text content on the right -->
+                            <div class="goal-content">
+                                <h3 class="goal-title mb-3">Our Mission</h3>
+                                <p class="goal-description">
+                                    To democratize access to Canadian immigration by merging expert legal guidance with digital tools
+                                    making the process faster, and more accessible for everyone.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vision Card -->
+                <div class="col-lg-6">
+                    <div class="goal-card h-100 p-5">
+                        <div class="d-flex align-items-start">
+                            <!-- Icon on the left -->
+                            <div class="goal-icon me-4 flex-shrink-0">
+                                <!-- Eye icon for Vision -->
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"
+                                          stroke="#2f3b57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <circle cx="12" cy="12" r="3" stroke="#2f3b57" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <!-- Text content on the right -->
+                            <div class="goal-content">
+                                <h3 class="goal-title mb-3">Our Vision</h3>
+                                <p class="goal-description">
+                                    To become the most reliable, tech-enabled immigration platform globally redefining how people move,
+                                    connect, and grow in Canada.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="our-story-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Left Column - Text Content -->
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="our-story-content pe-lg-4">
+                        <!-- Title with underline -->
+                        <h2 class="our-story-title mb-3">
+                            From the Founder's Desk
+                        </h2>
+                        <div class="title-underline mb-4"></div>
+
+                        <!-- First paragraph -->
+                        <p class="our-story-text mb-4">
+                            Canboards began with a single belief that immigration should feel empowering, not overwhelming. As an immigrant and entrepreneur myself, I witnessed firsthand the hurdles people face while pursuing opportunities in Canada. That's why I built Canboards: to offer a smarter, simpler, and more secure path forward. We don't just file applications; we build futures. And behind every dashboard login or eligibility check, there's a human story we care deeply about. At Canboards, we're not just your consultants we're your co-pilots
+                        </p>
+
+                        <!-- Second paragraph -->
+                        <p class="our-story-text mb-4">
+                            -Hardik Patel, <br />  Founder of Canboards
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column - Team Image -->
+                <div class="col-lg-6">
+                    <div class="our-story-image-wrapper">
+                        <img src="../images/Footer/Founder.jpg" alt="Canboards Team" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history-section py-5">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="text-center mb-5">
+                <h2 class="history-title">Our History</h2>
+            </div>
+
+            <div class="row align-items-start">
+                <!-- Left Column - Dynamic Image (larger on desktop) -->
+                <div class="col-lg-7 mb-5 mb-lg-0 pe-lg-5">
+                    <div class="history-image-wrapper">
+                        <img id="historyImage" src="../images/Footer/2022.jpg" alt="Canboards History" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                </div>
+
+                <!-- Right Column - Timeline Accordion (smaller on desktop) -->
+                <div class="col-lg-5">
+                    <div class="accordion accordion-flush history-accordion" id="historyAccordion">
+                        <!-- 2022 - Changed to show by default -->
+                        <div class="history-item is-active">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#year2022"
+                                        data-image="../images/Footer/2022.jpg">
+                                    <div class="history-year-content">
+                                        <span class="history-year">2022</span>
+                                        <span class="history-title-text">Canboards Founded</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="year2022" class="accordion-collapse collapse show" data-bs-parent="#historyAccordion"></div>
+                        </div>
+
+                        <!-- 2023 -->
+                        <div class="history-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#year2023"
+                                        data-image="../images/Footer/2023.jpg">
+                                    <div class="history-year-content">
+                                        <span class="history-year">2023</span>
+                                        <span class="history-title-text">
+                                            Our Core team of four collaborated closely with fellow RCIC professionals.
+                                        </span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="year2023" class="accordion-collapse collapse" data-bs-parent="#historyAccordion"></div>
+                        </div>
+
+                        <!-- 2024 -->
+                        <div class="history-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#year2024"
+                                        data-image="../images/Footer/2024.jpg">
+                                    <div class="history-year-content">
+                                        <span class="history-year">2024</span>
+                                        <span class="history-title-text">We started with funding and grew into a global platform for Canadian immigration.</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="year2024" class="accordion-collapse collapse" data-bs-parent="#historyAccordion"></div>
+                        </div>
+
+                        <!-- 2025 -->
+                        <div class="history-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#year2025"
+                                        data-image="../images/Footer/2025.jpg">
+                                    <div class="history-year-content">
+                                        <span class="history-year">2025</span>
+                                        <span class="history-title-text">Guided 1,000+ dreams to new beginnings in Canada.</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="year2025" class="accordion-collapse collapse" data-bs-parent="#historyAccordion"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section my-3">
+        <div class="container">
+            <div class="services-header text-center">
+                <img src="../images/Index/Can_Services.jpg" alt="Can Services" class="services-title-img" />
+                <p class="services-intro mt-3">
+                    Canboards offers expert RCIC guidance, AI-assisted SOPs, secure document handling, and real-time application tracking all in one seamless platform.
+                </p>
+            </div>
+
+            <!-- Use Bootstrap grid with consistent layout -->
+            <div class="row mt-3 justify-content-center text-center">
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="service-box h-100">
+                        <div class="service-icon service-icon--study" aria-hidden="true">
+                            <svg aria-hidden="true" class="e-font-icon-svg e-fas-book-open" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"></path></svg>
+                        </div>
+                        <h5 class="service-title">Study</h5>
+                        <p class="service-desc">Assistance for your educational journey, from test prep and course selection to visa applications.</p>
+                        <a class="service-cta" href="/html/Header/study.html">
+                            <div class="cta-grid">
+                                <div class="cta-text">LEARN MORE</div>
+                                <div class="cta-arrow"><i class="bi bi-arrow-right-short" aria-hidden="true"></i></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="service-box h-100">
+                        <div class="service-icon service-icon--work" aria-hidden="true">
+                            <!-- Work icon SVG (provided) -->
+                            <svg aria-hidden="true" class="e-font-icon-svg e-fas-briefcase" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"></path></svg>
+                        </div>
+                        <h5 class="service-title">Work</h5>
+                        <p class="service-desc">Expert guidance on various work permits, LMIA processes, and extensions to help build your career.</p>
+                        <a class="service-cta" href="/html/Header/work.html">
+                            <div class="cta-grid">
+                                <div class="cta-text">LEARN MORE</div>
+                                <div class="cta-arrow"><i class="bi bi-arrow-right-short" aria-hidden="true"></i></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="service-box h-100">
+                        <div class="service-icon service-icon--visit" aria-hidden="true">
+                            <!-- Visit icon SVG (placeholder) -->
+                            <svg aria-hidden="true" class="e-font-icon-svg e-fas-plane-departure" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M624 448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h608c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM80.55 341.27c6.28 6.84 15.1 10.72 24.33 10.71l130.54-.18a65.62 65.62 0 0 0 29.64-7.12l290.96-147.65c26.74-13.57 50.71-32.94 67.02-58.31 18.31-28.48 20.3-49.09 13.07-63.65-7.21-14.57-24.74-25.27-58.25-27.45-29.85-1.94-59.54 5.92-86.28 19.48l-98.51 49.99-218.7-82.06a17.799 17.799 0 0 0-18-1.11L90.62 67.29c-10.67 5.41-13.25 19.65-5.17 28.53l156.22 98.1-103.21 52.38-72.35-36.47a17.804 17.804 0 0 0-16.07.02L9.91 230.22c-10.44 5.3-13.19 19.12-5.57 28.08l76.21 82.97z"></path></svg>
+                        </div>
+                        <h5 class="service-title">Visit</h5>
+                        <p class="service-desc">Support for all your visitor needs, whether it's a general visitor visa, attending a convocation, or business travel.</p>
+                        <a class="service-cta" href="/html/Header/visit.html">
+                            <div class="cta-grid">
+                                <div class="cta-text">LEARN MORE</div>
+                                <div class="cta-arrow"><i class="bi bi-arrow-right-short" aria-hidden="true"></i></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Second row - Settle and Other -->
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="service-box h-100">
+                        <div class="service-icon service-icon--settle" aria-hidden="true">
+                            <!-- Settle icon SVG (placeholder) -->
+                            <svg aria-hidden="true" class="e-font-icon-svg e-fas-home" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                        </div>
+                        <h5 class="service-title">Settle</h5>
+                        <p class="service-desc">Explore pathways to permanent residency, including Express Entry, PNP, family sponsorship and pilot programs.</p>
+                        <a class="service-cta" href="/html/Header/settle.html">
+                            <div class="cta-grid">
+                                <div class="cta-text">LEARN MORE</div>
+                                <div class="cta-arrow"><i class="bi bi-arrow-right-short" aria-hidden="true"></i></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="service-box h-100">
+                        <div class="service-icon service-icon--other" aria-hidden="true">
+                            <!-- Other icon SVG (placeholder) -->
+                            <svg aria-hidden="true" class="e-font-icon-svg e-far-sun" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M494.2 221.9l-59.8-40.5 13.7-71c2.6-13.2-1.6-26.8-11.1-36.3-9.6-9.5-23.2-13.7-36.3-11.1l-70.9 13.7-40.4-59.9c-15.1-22.3-51.9-22.3-67 0l-40.4 59.9-70.8-13.7C98 60.4 84.5 64.5 75 74.1c-9.5 9.6-13.7 23.1-11.1 36.3l13.7 71-59.8 40.5C6.6 229.5 0 242 0 255.5s6.7 26 17.8 33.5l59.8 40.5-13.7 71c-2.6 13.2 1.6 26.8 11.1 36.3 9.5 9.5 22.9 13.7 36.3 11.1l70.8-13.7 40.4 59.9C230 505.3 242.6 512 256 512s26-6.7 33.5-17.8l40.4-59.9 70.9 13.7c13.4 2.7 26.8-1.6 36.3-11.1 9.5-9.5 13.6-23.1 11.1-36.3l-13.7-71 59.8-40.5c11.1-7.5 17.8-20.1 17.8-33.5-.1-13.6-6.7-26.1-17.9-33.7zm-112.9 85.6l17.6 91.2-91-17.6L256 458l-51.9-77-90.9 17.6 17.6-91.2-76.8-52 76.8-52-17.6-91.2 91 17.6L256 53l51.9 76.9 91-17.6-17.6 91.1 76.8 52-76.8 52.1z"></path></svg>
+                        </div>
+                        <h5 class="service-title">Other</h5>
+                        <p class="service-desc">Extra support for your Canadian journey from visas to legal guidance, all with RCIC expertise.</p>
+                        <a class="service-cta" href="/html/Header/other.html">
+                            <div class="cta-grid">
+                                <div class="cta-text">LEARN MORE</div>
+                                <div class="cta-arrow"><i class="bi bi-arrow-right-short" aria-hidden="true"></i></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="site-footer" class="mt-5">
+        <div class="container py-5">
+            <!-- Top row (above the line) -->
+            <div class="row footer-top gy-4">
+                <!-- Column1: logo + address + social stacked -->
+                <div class="col-12 col-lg-4">
+                    <div class="row g-3">
+                        <!-- Row1: Logo -->
+                        <div class="col-12">
+                            <div class="footer-logo d-flex align-items-center">
+                                <img src="../images/General/Logo_White.png" alt="Canboards logo" class="footer-logo-large">
+                            </div>
+                        </div>
+                        <!-- Row2: Address -->
+                        <div class="col-12">
+                            <address>
+                                Suite 505, 171 Queens Ave<br>
+                                London, ON<br>
+                                N6A 5J7
+                            </address>
+                        </div>
+                        <!-- Row3: Social icons -->
+                        <div class="col-12">
+                            <div class="footer-social">
+                                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grouped link columns: evenly spaced on large screens, stacked on small -->
+                <div class="col-12 col-lg-8">
+                    <div class="row g-4">
+                        <!-- Can Services -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Can Services</h6>
+                            <ul>
+                                <li><a class="footer-link" href="study.html">Study</a></li>
+                                <li><a class="footer-link" href="work.html">Work</a></li>
+                                <li><a class="footer-link" href="visit.html">Visit</a></li>
+                                <li><a class="footer-link" href="settle.html">Settle</a></li>
+                                <li><a class="footer-link" href="other.html">Other</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Important Links -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Important Links</h6>
+                            <ul>
+                                <li><a class="footer-link" href="/html/Footer/our-story.html">Our Story</a></li>
+                                <li><a class="footer-link" href="/html/Footer/careers.html">Careers</a></li>
+                                <li><a class="footer-link" href="/html/Footer/press-media.html">Press and Media</a></li>
+                                <li><a class="footer-link" href="/html/Footer/contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Can Resources -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Can Resources</h6>
+                            <ul>
+                                <li><a class="footer-link" href="#">Blog</a></li>
+                                <li><a class="footer-link" href="#">Webinar</a></li>
+                                <li><a class="footer-link" href="#">Can Insight</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom row (under the line) -->
+            <div class="row footer-bottom align-items-center pt-3 mt-4">
+                <div class="col-md-6 text-md-start text-white-50">©2025 Canboards Inc.</div>
+                <div class="col-md-6 text-md-end mt-2 mt-md-0"><a href="/html/Footer/privacy-policy.html">Privacy Policy</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/script.js"></script>
+</body>
+
+</html>
