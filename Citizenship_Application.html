@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizenship Application - Digital Gateway to Canada</title>
+    <link rel="icon" type="image/png" href="Images/Favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/reorganized_css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        /* Set background color for this page's hero section */
+        #service-hero {
+            background: #F7F5F1 !important;
+        }
+
+        /* Smoothly scale image between 373px and 991px */
+        @media (min-width: 373px) and (max-width: 991px) {
+            #service-hero .work-hero-frame {
+                max-width: clamp(260px, 65vw, 400px) !important;
+                margin-top: 1.5rem !important;
+            }
+
+            #service-hero .hero-content {
+                margin-bottom: 2rem !important;
+            }
+        }
+
+        /* Disable fog layer for this page's hero section */
+        #service-hero .hero-fog-layer,
+        #service-hero::before,
+        #service-hero::after {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="work-page">
+    <!-- Header/Navbar -->
+    <header role="banner">
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-header" role="navigation" aria-label="Main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="Images/Banner_1.png" alt="Canboards" class="navbar-brand-img">
+                </a>
+                <button class="navbar-toggler d-flex d-md-none ms-auto" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-md-center">
+                        <li class="nav-item"><a class="nav-link" href="study.html">Study</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="work.html">Work</a></li>
+                        <li class="nav-item"><a class="nav-link" href="visit.html">Visit</a></li>
+                        <li class="nav-item"><a class="nav-link" href="settle.html">Settle</a></li>
+                        <li class="nav-item"><a class="nav-link" href="other.html">Other</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="register.html">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="calculator.html">Calculator</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-section py-4 py-md-5" id="service-hero">
+        <img src="Images/dots1.svg" alt="" class="dots-decoration dots-top-right" aria-hidden="true">
+        <img src="Images/dots2.svg" alt="" class="dots-decoration dots-bottom-right" aria-hidden="true">
+
+        <div class="container position-relative">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-lg-5 text-center text-lg-start mb-4 mb-lg-0 hero-content">
+                    <h1 class="mb-3 hero-main-text">
+                        Apply for Canadian<br />Citizenship with<br />Confidence
+                    </h1>
+                    <p class="hero-small-text mb-4">Take the final step toward becoming a Canadian citizen with expert guidance at every stage.</p>
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                        <a href="register.html" class="btn btn-primary px-4 py-2">Start Your Application</a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7 d-flex justify-content-center">
+                    <div class="work-hero-visual">
+                        <div class="work-hero-frame">
+                            <div class="work-hero-floater">
+                                <img src="Images/Can_Settle_1.png" alt="Citizenship application visual" class="work-hero-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Service Boxes Section -->
+    <section class="special-service-boxes">
+        <div class="container">
+            <h2 class="special-service-boxes-title">Your Final Step Towards the Canadian Dream</h2>
+            <div class="row g-4">
+                <!-- Box1: Factors to Consider -->
+                <div class="col-lg-6">
+                    <div class="special-service-info-box">
+                        <!-- Column 1: Number with background circle -->
+                        <div class="special-service-number-circle">
+                            <div class="special-service-circle-bg"></div>
+                            <span class="special-service-number">01</span>
+                        </div>
+
+                        <!-- Column 2: All content (heading, description, list) -->
+                        <div class="special-service-info-content-wrapper">
+                            <h3 class="special-service-info-title">
+                                Factors to Consider
+                                <span class="underline"></span>
+                            </h3>
+                            <p class="special-service-info-description">
+                                Applying for citizenship is a major milestone and requires careful preparation. Applicants should ensure they meet the physical presence requirement, usually a set number of days spent in Canada as a permanent resident. Having a clean record of tax filings, no criminal history, and compliance with residency obligations are also crucial. Language proficiency in English or French and knowledge of Canada’s rights, responsibilities, and values are often tested through interviews or written exams. Applicants should also keep all documents accurate and updated, including proof of residency, travel history, and identification, to avoid delays in the process.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box2: Eligibility Criteria -->
+                <div class="col-lg-6">
+                    <div class="special-service-info-box">
+                        <!-- Column 1: Number with background circle -->
+                        <div class="special-service-number-circle">
+                            <div class="special-service-circle-bg"></div>
+                            <span class="special-service-number">02</span>
+                        </div>
+
+                        <!-- Column 2: All content (heading, description, list) -->
+                        <div class="special-service-info-content-wrapper">
+                            <h3 class="special-service-info-title">
+                                Eligibility Criteria
+                                <span class="underline"></span>
+                            </h3>
+                            <p class="special-service-info-description">
+                                Citizenship is generally available to permanent residents who have lived in Canada for the required number of years, filed taxes as needed, and demonstrated good character. Eligible applicants must show language ability in either English or French and pass a citizenship knowledge test (if applicable). They must not be under a removal order, have any unresolved criminal issues, or owe immigration-related debts. Applicants also need to provide valid documents such as a PR card, travel history, and identification. Eligibility is determined by meeting residency, language, and legal requirements, along with a genuine commitment to becoming a Canadian citizen.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Canboards Works Section-->
+    <section class="how-section my-3">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-12 mb-3 d-flex justify-content-center">
+                    <img src="Images/How.png" alt="How" class="img-fluid how-title-img">
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <img src="Images/Process_Student-Visa.png" alt="Process" class="img-fluid" style="max-width:900px; height:auto;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebrate Section -->
+    <section class="celebrate-section">
+        <div class="celebrate-sprite celebrate-sprite-1"></div>
+        <div class="celebrate-sprite celebrate-sprite-2"></div>
+        <div class="celebrate-sprite celebrate-sprite-3"></div>
+        <div class="celebrate-sprite celebrate-sprite-4"></div>
+        <div class="celebrate-sprite celebrate-sprite-5"></div>
+        <div class="celebrate-sprite celebrate-sprite-6"></div>
+        <div class="celebrate-sprite celebrate-sprite-7"></div>
+        <div class="celebrate-sprite celebrate-sprite-8"></div>
+
+        <div class="celebrate-container">
+            <h2 class="celebrate-title">Get Your Canadian Citizenship</h2>
+            <p class="celebrate-subtitle">Becoming a citizen is more than a process it’s a promise to your future in Canada. With Canboards, your story is presented with clarity, impact, and compliance.</p>
+            <a href="register.html" class="celebrate-cta">
+                Apply For Canadian Citizenship
+            </a>
+        </div>
+    </section>
+
+    <div id="footer-spacer" style="background-color: #F7F5F1;"></div>
+
+    <footer id="site-footer" class="mt-5">
+        <div class="container py-5" id="footer-content">
+            <!-- Top row (above the line) -->
+            <div class="row footer-top gy-4">
+                <!-- Column1: logo + address + social stacked -->
+                <div class="col-12 col-lg-4">
+                    <div class="row g-3">
+                        <!-- Row1: Logo -->
+                        <div class="col-12">
+                            <div class="footer-logo d-flex align-items-center">
+                                <img src="Images/Logo_White.png" alt="Canboards logo" class="footer-logo-large">
+                            </div>
+                        </div>
+                        <!-- Row2: Address -->
+                        <div class="col-12">
+                            <address>
+                                Suite 505, 171 Queens Ave<br>
+                                London, ON<br>
+                                N6A 5J7
+                            </address>
+                        </div>
+                        <!-- Row3: Social icons -->
+                        <div class="col-12">
+                            <div class="footer-social">
+                                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grouped link columns: evenly spaced on large screens, stacked on small -->
+                <div class="col-12 col-lg-8">
+                    <div class="row g-4">
+                        <!-- Can Services -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Can Services</h6>
+                            <ul>
+                                <li><a class="footer-link" href="study.html">Study</a></li>
+                                <li><a class="footer-link" href="work.html">Work</a></li>
+                                <li><a class="footer-link" href="visit.html">Visit</a></li>
+                                <li><a class="footer-link" href="settle.html">Settle</a></li>
+                                <li><a class="footer-link" href="other.html">Other</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Important Links -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Important Links</h6>
+                            <ul>
+                                <li><a class="footer-link" href="our-story.html">Our Story</a></li>
+                                <li><a class="footer-link" href="careers.html">Careers</a></li>
+                                <li><a class="footer-link" href="press-media.html">Press and Media</a></li>
+                                <li><a class="footer-link" href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Can Resources -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Can Resources</h6>
+                            <ul>
+                                <li><a class="footer-link" href="#">Blog</a></li>
+                                <li><a class="footer-link" href="#">Webinar</a></li>
+                                <li><a class="footer-link" href="#">Can Insight</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom row (under the line) -->
+            <div class="row footer-bottom align-items-center pt-3 mt-4">
+                <div class="col-md-6 text-md-start text-white-50">©2025 Canboards Inc.</div>
+                <div class="col-md-6 text-md-end mt-2 mt-md-0"><a href="privacy-policy.html">Privacy Policy</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/script.js"></script>
+</body>
+</html>
