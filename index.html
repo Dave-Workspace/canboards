@@ -10,753 +10,1020 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        .site-section {
-            margin-top: 5rem;
-            margin-bottom: 5rem;
-        }
+                .site-section {
+                    margin-top: 5rem;
+                    margin-bottom: 5rem;
+                }
 
-        @media (max-width: 768px) {
-            .site-section {
-                margin-top: 3rem;
-                margin-bottom: 3rem;
-            }
-        }
+                @media (max-width: 768px) {
+                    .site-section {
+                        margin-top: 3rem;
+                        margin-bottom: 3rem;
+                    }
+                }
 
-        /* How section image styling */
-        .how-section .process-img {
-            max-width: 900px;
-            height: auto;
-        }
+                /* How section image styling */
+                .how-section .process-img {
+                    max-width: 900px;
+                    height: auto;
+                }
 
-        /* --- Hero: restore stacking + fix 991px layout ---
-                             Replace the previous injected block with this.
-                             Leaves your 72px / 40px font rules intact in reorganized_css.css. */
+                /* --- Hero: restore stacking + fix 991px layout ---
+                                     Replace the previous injected block with this.
+                                     Leaves your 72px / 40px font rules intact in reorganized_css.css. */
 
-        .hero-section {
-            position: relative;
-            overflow: hidden;
-        }
+                .hero-section {
+                    position: relative;
+                    overflow: hidden;
+                }
 
-            /* Keep original wave / fog stacking */
-            .hero-section::before,
-            .hero-section::after {
-                z-index: 5;
-                pointer-events: none;
-            }
+                    /* Keep original wave / fog stacking */
+                    .hero-section::before,
+                    .hero-section::after {
+                        z-index: 5;
+                        pointer-events: none;
+                    }
 
-            .hero-section .hero-fog-layer {
-                z-index: 20;
-                pointer-events: none;
-            }
+                    .hero-section .hero-fog-layer {
+                        z-index: 20;
+                        pointer-events: none;
+                    }
 
-            /* Make sure the fog layer keeps its blur/blend */
-            .hero-section .hero-fog-layer {
-                z-index: 20;
-                backdrop-filter: blur(6px) saturate(95%);
-                -webkit-backdrop-filter: blur(6px) saturate(95%);
-            }
+                    /* Make sure the fog layer keeps its blur/blend */
+                    .hero-section .hero-fog-layer {
+                        z-index: 20;
+                        backdrop-filter: blur(6px) saturate(95%);
+                        -webkit-backdrop-filter: blur(6px) saturate(95%);
+                    }
 
-            .hero-section .container,
-            .hero-section .hero-content {
-                position: relative;
-                z-index: 30;
-            }
+                    .hero-section .container,
+                    .hero-section .hero-content {
+                        position: relative;
+                        z-index: 30;
+                    }
 
-            /* Centered content cap — allows headings to size naturally */
-            .hero-section .hero-content {
-                margin: 0 auto;
-                width: 100%;
-                max-width: 1200px; /* cap to avoid uncontrolled bleed */
-                padding-left: 16px;
-                padding-right: 16px;
-                text-align: center;
-            }
+                    /* Centered content cap — allows headings to size naturally */
+                    .hero-section .hero-content {
+                        margin: 0 auto;
+                        width: 100%;
+                        max-width: 1200px; /* cap to avoid uncontrolled bleed */
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        text-align: center;
+                    }
 
-            /* Keep decorative images visually behind the content */
-            .hero-section .hero-img-box {
-                z-index: 10;
-                pointer-events: none;
-            }
+                    /* Keep decorative images visually behind the content */
+                    .hero-section .hero-img-box {
+                        z-index: 10;
+                        pointer-events: none;
+                    }
 
-            .hero-section .hero-content #immigration-anim {
-                z-index: 31;
-            }
+                    .hero-section .hero-content #immigration-anim {
+                        z-index: 31;
+                    }
 
-        /* Desktop: let each heading size to its content so it remains one line */
-        @media (min-width: 925px) {
-            .hero-section .hero-content h1,
-            .hero-section .hero-content #immigration-anim,
-            .hero-section .hero-content .gradient-text {
-                display: inline-block; /* intrinsic width, centered by the container */
-                white-space: nowrap; /* keep each heading on a single line at desktop */
-                overflow: visible;
-                line-height: 1;
-                transform: translateZ(0); /* avoid subpixel rendering artifacts */
-            }
-        }
+                /* Desktop: let each heading size to its content so it remains one line */
+                @media (min-width: 925px) {
+                    .hero-section .hero-content h1,
+                    .hero-section .hero-content #immigration-anim,
+                    .hero-section .hero-content .gradient-text {
+                        display: inline-block; /* intrinsic width, centered by the container */
+                        white-space: nowrap; /* keep each heading on a single line at desktop */
+                        overflow: visible;
+                        line-height: 1;
+                        transform: translateZ(0); /* avoid subpixel rendering artifacts */
+                    }
+                }
 
-        @media (min-width: 925px) and (max-width: 991px) {
-            .hero-section .hero-content .hero-main-text,
-            .hero-section .hero-content #immigration-anim,
-            .hero-section .hero-content .gradient-text {
-                font-size: 60px !important; /* Reduced from 72px */
-            }
-        }
+                @media (min-width: 925px) and (max-width: 991px) {
+                    .hero-section .hero-content .hero-main-text,
+                    .hero-section .hero-content #immigration-anim,
+                    .hero-section .hero-content .gradient-text {
+                        font-size: 60px !important; /* Reduced from 72px */
+                    }
+                }
 
-        /* Tablet / mobile: allow wrapping (your existing 40px font rule will apply) */
-        @media (max-width: 924.98px) {
-            .hero-section .hero-content h1,
-            .hero-section .hero-content #immigration-anim,
-            .hero-section .hero-content .gradient-text {
-                display: block;
-                white-space: normal;
-                max-width: 100vw;
-            }
-        }
+                /* Tablet / mobile: allow wrapping (your existing 40px font rule will apply) */
+                @media (max-width: 924.98px) {
+                    .hero-section .hero-content h1,
+                    .hero-section .hero-content #immigration-anim,
+                    .hero-section .hero-content .gradient-text {
+                        display: block;
+                        white-space: normal;
+                        max-width: 100vw;
+                    }
+                }
 
-        /* Gentle increase to line-height for headings (overrides the earlier `line-height: 1 !important`) */
-        .hero-section .hero-content h1,
-        .hero-section .hero-content #immigration-anim,
-        .hero-section .hero-content .gradient-text {
-            line-height: 1.2 !important;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+                /* Gentle increase to line-height for headings (overrides the earlier `line-height: 1 !important`) */
+                .hero-section .hero-content h1,
+                .hero-section .hero-content #immigration-anim,
+                .hero-section .hero-content .gradient-text {
+                    line-height: 1.2 !important;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
 
-        /* Override the immigration animation gradient for this page only */
-        #immigration-anim,
-        .gradient-text {
-            background: linear-gradient(to bottom, #61dcdf 0%, #886cff 100%) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-        }
+                /* Override the immigration animation gradient for this page only */
+                #immigration-anim,
+                .gradient-text {
+                    background: linear-gradient(to bottom, #61dcdf 0%, #886cff 100%) !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    background-clip: text !important;
+                }
 
-        /* Make the Why Canboards heading image larger */
-        .why-heading-img {
-            max-width: 350px; /* Increased from default */
-            width: 100%;
-            height: auto;
-        }
+                /* Make the Why Canboards heading image larger */
+                .why-heading-img {
+                    max-width: 350px; /* Increased from default */
+                    width: 100%;
+                    height: auto;
+                }
 
-        @media (max-width: 991px) {
-            .why-heading-img {
-                max-width: 350px;
-            }
-        }
+                @media (max-width: 991px) {
+                    .why-heading-img {
+                        max-width: 350px;
+                    }
+                }
 
-        @media (max-width: 767px) {
-            .why-heading-img {
-                max-width: 280px;
-            }
-        }
+                @media (max-width: 767px) {
+                    .why-heading-img {
+                        max-width: 280px;
+                    }
+                }
 
-        /* ========================================
-        SERVICE FLIP SECTION
-        ======================================== */
+                /* ========================================
+                SERVICE FLIP SECTION
+                ======================================== */
 
-        .service-flip-section {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            margin-top: 0;
-            margin-bottom: 0;
-        }
+                .service-flip-section {
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
 
-        /* Flip container - 3D perspective */
-        .service-flip-container {
-            perspective: 1200px;
-            width: 100%;
-            height: 100%;
-        }
+                /* Flip container - 3D perspective */
+                .service-flip-container {
+                    perspective: 1200px;
+                    width: 100%;
+                    height: 100%;
+                }
 
-        /* Flipper element - handles 3D rotation */
-        .service-flipper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.8s ease-in-out;
-        }
+                /* Flipper element - handles 3D rotation */
+                .service-flipper {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    transform-style: preserve-3d;
+                    transition: transform 0.8s ease-in-out;
+                }
 
-        /* Hover-driven flip (desktop/laptop only) */
-        @media (hover: hover) and (pointer: fine) {
-            .service-flip-container:hover .service-flipper,
-            .service-flip-link:hover .service-flipper {
-                transform: rotateY(180deg);
-            }
-        }
+                /* Hover-driven flip (desktop/laptop only) */
+                @media (hover: hover) and (pointer: fine) {
+                    .service-flip-container:hover .service-flipper,
+                    .service-flip-link:hover .service-flipper {
+                        transform: rotateY(180deg);
+                    }
+                }
 
-        /* Make the link wrapper behave like the container */
-        .service-flip-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            width: 100%;
-            height: clamp(280px, 30vw, 320px);
-            cursor: pointer;
-        }
+                /* Make the link wrapper behave like the container */
+                .service-flip-link {
+                    display: block;
+                    text-decoration: none;
+                    color: inherit;
+                    width: 100%;
+                    height: clamp(280px, 30vw, 320px);
+                    cursor: pointer;
+                }
 
-        /* Front and back faces */
-        .service-flip-front,
-        .service-flip-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 25px;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 24px;
-            transition: all 0.5s ease-in-out;
-        }
+                /* Front and back faces */
+                .service-flip-front,
+                .service-flip-back {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 25px;
+                    backface-visibility: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 30px 24px;
+                    transition: all 0.5s ease-in-out;
+                }
 
-        /* Front face: white card with icon and title */
-        .service-flip-front {
-            background: #ffffff !important;
-            color: #22293f;
-            box-shadow: 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-            border: 1px solid rgba(47,46,120,0.04);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-            padding: 20px;
-            /* DO NOT add position: relative here - it breaks 3D flip */
-        }
+                /* Front face: white card with icon and title */
+                .service-flip-front {
+                    background: #ffffff !important;
+                    color: #22293f;
+                    box-shadow: 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+                    border: 1px solid rgba(47,46,120,0.04);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-end;
+                    padding: 20px;
+                    /* DO NOT add position: relative here - it breaks 3D flip */
+                }
 
-        /* Back face: gradient with title, description, and CTA */
-        .service-flip-back {
-            background: linear-gradient(to top, rgb(200, 140, 30) 0%, rgb(210, 160, 60) 50%, rgb(220, 180, 90) 100%) !important;
-            color: #ffffff !important;
-            box-shadow: 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-            border: 1px solid rgba(47,46,120,0.04);
-            transform: rotateY(180deg);
-        }
+                /* Back face: gradient with title, description, and CTA */
+                .service-flip-back {
+                    background: linear-gradient(to top, rgb(200, 140, 30) 0%, rgb(210, 160, 60) 50%, rgb(220, 180, 90) 100%) !important;
+                    color: #ffffff !important;
+                    box-shadow: 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+                    border: 1px solid rgba(47,46,120,0.04);
+                    transform: rotateY(180deg);
+                }
 
-            /* Ensure all text inside the flip back face is white */
-            .service-flip-back,
-            .service-flip-back * {
-                color: #ffffff !important;
-            }
+                    /* Ensure all text inside the flip back face is white */
+                    .service-flip-back,
+                    .service-flip-back * {
+                        color: #ffffff !important;
+                    }
 
-                /* ::after overlay for back face - darker in the middle */
-                .service-flip-back::after {
+                        /* ::after overlay for back face - darker in the middle */
+                        .service-flip-back::after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            /* Dark gradient - transparent at top and bottom, subtle darkening in the middle */
+                            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.1) 70%, transparent 100%);
+                            z-index: 1; /* Behind all text content */
+                            border-radius: 18px;
+                            pointer-events: none;
+                        }
+
+                /* Service flip title */
+                .service-flip-title {
+                    color: #ffffff !important;
+                    margin-top: 0.5rem;
+                    margin-bottom: 0;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    text-align: center;
+                    position: relative;
+                    z-index: 10;
+                    isolation: isolate;
+                }
+
+                .service-flip-front .service-flip-title {
+                    color: #ffffff !important;
+                    margin: 0;
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    text-align: left;
+                    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                    line-height: 1;
+                    align-self: center; /* Ensures vertical centering */
+                }
+
+                .service-flip-back .service-flip-title {
+                    color: #ffffff !important;
+                    margin-bottom: 1rem;
+                }
+
+                /* Service flip description (back face only) */
+                .service-flip-desc {
+                    font-size: 0.95rem;
+                    text-align: center;
+                    line-height: 1.6;
+                    margin-bottom: 0;
+                    color: #ffffff !important;
+                    max-width: 90%;
+                    position: relative;
+                    z-index: 10;
+                    isolation: isolate;
+                    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                }
+
+                /* Service flip CTA link */
+                .service-flip-cta {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    color: #ffffff !important;
+                    text-decoration: none;
+                    font-weight: 500;
+                    letter-spacing: 0.4px;
+                    font-size: 0.95rem;
+                    margin-top: auto;
+                    position: relative;
+                    z-index: 10;
+                    isolation: isolate;
+                }
+
+                    .service-flip-cta .arrow {
+                        transition: transform .2s ease;
+                        display: inline-block;
+                    }
+
+                    .service-flip-cta:hover .arrow {
+                        transform: translateX(4px);
+                    }
+
+                /* Service flip background image */
+                .service-flip-img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain; /* Shows the entire image, may have empty space */
+                    object-position: center;
+                    border-radius: 18px;
+                    z-index: 1;
+                }
+
+                /* Individual ::before overlays for each card type */
+                .service-flip-front--study::before {
                     content: '';
                     position: absolute;
                     top: 0;
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    /* Dark gradient - transparent at top and bottom, subtle darkening in the middle */
-                    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.1) 70%, transparent 100%);
-                    z-index: 1; /* Behind all text content */
+                    /* Golden/orange gradient matching back side */
+                    background: linear-gradient(to top, rgba(200, 140, 30, 0.65) 0%, rgba(210, 160, 60, 0.62) 50%, rgba(220, 180, 90, 0.15) 100%);
+                    z-index: 1;
                     border-radius: 18px;
                     pointer-events: none;
                 }
 
-        /* Service flip title */
-        .service-flip-title {
-            color: #ffffff !important;
-            margin-top: 0.5rem;
-            margin-bottom: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            isolation: isolate;
-        }
-
-        .service-flip-front .service-flip-title {
-            color: #ffffff !important;
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: 600;
-            text-align: left;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            line-height: 1;
-            align-self: center; /* Ensures vertical centering */
-        }
-
-        .service-flip-back .service-flip-title {
-            color: #ffffff !important;
-            margin-bottom: 1rem;
-        }
-
-        /* Service flip description (back face only) */
-        .service-flip-desc {
-            font-size: 0.95rem;
-            text-align: center;
-            line-height: 1.6;
-            margin-bottom: 0;
-            color: #ffffff !important;
-            max-width: 90%;
-            position: relative;
-            z-index: 10;
-            isolation: isolate;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Service flip CTA link */
-        .service-flip-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #ffffff !important;
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 0.4px;
-            font-size: 0.95rem;
-            margin-top: auto;
-            position: relative;
-            z-index: 10;
-            isolation: isolate;
-        }
-
-            .service-flip-cta .arrow {
-                transition: transform .2s ease;
-                display: inline-block;
-            }
-
-            .service-flip-cta:hover .arrow {
-                transform: translateX(4px);
-            }
-
-        /* Service flip background image */
-        .service-flip-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Shows the entire image, may have empty space */
-            object-position: center;
-            border-radius: 18px;
-            z-index: 1;
-        }
-
-        /* Individual ::before overlays for each card type */
-        .service-flip-front--study::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* Golden/orange gradient matching back side */
-            background: linear-gradient(to top, rgba(200, 140, 30, 0.65) 0%, rgba(210, 160, 60, 0.62) 50%, rgba(220, 180, 90, 0.15) 100%);
-            z-index: 1;
-            border-radius: 18px;
-            pointer-events: none;
-        }
-
-        .service-flip-front--work::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* Pink/purple gradient matching back side */
-            background: linear-gradient(to top, rgba(255, 150, 180, 0.65) 0%, rgba(255, 180, 210, 0.62) 50%, rgba(255, 220, 240, 0.15) 100%);
-            z-index: 1;
-            border-radius: 18px;
-            pointer-events: none;
-        }
-
-        .service-flip-front--visit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* Teal/green gradient matching back side */
-            background: linear-gradient(to top, rgba(97, 220, 223, 0.65) 0%, rgba(100, 240, 200, 0.62) 50%, rgba(180, 250, 220, 0.15) 100%);
-            z-index: 1;
-            border-radius: 18px;
-            pointer-events: none;
-        }
-
-        .service-flip-front--settle::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* Orange gradient matching back side */
-            background: linear-gradient(to top, rgba(255, 150, 50, 0.65) 0%, rgba(255, 180, 80, 0.62) 50%, rgba(255, 220, 150, 0.15) 100%);
-            z-index: 1;
-            border-radius: 18px;
-            pointer-events: none;
-        }
-
-        .service-flip-front--other::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* Blue/purple gradient matching back side */
-            background: linear-gradient(to top, rgba(100, 150, 255, 0.65) 0%, rgba(140, 160, 255, 0.62) 50%, rgba(200, 190, 255, 0.15) 100%);
-            z-index: 1;
-            border-radius: 18px;
-            pointer-events: none;
-        }
-
-        /* Shared ::after overlay for all cards */
-        .service-flip-front::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* Dark gradient - smoother blend with more gradual transitions */
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.35) 20%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.1) 55%, rgba(0, 0, 0, 0.05) 70%, transparent 85%);
-            z-index: 2; /* Above the golden overlay but below the text */
-            border-radius: 18px;
-            pointer-events: none;
-        }
-
-        /* Ensure icon stays on top */
-        .service-flip-front .service-icon {
-            position: relative;
-            z-index: 3;
-        }
-
-        /* Glow effects matching each card's overlay color */
-        .service-flip-front--study {
-            box-shadow: 0 0 10px rgba(200, 140, 30, 0.3), 0 0 18px rgba(210, 160, 60, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-        }
-
-        .service-flip-front--work {
-            box-shadow: 0 0 10px rgba(255, 150, 180, 0.3), 0 0 18px rgba(255, 180, 210, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-        }
-
-        .service-flip-front--visit {
-            box-shadow: 0 0 10px rgba(97, 220, 223, 0.3), 0 0 18px rgba(100, 240, 200, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-        }
-
-        .service-flip-front--settle {
-            box-shadow: 0 0 10px rgba(255, 150, 50, 0.3), 0 0 18px rgba(255, 180, 80, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-        }
-
-        .service-flip-front--other {
-            box-shadow: 0 0 10px rgba(100, 150, 255, 0.3), 0 0 18px rgba(140, 160, 255, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-        }
-
-        /* Disable 3D flip and interactions on touch devices */
-        @media (hover: none), (any-hover: none), (any-pointer: none), (pointer: coarse) {
-            .service-flipper {
-                transform-style: flat !important;
-                -webkit-transform-style: flat !important;
-                -moz-transform-style: flat !important;
-                will-change: auto !important;
-            }
-
-            .service-flip-container {
-                perspective: none !important;
-                -webkit-perspective: none !important;
-                cursor: default !important;
-            }
-
-                /* Even if an 'active' class gets added, do not rotate on touch devices */
-                .service-flip-container .service-flipper {
-                    transform: none !important;
+                .service-flip-front--work::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    /* Pink/purple gradient matching back side */
+                    background: linear-gradient(to top, rgba(255, 150, 180, 0.65) 0%, rgba(255, 180, 210, 0.62) 50%, rgba(255, 220, 240, 0.15) 100%);
+                    z-index: 1;
+                    border-radius: 18px;
+                    pointer-events: none;
                 }
-        }
 
-        /* Responsive adjustments */
-        @media (max-width: 767px) {
-            .service-flip-container {
-                height: 260px;
-                margin-bottom: 1.5rem;
-            }
+                .service-flip-front--visit::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    /* Teal/green gradient matching back side */
+                    background: linear-gradient(to top, rgba(97, 220, 223, 0.65) 0%, rgba(100, 240, 200, 0.62) 50%, rgba(180, 250, 220, 0.15) 100%);
+                    z-index: 1;
+                    border-radius: 18px;
+                    pointer-events: none;
+                }
 
-            .service-flip-front,
-            .service-flip-back {
-                padding: 24px 20px;
-            }
+                .service-flip-front--settle::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    /* Orange gradient matching back side */
+                    background: linear-gradient(to top, rgba(255, 150, 50, 0.65) 0%, rgba(255, 180, 80, 0.62) 50%, rgba(255, 220, 150, 0.15) 100%);
+                    z-index: 1;
+                    border-radius: 18px;
+                    pointer-events: none;
+                }
 
-            .service-flip-title {
-                font-size: 1.15rem;
-            }
+                .service-flip-front--other::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    /* Blue/purple gradient matching back side */
+                    background: linear-gradient(to top, rgba(100, 150, 255, 0.65) 0%, rgba(140, 160, 255, 0.62) 50%, rgba(200, 190, 255, 0.15) 100%);
+                    z-index: 1;
+                    border-radius: 18px;
+                    pointer-events: none;
+                }
 
-            .service-flip-desc {
-                font-size: 0.9rem;
-            }
-        }
+                /* Shared ::after overlay for all cards */
+                .service-flip-front::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    /* Dark gradient - smoother blend with more gradual transitions */
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.35) 20%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.1) 55%, rgba(0, 0, 0, 0.05) 70%, transparent 85%);
+                    z-index: 2; /* Above the golden overlay but below the text */
+                    border-radius: 18px;
+                    pointer-events: none;
+                }
 
-        @media (max-width: 575px) {
-            .service-flip-container {
-                height: 240px;
-            }
+                /* Ensure icon stays on top */
+                .service-flip-front .service-icon {
+                    position: relative;
+                    z-index: 3;
+                }
 
-            .service-flip-front,
-            .service-flip-back {
-                padding: 20px 16px;
-            }
-        }
+                /* Glow effects matching each card's overlay color */
+                .service-flip-front--study {
+                    box-shadow: 0 0 10px rgba(200, 140, 30, 0.3), 0 0 18px rgba(210, 160, 60, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+                }
 
-        .service-flip-front .service-icon {
-            position: relative;
-            z-index: 3;
-            width: clamp(60px, 10vw, 80px); /* Responsive icon size */
-            height: clamp(60px, 10vw, 80px); /* Responsive icon size */
-            flex-shrink: 0; /* Prevents icon from shrinking */
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px) saturate(180%);
-            -webkit-backdrop-filter: blur(10px) saturate(180%);
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 0; /* Removed bottom margin since we're using flex gap */
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
+                .service-flip-front--work {
+                    box-shadow: 0 0 10px rgba(255, 150, 180, 0.3), 0 0 18px rgba(255, 180, 210, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+                }
 
-            .service-flip-front .service-icon i {
-                font-size: clamp(32px, 5vw, 40px); /* Responsive icon font size */
-                color: #ffffff;
-            }
+                .service-flip-front--visit {
+                    box-shadow: 0 0 10px rgba(97, 220, 223, 0.3), 0 0 18px rgba(100, 240, 200, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+                }
 
-        .service-flip-content {
-            position: relative;
-            z-index: 3;
-            display: flex;
-            align-items: center;
-            gap: clamp(16px, 2vw, 24px); /* Increased gap with responsive sizing */
-            margin-bottom: 10px;
-        }
+                .service-flip-front--settle {
+                    box-shadow: 0 0 10px rgba(255, 150, 50, 0.3), 0 0 18px rgba(255, 180, 80, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+                }
+
+                .service-flip-front--other {
+                    box-shadow: 0 0 10px rgba(100, 150, 255, 0.3), 0 0 18px rgba(140, 160, 255, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+                }
+
+                /* Disable 3D flip and interactions on touch devices */
+                @media (hover: none), (any-hover: none), (any-pointer: none), (pointer: coarse) {
+                    .service-flipper {
+                        transform-style: flat !important;
+                        -webkit-transform-style: flat !important;
+                        -moz-transform-style: flat !important;
+                        will-change: auto !important;
+                    }
+
+                    .service-flip-container {
+                        perspective: none !important;
+                        -webkit-perspective: none !important;
+                        cursor: default !important;
+                    }
+
+                        /* Even if an 'active' class gets added, do not rotate on touch devices */
+                        .service-flip-container .service-flipper {
+                            transform: none !important;
+                        }
+                }
+
+                /* Responsive adjustments */
+                @media (max-width: 767px) {
+                    .service-flip-container {
+                        height: 260px;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .service-flip-front,
+                    .service-flip-back {
+                        padding: 24px 20px;
+                    }
+
+                    .service-flip-title {
+                        font-size: 1.15rem;
+                    }
+
+                    .service-flip-desc {
+                        font-size: 0.9rem;
+                    }
+                }
+
+                @media (max-width: 575px) {
+                    .service-flip-container {
+                        height: 240px;
+                    }
+
+                    .service-flip-front,
+                    .service-flip-back {
+                        padding: 20px 16px;
+                    }
+                }
+
+                .service-flip-front .service-icon {
+                    position: relative;
+                    z-index: 3;
+                    width: clamp(60px, 10vw, 80px); /* Responsive icon size */
+                    height: clamp(60px, 10vw, 80px); /* Responsive icon size */
+                    flex-shrink: 0; /* Prevents icon from shrinking */
+                    background: rgba(255, 255, 255, 0.25);
+                    backdrop-filter: blur(10px) saturate(180%);
+                    -webkit-backdrop-filter: blur(10px) saturate(180%);
+                    border-radius: 50%;
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 0; /* Removed bottom margin since we're using flex gap */
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                }
+
+                    .service-flip-front .service-icon i {
+                        font-size: clamp(32px, 5vw, 40px); /* Responsive icon font size */
+                        color: #ffffff;
+                    }
+
+                .service-flip-content {
+                    position: relative;
+                    z-index: 3;
+                    display: flex;
+                    align-items: center;
+                    gap: clamp(16px, 2vw, 24px); /* Increased gap with responsive sizing */
+                    margin-bottom: 10px;
+                }
+
+                /* ========================================
+                Process Section
+                ======================================== */
+
+                .typing-bounce {
+                    display: inline; /* allow wrapping like normal text */
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                    color: #fff; /* adjust as needed */
+                    border-right: 2px solid #fff; /* cursor effect */
+                    white-space: normal; /* enable wrapping */
+                    overflow: visible; /* ensure nothing is clipped */
+                }
+
+
+
+                /* Typing animation (width increases in JS) */
+                @keyframes jump {
+                    0% {
+                        transform: translateY(0);
+                    }
+
+                    30% {
+                        transform: translateY(-10px);
+                    }
+
+                    50% {
+                        transform: translateY(0);
+                    }
+
+                    70% {
+                        transform: translateY(-5px);
+                    }
+
+                    100% {
+                        transform: translateY(0);
+                    }
+                }
+
+
+                /* Typing effect */
+                @keyframes typing {
+                    from {
+                        width: 0;
+                    }
+
+                    to {
+                        width: 100%;
+                    }
+                }
+
+                /* Blinking cursor */
+                @keyframes blink {
+                    from, to {
+                        border-color: transparent;
+                    }
+
+                    50% {
+                        border-color: #1e90ff;
+                    }
+                }
+
+                .title {
+                    text-align: center;
+                    font-size: 2rem;
+                    font-weight: 600;
+                    margin: 50px 0 60px;
+                    color: #1a1a1a;
+                }
+
+                .flow {
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: 40px;
+                    flex-wrap: wrap;
+                    max-width: 1200px;
+                    margin: 0 auto 80px;
+                }
+
+                /* Step box */
+                .step {
+                    position: relative;
+                    width: 200px;
+                    min-height: 130px; /* fixed height for most devices */
+                    padding: 60px 18px 25px;
+                    border-radius: 18px;
+                    text-align: left;
+                    color: #fff;
+                    opacity: 0; /* hidden initially */
+                    transform: translateY(20px);
+                    transition: all 0.5s ease;
+                    cursor: default;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start; /* avoid extra space at bottom */
+                }
+
+                /* Gradients for steps */
+                .step1 {
+                    background: linear-gradient(135deg,#ff416c,#ff4b2b);
+                }
+
+                .step2 {
+                    background: linear-gradient(135deg,#4776e6,#8e54e9);
+                }
+                /* Darker for readability */
+                .step3 {
+                    background: linear-gradient(135deg,#0c8c73,#1abc9c);
+                }
+
+                .step4 {
+                    background: linear-gradient(135deg,#b68a00,#e6c200);
+                }
+
+                /* Icon */
+                .icon {
+                    position: absolute;
+                    top: -30px;
+                    left: -30px;
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                    background: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 28px;
+                    color: #fff;
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 0 5px 10px rgba(255,255,255,0.25);
+                    opacity: 0;
+                    transform: scale(0);
+                    transition: all 0.4s ease;
+                }
+
+                .step1 .icon {
+                    background: linear-gradient(145deg,#ff758c,#ff416c);
+                }
+
+                .step2 .icon {
+                    background: linear-gradient(145deg,#5d7be8,#4776e6);
+                }
+
+                .step3 .icon {
+                    background: linear-gradient(145deg,#28bca1,#0c8c73);
+                }
+
+                .step4 .icon {
+                    background: linear-gradient(145deg,#ffd84c,#b68a00);
+                }
+
+                .icon.show {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+
+                /* Big number */
+                .big-number {
+                    position: absolute;
+                    top: -10px;
+                    right: 15px;
+                    font-size: 70px;
+                    font-weight: 800;
+                    color: rgba(255,255,255,0.85);
+                    text-shadow: 0 3px 10px rgba(0,0,0,0.25);
+                    opacity: 0;
+                    transform: scale(0);
+                    transition: all 0.4s ease;
+                    z-index: 0;
+                }
+
+                    .big-number.show {
+                        opacity: 0.8;
+                        transform: scale(1);
+                    }
+
+                /* Content */
+                .content {
+                    position: relative;
+                    background: rgba(255,255,255,0.12);
+                    border-radius: 12px;
+                    padding: 25px 12px 15px;
+                    z-index: 2;
+                    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+                    backdrop-filter: blur(4px);
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.5s ease;
+                    flex-grow: 1;
+                }
+
+                    .content.show {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+
+                .step h3 {
+                    font-size: 0.95rem;
+                    font-weight: 600;
+                    margin: 0 0 5px;
+                }
+
+                .step p {
+                    font-size: 0.8rem;
+                    opacity: 0.9;
+                    line-height: 1.3;
+                    margin: 0;
+                }
+
+                /* Responsive */
+                @media (max-width: 768px) {
+                    .flow {
+                        flex-direction: column;
+                        gap: 40px;
+                        align-items: center;
+                    }
+
+                    .step {
+                        width: 260px;
+                        min-height: auto; /* remove fixed height on mobile */
+                    }
+                }
+
+                @media (hover: none), (any-hover: none), (pointer: coarse) {
+                    .step {
+                        opacity: 1 !important;
+                        transform: translateY(0) !important;
+                        transition: none !important;
+                        cursor: default !important;
+                    }
+
+                        .step .icon,
+                        .step .big-number,
+                        .step .content {
+                            opacity: 1 !important;
+                            transform: scale(1) translateY(0) !important;
+                            transition: none !important;
+                        }
+
+                            .step .icon.show,
+                            .step .big-number.show,
+                            .step .content.show {
+                                opacity: 1 !important;
+                                transform: scale(1) translateY(0) !important;
+                            }
+
+                    .flow {
+                        cursor: default !important;
+                    }
+                }
+
+                .flow {
+                    display: flex;
+                    justify-content: center;
+                    align-items: stretch;
+                    gap: 50px;
+                    flex-wrap: wrap;
+                    max-width: 1400px;
+                    margin: 0 auto 0; /* CHANGED: Removed 30px bottom margin */
+                }
+
+                /* Step box - fixed equal height */
+                .step {
+                    position: relative;
+                    width: 280px;
+                    height: 240px;
+                    padding: 50px 24px 16px; /* CHANGED: Reduced bottom padding from 20px to 16px */
+                    border-radius: 18px;
+                    text-align: left;
+                    color: #fff;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.5s ease;
+                    cursor: default;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                }
+
+                /* Content box - FIXED HEIGHT to prevent expansion during typing */
+                .content {
+                    position: relative;
+                    background: rgba(255,255,255,0.12);
+                    border-radius: 12px;
+                    padding: 20px 16px 8px; /* CHANGED: Reduced bottom padding from 12px to 8px */
+                    z-index: 2;
+                    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+                    backdrop-filter: blur(4px);
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.5s ease;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    height: 140px;
+                    overflow: visible;
+                }
+
+                    .content.show {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+
+                /* Step text elements */
+                .step h3 {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    margin: 0 0 8px;
+                    flex-shrink: 0;
+                    line-height: 1.2;
+                }
+
+                .step p {
+                    font-size: 0.85rem;
+                    opacity: 0.9;
+                    line-height: 1.4;
+                    margin: 0;
+                    flex-grow: 0;
+                }
+
+                /* Typing animation span - ensure it doesn't cause overflow */
+                .typing-bounce {
+                    display: inline;
+                    font-weight: 700;
+                    font-size: 0.85rem;
+                    color: #fff;
+                    border-right: 2px solid #fff;
+                    white-space: normal;
+                    overflow: visible;
+                    line-height: 1.4;
+                }
+
+                /* Icon positioning */
+                .icon {
+                    position: absolute;
+                    top: -30px;
+                    left: -30px;
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                    background: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 28px;
+                    color: #fff;
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 0 5px 10px rgba(255,255,255,0.25);
+                    opacity: 0;
+                    transform: scale(0);
+                    transition: all 0.4s ease;
+                }
+
+                /* Big number positioning */
+                .big-number {
+                    position: absolute;
+                    top: -10px;
+                    right: 20px;
+                    font-size: 70px;
+                    font-weight: 800;
+                    color: rgba(255,255,255,0.85);
+                    text-shadow: 0 3px 10px rgba(0,0,0,0.25);
+                    opacity: 0;
+                    transform: scale(0);
+                    transition: all 0.4s ease;
+                    z-index: 0;
+                }
+
+                /* Responsive adjustments */
+                @media (max-width: 1200px) {
+                    .step {
+                        width: 240px;
+                        height: 250px;
+                    }
+
+                    .content {
+                        height: 150px;
+                    }
+
+                    .flow {
+                        margin-bottom: 30px;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .flow {
+                        flex-direction: column;
+                        gap: 40px;
+                        align-items: center;
+                        margin-bottom: 30px;
+                    }
+
+                    .step {
+                        width: 300px;
+                        height: 220px;
+                    }
+
+                    .content {
+                        height: 130px;
+                    }
+                }
+
+                @media (max-width: 575px) {
+                    .step {
+                        width: 280px;
+                        height: 240px;
+                    }
+
+                    .content {
+                        height: 140px;
+                    }
+
+                    .flow {
+                        margin-bottom: 30px;
+                    }
+                }
+
+                /* Touch device overrides - maintain equal height */
+                @media (hover: none), (any-hover: none), (pointer: coarse) {
+                    .step {
+                        opacity: 1 !important;
+                        transform: translateY(0) !important;
+                        transition: none !important;
+                        cursor: default !important;
+                        height: 240px;
+                    }
+
+                        .step .icon,
+                        .step .big-number,
+                        .step .content {
+                            opacity: 1 !important;
+                            transform: scale(1) translateY(0) !important;
+                            transition: none !important;
+                        }
+
+                            .step .icon.show,
+                            .step .big-number.show,
+                            .step .content.show {
+                                opacity: 1 !important;
+                                transform: scale(1) translateY(0) !important;
+                            }
+
+                        .step .content {
+                            height: 140px;
+                        }
+
+                    .flow {
+                        cursor: default !important;
+                        margin-bottom: 30px;
+                    }
+                }
 
         /* ========================================
-        SERVICE FLIP SECTION
+        EXTRA CSS
         ======================================== */
 
-        .typing-bounce {
-            display: inline; /* allow wrapping like normal text */
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: #fff; /* adjust as needed */
-            border-right: 2px solid #fff; /* cursor effect */
-            white-space: normal; /* enable wrapping */
-            overflow: visible; /* ensure nothing is clipped */
-        }
-
-
-
-        /* Typing animation (width increases in JS) */
-        @keyframes jump {
-            0% {
-                transform: translateY(0);
-            }
-
-            30% {
-                transform: translateY(-10px);
-            }
-
-            50% {
-                transform: translateY(0);
-            }
-
-            70% {
-                transform: translateY(-5px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-
-        /* Typing effect */
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
-
-        /* Blinking cursor */
-        @keyframes blink {
-            from, to {
-                border-color: transparent;
-            }
-
-            50% {
-                border-color: #1e90ff;
-            }
-        }
-
-
-        .title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 600;
-            margin: 50px 0 60px;
-            color: #1a1a1a;
-        }
-
-        .flow {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 40px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto 80px;
-            touch-action: pan-y;
-        }
-
-        /* Step box */
-        .step {
-            position: relative;
-            width: 200px;
-            min-height: 130px; /* fixed height for most devices */
-            padding: 60px 18px 25px;
-            border-radius: 18px;
-            text-align: left;
-            color: #fff;
-            opacity: 0; /* hidden initially */
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-            cursor: default;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start; /* avoid extra space at bottom */
-        }
-
-        /* Gradients for steps */
-        .step1 {
-            background: linear-gradient(135deg,#ff416c,#ff4b2b);
-        }
-
-        .step2 {
-            background: linear-gradient(135deg,#4776e6,#8e54e9);
-        }
-        /* Darker for readability */
-        .step3 {
-            background: linear-gradient(135deg,#0c8c73,#1abc9c);
-        }
-
-        .step4 {
-            background: linear-gradient(135deg,#b68a00,#e6c200);
-        }
-
-        /* Icon */
-        .icon {
+        /* Map icon animation styles - FIXED to actually hide icons */
+        .map-icon {
+            opacity: 0 !important; /* Force hidden state */
+            transform: scale(0) !important; /* Force scaled down */
+            transition: none;
             position: absolute;
-            top: -30px;
-            left: -30px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: #fff;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 0 5px 10px rgba(255,255,255,0.25);
-            opacity: 0;
-            transform: scale(0);
-            transition: all 0.4s ease;
+            will-change: transform, opacity;
         }
 
-        .step1 .icon {
-            background: linear-gradient(145deg,#ff758c,#ff416c);
-        }
+            .map-icon.map-icon-animate {
+                opacity: 1 !important; /* Override to show */
+                transform: scale(1) !important; /* Override to full size */
+                transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
 
-        .step2 .icon {
-            background: linear-gradient(145deg,#5d7be8,#4776e6);
-        }
+            .map-icon img {
+                width: 40px;
+                height: 40px;
+                display: block;
+                filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            }
 
-        .step3 .icon {
-            background: linear-gradient(145deg,#28bca1,#0c8c73);
-        }
+            /* Optional: Add a subtle pulse effect after animation */
+            .map-icon.map-icon-animate img {
+                animation: iconPulse 2s ease-in-out 0.8s infinite;
+            }
 
-        .step4 .icon {
-            background: linear-gradient(145deg,#ffd84c,#b68a00);
-        }
-
-        .icon.show {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* Big number */
-        .big-number {
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            font-size: 70px;
-            font-weight: 800;
-            color: rgba(255,255,255,0.85);
-            text-shadow: 0 3px 10px rgba(0,0,0,0.25);
-            opacity: 0;
-            transform: scale(0);
-            transition: all 0.4s ease;
-            z-index: 0;
-        }
-
-            .big-number.show {
-                opacity: 0.8;
+        @keyframes iconPulse {
+            0%, 100% {
                 transform: scale(1);
             }
 
-        /* Content */
-        .content {
-            position: relative;
-            background: rgba(255,255,255,0.12);
-            border-radius: 12px;
-            padding: 25px 12px 15px;
-            z-index: 2;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-            backdrop-filter: blur(4px);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-            flex-grow: 1;
-        }
-
-            .content.show {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-        .step h3 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin: 0 0 5px;
-        }
-
-        .step p {
-            font-size: 0.8rem;
-            opacity: 0.9;
-            line-height: 1.3;
-            margin: 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .flow {
-                flex-direction: column;
-                gap: 40px;
-                align-items: center;
-            }
-
-            .step {
-                width: 260px;
-                min-height: auto; /* remove fixed height on mobile */
+            50% {
+                transform: scale(1.1);
             }
         }
     </style>
@@ -1175,14 +1442,6 @@
                 </div>
             </div>
         </div>
-
-        <style>
-            /* make sure revealed state forces the step to show (keeps original transitions) */
-            .step.revealed {
-                opacity: 1 !important;
-                transform: translateY(0) !important;
-            }
-        </style>
     </section>
 
 
@@ -1246,7 +1505,7 @@
                 <div class="map-icon" style="left:52%; top:56%;" data-delay="300">
                     <img src="Images/Favicon.png" alt="icon">
                 </div>
-                <div class="map-icon" style="left:64%; top:48%;" data-delay="400">
+                <div class="map-icon" style="left:60%; top:48%;" data-delay="400">
                     <img src="Images/Favicon.png" alt="icon">
                 </div>
                 <div class="map-icon" style="left:80%; top:30%;" data-delay="500">
@@ -1518,160 +1777,397 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="JS/script.js"></script>
     <script>
-        /*
-          Full script for index.html
-          - News carousel buttons
-          - Percentage-based, scroll-down sequential reveal for `.process .step` only while the section is in view
-        */
-        (function () {
-            // ----------------------
-            // News carousel buttons
-            // ----------------------
-            const wrapper = document.getElementById('newsWrapper');
-            const leftBtn = document.getElementById('scrollLeft');
-            const rightBtn = document.getElementById('scrollRight');
+        const wrapper = document.getElementById('newsWrapper');
+        const leftBtn = document.getElementById('scrollLeft');
+        const rightBtn = document.getElementById('scrollRight');
 
-            function getCardWidth() {
-                if (!wrapper) return 0;
-                const card = wrapper.querySelector('.news-card');
-                if (!card) return 0;
-                const style = window.getComputedStyle(wrapper);
-                const gap = parseInt(style.columnGap || style.gap || 0) || 0;
-                return card.offsetWidth + gap;
+        function getCardWidth() {
+            const card = wrapper.querySelector('.news-card');
+            const style = window.getComputedStyle(wrapper);
+            const gap = parseInt(style.columnGap || style.gap || 0);
+            return card.offsetWidth + gap;
+        }
+
+        leftBtn.addEventListener('click', () => {
+            wrapper.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+        });
+
+        rightBtn.addEventListener('click', () => {
+            wrapper.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+        });
+    </script>
+    <script>
+        const steps = document.querySelectorAll('.step');
+        const flow = document.querySelector('.flow');
+
+        // Detect if device has hover capability
+        const hasHoverCapability = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+        let isHovered = false;
+        let isInView = false;
+        let isMobilePaused = false;
+        let animationTimeouts = [];
+        let isAnimating = false;
+
+        // Helper: clear all timeouts
+        function clearAllTimeouts() {
+            animationTimeouts.forEach(t => clearTimeout(t));
+            animationTimeouts = [];
+        }
+
+        // Reset steps (hide all)
+        function resetSteps() {
+            clearAllTimeouts();
+            clearTypingTimeouts();
+            steps.forEach(step => {
+                step.style.opacity = 0;
+                step.querySelector('.icon').classList.remove('show');
+                step.querySelector('.big-number').classList.remove('show');
+                step.querySelector('.content').classList.remove('show');
+            });
+        }
+
+        // Show all instantly
+        function showAllSteps() {
+            clearAllTimeouts();
+            steps.forEach(step => {
+                step.style.opacity = 1;
+                step.querySelector('.icon').classList.add('show');
+                step.querySelector('.big-number').classList.add('show');
+                step.querySelector('.content').classList.add('show');
+            });
+        }
+
+        // Typing + jump animation for step 4
+        function typeAndJump(span, text, done) {
+            // Stop any ongoing typing animation on this specific span
+            if (span._typingTimeouts) {
+                span._typingTimeouts.forEach(t => clearTimeout(t));
+            }
+            span._typingTimeouts = [];
+
+            span.textContent = '';
+            span.style.display = 'inline-block';
+            span.style.whiteSpace = 'normal';
+            span.style.borderRight = '2px solid #1e90ff';
+
+            const chars = text.split('');
+            let i = 0;
+
+            function typeNext() {
+                if (i < chars.length) {
+                    span.textContent += chars[i];
+                    i++;
+                    const t = setTimeout(typeNext, 80);
+                    span._typingTimeouts.push(t);
+                } else {
+                    span.style.borderRight = 'none';
+                    span.style.animation = 'jump 0.5s ease forwards';
+                    const t = setTimeout(() => {
+                        span.style.animation = '';
+                        if (done) done();
+                    }, 500);
+                    span._typingTimeouts.push(t);
+                }
             }
 
-            if (leftBtn && wrapper) {
-                leftBtn.addEventListener('click', () =>
-                    wrapper.scrollBy({ left: -getCardWidth(), behavior: 'smooth' })
-                );
+            typeNext();
+        }
+
+        function clearTypingTimeouts() {
+            document.querySelectorAll('.typing-bounce').forEach(span => {
+                if (span._typingTimeouts) {
+                    span._typingTimeouts.forEach(t => clearTimeout(t));
+                    span._typingTimeouts = [];
+                }
+            });
+        }
+
+        // Animate one step (sequential show)
+        function animateStepWithTyping(step, previousSteps = [], callback) {
+            steps.forEach(s => s.style.opacity = 0);
+            previousSteps.forEach(s => s.style.opacity = 1);
+
+            step.style.opacity = 1;
+            const icon = step.querySelector('.icon');
+            const number = step.querySelector('.big-number');
+            const content = step.querySelector('.content');
+            const typingSpan = step.querySelector('.typing-bounce');
+
+            icon.classList.remove('show');
+            number.classList.remove('show');
+            content.classList.remove('show');
+
+            animationTimeouts.push(setTimeout(() => icon.classList.add('show'), 200));
+            animationTimeouts.push(setTimeout(() => number.classList.add('show'), 600));
+            animationTimeouts.push(setTimeout(() => content.classList.add('show'), 1000));
+
+            let totalStepTime = 2200;
+            if (typingSpan) {
+                const text = typingSpan.getAttribute('data-text') || typingSpan.textContent.trim();
+                typingSpan.setAttribute('data-text', text);
+                animationTimeouts.push(setTimeout(() => {
+                    typeAndJump(typingSpan, text, callback);
+                }, 1200));
+                totalStepTime = Math.max(totalStepTime, text.length * 80 + 2000);
+            } else {
+                animationTimeouts.push(setTimeout(callback, totalStepTime));
             }
-            if (rightBtn && wrapper) {
-                rightBtn.addEventListener('click', () =>
-                    wrapper.scrollBy({ left: getCardWidth(), behavior: 'smooth' })
-                );
+        }
+
+        // Sequential flow controller
+        function animateFlowSequentially(i = 0, previous = []) {
+            if (!isInView || (hasHoverCapability && isHovered) || isMobilePaused) {
+                isAnimating = false;
+                return;
             }
 
-            // ---------------------------------------------------------
-            // Percentage-based, sequential reveal for the "process"
-            // ---------------------------------------------------------
-            const SECTION_SELECTOR = '.process';
-            const STEP_SELECTOR = '.process .step';
+            isAnimating = true;
 
-            const section = document.querySelector(SECTION_SELECTOR);
-            if (!section) return;
+            if (i >= steps.length) {
+                // wait longer for typing animation to finish
+                animationTimeouts.push(setTimeout(() => {
+                    if (!((hasHoverCapability && isHovered) || isMobilePaused) && isInView) {
+                        resetSteps();
+                        animateFlowSequentially(0, []);
+                    } else {
+                        isAnimating = false;
+                    }
+                }, 3500));
+                return;
+            }
 
-            const steps = Array.from(document.querySelectorAll(STEP_SELECTOR));
-            const totalSteps = steps.length;
-            let revealedIndex = -1; // last fully revealed step index
-            let ticking = false;
-            let active = false; // true only when section is intersecting
+            animateStepWithTyping(steps[i], previous, () => {
+                previous.push(steps[i]);
+                animateFlowSequentially(i + 1, previous);
+            });
+        }
 
-            // Reset all steps to hidden
-            steps.forEach(s => {
-                s.classList.remove('revealed');
-                const icon = s.querySelector('.icon');
-                const big = s.querySelector('.big-number');
-                const content = s.querySelector('.content');
-                if (icon) icon.classList.remove('show');
-                if (big) big.classList.remove('show');
-                if (content) content.classList.remove('show');
+        // Start new full animation cycle cleanly
+        function startAnimationLoop() {
+            if (!isInView || isAnimating) return;
+            clearAllTimeouts();
+            clearTypingTimeouts();
+            resetSteps();
+            // Small delay before starting to ensure clean transition
+            setTimeout(() => {
+                if (isInView && !((hasHoverCapability && isHovered) || isMobilePaused)) {
+                    animateFlowSequentially();
+                }
+            }, 100);
+        }
+
+        // Observer for visibility - FIXED to always restart animation
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    isInView = true;
+                    // Reset animation state when coming into view
+                    isAnimating = false;
+                    if (!isMobilePaused && (!hasHoverCapability || !isHovered)) {
+                        startAnimationLoop();
+                    }
+                } else {
+                    isInView = false;
+                    isAnimating = false;
+                    clearAllTimeouts();
+                    clearTypingTimeouts();
+                    resetSteps();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observer.observe(document.querySelector('.process'));
+
+        // Only enable hover effects on devices with hover capability
+        if (hasHoverCapability) {
+            // Hover: show all + only typing runs
+            flow.addEventListener('mouseenter', () => {
+                isHovered = true;
+                clearAllTimeouts();
+                clearTypingTimeouts();
+                showAllSteps();
+
+                const typingSpan = document.querySelector('.typing-bounce');
+                if (typingSpan) {
+                    const text = typingSpan.getAttribute('data-text') || typingSpan.textContent.trim();
+                    typeAndJump(typingSpan, text);
+                }
             });
 
-            function revealStep(index) {
-                if (index < 0 || index >= totalSteps) return;
-                const el = steps[index];
-                if (!el || el.classList.contains('revealed')) return;
-
-                el.classList.add('revealed');
-                const icon = el.querySelector('.icon');
-                const big = el.querySelector('.big-number');
-                const content = el.querySelector('.content');
-
-                if (icon) setTimeout(() => icon.classList.add('show'), 80);
-                if (big) setTimeout(() => big.classList.add('show'), 220);
-                if (content) setTimeout(() => content.classList.add('show'), 420);
-
-                revealedIndex = Math.max(revealedIndex, index);
+            function restartAnimation() {
+                clearAllTimeouts();
+                clearTypingTimeouts();
+                resetSteps();
+                isAnimating = false;
+                requestAnimationFrame(() => startAnimationLoop());
             }
 
-            // Map scroll progress through the section (0..1) to step index
-            // progress = 0 when section top hits bottom of viewport
-            // progress = 1 when section bottom hits top of viewport
-            function computeTargetIndex() {
-                const rect = section.getBoundingClientRect();
-                const vh = window.innerHeight || document.documentElement.clientHeight;
-                const sectionHeight = Math.max(1, rect.height);
-                const totalTravel = sectionHeight + vh;
+            // On mouse leave: restart full cycle cleanly
+            flow.addEventListener('mouseleave', () => {
+                isHovered = false;
+                if (!isMobilePaused && isInView) restartAnimation();
+            });
+        } else {
+            // For touch devices: show all steps statically (no animation)
+            showAllSteps();
 
-                const rawProgress = (vh - rect.top) / totalTravel; // 0 at entry, 1 at exit
-                const progress = Math.min(1, Math.max(0, rawProgress));
-
-                // Require incremental progress before each reveal:
-                // using ceil(..) - 1 ensures first reveal needs some progress after entry.
-                const target = Math.ceil(progress * totalSteps) - 1;
-                return Math.max(0, Math.min(totalSteps - 1, target));
+            // Run typing effect once for touch devices
+            const typingSpan = document.querySelector('.typing-bounce');
+            if (typingSpan) {
+                const text = typingSpan.getAttribute('data-text') || typingSpan.textContent.trim();
+                typeAndJump(typingSpan, text);
             }
+        }
 
-            function updateOnScroll() {
-                if (!active || ticking) return;
-                ticking = true;
+        // Mobile tap toggle - only for touch devices
+        if (!hasHoverCapability) {
+            flow.addEventListener('touchstart', (e) => {
+                e.preventDefault();
 
-                requestAnimationFrame(() => {
-                    const rect = section.getBoundingClientRect();
-                    const vh = window.innerHeight || document.documentElement.clientHeight;
+                // Toggle paused state
+                isMobilePaused = !isMobilePaused;
 
-                    // Only operate while any part of section is visible
-                    if (!(rect.bottom < 0 || rect.top > vh)) {
-                        const targetIndex = computeTargetIndex();
+                // Always clear everything first — no leftover animations or typing
+                clearAllTimeouts();
+                clearTypingTimeouts();
+                isAnimating = false;
 
-                        // Reveal up to the current target, one step per frame for smoothness
-                        if (targetIndex > revealedIndex) {
-                            revealStep(revealedIndex + 1);
-                        }
+                if (isMobilePaused) {
+                    // FIRST TAP — show everything instantly (paused state)
+                    showAllSteps();
+
+                    // Run typing effect (if present)
+                    const typingSpan = document.querySelector('.typing-bounce');
+                    if (typingSpan) {
+                        const text = typingSpan.getAttribute('data-text') || typingSpan.textContent.trim();
+                        typeAndJump(typingSpan, text);
                     }
+                } else if (isInView) {
+                    // SECOND TAP — restart animation cleanly from the beginning
+                    resetSteps();
+                    requestAnimationFrame(() => {
+                        startAnimationLoop(); // fresh animation cycle
+                    });
+                }
+            });
+        }
+    </script>
+    <script>
+        // Map Icon Animation Controller - IMPROVED
+        (function () {
+            const mapSection = document.querySelector('.map-section');
+            const mapIcons = document.querySelectorAll('.map-icon');
 
-                    ticking = false;
+            // Function to animate icons
+            function animateMapIcons() {
+                mapIcons.forEach((icon, index) => {
+                    const delay = icon.getAttribute('data-delay') || 0;
+
+                    // Remove any existing animation classes first
+                    icon.classList.remove('map-icon-animate');
+
+                    // Force reflow to restart animation
+                    void icon.offsetWidth;
+
+                    // Add animation class with delay
+                    setTimeout(() => {
+                        icon.classList.add('map-icon-animate');
+                    }, parseInt(delay));
                 });
             }
 
-            // Activate/deactivate scroll handling strictly when section is in view
-            const sectionObserver = new IntersectionObserver((entries) => {
+            // Function to reset icons (hide them immediately)
+            function resetMapIcons() {
+                mapIcons.forEach(icon => {
+                    icon.classList.remove('map-icon-animate');
+                });
+            }
+
+            // Intersection Observer to detect when section is in view
+            const mapObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        active = true;
-                        window.addEventListener('scroll', updateOnScroll, { passive: true });
-                        window.addEventListener('resize', updateOnScroll, { passive: true });
-                        updateOnScroll(); // kick once
+                        // Section is in view - play animation
+                        animateMapIcons();
                     } else {
-                        active = false;
-                        window.removeEventListener('scroll', updateOnScroll);
-                        window.removeEventListener('resize', updateOnScroll);
+                        // Section is out of view - immediately hide icons
+                        resetMapIcons();
                     }
                 });
-            }, { threshold: [0, 0.05, 0.1, 0.2, 0.3, 0.5] });
-
-            sectionObserver.observe(section);
-
-            // If already visible on load, start immediately
-            window.addEventListener('load', updateOnScroll);
-
-            // Accessibility: reveal on keyboard focus (still respects order)
-            steps.forEach((s, i) => {
-                s.addEventListener('focus', () => {
-                    const rect = s.getBoundingClientRect();
-                    const vh = window.innerHeight || document.documentElement.clientHeight;
-                    if (rect.top < vh && rect.bottom > 0) {
-                        while (revealedIndex < i) revealStep(revealedIndex + 1);
-                    }
-                }, { passive: true });
+            }, {
+                threshold: 0.2, // Trigger when 20% of section is visible
+                rootMargin: '0px'
             });
 
-            // Cleanup typing timers if any existed from older markup
-            window.addEventListener('beforeunload', () => {
-                document.querySelectorAll('.typing-bounce').forEach(span => {
-                    if (span._timeouts) span._timeouts.forEach(t => clearTimeout(t));
+            // Start observing the map section
+            if (mapSection) {
+                mapObserver.observe(mapSection);
+            }
+        })();
+    </script>
+    <script>
+        // Stats Counter Animation Controller - Repeats on scroll
+        (function () {
+            const statsSection = document.querySelector('.stats-section');
+            const statNumbers = document.querySelectorAll('.stat-number');
+
+            // Function to animate counters
+            function animateCounters() {
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const suffix = stat.getAttribute('data-suffix') || '';
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); // 60fps
+                    let current = 0;
+
+                    // Reset to 0 first
+                    stat.textContent = '0';
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            stat.textContent = Math.floor(current) + suffix;
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            stat.textContent = target + suffix;
+                        }
+                    };
+
+                    // Start counting after a small delay
+                    setTimeout(() => {
+                        updateCounter();
+                    }, 200);
                 });
+            }
+
+            // Function to reset counters
+            function resetCounters() {
+                statNumbers.forEach(stat => {
+                    stat.textContent = '0';
+                });
+            }
+
+            // Intersection Observer to detect when section is in view
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Section is in view - play animation
+                        animateCounters();
+                    } else {
+                        // Section is out of view - reset counters
+                        resetCounters();
+                    }
+                });
+            }, {
+                threshold: 0.3, // Trigger when 30% of section is visible
+                rootMargin: '0px'
             });
+
+            // Start observing the stats section
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
         })();
     </script>
 </body>
