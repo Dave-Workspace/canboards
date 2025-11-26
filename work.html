@@ -202,8 +202,278 @@
         .mb-3 {
             margin-bottom: 0.6rem !important;
         }
+
+        /* Add this CSS to the <style> block in work.html */
+
+        /* ========================================
+   SERVICE PAGE FLIP BOXES SECTION
+   ======================================== */
+
+        .service-page-flip-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f8f9fc 0%, #f0f2f8 100%);
+        }
+
+        /* 3D Flip Box Container */
+        .service-page-flip-box {
+            perspective: 1200px;
+            height: 320px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .service-page-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+
+        /* Hover effect - flip on desktop */
+        @media (hover: hover) and (pointer: fine) {
+            .service-page-flip-box:hover .service-page-flip-inner,
+            .service-page-flip-box.active .service-page-flip-inner {
+                transform: rotateY(180deg);
+            }
+        }
+
+        /* Front and Back faces */
+        .service-page-flip-front,
+        .service-page-flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
+            transition: box-shadow 0.3s ease;
+        }
+
+        /* Front side - white background matching original service boxes */
+        .service-page-flip-front {
+            background: #ffffff;
+            border: 1px solid rgba(47, 46, 120, 0.04);
+            justify-content: center;
+            text-align: center;
+        }
+
+        .service-page-flip-box:hover .service-page-flip-front {
+            box-shadow: 0 15px 50px rgba(47, 46, 120, 0.12);
+        }
+
+        /* Icon styling on front - matching original */
+        .service-page-flip-front .work-service-icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .service-page-flip-front .work-service-icon {
+            width: 60px;
+            height: 60px;
+            fill: #2f2e78;
+            display: inline-block;
+        }
+
+        /* Title styling on front - matching original */
+        .service-page-flip-front .service-page-flip-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #2d3958;
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-top: 0.5rem;
+        }
+
+        /* APPLY NOW button on front - RED styling matching original */
+        .service-page-flip-cta {
+            color: #dc3545 !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+            .service-page-flip-cta:hover {
+                color: #bb2d3b !important;
+            }
+
+            .service-page-flip-cta i {
+                font-size: 1.3rem;
+                transition: transform 0.3s ease;
+                vertical-align: middle;
+            }
+
+            .service-page-flip-cta:hover i {
+                transform: translateX(4px);
+            }
+
+        /* Back side - gradient background with description */
+        .service-page-flip-back {
+            background: linear-gradient(180deg, #5fd6d8 0%, #7867ff 100%) !important;
+            color: #ffffff;
+            transform: rotateY(180deg);
+            padding: 2.5rem 2rem;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+            .service-page-flip-back .service-page-flip-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #ffffff !important;
+                margin-bottom: 1.5rem;
+                text-align: center;
+                line-height: 1.3;
+                letter-spacing: -0.02em;
+                text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            }
+
+        .service-page-flip-desc {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #ffffff !important;
+            text-align: center;
+            margin-bottom: 0;
+            font-weight: 400;
+            opacity: 0.95;
+            padding: 0 0.5rem;
+        }
+
+        
+        /* Disable 3D flip on touch devices */
+        /*
+        @media (hover: none), (any-hover: none), (pointer: coarse) {
+            .service-page-flip-inner {
+                transform-style: flat !important;
+            }
+
+            .service-page-flip-box {
+                perspective: none !important;
+                cursor: default !important;
+            }
+
+                .service-page-flip-box .service-page-flip-inner {
+                    transform: none !important;
+                }
+
+            
+            .service-page-flip-front {
+                position: relative;
+            }
+
+            .service-page-flip-back {
+                display: none;
+            }
+        }
+            */
+
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .service-page-flip-section {
+                padding: 50px 0;
+            }
+
+            .service-page-flip-box {
+                height: 300px;
+                margin-bottom: 1.5rem;
+            }
+
+            .service-page-flip-back {
+                padding: 2rem 1.75rem;
+            }
+
+                .service-page-flip-back .service-page-flip-title {
+                    font-size: 1.35rem;
+                    margin-bottom: 1.25rem;
+                }
+
+            .service-page-flip-desc {
+                font-size: 0.95rem;
+                line-height: 1.65;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .service-page-flip-section {
+                padding: 40px 0;
+            }
+
+            .service-page-flip-box {
+                height: 280px;
+            }
+
+            .service-page-flip-front,
+            .service-page-flip-back {
+                padding: 1.5rem;
+            }
+
+                .service-page-flip-back .service-page-flip-title {
+                    font-size: 1.25rem;
+                    margin-bottom: 1rem;
+                }
+
+            .service-page-flip-desc {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .service-page-flip-front .work-service-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .service-page-flip-front .work-service-icon-wrapper {
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        /* 3D Flip Box Container */
+        .service-page-flip-box {
+            perspective: 1200px;
+            height: 320px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .service-page-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+
+        /* Apply flip when active class is added - works on ALL devices */
+        .service-page-flip-box.active .service-page-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Hover effect - flip on desktop (additional trigger for hover-capable devices) */
+        @media (hover: hover) and (pointer: fine) {
+            .service-page-flip-box:hover .service-page-flip-inner {
+                transform: rotateY(180deg);
+            }
+        }
+
+        /* Push anchor links to the bottom */
+        .work-page .service-box > a {
+            margin-top: auto !important;
+            display: inline-block;
+        }
     </style>
 </head>
+
 <body class="work-page">
     <!-- Header/Navbar -->
     <header role="banner">
@@ -349,6 +619,120 @@
                         <h5 class="mb-2">Dependent Work Permit</h5>
                         <p class="mb-3 service-desc">Enabling spouses and common-law partners of eligible workers/students to obtain open work permits.</p>
                         <a class="text-danger text-decoration-none" href="Dependent_Work_Permit.html">APPLY NOW <i class="bi bi-arrow-right-short"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Page Flip Boxes Section -->
+    <section class="service-page-flip-section my-5">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <!-- Work Permit Application -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-page-flip-box" tabindex="0">
+                        <div class="service-page-flip-inner">
+                            <!-- Front side: Icon, Title, and APPLY NOW -->
+                            <div class="service-page-flip-front">
+                                <div class="work-service-icon-wrapper mb-3">
+                                    <svg aria-hidden="true" class="work-service-icon e-font-icon-svg e-fas-briefcase" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"></path>
+                                    </svg>
+                                </div>
+                                <h5 class="service-page-flip-title">Work Permit Application</h5>
+                                <a href="Work_Permit_App.html" class="service-page-flip-cta text-danger text-decoration-none">
+                                    APPLY NOW <i class="bi bi-arrow-right-short"></i>
+                                </a>
+                            </div>
+                            <!-- Back side: Title and Description -->
+                            <div class="service-page-flip-back">
+                                <h5 class="service-page-flip-title">Work Permit Application</h5>
+                                <p class="service-page-flip-desc">Expert assistance for various work permit applications, including employer-specific and open work permits.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PGWP -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-page-flip-box" tabindex="0">
+                        <div class="service-page-flip-inner">
+                            <!-- Front side: Icon, Title, and APPLY NOW -->
+                            <div class="service-page-flip-front">
+                                <div class="work-service-icon-wrapper mb-3">
+                                    <svg aria-hidden="true" class="work-service-icon e-font-icon-svg e-fas-user-tie" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm95.8 32.6L272 480l-32-136 32-56h-96l32 56-32 136-47.8-191.4C56.9 292 0 350.3 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z"></path>
+                                    </svg>
+                                </div>
+                                <h5 class="service-page-flip-title">Post-Graduation Work Permit (PGWP)</h5>
+                                <a href="PGWP.html" class="service-page-flip-cta text-danger text-decoration-none">
+                                    APPLY NOW <i class="bi bi-arrow-right-short"></i>
+                                </a>
+                            </div>
+                            <!-- Back side: Title and Description -->
+                            <div class="service-page-flip-back">
+                                <h5 class="service-page-flip-title">Post-Graduation Work Permit</h5>
+                                <p class="service-page-flip-desc">Assistance for international students to apply for a PGWP after graduating from a Canadian institution.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOWP -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-page-flip-box" tabindex="0">
+                        <div class="service-page-flip-inner">
+                            <!-- Front side: Icon, Title, and APPLY NOW -->
+                            <div class="service-page-flip-front">
+                                <div class="work-service-icon-wrapper mb-3">
+                                    <svg aria-hidden="true" class="work-service-icon e-font-icon-svg e-fas-stream" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16 128h416c8.84 0 16-7.16 16-16V48c0-8.84-7.16-16-16-16H16C7.16 32 0 39.16 0 48v64c0 8.84 7.16 16 16 16zm480 80H80c-8.84 0-16 7.16-16 16v64c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-64c0-8.84-7.16-16-16-16zm-64 176H16c-8.84 0-16 7.16-16 16v64c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-64c0-8.84-7.16-16-16-16z"></path>
+                                    </svg>
+                                </div>
+                                <h5 class="service-page-flip-title">Bridging Open Work Permit (BOWP)</h5>
+                                <a href="BOWP.html" class="service-page-flip-cta text-danger text-decoration-none">
+                                    APPLY NOW <i class="bi bi-arrow-right-short"></i>
+                                </a>
+                            </div>
+                            <!-- Back side: Title and Description -->
+                            <div class="service-page-flip-back">
+                                <h5 class="service-page-flip-title">Bridging Open Work Permit</h5>
+                                <p class="service-page-flip-desc">Assistance for eligible permanent resident applicants to apply for a BOWP while awaiting a decision.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dependent Work Permit -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-page-flip-box" tabindex="0">
+                        <div class="service-page-flip-inner">
+                            <!-- Front side: Icon, Title, and APPLY NOW -->
+                            <div class="service-page-flip-front">
+                                <div class="work-service-icon-wrapper mb-3">
+                                    <svg aria-hidden="true" class="work-service-icon" xmlns="http://www.w3.org/2000/svg" id="_Ñëîé_1" data-name="Ñëîé_1" viewBox="0 0 231 287">
+                                        <g>
+                                            <circle cx="60.34" cy="38.19" r="21.46"></circle>
+                                            <path d="M29.57,65.17c20.87-2.91,42.11-2.91,62.98,0,10.38.94,18.63,9.65,18.63,20.27v75.86c0,4.91-3.98,8.88-8.88,8.88-4.91,0-8.88-3.98-8.88-8.88v-68.28s-1.76,0-1.76,0l-5.8,77.1-4.69,107.94h-19.28s.29-108.06.29-108.06h-2.96s.29,108.06.29,108.06h-19.28s-4.69-107.94-4.69-107.94l-5.8-77.1h-.7s0,68.28,0,68.28c0,4.91-3.98,8.88-8.88,8.88-4.91,0-8.88-3.98-8.88-8.88v-75.86c0-10.62,7.94-19.33,18.31-20.27Z"></path>
+                                        </g>
+                                        <g>
+                                            <circle cx="157.39" cy="38.19" r="21.46"></circle>
+                                            <path d="M96.28,162.82l21.14-76.1c3.94-14.16,16.83-24.04,31.52-24.04h16.89c14.69,0,27.58,9.89,31.52,24.04l21.14,75.96c1.13,4.07-1.93,8.06-6.16,8.06h0c-2.81,0-5.29-1.84-6.11-4.53l-23.19-76.15h-2.19s28.07,114.72,28.07,114.72h-30.54s-2.99,73.27-2.99,73.27h-16.42s.26-73.27.26-73.27h-3.68s.26,73.27.26,73.27h-16.42s-2.99-73.27-2.99-73.27h-30.54s28.07-114.72,28.07-114.72h-2.35s-23.03,76.23-23.03,76.23c-.82,2.7-13.41.6-12.27-3.47Z"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <h5 class="service-page-flip-title">Dependent Work Permit</h5>
+                                <a href="Dependent_Work_Permit.html" class="service-page-flip-cta text-danger text-decoration-none">
+                                    APPLY NOW <i class="bi bi-arrow-right-short"></i>
+                                </a>
+                            </div>
+                            <!-- Back side: Title and Description -->
+                            <div class="service-page-flip-back">
+                                <h5 class="service-page-flip-title">Dependent Work Permit</h5>
+                                <p class="service-page-flip-desc">Enabling spouses and common-law partners of eligible workers/students to obtain open work permits.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -720,6 +1104,78 @@
         rightBtn.addEventListener('click', () => {
             wrapper.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
         });
+
+        // Service Page Flip Boxes functionality
+        (function () {
+            const flipBoxes = document.querySelectorAll('.service-page-flip-box');
+            if (!flipBoxes || !flipBoxes.length) return;
+
+            // Check if device has hover capability
+            const hasHoverCapability = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+            if (hasHoverCapability) {
+                // Desktop: Hover behavior - only one active at a time
+                flipBoxes.forEach(box => {
+                    box.addEventListener('mouseenter', () => {
+                        flipBoxes.forEach(b => b.classList.remove('active'));
+                        box.classList.add('active');
+                    });
+
+                    box.addEventListener('mouseleave', () => {
+                        box.classList.remove('active');
+                    });
+                });
+            } else {
+                // Touch devices: Auto-flip when section is in view
+                const flipSection = document.querySelector('.service-page-flip-section');
+                let hasFlipped = false;
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !hasFlipped) {
+                            hasFlipped = true;
+
+                            // Flip all boxes to back after a brief delay
+                            setTimeout(() => {
+                                flipBoxes.forEach(box => {
+                                    box.classList.add('active');
+                                });
+
+                                // Flip back to front after 4 seconds
+                                setTimeout(() => {
+                                    flipBoxes.forEach(box => {
+                                        box.classList.remove('active');
+                                    });
+                                }, 4000);
+                            }, 500); // Small delay before starting the flip
+                        }
+                    });
+                }, {
+                    threshold: 0.3 // Trigger when 30% of section is visible
+                });
+
+                if (flipSection) {
+                    observer.observe(flipSection);
+                }
+            }
+
+            // Click/tap behavior for all devices: toggle active but keep only one
+            flipBoxes.forEach(box => {
+                box.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const already = box.classList.contains('active');
+                    flipBoxes.forEach(b => b.classList.remove('active'));
+                    if (!already) box.classList.add('active');
+                });
+            });
+
+            // Click outside closes all
+            document.addEventListener('click', (e) => {
+                if (![...flipBoxes].some(b => b.contains(e.target))) {
+                    flipBoxes.forEach(b => b.classList.remove('active'));
+                }
+            });
+        })();
     </script>
 </body>
 </html>
