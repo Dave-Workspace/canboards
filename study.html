@@ -754,5 +754,25 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="JS/script.js"></script>
+    <script>
+        const wrapper = document.getElementById('newsWrapper');
+        const leftBtn = document.getElementById('scrollLeft');
+        const rightBtn = document.getElementById('scrollRight');
+
+        function getCardWidth() {
+            const card = wrapper.querySelector('.news-card');
+            const style = window.getComputedStyle(wrapper);
+            const gap = parseInt(style.columnGap || style.gap || 0);
+            return card.offsetWidth + gap;
+        }
+
+        leftBtn.addEventListener('click', () => {
+            wrapper.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+        });
+
+        rightBtn.addEventListener('click', () => {
+            wrapper.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
