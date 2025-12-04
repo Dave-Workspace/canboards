@@ -151,390 +151,390 @@
                     }
                 }
 
-                /* ========================================
-                SERVICE FLIP SECTION
-                ======================================== */
+        /* ========================================
+SERVICE FLIP SECTION - UPDATED
+======================================== */
 
-                .service-flip-section {
-                    padding-top: 12px;
-                    padding-bottom: 12px;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                }
+        .service-flip-section {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
 
-                /* Flip container - 3D perspective */
-                .service-flip-container {
-                    perspective: 1200px;
-                    width: 100%;
-                    height: 100%;
-                }
+        /* Flip container - 3D perspective */
+        .service-flip-container {
+            perspective: 1200px;
+            width: 100%;
+            height: 100%;
+        }
 
-                /* Flipper element - handles 3D rotation */
-                .service-flipper {
-                    position: relative;
-                    width: 100%;
-                    height: 100%;
-                    transform-style: preserve-3d;
-                    transition: transform 0.8s ease-in-out;
-                }
+        /* Flipper element - handles 3D rotation */
+        .service-flipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease-in-out;
+        }
 
-                /* Hover-driven flip (desktop/laptop only) */
-                @media (hover: hover) and (pointer: fine) {
-                    .service-flip-container:hover .service-flipper,
-                    .service-flip-link:hover .service-flipper {
-                        transform: rotateY(180deg);
-                    }
-                }
+        /* Hover-driven flip (desktop/laptop only) */
+        @media (hover: hover) and (pointer: fine) {
+            .service-flip-container:hover .service-flipper,
+            .service-flip-link:hover .service-flipper {
+                transform: rotateY(180deg);
+            }
+        }
 
-                /* Make the link wrapper behave like the container */
-                .service-flip-link {
-                    display: block;
-                    text-decoration: none;
-                    color: inherit;
-                    width: 100%;
-                    height: clamp(280px, 30vw, 320px);
-                    cursor: pointer;
-                }
+        /* Make the link wrapper behave like the container */
+        .service-flip-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
+            height: clamp(280px, 30vw, 320px);
+            cursor: pointer;
+        }
 
-                /* Front and back faces */
-                .service-flip-front,
-                .service-flip-back {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 25px;
-                    backface-visibility: hidden;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 30px 24px;
-                    transition: all 0.5s ease-in-out;
-                }
+        /* Front and back faces */
+        .service-flip-front,
+        .service-flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 24px;
+            transition: all 0.5s ease-in-out;
+        }
 
-                /* Front face: white card with icon and title */
-                .service-flip-front {
-                    background: #ffffff !important;
-                    color: #22293f;
-                    box-shadow: 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-                    border: 1px solid rgba(47,46,120,0.04);
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: flex-end;
-                    padding: 20px;
-                    /* DO NOT add position: relative here - it breaks 3D flip */
-                }
+        /* Front face: white card with icon and title */
+        .service-flip-front {
+            background: #ffffff !important;
+            color: #22293f;
+            box-shadow: 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+            border: 1px solid rgba(47,46,120,0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 20px;
+        }
 
-                /* Back face: gradient with title, description, and CTA */
-                .service-flip-back {
-                    background: linear-gradient(to top, rgb(200, 140, 30) 0%, rgb(210, 160, 60) 50%, rgb(220, 180, 90) 100%) !important;
-                    color: #ffffff !important;
-                    box-shadow: 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-                    border: 1px solid rgba(47,46,120,0.04);
-                    transform: rotateY(180deg);
-                }
+        /* Back face: gradient with title, description, and CTA */
+        .service-flip-back {
+            background: linear-gradient(to top, rgb(200, 140, 30) 0%, rgb(210, 160, 60) 50%, rgb(220, 180, 90) 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+            border: 1px solid rgba(47,46,120,0.04);
+            transform: rotateY(180deg);
+        }
 
-                    /* Ensure all text inside the flip back face is white */
-                    .service-flip-back,
-                    .service-flip-back * {
-                        color: #ffffff !important;
-                    }
+            /* Ensure all text inside the flip back face is white */
+            .service-flip-back,
+            .service-flip-back * {
+                color: #ffffff !important;
+            }
 
-                        /* ::after overlay for back face - darker in the middle */
-                        .service-flip-back::after {
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            right: 0;
-                            bottom: 0;
-                            /* Dark gradient - transparent at top and bottom, subtle darkening in the middle */
-                            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.1) 70%, transparent 100%);
-                            z-index: 1; /* Behind all text content */
-                            border-radius: 18px;
-                            pointer-events: none;
-                        }
-
-                /* Service flip title */
-                .service-flip-title {
-                    color: #ffffff !important;
-                    margin-top: 0.5rem;
-                    margin-bottom: 0;
-                    font-size: 1.5rem;
-                    font-weight: 600;
-                    text-align: center;
-                    position: relative;
-                    z-index: 10;
-                    isolation: isolate;
-                }
-
-                .service-flip-front .service-flip-title {
-                    color: #ffffff !important;
-                    margin: 0;
-                    font-size: 1.8rem;
-                    font-weight: 600;
-                    text-align: left;
-                    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-                    line-height: 1;
-                    align-self: center; /* Ensures vertical centering */
-                }
-
-                .service-flip-back .service-flip-title {
-                    color: #ffffff !important;
-                    margin-bottom: 1rem;
-                }
-
-                /* Service flip description (back face only) */
-                .service-flip-desc {
-                    font-size: 0.95rem;
-                    text-align: center;
-                    line-height: 1.6;
-                    margin-bottom: 0;
-                    color: #ffffff !important;
-                    max-width: 90%;
-                    position: relative;
-                    z-index: 10;
-                    isolation: isolate;
-                    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-                }
-
-                /* Service flip CTA link */
-                .service-flip-cta {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                    color: #ffffff !important;
-                    text-decoration: none;
-                    font-weight: 500;
-                    letter-spacing: 0.4px;
-                    font-size: 0.95rem;
-                    margin-top: auto;
-                    position: relative;
-                    z-index: 10;
-                    isolation: isolate;
-                }
-
-                    .service-flip-cta .arrow {
-                        transition: transform .2s ease;
-                        display: inline-block;
-                    }
-
-                    .service-flip-cta:hover .arrow {
-                        transform: translateX(4px);
-                    }
-
-                /* Service flip background image */
-                .service-flip-img {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain; /* Shows the entire image, may have empty space */
-                    object-position: center;
-                    border-radius: 18px;
-                    z-index: 1;
-                }
-
-                /* Individual ::before overlays for each card type */
-                .service-flip-front--study::before {
+                /* ::after overlay for back face - darker in the middle */
+                .service-flip-back::after {
                     content: '';
                     position: absolute;
                     top: 0;
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    /* Golden/orange gradient matching back side */
-                    background: linear-gradient(to top, rgba(200, 140, 30, 0.65) 0%, rgba(210, 160, 60, 0.62) 50%, rgba(220, 180, 90, 0.15) 100%);
+                    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.1) 70%, transparent 100%);
                     z-index: 1;
                     border-radius: 18px;
                     pointer-events: none;
                 }
 
-                .service-flip-front--work::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    /* Pink/purple gradient matching back side */
-                    background: linear-gradient(to top, rgba(255, 150, 180, 0.65) 0%, rgba(255, 180, 210, 0.62) 50%, rgba(255, 220, 240, 0.15) 100%);
-                    z-index: 1;
-                    border-radius: 18px;
-                    pointer-events: none;
+        /* Service flip title */
+        .service-flip-title {
+            color: #ffffff !important;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            isolation: isolate;
+        }
+
+        .service-flip-front .service-flip-title {
+            color: #ffffff !important;
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: left;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            line-height: 1;
+            align-self: center;
+        }
+
+        .service-flip-back .service-flip-title {
+            color: #ffffff !important;
+            margin-bottom: 1rem;
+        }
+
+        /* Service flip description (back face) */
+        .service-flip-desc {
+            font-size: 0.95rem;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 0;
+            color: #ffffff !important;
+            max-width: 90%;
+            position: relative;
+            z-index: 10;
+            isolation: isolate;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Mobile/tablet description on front face - HIDDEN on desktop */
+        .service-flip-desc--mobile {
+            display: none;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            text-align: center;
+            line-height: 1.5;
+            color: #ffffff !important;
+            max-width: 90%;
+            position: relative;
+            z-index: 10;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Service flip background image */
+        .service-flip-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 18px;
+            z-index: 1;
+        }
+
+        /* Individual ::before overlays for each card type */
+        .service-flip-front--study::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(200, 140, 30, 0.65) 0%, rgba(210, 160, 60, 0.62) 50%, rgba(220, 180, 90, 0.15) 100%);
+            z-index: 1;
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        .service-flip-front--work::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(255, 150, 180, 0.65) 0%, rgba(255, 180, 210, 0.62) 50%, rgba(255, 220, 240, 0.15) 100%);
+            z-index: 1;
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        .service-flip-front--visit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(97, 220, 223, 0.65) 0%, rgba(100, 240, 200, 0.62) 50%, rgba(180, 250, 220, 0.15) 100%);
+            z-index: 1;
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        .service-flip-front--settle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(255, 150, 50, 0.65) 0%, rgba(255, 180, 80, 0.62) 50%, rgba(255, 220, 150, 0.15) 100%);
+            z-index: 1;
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        .service-flip-front--other::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(100, 150, 255, 0.65) 0%, rgba(140, 160, 255, 0.62) 50%, rgba(200, 190, 255, 0.15) 100%);
+            z-index: 1;
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        /* Shared ::after overlay for all cards */
+        .service-flip-front::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.35) 20%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.1) 55%, rgba(0, 0, 0, 0.05) 70%, transparent 85%);
+            z-index: 2;
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        /* Ensure icon stays on top */
+        .service-flip-front .service-icon {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Glow effects matching each card's overlay color */
+        .service-flip-front--study {
+            box-shadow: 0 0 10px rgba(200, 140, 30, 0.3), 0 0 18px rgba(210, 160, 60, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+        }
+
+        .service-flip-front--work {
+            box-shadow: 0 0 10px rgba(255, 150, 180, 0.3), 0 0 18px rgba(255, 180, 210, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+        }
+
+        .service-flip-front--visit {
+            box-shadow: 0 0 10px rgba(97, 220, 223, 0.3), 0 0 18px rgba(100, 240, 200, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+        }
+
+        .service-flip-front--settle {
+            box-shadow: 0 0 10px rgba(255, 150, 50, 0.3), 0 0 18px rgba(255, 180, 80, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+        }
+
+        .service-flip-front--other {
+            box-shadow: 0 0 10px rgba(100, 150, 255, 0.3), 0 0 18px rgba(140, 160, 255, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
+        }
+
+        /* Disable 3D flip and interactions on touch devices */
+        @media (hover: none), (any-hover: none), (any-pointer: none), (pointer: coarse) {
+            .service-flipper {
+                transform-style: flat !important;
+                -webkit-transform-style: flat !important;
+                -moz-transform-style: flat !important;
+                will-change: auto !important;
+            }
+
+            .service-flip-container {
+                perspective: none !important;
+                -webkit-perspective: none !important;
+                cursor: default !important;
+            }
+
+                /* Even if an 'active' class gets added, do not rotate on touch devices */
+                .service-flip-container .service-flipper {
+                    transform: none !important;
                 }
 
-                .service-flip-front--visit::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    /* Teal/green gradient matching back side */
-                    background: linear-gradient(to top, rgba(97, 220, 223, 0.65) 0%, rgba(100, 240, 200, 0.62) 50%, rgba(180, 250, 220, 0.15) 100%);
-                    z-index: 1;
-                    border-radius: 18px;
-                    pointer-events: none;
-                }
+            /* Show mobile description on front face for touch devices */
+            .service-flip-desc--mobile {
+                display: block !important;
+            }
 
-                .service-flip-front--settle::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    /* Orange gradient matching back side */
-                    background: linear-gradient(to top, rgba(255, 150, 50, 0.65) 0%, rgba(255, 180, 80, 0.62) 50%, rgba(255, 220, 150, 0.15) 100%);
-                    z-index: 1;
-                    border-radius: 18px;
-                    pointer-events: none;
-                }
+            /* Adjust front face layout for touch devices */
+            .service-flip-front {
+                justify-content: center;
+                gap: 0.5rem;
+            }
 
-                .service-flip-front--other::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    /* Blue/purple gradient matching back side */
-                    background: linear-gradient(to top, rgba(100, 150, 255, 0.65) 0%, rgba(140, 160, 255, 0.62) 50%, rgba(200, 190, 255, 0.15) 100%);
-                    z-index: 1;
-                    border-radius: 18px;
-                    pointer-events: none;
-                }
+            /* Increase card height on touch devices to accommodate description */
+            .service-flip-link {
+                height: clamp(340px, 35vw, 380px);
+            }
+        }
 
-                /* Shared ::after overlay for all cards */
-                .service-flip-front::after {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    /* Dark gradient - smoother blend with more gradual transitions */
-                    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.35) 20%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.1) 55%, rgba(0, 0, 0, 0.05) 70%, transparent 85%);
-                    z-index: 2; /* Above the golden overlay but below the text */
-                    border-radius: 18px;
-                    pointer-events: none;
-                }
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            .service-flip-container {
+                height: 320px;
+                margin-bottom: 1.5rem;
+            }
 
-                /* Ensure icon stays on top */
-                .service-flip-front .service-icon {
-                    position: relative;
-                    z-index: 3;
-                }
+            .service-flip-front,
+            .service-flip-back {
+                padding: 24px 20px;
+            }
 
-                /* Glow effects matching each card's overlay color */
-                .service-flip-front--study {
-                    box-shadow: 0 0 10px rgba(200, 140, 30, 0.3), 0 0 18px rgba(210, 160, 60, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-                }
+            .service-flip-title {
+                font-size: 1.15rem;
+            }
 
-                .service-flip-front--work {
-                    box-shadow: 0 0 10px rgba(255, 150, 180, 0.3), 0 0 18px rgba(255, 180, 210, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-                }
+            .service-flip-desc {
+                font-size: 0.9rem;
+            }
 
-                .service-flip-front--visit {
-                    box-shadow: 0 0 10px rgba(97, 220, 223, 0.3), 0 0 18px rgba(100, 240, 200, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-                }
+            .service-flip-desc--mobile {
+                font-size: 0.8rem;
+            }
+        }
 
-                .service-flip-front--settle {
-                    box-shadow: 0 0 10px rgba(255, 150, 50, 0.3), 0 0 18px rgba(255, 180, 80, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-                }
+        @media (max-width: 575px) {
+            .service-flip-container {
+                height: 300px;
+            }
 
-                .service-flip-front--other {
-                    box-shadow: 0 0 10px rgba(100, 150, 255, 0.3), 0 0 18px rgba(140, 160, 255, 0.15), 0 18px 40px rgba(47, 46, 120, 0.06) !important;
-                }
+            .service-flip-front,
+            .service-flip-back {
+                padding: 20px 16px;
+            }
+        }
 
-                /* Disable 3D flip and interactions on touch devices */
-                @media (hover: none), (any-hover: none), (any-pointer: none), (pointer: coarse) {
-                    .service-flipper {
-                        transform-style: flat !important;
-                        -webkit-transform-style: flat !important;
-                        -moz-transform-style: flat !important;
-                        will-change: auto !important;
-                    }
+        .service-flip-front .service-icon {
+            position: relative;
+            z-index: 3;
+            width: clamp(60px, 10vw, 80px);
+            height: clamp(60px, 10vw, 80px);
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
 
-                    .service-flip-container {
-                        perspective: none !important;
-                        -webkit-perspective: none !important;
-                        cursor: default !important;
-                    }
+            .service-flip-front .service-icon i {
+                font-size: clamp(32px, 5vw, 40px);
+                color: #ffffff;
+            }
 
-                        /* Even if an 'active' class gets added, do not rotate on touch devices */
-                        .service-flip-container .service-flipper {
-                            transform: none !important;
-                        }
-                }
-
-                /* Responsive adjustments */
-                @media (max-width: 767px) {
-                    .service-flip-container {
-                        height: 260px;
-                        margin-bottom: 1.5rem;
-                    }
-
-                    .service-flip-front,
-                    .service-flip-back {
-                        padding: 24px 20px;
-                    }
-
-                    .service-flip-title {
-                        font-size: 1.15rem;
-                    }
-
-                    .service-flip-desc {
-                        font-size: 0.9rem;
-                    }
-                }
-
-                @media (max-width: 575px) {
-                    .service-flip-container {
-                        height: 240px;
-                    }
-
-                    .service-flip-front,
-                    .service-flip-back {
-                        padding: 20px 16px;
-                    }
-                }
-
-                .service-flip-front .service-icon {
-                    position: relative;
-                    z-index: 3;
-                    width: clamp(60px, 10vw, 80px); /* Responsive icon size */
-                    height: clamp(60px, 10vw, 80px); /* Responsive icon size */
-                    flex-shrink: 0; /* Prevents icon from shrinking */
-                    background: rgba(255, 255, 255, 0.25);
-                    backdrop-filter: blur(10px) saturate(180%);
-                    -webkit-backdrop-filter: blur(10px) saturate(180%);
-                    border-radius: 50%;
-                    border: 1px solid rgba(255, 255, 255, 0.3);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-bottom: 0; /* Removed bottom margin since we're using flex gap */
-                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-                }
-
-                    .service-flip-front .service-icon i {
-                        font-size: clamp(32px, 5vw, 40px); /* Responsive icon font size */
-                        color: #ffffff;
-                    }
-
-                .service-flip-content {
-                    position: relative;
-                    z-index: 3;
-                    display: flex;
-                    align-items: center;
-                    gap: clamp(16px, 2vw, 24px); /* Increased gap with responsive sizing */
-                    margin-bottom: 10px;
-                }
-
+        .service-flip-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: clamp(16px, 2vw, 24px);
+            margin-bottom: 10px;
+        }
                 /* ========================================
                 Process Section
                 ======================================== */
@@ -987,8 +987,325 @@
                 }
 
         /* ========================================
-        EXTRA CSS
+        RCIC LINE NODES SECTION
         ======================================== */
+
+        .rcic-line-process {
+            min-height: 50vh;
+            background: #fff;
+            padding: 60px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .rcic-line-process h2 {
+                color: #333;
+                font-size: 2.5em;
+                margin-bottom: 60px;
+                text-align: center;
+            }
+
+        /* Timeline Container */
+        .rcic-timeline-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 40px;
+        }
+
+        /* Timeline Base Line (Gray) - horizontal line */
+        .rcic-timeline-base {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+
+        /* Timeline Progress Line (Green) */
+        .rcic-timeline-progress {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4caf50, #66bb6a);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.6s ease-in-out;
+            z-index: 2;
+            transform: translateY(-50%);
+        }
+
+        /* Timeline Steps Container */
+        .rcic-timeline-steps {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 400px;
+            padding-top: 120px;
+            padding-bottom: 120px;
+        }
+
+        /* Individual Timeline Node */
+        .rcic-timeline-node {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+            /* First node - align to the start */
+            .rcic-timeline-node:first-child {
+                margin-left: -40px;
+            }
+
+            /* Last node - align to the end */
+            .rcic-timeline-node:last-child {
+                margin-right: -40px;
+            }
+
+        /* Timeline Node Image Wrapper - ABOVE the line */
+        .rcic-node-image-wrapper {
+            position: absolute;
+            top: -140px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.4;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+            border-radius: 16px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+        }
+
+        .rcic-node-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .rcic-timeline-node.active .rcic-node-image-wrapper {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.25);
+        }
+
+        /* Timeline Node Dot - sits ON the line */
+        .rcic-node-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            border: 3px solid #fff;
+            transition: all 0.4s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 4;
+            position: relative;
+        }
+
+        .rcic-timeline-node.active .rcic-node-dot {
+            background: #4caf50;
+            transform: scale(1.4);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.5);
+        }
+
+        .rcic-timeline-node:hover .rcic-node-dot {
+            transform: scale(1.2);
+            background: #66bb6a;
+        }
+
+        /* Timeline Node Text - BELOW the line */
+        .rcic-node-text {
+            position: absolute;
+            top: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+            min-width: 350px;
+            max-width: 400px;
+            transition: all 0.3s ease;
+        }
+
+        .rcic-timeline-node.active .rcic-node-text {
+            color: #333;
+        }
+
+        .rcic-node-text h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #2c3e50;
+        }
+
+        .rcic-timeline-node.active .rcic-node-text h3 {
+            font-weight: 700;
+        }
+
+        .rcic-node-text p {
+            margin: 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+            opacity: 0.85;
+            color: #666;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .rcic-timeline-container {
+                padding: 80px 20px;
+            }
+
+            .rcic-timeline-steps {
+                flex-direction: column;
+                height: auto;
+                gap: 120px;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .rcic-timeline-node {
+                width: 100%;
+            }
+
+                .rcic-timeline-node:first-child,
+                .rcic-timeline-node:last-child {
+                    margin: 0;
+                }
+
+            /* Vertical layout for mobile */
+            .rcic-timeline-base,
+            .rcic-timeline-progress {
+                width: 4px;
+                height: 100%;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .rcic-node-image-wrapper {
+                position: relative;
+                top: auto;
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
+            }
+
+            .rcic-node-text {
+                position: relative;
+                top: auto;
+                max-width: 80%;
+                min-width: auto;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rcic-node-image-wrapper {
+                width: 80px;
+                height: 80px;
+            }
+
+            .rcic-node-text h3 {
+                font-size: 1em;
+            }
+
+            .rcic-node-text p {
+                font-size: 0.85em;
+            }
+        }
+
+        /* Base size for PNG images */
+        .rcic-node-img {
+            width: 80px !important;
+            height: 80px !important;
+            max-width: 80px !important;
+            max-height: 80px !important;
+            min-width: 80px !important;
+            min-height: 80px !important;
+            object-fit: contain !important;
+            object-position: center;
+            display: block;
+            transition: width 0.3s ease, height 0.3s ease; /* Smooth transition */
+        }
+
+            /* Larger size for GIF images */
+            .rcic-node-img.is-gif {
+                width: 150px !important; /* 25% larger */
+                height: 150px !important;
+                max-width: 150px !important;
+                max-height: 150px !important;
+                min-width: 150px !important;
+                min-height: 150px !important;
+            }
+
+        /* Mobile Timeline Modifications - Remove line, keep icons always visible */
+        @media (max-width: 768px) {
+            /* Hide the vertical timeline lines on mobile */
+            .rcic-timeline-base,
+            .rcic-timeline-progress {
+                display: none !important;
+            }
+
+            /* Keep all node images at full opacity and scale on mobile */
+            .rcic-node-image-wrapper {
+                opacity: 1 !important;
+                transform: scale(1) !important;
+            }
+
+            /* Ensure all dots are visible and styled consistently on mobile */
+            .rcic-node-dot {
+                background: #4caf50 !important;
+                transform: scale(1.2) !important;
+                box-shadow: 0 4px 15px rgba(76, 175, 80, 0.5) !important;
+            }
+
+            /* Keep all node text at full visibility on mobile */
+            .rcic-node-text {
+                color: #333 !important;
+            }
+
+                .rcic-node-text h3 {
+                    font-weight: 700 !important;
+                }
+
+            /* Remove hover effects on mobile */
+            .rcic-timeline-node:hover .rcic-node-dot {
+                transform: scale(1.2) !important;
+                background: #4caf50 !important;
+            }
+
+            /* Ensure all nodes appear "active" on mobile */
+            .rcic-timeline-node {
+                opacity: 1 !important;
+            }
+
+            /* Adjust spacing without the line */
+            .rcic-timeline-steps {
+                gap: 80px; /* Reduced from 120px since there's no line */
+            }
+
+            .rcic-timeline-container {
+                padding: 40px 20px; /* Reduced padding */
+            }
+        }
+
+        /* ========================================
+EXTRA CSS
+======================================== */
 
         /* Map icon animation styles - FIXED to actually hide icons */
         .map-icon {
@@ -1025,6 +1342,203 @@
             50% {
                 transform: scale(1.1);
             }
+        }
+
+        /* Map location labels - FIXED CENTERING */
+        .map-location-label {
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(9px, 1.2vw, 13px);
+            font-weight: 600;
+            color: #22293f;
+            text-align: center;
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.95);
+            padding: clamp(2px, 0.4vw, 4px) clamp(6px, 0.8vw, 10px);
+            border-radius: clamp(4px, 0.5vw, 6px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(97, 220, 223, 0.25);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Make sure map-icon is properly positioned for label centering */
+        .map-icon {
+            opacity: 0 !important;
+            transform: scale(0) !important;
+            transition: none;
+            position: absolute;
+            will-change: transform, opacity;
+            /* Add these to ensure proper label centering */
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            transform-origin: center top;
+        }
+
+            .map-icon.map-icon-animate {
+                opacity: 1 !important;
+                transform: scale(1) !important;
+                transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+
+            .map-icon img {
+                width: 40px;
+                height: 40px;
+                display: block;
+                filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+                margin: 0 auto; /* Center the image within the container */
+            }
+
+            .map-icon.map-icon-animate .map-location-label {
+                opacity: 1;
+            }
+
+            /* Optional: Add a subtle pulse effect after animation */
+            .map-icon.map-icon-animate img {
+                animation: iconPulse 2s ease-in-out 0.8s infinite;
+            }
+
+        @keyframes iconPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Responsive adjustments for labels */
+        @media (max-width: 768px) {
+            .map-location-label {
+                bottom: -20px;
+                font-size: 10px;
+                padding: 2px 6px;
+                border-radius: 4px;
+            }
+
+            .map-icon img {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .map-location-label {
+                bottom: -18px;
+                font-size: 9px;
+                padding: 2px 5px;
+            }
+
+            .map-icon img {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        /* Hover effect for review cards - Desktop only */
+        @media (hover: hover) and (pointer: fine) {
+            .news-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+                .news-card:hover {
+                    transform: translateY(-8px);
+                    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+                }
+
+            .news-avatar {
+                transition: transform 0.3s ease;
+            }
+
+            .news-card:hover .news-avatar {
+                transform: scale(1.1);
+            }
+
+            .news-stars {
+                transition: transform 0.3s ease;
+            }
+
+            .news-card:hover .news-stars {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Ensure no hover effects on touch devices */
+        @media (hover: none) or (pointer: coarse) {
+            .news-card {
+                transition: none !important;
+                transform: none !important;
+            }
+
+                .news-card:hover {
+                    transform: none !important;
+                    box-shadow: none !important;
+                }
+
+            .news-avatar,
+            .news-stars {
+                transition: none !important;
+            }
+
+            .news-card:hover .news-avatar,
+            .news-card:hover .news-stars {
+                transform: none !important;
+            }
+        }
+
+        /* Adjust front face layout for touch devices */
+        .service-flip-front {
+            justify-content: flex-end; /* Changed from center to flex-end */
+            gap: 0.5rem;
+            padding-bottom: 24px; /* Add consistent bottom padding */
+        }
+
+        /* Ensure content stays at bottom */
+        .service-flip-content {
+            margin-bottom: 0; /* Remove bottom margin */
+        }
+
+        /* Mobile description positioning */
+        .service-flip-desc--mobile {
+            margin-top: 0.75rem;
+            margin-bottom: 0; /* Remove bottom margin */
+        }
+
+        /* Increase card height on touch devices to accommodate description */
+        .service-flip-link {
+            height: clamp(340px, 35vw, 380px);
+        }
+
+        /* SERVICE FLIP SECTION - 2-2-1 Layout for medium screens */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .service-flip-section .row {
+                justify-content: center;
+            }
+
+            .service-flip-section .col-md-4 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+                .service-flip-section .col-md-4:nth-child(5) {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                }
+
+                /* Center the last card */
+                .service-flip-section .col-md-4:last-child {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
         }
     </style>
 </head>
@@ -1273,6 +1787,8 @@
                                         </div>
                                         <h5 class="service-flip-title">Study</h5>
                                     </div>
+                                    <!-- Description for mobile/tablet (hidden on desktop) -->
+                                    <p class="service-flip-desc service-flip-desc--mobile">Assistance for your educational journey, from test prep and course selection to visa applications.</p>
                                 </div>
                                 <!-- Back Face -->
                                 <div class="service-flip-back" style="background: linear-gradient(to top, rgb(200, 140, 30) 0%, rgb(210, 160, 60) 50%, rgb(220, 180, 90) 100%) !important;">
@@ -1298,6 +1814,8 @@
                                         </div>
                                         <h5 class="service-flip-title">Work</h5>
                                     </div>
+                                    <!-- Description for mobile/tablet (hidden on desktop) -->
+                                    <p class="service-flip-desc service-flip-desc--mobile">Expert guidance on various work permits, LMIA processes, and extensions to help build your career.</p>
                                 </div>
                                 <!-- Back Face -->
                                 <div class="service-flip-back" style="background: linear-gradient(to top, rgb(255, 150, 180) 0%, rgb(255, 180, 210) 50%, rgb(255, 220, 240) 100%) !important;">
@@ -1323,6 +1841,8 @@
                                         </div>
                                         <h5 class="service-flip-title">Visit</h5>
                                     </div>
+                                    <!-- Description for mobile/tablet (hidden on desktop) -->
+                                    <p class="service-flip-desc service-flip-desc--mobile">Support for all your visitor needs, whether it's a general visitor visa, attending a convocation, or business travel.</p>
                                 </div>
                                 <!-- Back Face -->
                                 <div class="service-flip-back" style="background: linear-gradient(to top, rgb(97, 220, 223) 0%, rgb(100, 240, 200) 50%, rgb(180, 250, 220) 100%) !important;">
@@ -1348,6 +1868,8 @@
                                         </div>
                                         <h5 class="service-flip-title">Settle</h5>
                                     </div>
+                                    <!-- Description for mobile/tablet (hidden on desktop) -->
+                                    <p class="service-flip-desc service-flip-desc--mobile">Explore pathways to permanent residency, including Express Entry, PNP, family sponsorship and pilot programs.</p>
                                 </div>
                                 <!-- Back Face -->
                                 <div class="service-flip-back" style="background: linear-gradient(to top, rgb(255, 150, 50) 0%, rgb(255, 180, 80) 50%, rgb(255, 220, 150) 100%) !important;">
@@ -1373,6 +1895,8 @@
                                         </div>
                                         <h5 class="service-flip-title">Other</h5>
                                     </div>
+                                    <!-- Description for mobile/tablet (hidden on desktop) -->
+                                    <p class="service-flip-desc service-flip-desc--mobile">Extra support for your Canadian journey from visas to legal guidance, all with RCIC expertise.</p>
                                 </div>
                                 <!-- Back Face -->
                                 <div class="service-flip-back" style="background: linear-gradient(to top, rgb(100, 150, 255) 0%, rgb(140, 160, 255) 50%, rgb(200, 190, 255) 100%) !important;">
@@ -1445,25 +1969,57 @@
     </section>
 
 
-    <!-- New RCIC section: Why Choose a Licensed R.C.I.C. -->
-    <section class="rcic-section site-section">
-        <div class="container">
-            <div class="text-center mb-4">
-                <h2 class="rcic-title">Why Choose a Licensed <span class="rcic-accent">R.C.I.C.?</span></h2>
-                <div class="rcic-underline mx-auto" aria-hidden="true"></div>
-            </div>
+    <div class="rcic-line-process">
+        <div class="text-center mb-4">
+            <h2 class="rcic-title">Why Choose a Licensed <span class="rcic-accent">R.C.I.C.?</span></h2>
+            <div class="rcic-underline mx-auto" aria-hidden="true" style="margin-top: -30px;"></div>
+        </div>
 
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4 mb-md-0 d-flex justify-content-center">
-                    <img src="Images/RCIC.png" alt="RCIC" class="img-fluid rcic-img">
+        <div class="rcic-timeline-container">
+            <!-- Base and Progress Lines -->
+            <div class="rcic-timeline-base"></div>
+            <div class="rcic-timeline-progress" id="rcicTimelineProgress"></div>
+
+            <!-- Timeline Steps -->
+            <div class="rcic-timeline-steps">
+                <!-- Node 1 -->
+                <div class="rcic-timeline-node" data-step="0">
+                    <div class="rcic-node-image-wrapper">
+                        <img src="Backup/id-card.png" alt="Choose your favorite" class="rcic-node-img">
+                    </div>
+                    <div class="rcic-node-dot"></div>
+                    <div class="rcic-node-text">
+                        <h3>Licensed Expertise</h3>
+                        <p>Benefit from in-depth knowledge of Canadian immigration law, policies, and procedures.</p>
+                    </div>
                 </div>
 
-                <div class="col-md-6 d-flex justify-content-center">
-                    <img src="Images/123.png" alt="Steps 1-2-3" class="img-fluid rcic-img">
+                <!-- Node 2 -->
+                <div class="rcic-timeline-node" data-step="1">
+                    <div class="rcic-node-image-wrapper">
+                        <img src="Backup/hand-paper-check.png" alt="Make secure payment" class="rcic-node-img">
+                    </div>
+                    <div class="rcic-node-dot"></div>
+                    <div class="rcic-node-text">
+                        <h3>Guaranteed Compliance</h3>
+                        <p>All Services adhere to strict ethical guidelines and regulations set by the citizenship consultants (CICC).</p>
+                    </div>
+                </div>
+
+                <!-- Node 3 -->
+                <div class="rcic-timeline-node" data-step="2">
+                    <div class="rcic-node-image-wrapper">
+                        <img src="Backup/like.png" alt="Shipping in 24 hours" class="rcic-node-img">
+                    </div>
+                    <div class="rcic-node-dot"></div>
+                    <div class="rcic-node-text">
+                        <h3>Peace of Mind</h3>
+                        <p>Benefit from in-depth knowledge of Canadian immigration law, policies, and procedures.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- New Journey section: centered heading with left purple haze -->
     <section class="journey-section site-section">
@@ -1493,25 +2049,25 @@
                 <img src="Images/Map.png" alt="World map" class="img-fluid map-img">
 
                 <!-- Icons positioned over the map (positions in percentages) -->
-                <div class="map-icon" style="left:18%; top:36%;" data-delay="0">
+                <div class="map-icon" style="left:18%; top:36%;" data-delay="0" data-location="New York">
                     <img src="Images/Favicon.png" alt="icon">
                 </div>
-                <div class="map-icon" style="left:22%; top:66%;" data-delay="100">
+                <div class="map-icon" style="left:22%; top:66%;" data-delay="100" data-location="São Paulo">
                     <img src="Images/Favicon.png" alt="icon">
                 </div>
-                <div class="map-icon" style="left:46%; top:34%;" data-delay="200">
+                <div class="map-icon" style="left:46%; top:34%;" data-delay="200" data-location="London">
                     <img src="Images/Favicon.png" alt="icon">
                 </div>
-                <div class="map-icon" style="left:52%; top:56%;" data-delay="300">
+                <div class="map-icon" style="left:52%; top:56%;" data-delay="300" data-location="Lagos">
                     <img src="Images/Favicon.png" alt="icon">
                 </div>
-                <div class="map-icon" style="left:60%; top:48%;" data-delay="400">
+                <div class="map-icon" style="left:60%; top:48%;" data-delay="400" data-location="Dubai">
                     <img src="Images/Favicon.png" alt="icon">
                 </div>
-                <div class="map-icon" style="left:80%; top:30%;" data-delay="500">
+                <div class="map-icon" style="left:80%; top:30%;" data-delay="500" data-location="Tokyo">
                     <img src="Images/Favicon.png" alt="icon">
                 </div>
-                <div class="map-icon" style="left:84%; top:72%;" data-delay="600">
+                <div class="map-icon" style="left:84%; top:72%;" data-delay="600" data-location="Sydney">
                     <img src="Images/Favicon.png" alt="icon">
                 </div>
             </div>
@@ -2168,6 +2724,134 @@
             if (statsSection) {
                 statsObserver.observe(statsSection);
             }
+        })();
+    </script>
+    <script>
+        // RCIC Timeline JavaScript with GIF Animation Support - FIXED SIZE
+        const rcicTimelineNodes = document.querySelectorAll('.rcic-timeline-node');
+        const rcicTimelineProgress = document.getElementById('rcicTimelineProgress');
+        let rcicCurrentStep = 0;
+        let rcicAutoPlayInterval;
+        const rcicIsMobile = () => window.innerWidth <= 768;
+
+        // Store original PNG sources for each node
+        const rcicNodeImageData = [];
+        rcicTimelineNodes.forEach((node, index) => {
+            const img = node.querySelector('.rcic-node-img');
+            const pngSrc = img.src;
+            const gifSrc = pngSrc.replace('.png', '.gif');
+            rcicNodeImageData.push({ img, pngSrc, gifSrc, animating: false });
+        });
+
+        function playNodeAnimation(stepIndex) {
+            const nodeData = rcicNodeImageData[stepIndex];
+
+            // Skip if already animating
+            if (nodeData.animating) return;
+
+            nodeData.animating = true;
+            const img = nodeData.img;
+
+            // Add class for GIF styling and switch to GIF
+            img.classList.add('is-gif');
+            img.src = nodeData.gifSrc;
+
+            // Wait for GIF to play once (adjust timing as needed)
+            setTimeout(() => {
+                img.classList.remove('is-gif');
+                img.src = nodeData.pngSrc;
+                nodeData.animating = false;
+            }, 2000);
+        }
+
+        function updateRcicTimeline(stepIndex, instant = false) {
+            rcicCurrentStep = stepIndex;
+
+            // Remove active class from all nodes
+            rcicTimelineNodes.forEach(node => node.classList.remove('active'));
+
+            // Add active class to current and previous nodes
+            for (let i = 0; i <= stepIndex; i++) {
+                rcicTimelineNodes[i].classList.add('active');
+            }
+
+            // Play animation for the current active node
+            playNodeAnimation(stepIndex);
+
+            // Update progress line
+            const totalSteps = rcicTimelineNodes.length;
+            const progressPercent = (stepIndex / (totalSteps - 1)) * 100;
+
+            if (instant) {
+                rcicTimelineProgress.style.transition = 'none';
+            } else {
+                rcicTimelineProgress.style.transition = 'width 0.6s ease-in-out, height 0.6s ease-in-out';
+            }
+
+            if (rcicIsMobile()) {
+                rcicTimelineProgress.style.width = '4px';
+                rcicTimelineProgress.style.height = `${progressPercent}%`;
+            } else {
+                rcicTimelineProgress.style.width = `${progressPercent}%`;
+                rcicTimelineProgress.style.height = '4px';
+            }
+
+            if (instant) {
+                void rcicTimelineProgress.offsetWidth;
+                rcicTimelineProgress.style.transition = 'width 0.6s ease-in-out, height 0.6s ease-in-out';
+            }
+        }
+
+        function startRcicAutoPlay() {
+            stopRcicAutoPlay();
+            rcicAutoPlayInterval = setInterval(() => {
+                rcicCurrentStep = (rcicCurrentStep + 1) % rcicTimelineNodes.length;
+                updateRcicTimeline(rcicCurrentStep);
+            }, 3000);
+        }
+
+        function stopRcicAutoPlay() {
+            if (rcicAutoPlayInterval) {
+                clearInterval(rcicAutoPlayInterval);
+            }
+        }
+
+        // Click handler for timeline nodes
+        rcicTimelineNodes.forEach((node, index) => {
+            node.addEventListener('click', () => {
+                stopRcicAutoPlay();
+                updateRcicTimeline(index);
+                setTimeout(() => startRcicAutoPlay(), 5000);
+            });
+        });
+
+        // Initialize timeline
+        updateRcicTimeline(0, true);
+        startRcicAutoPlay();
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            updateRcicTimeline(rcicCurrentStep, true);
+        });
+    </script>
+    <script>
+        // Map Location Labels Controller - SEPARATE from icon animation
+        (function () {
+            const mapIcons = document.querySelectorAll('.map-icon');
+
+            // Create and append labels to each map icon
+            mapIcons.forEach(icon => {
+                const location = icon.getAttribute('data-location');
+                if (location) {
+                    const label = document.createElement('div');
+                    label.className = 'map-location-label';
+                    label.textContent = location;
+                    icon.appendChild(label);
+                }
+            });
+
+            // Labels will automatically animate with icons via CSS
+            // (when .map-icon-animate class is added by the existing script)
         })();
     </script>
 </body>
