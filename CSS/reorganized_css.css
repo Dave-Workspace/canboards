@@ -880,7 +880,7 @@ body:not(.loading) #fws-panel-aside {
 }
 
 /* Treat large tablets like mobile */
-@media (max-width: 875px) {
+@media (max-width: 991px) {
     .why-inner {
         flex-direction: column !important;
         align-items: center;
@@ -3222,7 +3222,7 @@ body:not(.loading) #fws-panel-aside {
 
     /* positions relative to hero-section height/width to mimic reference - use clamp for sizes */
     .hero-img-box-1 {
-        left: -5%;
+        left: -3%;
         top: 48%;
         width: clamp(180px, 20vw, 330px);
         height: clamp(180px, 20vw, 330px);
@@ -3918,4 +3918,13 @@ body:not(.loading) #fws-panel-aside {
         /*margin-left: clamp(10px, 2vw, 10px); */
     }
     
+}
+
+
+
+/* Base size for desktop (992px and above) */
+.why-heading-img {
+    max-width: 250px; /* Default desktop size */
+    width: 100%;
+    height: auto;
 }
