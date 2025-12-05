@@ -1798,7 +1798,7 @@ body:not(.loading) #fws-panel-aside {
     /* Responsive sizing using clamp: min, preferred, max */
     width: clamp(10px, 8vw, 60px);
     height: clamp(10px, 8vw, 60px);
-    background-image: url('Images/circle-half-1.svg');
+    background-image: url('../Images/circle-half-1.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1810,7 +1810,7 @@ body:not(.loading) #fws-panel-aside {
     left: 10%;
     width: clamp(12px, 12vw, 90px);
     height: clamp(12px, 12vw, 90px);
-    background-image: url('Images/circle-quarter-2.svg');
+    background-image: url('../Images/circle-quarter-2.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1822,7 +1822,7 @@ body:not(.loading) #fws-panel-aside {
     right: 5%;
     width: clamp(10px, 7vw, 50px);
     height: clamp(10px, 7vw, 50px);
-    background-image: url('Images/circle-quarter-1.svg');
+    background-image: url('../Images/circle-quarter-1.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
