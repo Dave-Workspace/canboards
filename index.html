@@ -10,150 +10,150 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-                .site-section {
-                    margin-top: 5rem;
-                    margin-bottom: 5rem;
-                }
+        .site-section {
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+        }
 
-                @media (max-width: 768px) {
-                    .site-section {
-                        margin-top: 3rem;
-                        margin-bottom: 3rem;
-                    }
-                }
+        @media (max-width: 768px) {
+            .site-section {
+                margin-top: 3rem;
+                margin-bottom: 3rem;
+            }
+        }
 
-                /* How section image styling */
-                .how-section .process-img {
-                    max-width: 900px;
-                    height: auto;
-                }
+        /* How section image styling */
+        .how-section .process-img {
+            max-width: 900px;
+            height: auto;
+        }
 
-                /* --- Hero: restore stacking + fix 991px layout ---
-                                     Replace the previous injected block with this.
-                                     Leaves your 72px / 40px font rules intact in reorganized_css.css. */
+        /* --- Hero: restore stacking + fix 991px layout ---
+                                             Replace the previous injected block with this.
+                                             Leaves your 72px / 40px font rules intact in reorganized_css.css. */
 
-                .hero-section {
-                    position: relative;
-                    overflow: hidden;
-                }
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
 
-                    /* Keep original wave / fog stacking */
-                    .hero-section::before,
-                    .hero-section::after {
-                        z-index: 5;
-                        pointer-events: none;
-                    }
+            /* Keep original wave / fog stacking */
+            .hero-section::before,
+            .hero-section::after {
+                z-index: 5;
+                pointer-events: none;
+            }
 
-                    .hero-section .hero-fog-layer {
-                        z-index: 20;
-                        pointer-events: none;
-                    }
+            .hero-section .hero-fog-layer {
+                z-index: 20;
+                pointer-events: none;
+            }
 
-                    /* Make sure the fog layer keeps its blur/blend */
-                    .hero-section .hero-fog-layer {
-                        z-index: 20;
-                        backdrop-filter: blur(6px) saturate(95%);
-                        -webkit-backdrop-filter: blur(6px) saturate(95%);
-                    }
+            /* Make sure the fog layer keeps its blur/blend */
+            .hero-section .hero-fog-layer {
+                z-index: 20;
+                backdrop-filter: blur(6px) saturate(95%);
+                -webkit-backdrop-filter: blur(6px) saturate(95%);
+            }
 
-                    .hero-section .container,
-                    .hero-section .hero-content {
-                        position: relative;
-                        z-index: 30;
-                    }
+            .hero-section .container,
+            .hero-section .hero-content {
+                position: relative;
+                z-index: 30;
+            }
 
-                    /* Centered content cap — allows headings to size naturally */
-                    .hero-section .hero-content {
-                        margin: 0 auto;
-                        width: 100%;
-                        max-width: 1200px; /* cap to avoid uncontrolled bleed */
-                        padding-left: 16px;
-                        padding-right: 16px;
-                        text-align: center;
-                    }
+            /* Centered content cap — allows headings to size naturally */
+            .hero-section .hero-content {
+                margin: 0 auto;
+                width: 100%;
+                max-width: 1200px; /* cap to avoid uncontrolled bleed */
+                padding-left: 16px;
+                padding-right: 16px;
+                text-align: center;
+            }
 
-                    /* Keep decorative images visually behind the content */
-                    .hero-section .hero-img-box {
-                        z-index: 10;
-                        pointer-events: none;
-                    }
+            /* Keep decorative images visually behind the content */
+            .hero-section .hero-img-box {
+                z-index: 10;
+                pointer-events: none;
+            }
 
-                    .hero-section .hero-content #immigration-anim {
-                        z-index: 31;
-                    }
+            .hero-section .hero-content #immigration-anim {
+                z-index: 31;
+            }
 
-                /* Desktop: let each heading size to its content so it remains one line */
-                @media (min-width: 925px) {
-                    .hero-section .hero-content h1,
-                    .hero-section .hero-content #immigration-anim,
-                    .hero-section .hero-content .gradient-text {
-                        display: inline-block; /* intrinsic width, centered by the container */
-                        white-space: nowrap; /* keep each heading on a single line at desktop */
-                        overflow: visible;
-                        line-height: 1;
-                        transform: translateZ(0); /* avoid subpixel rendering artifacts */
-                    }
-                }
+        /* Desktop: let each heading size to its content so it remains one line */
+        @media (min-width: 925px) {
+            .hero-section .hero-content h1,
+            .hero-section .hero-content #immigration-anim,
+            .hero-section .hero-content .gradient-text {
+                display: inline-block; /* intrinsic width, centered by the container */
+                white-space: nowrap; /* keep each heading on a single line at desktop */
+                overflow: visible;
+                line-height: 1;
+                transform: translateZ(0); /* avoid subpixel rendering artifacts */
+            }
+        }
 
-                @media (min-width: 925px) and (max-width: 991px) {
-                    .hero-section .hero-content .hero-main-text,
-                    .hero-section .hero-content #immigration-anim,
-                    .hero-section .hero-content .gradient-text {
-                        font-size: 60px !important; /* Reduced from 72px */
-                    }
-                }
+        @media (min-width: 925px) and (max-width: 991px) {
+            .hero-section .hero-content .hero-main-text,
+            .hero-section .hero-content #immigration-anim,
+            .hero-section .hero-content .gradient-text {
+                font-size: 60px !important; /* Reduced from 72px */
+            }
+        }
 
-                /* Tablet / mobile: allow wrapping (your existing 40px font rule will apply) */
-                @media (max-width: 924.98px) {
-                    .hero-section .hero-content h1,
-                    .hero-section .hero-content #immigration-anim,
-                    .hero-section .hero-content .gradient-text {
-                        display: block;
-                        white-space: normal;
-                        max-width: 100vw;
-                    }
-                }
+        /* Tablet / mobile: allow wrapping (your existing 40px font rule will apply) */
+        @media (max-width: 924.98px) {
+            .hero-section .hero-content h1,
+            .hero-section .hero-content #immigration-anim,
+            .hero-section .hero-content .gradient-text {
+                display: block;
+                white-space: normal;
+                max-width: 100vw;
+            }
+        }
 
-                /* Gentle increase to line-height for headings (overrides the earlier `line-height: 1 !important`) */
-                .hero-section .hero-content h1,
-                .hero-section .hero-content #immigration-anim,
-                .hero-section .hero-content .gradient-text {
-                    line-height: 1.2 !important;
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
-                }
+        /* Gentle increase to line-height for headings (overrides the earlier `line-height: 1 !important`) */
+        .hero-section .hero-content h1,
+        .hero-section .hero-content #immigration-anim,
+        .hero-section .hero-content .gradient-text {
+            line-height: 1.2 !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-                /* Override the immigration animation gradient for this page only */
-                #immigration-anim,
-                .gradient-text {
-                    background: linear-gradient(to bottom, #61dcdf 0%, #886cff 100%) !important;
-                    -webkit-background-clip: text !important;
-                    -webkit-text-fill-color: transparent !important;
-                    background-clip: text !important;
-                }
+        /* Override the immigration animation gradient for this page only */
+        #immigration-anim,
+        .gradient-text {
+            background: linear-gradient(to bottom, #61dcdf 0%, #886cff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
 
-                /* Make the Why Canboards heading image larger */
-                .why-heading-img {
-                    max-width: 350px; /* Increased from default */
-                    width: 100%;
-                    height: auto;
-                }
+        /* Make the Why Canboards heading image larger */
+        .why-heading-img {
+            max-width: 350px; /* Increased from default */
+            width: 100%;
+            height: auto;
+        }
 
-                @media (max-width: 991px) {
-                    .why-heading-img {
-                        max-width: 350px;
-                    }
-                }
+        @media (max-width: 991px) {
+            .why-heading-img {
+                max-width: 350px;
+            }
+        }
 
-                @media (max-width: 767px) {
-                    .why-heading-img {
-                        max-width: 280px;
-                    }
-                }
+        @media (max-width: 767px) {
+            .why-heading-img {
+                max-width: 280px;
+            }
+        }
 
         /* ========================================
-SERVICE FLIP SECTION - UPDATED
-======================================== */
+        SERVICE FLIP SECTION - UPDATED
+        ======================================== */
 
         .service-flip-section {
             padding-top: 12px;
@@ -535,460 +535,460 @@ SERVICE FLIP SECTION - UPDATED
             gap: clamp(16px, 2vw, 24px);
             margin-bottom: 10px;
         }
-                /* ========================================
-                Process Section
-                ======================================== */
+        /* ========================================
+                        Process Section
+                        ======================================== */
 
-                .typing-bounce {
-                    display: inline; /* allow wrapping like normal text */
-                    font-weight: 700;
-                    font-size: 0.9rem;
-                    color: #fff; /* adjust as needed */
-                    border-right: 2px solid #fff; /* cursor effect */
-                    white-space: normal; /* enable wrapping */
-                    overflow: visible; /* ensure nothing is clipped */
+        .typing-bounce {
+            display: inline; /* allow wrapping like normal text */
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #fff; /* adjust as needed */
+            border-right: 2px solid #fff; /* cursor effect */
+            white-space: normal; /* enable wrapping */
+            overflow: visible; /* ensure nothing is clipped */
+        }
+
+
+
+        /* Typing animation (width increases in JS) */
+        @keyframes jump {
+            0% {
+                transform: translateY(0);
+            }
+
+            30% {
+                transform: translateY(-10px);
+            }
+
+            50% {
+                transform: translateY(0);
+            }
+
+            70% {
+                transform: translateY(-5px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Typing effect */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Blinking cursor */
+        @keyframes blink {
+            from, to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #1e90ff;
+            }
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 50px 0 60px;
+            color: #1a1a1a;
+        }
+
+        .flow {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        /* Step box */
+        .step {
+            position: relative;
+            width: 200px;
+            min-height: 130px; /* fixed height for most devices */
+            padding: 60px 18px 25px;
+            border-radius: 18px;
+            text-align: left;
+            color: #fff;
+            opacity: 0; /* hidden initially */
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* avoid extra space at bottom */
+        }
+
+        /* Gradients for steps */
+        .step1 {
+            background: linear-gradient(135deg,#ff416c,#ff4b2b);
+        }
+
+        .step2 {
+            background: linear-gradient(135deg,#4776e6,#8e54e9);
+        }
+        /* Darker for readability */
+        .step3 {
+            background: linear-gradient(135deg,#0c8c73,#1abc9c);
+        }
+
+        .step4 {
+            background: linear-gradient(135deg,#b68a00,#e6c200);
+        }
+
+        /* Icon */
+        .icon {
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 0 5px 10px rgba(255,255,255,0.25);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s ease;
+        }
+
+        .step1 .icon {
+            background: linear-gradient(145deg,#ff758c,#ff416c);
+        }
+
+        .step2 .icon {
+            background: linear-gradient(145deg,#5d7be8,#4776e6);
+        }
+
+        .step3 .icon {
+            background: linear-gradient(145deg,#28bca1,#0c8c73);
+        }
+
+        .step4 .icon {
+            background: linear-gradient(145deg,#ffd84c,#b68a00);
+        }
+
+        .icon.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Big number */
+        .big-number {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            font-size: 70px;
+            font-weight: 800;
+            color: rgba(255,255,255,0.85);
+            text-shadow: 0 3px 10px rgba(0,0,0,0.25);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s ease;
+            z-index: 0;
+        }
+
+            .big-number.show {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+
+        /* Content */
+        .content {
+            position: relative;
+            background: rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 25px 12px 15px;
+            z-index: 2;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            flex-grow: 1;
+        }
+
+            .content.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        .step h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 0 5px;
+        }
+
+        .step p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .flow {
+                flex-direction: column;
+                gap: 40px;
+                align-items: center;
+            }
+
+            .step {
+                width: 260px;
+                min-height: auto; /* remove fixed height on mobile */
+            }
+        }
+
+        @media (hover: none), (any-hover: none), (pointer: coarse) {
+            .step {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+                transition: none !important;
+                cursor: default !important;
+            }
+
+                .step .icon,
+                .step .big-number,
+                .step .content {
+                    opacity: 1 !important;
+                    transform: scale(1) translateY(0) !important;
+                    transition: none !important;
                 }
 
-
-
-                /* Typing animation (width increases in JS) */
-                @keyframes jump {
-                    0% {
-                        transform: translateY(0);
-                    }
-
-                    30% {
-                        transform: translateY(-10px);
-                    }
-
-                    50% {
-                        transform: translateY(0);
-                    }
-
-                    70% {
-                        transform: translateY(-5px);
-                    }
-
-                    100% {
-                        transform: translateY(0);
-                    }
-                }
-
-
-                /* Typing effect */
-                @keyframes typing {
-                    from {
-                        width: 0;
-                    }
-
-                    to {
-                        width: 100%;
-                    }
-                }
-
-                /* Blinking cursor */
-                @keyframes blink {
-                    from, to {
-                        border-color: transparent;
-                    }
-
-                    50% {
-                        border-color: #1e90ff;
-                    }
-                }
-
-                .title {
-                    text-align: center;
-                    font-size: 2rem;
-                    font-weight: 600;
-                    margin: 50px 0 60px;
-                    color: #1a1a1a;
-                }
-
-                .flow {
-                    display: flex;
-                    justify-content: center;
-                    align-items: flex-start;
-                    gap: 40px;
-                    flex-wrap: wrap;
-                    max-width: 1200px;
-                    margin: 0 auto 80px;
-                }
-
-                /* Step box */
-                .step {
-                    position: relative;
-                    width: 200px;
-                    min-height: 130px; /* fixed height for most devices */
-                    padding: 60px 18px 25px;
-                    border-radius: 18px;
-                    text-align: left;
-                    color: #fff;
-                    opacity: 0; /* hidden initially */
-                    transform: translateY(20px);
-                    transition: all 0.5s ease;
-                    cursor: default;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start; /* avoid extra space at bottom */
-                }
-
-                /* Gradients for steps */
-                .step1 {
-                    background: linear-gradient(135deg,#ff416c,#ff4b2b);
-                }
-
-                .step2 {
-                    background: linear-gradient(135deg,#4776e6,#8e54e9);
-                }
-                /* Darker for readability */
-                .step3 {
-                    background: linear-gradient(135deg,#0c8c73,#1abc9c);
-                }
-
-                .step4 {
-                    background: linear-gradient(135deg,#b68a00,#e6c200);
-                }
-
-                /* Icon */
-                .icon {
-                    position: absolute;
-                    top: -30px;
-                    left: -30px;
-                    width: 70px;
-                    height: 70px;
-                    border-radius: 50%;
-                    background: #fff;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 28px;
-                    color: #fff;
-                    box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 0 5px 10px rgba(255,255,255,0.25);
-                    opacity: 0;
-                    transform: scale(0);
-                    transition: all 0.4s ease;
-                }
-
-                .step1 .icon {
-                    background: linear-gradient(145deg,#ff758c,#ff416c);
-                }
-
-                .step2 .icon {
-                    background: linear-gradient(145deg,#5d7be8,#4776e6);
-                }
-
-                .step3 .icon {
-                    background: linear-gradient(145deg,#28bca1,#0c8c73);
-                }
-
-                .step4 .icon {
-                    background: linear-gradient(145deg,#ffd84c,#b68a00);
-                }
-
-                .icon.show {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-
-                /* Big number */
-                .big-number {
-                    position: absolute;
-                    top: -10px;
-                    right: 15px;
-                    font-size: 70px;
-                    font-weight: 800;
-                    color: rgba(255,255,255,0.85);
-                    text-shadow: 0 3px 10px rgba(0,0,0,0.25);
-                    opacity: 0;
-                    transform: scale(0);
-                    transition: all 0.4s ease;
-                    z-index: 0;
-                }
-
-                    .big-number.show {
-                        opacity: 0.8;
-                        transform: scale(1);
-                    }
-
-                /* Content */
-                .content {
-                    position: relative;
-                    background: rgba(255,255,255,0.12);
-                    border-radius: 12px;
-                    padding: 25px 12px 15px;
-                    z-index: 2;
-                    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-                    backdrop-filter: blur(4px);
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.5s ease;
-                    flex-grow: 1;
-                }
-
-                    .content.show {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-
-                .step h3 {
-                    font-size: 0.95rem;
-                    font-weight: 600;
-                    margin: 0 0 5px;
-                }
-
-                .step p {
-                    font-size: 0.8rem;
-                    opacity: 0.9;
-                    line-height: 1.3;
-                    margin: 0;
-                }
-
-                /* Responsive */
-                @media (max-width: 768px) {
-                    .flow {
-                        flex-direction: column;
-                        gap: 40px;
-                        align-items: center;
-                    }
-
-                    .step {
-                        width: 260px;
-                        min-height: auto; /* remove fixed height on mobile */
-                    }
-                }
-
-                @media (hover: none), (any-hover: none), (pointer: coarse) {
-                    .step {
+                    .step .icon.show,
+                    .step .big-number.show,
+                    .step .content.show {
                         opacity: 1 !important;
-                        transform: translateY(0) !important;
-                        transition: none !important;
-                        cursor: default !important;
+                        transform: scale(1) translateY(0) !important;
                     }
 
-                        .step .icon,
-                        .step .big-number,
-                        .step .content {
-                            opacity: 1 !important;
-                            transform: scale(1) translateY(0) !important;
-                            transition: none !important;
-                        }
+            .flow {
+                cursor: default !important;
+            }
+        }
 
-                            .step .icon.show,
-                            .step .big-number.show,
-                            .step .content.show {
-                                opacity: 1 !important;
-                                transform: scale(1) translateY(0) !important;
-                            }
+        .flow {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 50px;
+            flex-wrap: wrap;
+            max-width: 1400px;
+            margin: 0 auto 0; /* CHANGED: Removed 30px bottom margin */
+        }
 
-                    .flow {
-                        cursor: default !important;
+        /* Step box - fixed equal height */
+        .step {
+            position: relative;
+            width: 280px;
+            height: 240px;
+            padding: 50px 24px 16px; /* CHANGED: Reduced bottom padding from 20px to 16px */
+            border-radius: 18px;
+            text-align: left;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* Content box - FIXED HEIGHT to prevent expansion during typing */
+        .content {
+            position: relative;
+            background: rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 20px 16px 8px; /* CHANGED: Reduced bottom padding from 12px to 8px */
+            z-index: 2;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            height: 140px;
+            overflow: visible;
+        }
+
+            .content.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        /* Step text elements */
+        .step h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 8px;
+            flex-shrink: 0;
+            line-height: 1.2;
+        }
+
+        .step p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            line-height: 1.4;
+            margin: 0;
+            flex-grow: 0;
+        }
+
+        /* Typing animation span - ensure it doesn't cause overflow */
+        .typing-bounce {
+            display: inline;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #fff;
+            border-right: 2px solid #fff;
+            white-space: normal;
+            overflow: visible;
+            line-height: 1.4;
+        }
+
+        /* Icon positioning */
+        .icon {
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 0 5px 10px rgba(255,255,255,0.25);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s ease;
+        }
+
+        /* Big number positioning */
+        .big-number {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            font-size: 70px;
+            font-weight: 800;
+            color: rgba(255,255,255,0.85);
+            text-shadow: 0 3px 10px rgba(0,0,0,0.25);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s ease;
+            z-index: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .step {
+                width: 240px;
+                height: 250px;
+            }
+
+            .content {
+                height: 150px;
+            }
+
+            .flow {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .flow {
+                flex-direction: column;
+                gap: 40px;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+
+            .step {
+                width: 300px;
+                height: 220px;
+            }
+
+            .content {
+                height: 130px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .step {
+                width: 280px;
+                height: 240px;
+            }
+
+            .content {
+                height: 140px;
+            }
+
+            .flow {
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Touch device overrides - maintain equal height */
+        @media (hover: none), (any-hover: none), (pointer: coarse) {
+            .step {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+                transition: none !important;
+                cursor: default !important;
+                height: 240px;
+            }
+
+                .step .icon,
+                .step .big-number,
+                .step .content {
+                    opacity: 1 !important;
+                    transform: scale(1) translateY(0) !important;
+                    transition: none !important;
+                }
+
+                    .step .icon.show,
+                    .step .big-number.show,
+                    .step .content.show {
+                        opacity: 1 !important;
+                        transform: scale(1) translateY(0) !important;
                     }
-                }
 
-                .flow {
-                    display: flex;
-                    justify-content: center;
-                    align-items: stretch;
-                    gap: 50px;
-                    flex-wrap: wrap;
-                    max-width: 1400px;
-                    margin: 0 auto 0; /* CHANGED: Removed 30px bottom margin */
-                }
-
-                /* Step box - fixed equal height */
-                .step {
-                    position: relative;
-                    width: 280px;
-                    height: 240px;
-                    padding: 50px 24px 16px; /* CHANGED: Reduced bottom padding from 20px to 16px */
-                    border-radius: 18px;
-                    text-align: left;
-                    color: #fff;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.5s ease;
-                    cursor: default;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-                }
-
-                /* Content box - FIXED HEIGHT to prevent expansion during typing */
-                .content {
-                    position: relative;
-                    background: rgba(255,255,255,0.12);
-                    border-radius: 12px;
-                    padding: 20px 16px 8px; /* CHANGED: Reduced bottom padding from 12px to 8px */
-                    z-index: 2;
-                    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-                    backdrop-filter: blur(4px);
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.5s ease;
-                    flex-grow: 1;
-                    display: flex;
-                    flex-direction: column;
+                .step .content {
                     height: 140px;
-                    overflow: visible;
                 }
 
-                    .content.show {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-
-                /* Step text elements */
-                .step h3 {
-                    font-size: 1rem;
-                    font-weight: 600;
-                    margin: 0 0 8px;
-                    flex-shrink: 0;
-                    line-height: 1.2;
-                }
-
-                .step p {
-                    font-size: 0.85rem;
-                    opacity: 0.9;
-                    line-height: 1.4;
-                    margin: 0;
-                    flex-grow: 0;
-                }
-
-                /* Typing animation span - ensure it doesn't cause overflow */
-                .typing-bounce {
-                    display: inline;
-                    font-weight: 700;
-                    font-size: 0.85rem;
-                    color: #fff;
-                    border-right: 2px solid #fff;
-                    white-space: normal;
-                    overflow: visible;
-                    line-height: 1.4;
-                }
-
-                /* Icon positioning */
-                .icon {
-                    position: absolute;
-                    top: -30px;
-                    left: -30px;
-                    width: 70px;
-                    height: 70px;
-                    border-radius: 50%;
-                    background: #fff;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 28px;
-                    color: #fff;
-                    box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 0 5px 10px rgba(255,255,255,0.25);
-                    opacity: 0;
-                    transform: scale(0);
-                    transition: all 0.4s ease;
-                }
-
-                /* Big number positioning */
-                .big-number {
-                    position: absolute;
-                    top: -10px;
-                    right: 20px;
-                    font-size: 70px;
-                    font-weight: 800;
-                    color: rgba(255,255,255,0.85);
-                    text-shadow: 0 3px 10px rgba(0,0,0,0.25);
-                    opacity: 0;
-                    transform: scale(0);
-                    transition: all 0.4s ease;
-                    z-index: 0;
-                }
-
-                /* Responsive adjustments */
-                @media (max-width: 1200px) {
-                    .step {
-                        width: 240px;
-                        height: 250px;
-                    }
-
-                    .content {
-                        height: 150px;
-                    }
-
-                    .flow {
-                        margin-bottom: 30px;
-                    }
-                }
-
-                @media (max-width: 768px) {
-                    .flow {
-                        flex-direction: column;
-                        gap: 40px;
-                        align-items: center;
-                        margin-bottom: 30px;
-                    }
-
-                    .step {
-                        width: 300px;
-                        height: 220px;
-                    }
-
-                    .content {
-                        height: 130px;
-                    }
-                }
-
-                @media (max-width: 575px) {
-                    .step {
-                        width: 280px;
-                        height: 240px;
-                    }
-
-                    .content {
-                        height: 140px;
-                    }
-
-                    .flow {
-                        margin-bottom: 30px;
-                    }
-                }
-
-                /* Touch device overrides - maintain equal height */
-                @media (hover: none), (any-hover: none), (pointer: coarse) {
-                    .step {
-                        opacity: 1 !important;
-                        transform: translateY(0) !important;
-                        transition: none !important;
-                        cursor: default !important;
-                        height: 240px;
-                    }
-
-                        .step .icon,
-                        .step .big-number,
-                        .step .content {
-                            opacity: 1 !important;
-                            transform: scale(1) translateY(0) !important;
-                            transition: none !important;
-                        }
-
-                            .step .icon.show,
-                            .step .big-number.show,
-                            .step .content.show {
-                                opacity: 1 !important;
-                                transform: scale(1) translateY(0) !important;
-                            }
-
-                        .step .content {
-                            height: 140px;
-                        }
-
-                    .flow {
-                        cursor: default !important;
-                        margin-bottom: 30px;
-                    }
-                }
+            .flow {
+                cursor: default !important;
+                margin-bottom: 30px;
+            }
+        }
 
         /* ========================================
-        RCIC LINE NODES SECTION
-        ======================================== */
+                RCIC LINE NODES SECTION
+                ======================================== */
 
         .rcic-line-process {
             min-height: 50vh;
@@ -1302,10 +1302,10 @@ SERVICE FLIP SECTION - UPDATED
                 padding: 40px 20px; /* Reduced padding */
             }
         }
-
+        
         /* ========================================
-EXTRA CSS
-======================================== */
+        EXTRA CSS
+        ======================================== */
 
         /* Map icon animation styles - FIXED to actually hide icons */
         .map-icon {
@@ -1568,6 +1568,1299 @@ EXTRA CSS
                 top: 88%;
             }
         }
+
+        .news-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 12px;
+            align-items: center;
+            touch-action: manipulation;
+        }
+
+        .news-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d1d5db;
+            opacity: 0.9;
+            transition: transform 150ms ease, background-color 150ms ease;
+            cursor: pointer;
+            flex: 0 0 auto;
+        }
+
+            .news-dot.active {
+                background: #1e90ff;
+                transform: scale(1.25);
+            }
+
+        /* Hide dots on large desktop where all cards are visible */
+        @media (min-width: 992px) {
+            .news-dots {
+                display: none !important;
+            }
+        }
+
+        /* Blog carousel - fully namespaced with bc- prefix to avoid collisions */
+        .bc-section {
+            padding: 50px 20px;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .bc-section .bc-container {
+                max-width: 1400px;
+                margin: 0 auto;
+                position: relative;
+                z-index: 2;
+            }
+
+        /* Header */
+        .bc-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+            .bc-header .bc-heading {
+                color: #2d3958;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+        .bc-desc {
+            color: #6b7a95;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 12px auto 0;
+        }
+
+        /* Horizontal scroller wrapper */
+        .bc-wrapper {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 8px 8px 18px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+            .bc-wrapper::-webkit-scrollbar {
+                display: none;
+            }
+
+        /* Card */
+        .bc-card {
+            flex: 0 0 320px;
+            width: 100%;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(47,46,120,0.08);
+            box-shadow: 0 10px 30px rgba(47,46,120,0.06);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            min-height: 420px;
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+
+            .bc-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 18px 50px rgba(47,46,120,0.12);
+            }
+
+        /* Image area */
+        .bc-image-wrap {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .bc-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s ease;
+        }
+
+        .bc-card:hover .bc-image {
+            transform: scale(1.06);
+        }
+
+        .bc-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,rgba(0,0,0,0) 0%, rgba(0,0,0,0.18) 50%, rgba(0,0,0,0.45) 100%);
+            opacity: .4;
+            transition: opacity .25s ease;
+        }
+
+        .bc-card:hover .bc-overlay {
+            opacity: .6;
+        }
+
+        /* Badge */
+        .bc-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 12px;
+            border-radius: 16px;
+            color: #fff;
+            font-weight: 600;
+            z-index: 3;
+            font-size: 12px;
+        }
+
+        /* Content */
+        .bc-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .bc-meta {
+            color: #6b7a95;
+            font-size: 14px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .bc-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3958;
+            line-height: 1.35;
+            font-family: "Outfit",Arial,sans-serif;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 56px;
+        }
+
+        .bc-readmore {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            color: #2d3958;
+            font-weight: 500;
+            text-decoration: none;
+            position: relative;
+        }
+
+            .bc-readmore::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -4px;
+                height: 2px;
+                width: 0;
+                transition: width .25s ease;
+                background: linear-gradient(90deg,#61dcdf,#886cff);
+            }
+
+            .bc-readmore:hover::after {
+                width: 100%;
+            }
+
+        /* Dots */
+        .bc-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 12px;
+            touch-action: manipulation;
+        }
+
+        .bc-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d1d5db;
+            transition: transform .15s ease, background-color .15s ease;
+            cursor: pointer;
+            flex: 0 0 auto;
+        }
+
+            .bc-dot.bc-active {
+                background: #1e90ff;
+                transform: scale(1.25);
+            }
+
+        /* Arrows (unique to bc) */
+        .bc-scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #fff;
+            border: none;
+            box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 30;
+        }
+
+        .bc-scroll-left {
+            left: 12px;
+        }
+
+        .bc-scroll-right {
+            right: 12px;
+        }
+
+        /* Hide arrows on small screens if desired */
+        @media (max-width:767.98px) {
+            .bc-scroll-btn {
+                display: none;
+            }
+
+            .bc-card {
+                flex: 0 0 260px;
+                min-height: 420px;
+            }
+
+            .bc-image-wrap {
+                height: 200px;
+            }
+        }
+
+        /* Simple color accents for badges (three example variations) */
+        .bc-card[data-bc="1"] .bc-badge {
+            background: linear-gradient(135deg,#ffd700,#ffb347);
+        }
+
+        .bc-card[data-bc="2"] .bc-badge {
+            background: linear-gradient(135deg,#ffb6c1,#ff91a4);
+        }
+
+        .bc-card[data-bc="3"] .bc-badge {
+            background: linear-gradient(135deg,#7fffd4,#40e0d0);
+        }
+
+        /* BC arrows: visible, clickable, above other layers */
+        .bc-scroll-btn {
+            background: rgba(255,255,255,0.98) !important;
+            box-shadow: 0 10px 30px rgba(16,24,40,0.08) !important;
+            z-index: 9999 !important;
+            border: none !important;
+            width: 48px !important;
+            height: 48px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            transition: transform .12s ease, opacity .12s ease;
+            opacity: 1 !important;
+        }
+
+            .bc-scroll-btn:hover {
+                transform: translateY(-50%) scale(1.04);
+            }
+
+        /* Keep arrows positioned relative to bc-container, not lost behind full-width overlays */
+        .bc-section, .bc-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bc-scroll-left {
+            left: 12px !important;
+        }
+
+        .bc-scroll-right {
+            right: 12px !important;
+        }
+
+        /* Debug helpers (temporary) */
+        /* .bc-scroll-btn { outline: 1px solid rgba(0,0,0,0.06); } */
+
+        /* ========================================
+   FAQ Section - Frequently Asked Questions
+   ======================================== */
+
+        .faq-section {
+            padding: 50px 20px;
+            background: #ffffff;
+            position: relative;
+        }
+
+            .faq-section .container {
+                max-width: 1000px;
+            }
+
+        /* FAQ Header */
+        .faq-header {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(-30px);
+            transition: all 0.8s ease;
+        }
+
+            .faq-header.animate-in {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .faq-header .why-heading-text {
+                color: #2d3958;
+            }
+
+        .faq-description {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #6b7a95;
+            max-width: 800px;
+            margin: 20px auto 0;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease 0.3s;
+        }
+
+        .faq-header.animate-in .faq-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQ Accordion Wrapper */
+        .faq-accordion-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* FAQ Accordion Item */
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid rgba(47, 46, 120, 0.1);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(47, 46, 120, 0.04);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+            .faq-item.animate-in {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .faq-item:hover {
+                box-shadow: 0 8px 24px rgba(47, 46, 120, 0.08);
+                border-color: rgba(123, 104, 238, 0.2);
+            }
+
+            .faq-item:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Accordion Button */
+            .faq-item .accordion-button {
+                background: #ffffff;
+                border: none;
+                padding: 24px 28px;
+                font-size: 18px;
+                font-weight: 600;
+                color: #2d3958;
+                box-shadow: none;
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                flex-wrap: nowrap;
+                transition: all 0.3s ease;
+                font-family: "Outfit", Arial, sans-serif;
+            }
+
+                .faq-item .accordion-button:not(.collapsed) {
+                    background: linear-gradient(135deg, rgba(123, 104, 238, 0.05) 0%, rgba(123, 104, 238, 0.02) 100%);
+                    color: #7b68ee;
+                    box-shadow: none;
+                }
+
+                .faq-item .accordion-button:focus {
+                    box-shadow: none;
+                    border-color: transparent;
+                }
+
+                .faq-item .accordion-button::after {
+                    display: none;
+                }
+
+        /* FAQ Icon */
+        .faq-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1) 0%, rgba(123, 104, 238, 0.05) 100%);
+            color: #7b68ee;
+            font-size: 18px;
+            flex-shrink: 0;
+            flex-basis: auto;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item .accordion-button:not(.collapsed) .faq-icon {
+            background: linear-gradient(135deg, #7b68ee 0%, #9b7fff 100%);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        /* FAQ Question Text */
+        .faq-question {
+            flex: 1;
+            text-align: left;
+            line-height: 1.5;
+            min-width: 0;
+            word-wrap: break-word;
+        }
+
+        /* FAQ Arrow */
+        .faq-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(123, 104, 238, 0.1);
+            color: #7b68ee;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            flex-basis: auto;
+            margin-left: auto;
+        }
+
+        .faq-item .accordion-button:not(.collapsed) .faq-arrow {
+            background: linear-gradient(135deg, #7b68ee 0%, #9b7fff 100%);
+            color: #ffffff;
+            transform: rotate(180deg);
+        }
+
+        /* Accordion Body */
+        .faq-item .accordion-body {
+            padding: 0 28px 28px 84px;
+            color: #6b7a95;
+            font-size: 16px;
+            line-height: 1.8;
+            background: transparent;
+            border-top: 1px solid rgba(47, 46, 120, 0.08);
+            margin-top: 0;
+            animation: fadeInDown 0.4s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991.98px) {
+            .faq-section {
+                padding: 60px 20px;
+            }
+
+            .faq-header {
+                margin-bottom: 50px;
+            }
+
+            .faq-description {
+                font-size: 16px;
+            }
+
+            .faq-item .accordion-button {
+                padding: 20px 24px;
+                font-size: 17px;
+            }
+
+            .faq-item .accordion-body {
+                padding: 0 24px 24px 76px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .faq-section {
+                padding: 50px 0px;
+            }
+
+            .faq-header {
+                margin-bottom: 40px;
+            }
+
+            .faq-description {
+                font-size: 15px;
+                margin-top: 15px;
+            }
+
+            .faq-item {
+                margin-bottom: 16px;
+                border-radius: 15px;
+            }
+
+                .faq-item .accordion-button {
+                    padding: 18px 20px;
+                    font-size: 16px;
+                    gap: 12px;
+                    flex-wrap: nowrap;
+                }
+
+            .faq-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+                flex-shrink: 0;
+            }
+
+            .faq-arrow {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+                flex-shrink: 0;
+                margin-left: auto;
+            }
+
+            .faq-item .accordion-body {
+                padding: 0 20px 20px 20px;
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .faq-question {
+                flex: 1;
+                min-width: 0;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .faq-section {
+                padding: 50px 0px;
+            }
+
+            .faq-item .accordion-button {
+                padding: 16px 18px;
+                font-size: 15px;
+            }
+
+            .faq-item .accordion-body {
+                padding: 0 18px 18px 18px;
+                font-size: 14px;
+            }
+        }
+
+        /* FAQ spacing adjustments — paste after existing FAQ rules or replace them */
+        .faq-section {
+            padding: 80px 20px 50px; /* more top space so FAQ isn't close to the section above */
+        }
+
+        .faq-accordion-wrapper {
+            padding-top: 8px;
+        }
+
+        /* Keep card visual but remove internal collapse; spacing controlled by button/body */
+        .faq-item {
+            border-radius: 15px;
+            overflow: visible;
+        }
+
+            /* Header button: add even vertical space so the top does not feel tight */
+            .faq-item .accordion-button {
+                padding: 20px 28px; /* top/right/bottom/left */
+                align-items: center;
+                line-height: 1.3;
+            }
+
+                /* Ensure icon stays vertically centered */
+                .faq-item .accordion-button .faq-icon {
+                    margin-top: 0;
+                }
+
+            /* Accordion body: give balanced padding all around (top was 0 before) */
+            .faq-item .accordion-body {
+                padding: 20px 28px 24px 84px; /* top / right / bottom / left */
+                box-sizing: border-box;
+            }
+
+        /* Slightly tighter on small screens while keeping even spacing */
+        @media (max-width: 767.98px) {
+            .faq-section {
+                padding: 60px 12px 40px;
+            }
+
+            .faq-item .accordion-button {
+                padding: 16px 18px;
+            }
+
+            .faq-item .accordion-body {
+                padding: 16px 18px 18px 20px;
+            }
+        }
+
+        /* ========================================
+   Journey Section - Let's Start Your Canadian Journey
+   ======================================== */
+        .journey-cta-section img {
+            max-width: 300px;
+        }
+
+        .journey-section {
+            position: relative;
+            padding: 160px 20px 80px;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        /* Dark strip at bottom */
+        .journey-dark-strip {
+            position: absolute;
+            top: 40%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #23235b;
+            z-index: 1;
+        }
+
+        .journey-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Main content wrapper - light lavender container */
+        .journey-content-wrapper {
+            position: relative;
+            background: #e8e0f5;
+            border-radius: 32px;
+            /* padding: 50px 60px; */
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.08);
+            overflow: visible;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Text Column - Right Side */
+        .journey-text-col {
+            position: relative;
+            z-index: 3;
+        }
+
+        .journey-text-content {
+            padding: 50px;
+            text-align: left;
+        }
+
+        .journey-title {
+            font-size: 40px;
+            font-weight: 500;
+            font-family: "Outfit", Arial, sans-serif;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+
+            .journey-title.animate-in {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        .journey-desc {
+            font-size: 20px;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+            .journey-desc.animate-in {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        .journey-cta-wrapper {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease 0.4s;
+        }
+
+            .journey-cta-wrapper.animate-in {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        .journey-cta-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #7b68ee 0%, #9b7fff 50%, #b8a5ff 100%);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: "Outfit", Arial, sans-serif;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(123, 104, 238, 0.3), 0 4px 12px rgba(123, 104, 238, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .journey-cta-btn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                transition: left 0.5s ease;
+            }
+
+            .journey-cta-btn:hover::before {
+                left: 100%;
+            }
+
+            .journey-cta-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 32px rgba(123, 104, 238, 0.4), 0 6px 16px rgba(123, 104, 238, 0.3);
+                background: linear-gradient(135deg, #8b78ff 0%, #ab9fff 50%, #c8b5ff 100%);
+            }
+
+            .journey-cta-btn:active {
+                transform: translateY(-1px);
+            }
+
+        /* Image Column - Left Side */
+        .journey-image-col {
+            position: absolute;
+            z-index: 2;
+            right: 0;
+            bottom: 0;
+        }
+
+        .journey-image-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100%;
+            padding-right: 30px;
+        }
+
+        .journey-image-placeholder {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .journey-main-image {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            object-fit: contain;
+            object-position: center;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+            opacity: 0;
+            transform: translateX(-50px) translateY(20px);
+            transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+            .journey-main-image.animate-in {
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+
+            /* Show image when it's loaded */
+            .journey-main-image[style*="display: none"] {
+                display: block !important;
+            }
+
+        /* Responsive Design */
+        @media (max-width: 1199.98px) {
+
+
+            .journey-desc {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .journey-image-col {
+                display: none;
+            }
+
+            .journey-section {
+                padding: 60px 0px;
+            }
+
+            .journey-text-content {
+                padding: 30px;
+                text-align: center;
+                margin-bottom: 0px;
+            }
+
+            .journey-desc {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .journey-image-wrapper {
+                padding-right: 0;
+                justify-content: center;
+                min-height: 300px;
+                margin-bottom: 30px;
+            }
+
+            .journey-main-image {
+                max-width: 400px;
+            }
+        }
+
+        .accordion-item:first-of-type {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .accordion-item:last-of-type {
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        @media (max-width: 767.98px) {
+            .journey-section {
+                padding: 0px 0px 50px;
+            }
+
+            .journey-image-col {
+                display: none;
+            }
+
+            .journey-dark-strip {
+                top: 130px;
+            }
+
+            .journey-content-wrapper {
+                border-radius: 24px;
+            }
+
+            .journey-title {
+                font-size: 30px;
+                margin-bottom: 20px;
+            }
+
+            .journey-desc {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .journey-cta-btn {
+                padding: 14px 32px;
+                font-size: 16px;
+            }
+
+            .journey-main-image {
+                max-width: 100%;
+                transform: translateX(0) translateY(20px);
+            }
+
+                .journey-main-image.animate-in {
+                    transform: translateX(0) translateY(0);
+                }
+        }
+
+        @media (max-width: 575.98px) {
+
+            .journey-title {
+                font-size: 28px;
+            }
+
+            .journey-desc {
+                font-size: 16px;
+            }
+
+            .journey-cta-btn {
+                padding: 12px 28px;
+                font-size: 15px;
+            }
+        }
+        /* ========================================
+   Journey Section - Let's Start Your Canadian Journey
+   ======================================== */
+        .journey-cta-section img {
+            max-width: 300px;
+        }
+
+        .journey-section {
+            position: relative;
+            padding: 160px 20px 80px;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        /* Dark strip at bottom */
+        .journey-dark-strip {
+            position: absolute;
+            top: 40%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #23235b;
+            z-index: 1;
+        }
+
+        .journey-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Main content wrapper - light lavender container */
+        .journey-content-wrapper {
+            position: relative;
+            background: #e8e0f5;
+            border-radius: 32px;
+            /* padding: 50px 60px; */
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.08);
+            overflow: visible;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Text Column - Right Side */
+        .journey-text-col {
+            position: relative;
+            z-index: 3;
+        }
+
+        .journey-text-content {
+            padding: 50px;
+            text-align: left;
+        }
+
+        .journey-title {
+            font-size: 40px;
+            font-weight: 500;
+            font-family: "Outfit", Arial, sans-serif;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+
+            .journey-title.animate-in {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        .journey-desc {
+            font-size: 20px;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+            .journey-desc.animate-in {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        .journey-cta-wrapper {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease 0.4s;
+        }
+
+            .journey-cta-wrapper.animate-in {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        .journey-cta-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #7b68ee 0%, #9b7fff 50%, #b8a5ff 100%);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: "Outfit", Arial, sans-serif;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(123, 104, 238, 0.3), 0 4px 12px rgba(123, 104, 238, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .journey-cta-btn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                transition: left 0.5s ease;
+            }
+
+            .journey-cta-btn:hover::before {
+                left: 100%;
+            }
+
+            .journey-cta-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 32px rgba(123, 104, 238, 0.4), 0 6px 16px rgba(123, 104, 238, 0.3);
+                background: linear-gradient(135deg, #8b78ff 0%, #ab9fff 50%, #c8b5ff 100%);
+            }
+
+            .journey-cta-btn:active {
+                transform: translateY(-1px);
+            }
+
+        /* Image Column - Left Side */
+        .journey-image-col {
+            position: absolute;
+            z-index: 2;
+            right: 0;
+            bottom: 0;
+        }
+
+        .journey-image-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100%;
+            padding-right: 30px;
+        }
+
+        .journey-image-placeholder {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .journey-main-image {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            object-fit: contain;
+            object-position: center;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+            opacity: 0;
+            transform: translateX(-50px) translateY(20px);
+            transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+            .journey-main-image.animate-in {
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+
+            /* Show image when it's loaded */
+            .journey-main-image[style*="display: none"] {
+                display: block !important;
+            }
+
+        /* Responsive Design */
+        @media (max-width: 1199.98px) {
+
+
+            .journey-desc {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .journey-image-col {
+                display: none;
+            }
+
+            .journey-section {
+                padding: 60px 0px;
+            }
+
+            .journey-text-content {
+                padding: 30px;
+                text-align: center;
+                margin-bottom: 0px;
+            }
+
+            .journey-desc {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .journey-image-wrapper {
+                padding-right: 0;
+                justify-content: center;
+                min-height: 300px;
+                margin-bottom: 30px;
+            }
+
+            .journey-main-image {
+                max-width: 400px;
+            }
+        }
+
+        .accordion-item:first-of-type {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .accordion-item:last-of-type {
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        @media (max-width: 767.98px) {
+            .journey-section {
+                padding: 0px 0px 50px;
+            }
+
+            .journey-image-col {
+                display: none;
+            }
+
+            .journey-dark-strip {
+                top: 130px;
+            }
+
+            .journey-content-wrapper {
+                border-radius: 24px;
+            }
+
+            .journey-title {
+                font-size: 30px;
+                margin-bottom: 20px;
+            }
+
+            .journey-desc {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .journey-cta-btn {
+                padding: 14px 32px;
+                font-size: 16px;
+            }
+
+            .journey-main-image {
+                max-width: 100%;
+                transform: translateX(0) translateY(20px);
+            }
+
+                .journey-main-image.animate-in {
+                    transform: translateX(0) translateY(0);
+                }
+        }
+
+        @media (max-width: 575.98px) {
+
+            .journey-title {
+                font-size: 28px;
+            }
+
+            .journey-desc {
+                font-size: 16px;
+            }
+
+            .journey-cta-btn {
+                padding: 12px 28px;
+                font-size: 15px;
+            }
+        }
+
+        /* Journey description — improved spacing, line-length and responsive behavior */
+        .journey-text-content {
+            padding: 56px 64px;
+            max-width: 760px; /* constrain text column so lines remain readable */
+            box-sizing: border-box;
+        }
+
+        .journey-title {
+            margin-bottom: 18px;
+            font-size: 40px;
+            line-height: 1.15;
+            color: #12131a;
+        }
+
+        .journey-desc {
+            margin: 8px 0 24px;
+            color: #2d3750; /* slightly darker for better contrast */
+            font-size: 18px;
+            line-height: 1.7; /* comfortable reading line-height */
+            max-width: 620px; /* prevents long line-length on large screens */
+            word-wrap: break-word;
+        }
+
+        /* CTA spacing */
+        .journey-cta-wrapper {
+            margin-top: 8px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 991.98px) {
+            .journey-text-content {
+                padding: 32px 28px;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .journey-title {
+                font-size: 30px;
+            }
+
+            .journey-desc {
+                font-size: 16px;
+                max-width: 100%;
+                margin: 12px auto 20px;
+            }
+
+            .journey-cta-wrapper {
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1689,106 +2982,6 @@ EXTRA CSS
             </div>
         </div>
     </div>
-
-    <!-- New Services section -->
-    <section class="services-section my-3">
-        <div class="container">
-            <div class="services-header text-center">
-                <img src="Images/New_Can_Services.png" alt="Can Services" class="services-title-img" />
-                <p class="services-intro mt-3">
-                    Canboards offers expert RCIC guidance, AI-assisted SOPs, <br /> secure document handling, and real-time application tracking all in one seamless platform.
-                </p>
-            </div>
-
-            <!-- Use Bootstrap grid with consistent layout -->
-            <div class="row mt-3 justify-content-center text-center">
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="service-box h-100">
-                        <div class="service-icon service-icon--study" aria-hidden="true">
-                            <svg aria-hidden="true" class="e-font-icon-svg e-fas-book-open" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"></path></svg>
-                        </div>
-                        <h5 class="service-title">Study</h5>
-                        <p class="service-desc">Assistance for your educational journey, from test prep and course selection to visa applications.</p>
-                        <a class="service-cta" href="study.html">
-                            <div class="cta-grid">
-                                <div class="cta-text">LEARN MORE</div>
-                                <div class="cta-arrow"><i class="bi bi-arrow-right-short" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="service-box h-100">
-                        <div class="service-icon service-icon--work" aria-hidden="true">
-                            <!-- Work icon SVG (provided) -->
-                            <svg aria-hidden="true" class="e-font-icon-svg e-fas-briefcase" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"></path></svg>
-                        </div>
-                        <h5 class="service-title">Work</h5>
-                        <p class="service-desc">Expert guidance on various work permits, LMIA processes, and extensions to help build your career.</p>
-                        <a class="service-cta" href="work.html">
-                            <div class="cta-grid">
-                                <div class="cta-text">LEARN MORE</div>
-                                <div class="cta-arrow"><i class="bi bi-arrow-right-short" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="service-box h-100">
-                        <div class="service-icon service-icon--visit" aria-hidden="true">
-                            <!-- Visit icon SVG (placeholder) -->
-                            <svg aria-hidden="true" class="e-font-icon-svg e-fas-plane-departure" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M624 448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h608c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM80.55 341.27c6.28 6.84 15.1 10.72 24.33 10.71l130.54-.18a65.62 65.62 0 0 0 29.64-7.12l290.96-147.65c26.74-13.57 50.71-32.94 67.02-58.31 18.31-28.48 20.3-49.09 13.07-63.65-7.21-14.57-24.74-25.27-58.25-27.45-29.85-1.94-59.54 5.92-86.28 19.48l-98.51 49.99-218.7-82.06a17.799 17.799 0 0 0-18-1.11L90.62 67.29c-10.67 5.41-13.25 19.65-5.17 28.53l156.22 98.1-103.21 52.38-72.35-36.47a17.804 17.804 0 0 0-16.07.02L9.91 230.22c-10.44 5.3-13.19 19.12-5.57 28.08l76.21 82.97z"></path></svg>
-                        </div>
-                        <h5 class="service-title">Visit</h5>
-                        <p class="service-desc">Support for all your visitor needs, whether it's a general visitor visa, attending a convocation, or business travel.</p>
-                        <a class="service-cta" href="visit.html">
-                            <div class="cta-grid">
-                                <div class="cta-text">LEARN MORE</div>
-                                <div class="cta-arrow"><i class="bi bi-arrow-right-short" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Second row - Settle and Other -->
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="service-box h-100">
-                        <div class="service-icon service-icon--settle" aria-hidden="true">
-                            <!-- Settle icon SVG (placeholder) -->
-                            <svg aria-hidden="true" class="e-font-icon-svg e-fas-home" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
-                        </div>
-                        <h5 class="service-title">Settle</h5>
-                        <p class="service-desc">Explore pathways to permanent residency, including Express Entry, PNP, family sponsorship and pilot programs.</p>
-                        <a class="service-cta" href="settle.html">
-                            <div class="cta-grid">
-                                <div class="cta-text">LEARN MORE</div>
-                                <div class="cta-arrow"><i class="bi bi-arrow-right-short" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="service-box h-100">
-                        <div class="service-icon service-icon--other" aria-hidden="true">
-                            <!-- Other icon SVG (placeholder) -->
-                            <svg aria-hidden="true" class="e-font-icon-svg e-far-sun" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M494.2 221.9l-59.8-40.5 13.7-71c2.6-13.2-1.6-26.8-11.1-36.3-9.6-9.5-23.2-13.7-36.3-11.1l-70.9 13.7-40.4-59.9c-15.1-22.3-51.9-22.3-67 0l-40.4 59.9-70.8-13.7C98 60.4 84.5 64.5 75 74.1c-9.5 9.6-13.7 23.1-11.1 36.3l13.7 71-59.8 40.5C6.6 229.5 0 242 0 255.5s6.7 26 17.8 33.5l59.8 40.5-13.7 71c-2.6 13.2 1.6 26.8 11.1 36.3 9.5 9.5 22.9 13.7 36.3 11.1l70.8-13.7 40.4 59.9C230 505.3 242.6 512 256 512s26-6.7 33.5-17.8l40.4-59.9 70.9 13.7c13.4 2.7 26.8-1.6 36.3-11.1 9.5-9.5 13.6-23.1 11.1-36.3l-13.7-71 59.8-40.5c11.1-7.5 17.8-20.1 17.8-33.5-.1-13.6-6.7-26.1-17.9-33.7zm-112.9 85.6l17.6 91.2-91-17.6L256 458l-51.9-77-90.9 17.6 17.6-91.2-76.8-52 76.8-52-17.6-91.2 91 17.6L256 53l51.9 76.9 91-17.6-17.6 91.1 76.8 52-76.8 52.1z"></path></svg>
-                        </div>
-                        <h5 class="service-title">Other</h5>
-                        <p class="service-desc">Extra support for your Canadian journey from visas to legal guidance, all with RCIC expertise.</p>
-                        <a class="service-cta" href="other.html">
-                            <div class="cta-grid">
-                                <div class="cta-text">LEARN MORE</div>
-                                <div class="cta-arrow"><i class="bi bi-arrow-right-short" aria-hidden="true"></i></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section class="service-flip-section my-3">
         <div class="container">
@@ -1939,23 +3132,10 @@ EXTRA CSS
         </div>
     </section>
 
-    <!-- New How it works section -->
-    <section class="how-section my-3">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-12 mb-3 d-flex justify-content-center">
-                    <img src="Images/How.png" alt="How" class="img-fluid how-title-img">
-                </div>
-                <div class="rcic-underline mx-auto" aria-hidden="true" style="margin-top: -8px; margin-bottom: 40px;"></div>
-                <div class="col-12 d-flex justify-content-center">
-                    <img src="Images/Process.png" alt="Process" class="img-fluid process-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="process">
-        <h2 class="title">Visa Application Process</h2>
+        <div class="col-12 mb-3 d-flex justify-content-center">
+            <img src="Images/How.png" alt="How" class="img-fluid how-title-img">
+        </div>
 
         <div class="flow">
             <div class="step step1" data-step="1" tabindex="0" aria-label="Step 1 - Choose Your Service">
@@ -2049,24 +3229,6 @@ EXTRA CSS
         </div>
     </div>
 
-    <!-- New Journey section: centered heading with left purple haze -->
-    <section class="journey-section site-section">
-        <div class="container position-relative">
-            <div class="journey-haze" aria-hidden="true"></div>
-
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-8 text-center">
-                    <h2 class="journey-title">Let's Start Your Canadian Journey</h2>
-                    <div class="rcic-underline mx-auto" aria-hidden="true"></div>
-                    <p class="journey-desc mt-3">Join hundreds of successful immigrants who chose Canboards for their seamless transition to Canada.</p>
-                    <div class="mt-4">
-                        <a href="register.html" class="btn btn-primary journey-cta">Register Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- New Map section: animated icons appear when scrolled into view -->
     <section class="map-section site-section">
         <div class="container text-center">
@@ -2102,29 +3264,82 @@ EXTRA CSS
         </div>
     </section>
 
-    <!-- New Stats section: full-width rectangle with gradient haze and animated counters -->
+    <!-- Stats Section: Full-width rectangle with gradient haze and animated counters -->
     <section class="stats-section">
-        <div class="stats-panel">
-            <div class="container">
-                <div class="row text-center align-items-center">
-                    <div class="col-md-4 mb-4 mb-md-0">
+        <div class="container">
+            <div class="stats-panel">
+                <!-- Heading -->
+                <div class="stats-header text-center mb-3">
+                    <div class="position-relative w-fit mx-auto mb-3">
+                        <h3 class="why-heading-text why-heading-top">
+                            Our Achievements
+                        </h3>
+                    </div>
+                    <p class="stats-description">
+                        Join thousands of successful immigrants who have achieved their
+                        Canadian dreams with Canboards. Our proven track record speaks
+                        for itself.
+                    </p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row text-center align-items-center justify-content-center">
+                    <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
                         <div class="stat-item">
-                            <div class="stat-number" data-target="1500" data-suffix="+">0</div>
-                            <div class="stat-label">Happy Clients Till 2025</div>
+                            <div class="stat-number" data-target="1500" data-suffix="+">
+                                0
+                            </div>
+                            <div class="stat-label">
+                                Happy Clients <br />
+                                Till 2025
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
                         <div class="stat-item">
-                            <div class="stat-number" data-target="99" data-suffix="%">0</div>
-                            <div class="stat-label">Success Ratio</div>
+                            <div class="stat-number" data-target="99" data-suffix="%">
+                                0
+                            </div>
+                            <div class="stat-label">
+                                Success <br />
+                                Ratio
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
                         <div class="stat-item">
-                            <div class="stat-number" data-target="100" data-suffix="+">0</div>
-                            <div class="stat-label">Affiliated Universities</div>
+                            <div class="stat-number" data-target="100" data-suffix="+">
+                                0
+                            </div>
+                            <div class="stat-label">
+                                Affiliated <br />
+                                Universities
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="50" data-suffix="+">
+                                0
+                            </div>
+                            <div class="stat-label">
+                                Expert RCIC <br />Consultants
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 mb-4 mb-md-0">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="24" data-suffix="/7">
+                                0
+                            </div>
+                            <div class="stat-label">
+                                Support <br />
+                                Available
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2133,79 +3348,298 @@ EXTRA CSS
         </div>
     </section>
 
-    <div class="why-section why-copy-flip my-5 d-flex justify-content-center align-items-center">
-        <div class="why-card-bg">
-            <div class="why-inner container d-flex align-items-center">
-                <!-- Background lines (decor) -->
-                <img src="Images/bg-lines.png" alt="Background Lines" class="why-bg-lines">
+    <!-- BLOG: namespaced bc- carousel (replace existing blog section) -->
+    <section class="bc-section" aria-label="Latest blog posts">
+        <div class="bc-container container">
+            <div class="bc-header">
+                <h3 class="bc-heading">
+                    Latest News &amp; Insights
+                </h3>
+                <p class="bc-desc">Stay updated with the latest immigration news, study abroad tips, and success stories from our community.</p>
+            </div>
 
-                <!-- Left: Title image -->
-                <div class="why-left d-flex align-items-center">
-                    <img src="Images/New_Can_Help.png" alt="Why Canboards" class="why-heading-img">
+            <button id="bcScrollLeft" class="bc-scroll-btn bc-scroll-left" aria-label="Scroll blog left">&#8249;</button>
+
+            <div id="bcWrapper" class="bc-wrapper" aria-live="polite">
+                <article class="bc-card" data-bc="1">
+                    <div class="bc-image-wrap">
+                        <img src="Images/blog-img01.jpg" alt="Top scholarships" class="bc-image">
+                        <div class="bc-overlay"></div>
+                        <div class="bc-badge">Featured</div>
+                    </div>
+                    <div class="bc-content">
+                        <div class="bc-meta"><i class="far fa-clock"></i><span>December 3, 2025</span></div>
+                        <h4 class="bc-title">Top 5 Scholarships Every Student Should Know</h4>
+                        <a class="bc-readmore" href="#"><i class="far fa-file-alt"></i> Read more</a>
+                    </div>
+                </article>
+
+                <article class="bc-card" data-bc="2">
+                    <div class="bc-image-wrap">
+                        <img src="Images/blog-img02.jpg" alt="Study abroad countries" class="bc-image">
+                        <div class="bc-overlay"></div>
+                        <div class="bc-badge">Popular</div>
+                    </div>
+                    <div class="bc-content">
+                        <div class="bc-meta"><i class="far fa-clock"></i><span>November 24, 2025</span></div>
+                        <h4 class="bc-title">Top 5 Countries for Studying Abroad in 2026</h4>
+                        <a class="bc-readmore" href="#"><i class="far fa-file-alt"></i> Read more</a>
+                    </div>
+                </article>
+
+                <article class="bc-card" data-bc="3">
+                    <div class="bc-image-wrap">
+                        <img src="Images/blog-img03.jpg" alt="Budget friendly destinations" class="bc-image">
+                        <div class="bc-overlay"></div>
+                        <div class="bc-badge">New</div>
+                    </div>
+                    <div class="bc-content">
+                        <div class="bc-meta"><i class="far fa-clock"></i><span>November 21, 2025</span></div>
+                        <h4 class="bc-title">Best Budget Friendly Study Destinations Worldwide</h4>
+                        <a class="bc-readmore" href="#"><i class="far fa-file-alt"></i> Read more</a>
+                    </div>
+                </article>
+            </div>
+
+            <div id="bcDots" class="bc-dots" role="tablist" aria-label="Blog pagination"></div>
+
+            <button id="bcScrollRight" class="bc-scroll-btn bc-scroll-right" aria-label="Scroll blog right">&#8250;</button>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <!-- Heading -->
+            <div class="faq-header text-center mb-5">
+                <div class="position-relative w-fit mx-auto mb-3">
+                    <h3 class="why-heading-text why-heading-top">
+                        Frequently Asked Questions
+                    </h3>
                 </div>
+                <p class="faq-description">
+                    Find answers to common questions about Canadian immigration, study
+                    permits, work visas, and our services.
+                </p>
+            </div>
 
-                <!-- Right: Flip cards -->
-                <div class="why-right d-flex align-items-center justify-content-center">
-                    <div class="why-feature-stack flip-stack-v2">
-                        <div class="flip-container card-top" tabindex="0" aria-label="Pay After An Approval">
-                            <div class="flipper">
-                                <div class="front">
-                                    <div class="card-icon" aria-hidden="true">
-                                        <i class="bi bi-journal-text fs-3" aria-hidden="true"></i>
-                                        <span class="visually-hidden">Blog and Articles</span>
-                                    </div>
-                                    <div class="card-title">Blog &amp; Articles</div>
-                                    <div class="card-desc">Stay informed with the latest immigration news, tips, and guides.</div>
-                                </div>
-                                <div class="back">
-                                    <div class="card-title">Blog &amp; Articles</div>
-                                    <div class="card-desc">Stay informed with the latest immigration news, tips, and guides.</div>
-                                    <a class="card-readmore" href="press-media.html" aria-label="Read more about Blog and Articles">READ MORE <span class="arrow">→</span></a>
-                                </div>
+            <!-- FAQ Accordion -->
+            <div class="faq-accordion-wrapper">
+                <div class="accordion" id="faqAccordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="accordion-item faq-item" data-faq="1">
+                        <h2 class="accordion-header" id="faqHeading1">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faqCollapse1"
+                                    aria-expanded="false"
+                                    aria-controls="faqCollapse1">
+                                <span class="faq-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
+                                <span class="faq-question">What is an R.C.I.C. and why should I use one?</span>
+                                <span class="faq-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="faqCollapse1"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="faqHeading1"
+                             data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                An R.C.I.C. (Regulated Canadian Immigration Consultant) is a
+                                licensed professional authorized by the Immigration
+                                Consultants of Canada Regulatory Council (ICCRC) to provide
+                                immigration advice and represent clients. Using an R.C.I.C.
+                                ensures you receive expert guidance, accurate information,
+                                and professional representation throughout your immigration
+                                process, significantly increasing your chances of success.
                             </div>
                         </div>
+                    </div>
 
-                        <div class="flip-container card-center" tabindex="0" aria-label="Licenced RCIC Portal">
-                            <div class="flipper">
-                                <div class="front">
-                                    <div class="card-icon" aria-hidden="true">
-                                        <i class="bi bi-question-circle fs-3" aria-hidden="true"></i>
-                                        <span class="visually-hidden">Frequently Asked Questions</span>
-                                    </div>
-                                    <div class="card-title">FAQs</div>
-                                    <div class="card-desc">Find answers to commonly asked questions about immigration processes.</div>
-                                </div>
-                                <div class="back">
-                                    <div class="card-title">FAQs</div>
-                                    <div class="card-desc">Find answers to commonly asked questions about immigration processes.</div>
-                                    <a class="card-readmore" href="privacy-policy.html" aria-label="Read more FAQs">READ MORE <span class="arrow">→</span></a>
-                                </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="accordion-item faq-item" data-faq="2">
+                        <h2 class="accordion-header" id="faqHeading2">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faqCollapse2"
+                                    aria-expanded="false"
+                                    aria-controls="faqCollapse2">
+                                <span class="faq-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
+                                <span class="faq-question">How long does the visa application process take?</span>
+                                <span class="faq-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="faqCollapse2"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="faqHeading2"
+                             data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Processing times vary depending on the type of visa or
+                                permit you're applying for, your country of residence, and
+                                current IRCC processing times. Generally, study permits take
+                                4-6 weeks, work permits 8-12 weeks, and permanent residence
+                                applications can take 6-18 months. Our consultants will
+                                provide you with current processing times and help expedite
+                                your application where possible.
                             </div>
                         </div>
+                    </div>
 
-                        <div class="flip-container card-bottom" tabindex="0" aria-label="24/7 Global Platform">
-                            <div class="flipper">
-                                <div class="front">
-                                    <div class="card-icon" aria-hidden="true">
-                                        <i class="bi bi-calendar-event fs-3" aria-hidden="true"></i>
-                                        <span class="visually-hidden">Webinars and Events</span>
-                                    </div>
-                                    <div class="card-title">Webinars &amp; Events</div>
-                                    <div class="card-desc">Join our expert-led sessions for in-depth insights and live Q&amp;A.</div>
-                                </div>
-                                <div class="back">
-                                    <div class="card-title">Webinars &amp; Events</div>
-                                    <div class="card-desc">Join our expert-led sessions for in-depth insights and live Q&amp;A.</div>
-                                    <a class="card-readmore" href="contact.html" aria-label="Read more about Webinars and Events">READ MORE <span class="arrow">→</span></a>
-                                </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="accordion-item faq-item" data-faq="3">
+                        <h2 class="accordion-header" id="faqHeading3">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faqCollapse3"
+                                    aria-expanded="false"
+                                    aria-controls="faqCollapse3">
+                                <span class="faq-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
+                                <span class="faq-question">
+                                    What documents do I need to apply for a study
+                                    permit?
+                                </span>
+                                <span class="faq-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="faqCollapse3"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="faqHeading3"
+                             data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Required documents typically include: a valid passport,
+                                letter of acceptance from a Designated Learning Institution
+                                (DLI), proof of financial support, medical examination
+                                results (if required), police clearance certificate,
+                                statement of purpose, and passport-sized photographs. Our
+                                R.C.I.C. consultants will provide you with a complete
+                                checklist tailored to your specific situation.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="accordion-item faq-item" data-faq="4">
+                        <h2 class="accordion-header" id="faqHeading4">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faqCollapse4"
+                                    aria-expanded="false"
+                                    aria-controls="faqCollapse4">
+                                <span class="faq-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
+                                <span class="faq-question">Can I work while studying in Canada?</span>
+                                <span class="faq-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="faqCollapse4"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="faqHeading4"
+                             data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, most international students with a valid study permit
+                                can work up to 20 hours per week during regular academic
+                                sessions and full-time during scheduled breaks. However,
+                                your study permit must explicitly allow you to work, and you
+                                must be enrolled full-time at a Designated Learning
+                                Institution. Our consultants can help you understand your
+                                work eligibility and apply for the necessary permits.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="accordion-item faq-item" data-faq="5">
+                        <h2 class="accordion-header" id="faqHeading5">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faqCollapse5"
+                                    aria-expanded="false"
+                                    aria-controls="faqCollapse5">
+                                <span class="faq-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
+                                <span class="faq-question">
+                                    What is the Express Entry system and how does it
+                                    work?
+                                </span>
+                                <span class="faq-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="faqCollapse5"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="faqHeading5"
+                             data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Express Entry is Canada's online system for managing
+                                applications for permanent residence from skilled workers.
+                                It uses a points-based system (Comprehensive Ranking System)
+                                to rank candidates based on factors like age, education,
+                                work experience, language proficiency, and adaptability.
+                                Candidates with the highest scores receive Invitations to
+                                Apply (ITAs) for permanent residence. Our R.C.I.C.
+                                consultants can help you create a strong Express Entry
+                                profile and maximize your CRS score.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="accordion-item faq-item" data-faq="6">
+                        <h2 class="accordion-header" id="faqHeading6">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faqCollapse6"
+                                    aria-expanded="false"
+                                    aria-controls="faqCollapse6">
+                                <span class="faq-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
+                                <span class="faq-question">How much does it cost to use Canboards services?</span>
+                                <span class="faq-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                        </h2>
+                        <div id="faqCollapse6"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="faqHeading6"
+                             data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Our service fees vary depending on the type of application
+                                and level of service required. We offer transparent pricing
+                                with no hidden fees. Basic consultation services start at
+                                affordable rates, while comprehensive application packages
+                                include document review, application preparation, and
+                                ongoing support. Contact us for a personalized quote based
+                                on your specific immigration needs.
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /Right -->
             </div>
         </div>
-    </div>
+    </section>
 
     <section class="news-section">
         <div class="news-container">
@@ -2273,11 +3707,45 @@ EXTRA CSS
                 </div>
             </div>
 
+            <div class="news-dots" id="newsDots" role="tablist" aria-label="News pagination"></div>
+
             <button class="scroll-btn right-btn" id="scrollRight">&#8250;</button>
         </div>
     </section>
 
-    <div id="footer-spacer" style="background-color: #F8FAFC;"></div>
+    <!-- Let's Start Your Canadian Journey Section -->
+    <section class="journey-section">
+        <div class="journey-dark-strip"></div>
+        <div class="container position-relative">
+            <div class="journey-content-wrapper">
+                <div class="row align-items-center position-relative">
+                    <!-- Left Side: Content -->
+                    <div class="col-lg-8 col-md-12 journey-text-col">
+                        <div class="journey-text-content">
+                            <h2 class="journey-title">Let's Start Your Canadian Journey</h2>
+                            <p class="journey-desc">
+                                Join hundreds of successful immigrants who chose Canboards for their seamless transition to Canada.
+                            </p>
+                            <div class="journey-cta-wrapper">
+                                <a href="https://canada.teqcoder.com/client/register" class="journey-cta-btn">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Image -->
+                    <div class="col-lg-4 col-md-12 journey-image-col">
+                        <div class="journey-image-wrapper">
+                            <img src="images/cta-img01.png"
+                                 alt="Student with smartphone"
+                                 class="journey-main-image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-spacer" style="background-color: #23235b;"></div>
 
     <footer id="site-footer" class="mt-5">
         <div class="container py-5" id="footer-content">
@@ -2694,64 +4162,78 @@ EXTRA CSS
         // Stats Counter Animation Controller - Repeats on scroll
         (function () {
             const statsSection = document.querySelector('.stats-section');
-            const statNumbers = document.querySelectorAll('.stat-number');
+            if (!statsSection) return;
 
-            // Function to animate counters
-            function animateCounters() {
-                statNumbers.forEach(stat => {
-                    const target = parseInt(stat.getAttribute('data-target'));
-                    const suffix = stat.getAttribute('data-suffix') || '';
-                    const duration = 2000; // 2 seconds
-                    const increment = target / (duration / 16); // 60fps
-                    let current = 0;
+            const statsHeader = statsSection.querySelector('.stats-header');
+            const statsDescription = statsSection.querySelector('.stats-description');
+            const statItems = statsSection.querySelectorAll('.stat-item');
+            const statNumbers = statsSection.querySelectorAll('.stat-number');
+            let hasAnimated = false;
 
-                    // Reset to 0 first
-                    stat.textContent = '0';
+            // Counter animation function
+            function animateCounter(element) {
+                const target = parseInt(element.getAttribute('data-target')) || 0;
+                const suffix = element.getAttribute('data-suffix') || '';
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
 
-                    const updateCounter = () => {
-                        current += increment;
-                        if (current < target) {
-                            stat.textContent = Math.floor(current) + suffix;
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            stat.textContent = target + suffix;
-                        }
-                    };
-
-                    // Start counting after a small delay
-                    setTimeout(() => {
-                        updateCounter();
-                    }, 200);
-                });
-            }
-
-            // Function to reset counters
-            function resetCounters() {
-                statNumbers.forEach(stat => {
-                    stat.textContent = '0';
-                });
-            }
-
-            // Intersection Observer to detect when section is in view
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Section is in view - play animation
-                        animateCounters();
-                    } else {
-                        // Section is out of view - reset counters
-                        resetCounters();
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
                     }
-                });
-            }, {
-                threshold: 0.3, // Trigger when 30% of section is visible
-                rootMargin: '0px'
-            });
-
-            // Start observing the stats section
-            if (statsSection) {
-                statsObserver.observe(statsSection);
+                    element.textContent = Math.floor(current) + suffix;
+                }, 16);
             }
+
+            // Intersection Observer
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            hasAnimated = true;
+
+                            // Animate header
+                            if (statsHeader) {
+                                setTimeout(() => {
+                                    statsHeader.classList.add('animate-in');
+                                }, 100);
+                            }
+
+                            // Animate description
+                            if (statsDescription) {
+                                setTimeout(() => {
+                                    statsDescription.classList.add('animate-in');
+                                }, 300);
+                            }
+
+                            // Animate stat items with stagger
+                            statItems.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.classList.add('animate-in');
+                                }, 500 + (index * 150)); // Start after description, stagger 150ms
+                            });
+
+                            // Animate counters after items appear
+                            statNumbers.forEach((stat, index) => {
+                                setTimeout(() => {
+                                    animateCounter(stat);
+                                }, 1000 + (index * 200)); // Start after items, stagger 200ms
+                            });
+
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -50px 0px'
+                }
+            );
+
+            observer.observe(statsSection);
         })();
     </script>
     <script>
@@ -2880,6 +4362,394 @@ EXTRA CSS
 
             // Labels will automatically animate with icons via CSS
             // (when .map-icon-animate class is added by the existing script)
+        })();
+    </script>
+    <script>
+        (function () {
+            const wrapper = document.getElementById('newsWrapper');
+            if (!wrapper) return;
+
+            function replaceButton(id) {
+                const old = document.getElementById(id);
+                if (!old) return null;
+                const clone = old.cloneNode(true);
+                old.parentNode.replaceChild(clone, old);
+                return clone;
+            }
+            const leftBtn = replaceButton('scrollLeft');
+            const rightBtn = replaceButton('scrollRight');
+            const dotsContainer = document.getElementById('newsDots');
+            if (!dotsContainer) return;
+
+            function getGap() {
+                const style = window.getComputedStyle(wrapper);
+                return parseFloat(style.columnGap || style.gap || 0) || 0;
+            }
+
+            function getCardWidth() {
+                const card = wrapper.querySelector('.news-card');
+                if (!card) return wrapper.clientWidth;
+                return card.getBoundingClientRect().width;
+            }
+
+            function getVisibleCount(cardWidth, gap) {
+                // account for fractional pixels and small layout differences with an epsilon
+                const total = cardWidth + gap;
+                if (!total || total <= 0) return 1;
+                const visible = Math.floor((wrapper.clientWidth + gap + 0.5) / total);
+                return Math.max(1, visible);
+            }
+
+            function clampScroll(x) {
+                const max = Math.max(0, wrapper.scrollWidth - wrapper.clientWidth);
+                return Math.max(0, Math.min(x, max));
+            }
+
+            function buildDots() {
+                const cards = wrapper.querySelectorAll('.news-card');
+                // If there are no cards, clear and hide
+                if (!cards.length) {
+                    dotsContainer.innerHTML = '';
+                    dotsContainer.style.display = 'none';
+                    if (leftBtn) leftBtn.disabled = true;
+                    if (rightBtn) rightBtn.disabled = true;
+                    return;
+                }
+
+                // If there's no horizontal overflow, hide dots and disable arrows
+                // (use a small tolerance to avoid off-by-one from fractional pixels)
+                if (wrapper.scrollWidth <= wrapper.clientWidth + 1) {
+                    dotsContainer.innerHTML = '';
+                    dotsContainer.style.display = 'none';
+                    if (leftBtn) leftBtn.disabled = true;
+                    if (rightBtn) rightBtn.disabled = true;
+                    return;
+                } else {
+                    dotsContainer.style.display = '';
+                }
+
+                const cardWidth = getCardWidth();
+                const gap = getGap();
+                const visibleCount = getVisibleCount(cardWidth, gap);
+                const pages = Math.max(1, Math.ceil(cards.length / visibleCount));
+
+                // Rebuild dots
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < pages; i++) {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'news-dot';
+                    dot.setAttribute('role', 'tab');
+                    dot.setAttribute('aria-label', `Show page ${i + 1} of ${pages}`);
+                    dot.dataset.page = i;
+                    dot.addEventListener('click', () => {
+                        const target = clampScroll(i * visibleCount * (cardWidth + gap));
+                        wrapper.scrollTo({ left: target, behavior: 'smooth' });
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+
+                updateActiveDot();
+            }
+
+            let rafPending = false;
+            function updateActiveDot() {
+                if (rafPending) return;
+                rafPending = true;
+                requestAnimationFrame(() => {
+                    const dots = dotsContainer.querySelectorAll('.news-dot');
+                    // No dots => nothing to update
+                    if (!dots.length) {
+                        // Ensure arrows reflect no-scroll state
+                        if (leftBtn) leftBtn.disabled = true;
+                        if (rightBtn) rightBtn.disabled = true;
+                        rafPending = false;
+                        return;
+                    }
+
+                    const cardWidth = getCardWidth();
+                    const gap = getGap();
+                    const visibleCount = getVisibleCount(cardWidth, gap);
+                    const pages = Math.max(1, Math.ceil(wrapper.querySelectorAll('.news-card').length / visibleCount));
+                    const pageWidth = visibleCount * (cardWidth + gap) || wrapper.clientWidth;
+
+                    // Use center-based rounding so partial scroll selects nearest page
+                    const raw = pageWidth ? (wrapper.scrollLeft + pageWidth / 2) / pageWidth : 0;
+                    const pageIndex = Math.min(pages - 1, Math.max(0, Math.floor(raw)));
+
+                    dots.forEach((d, idx) => {
+                        d.classList.toggle('active', idx === pageIndex);
+                        d.setAttribute('aria-selected', idx === pageIndex ? 'true' : 'false');
+                    });
+
+                    if (leftBtn) leftBtn.disabled = wrapper.scrollLeft <= 5;
+                    if (rightBtn) {
+                        const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+                        rightBtn.disabled = wrapper.scrollLeft + 5 >= maxScroll;
+                    }
+
+                    rafPending = false;
+                });
+            }
+
+            function scrollByPage(direction = 1) {
+                const cardWidth = getCardWidth();
+                const gap = getGap();
+                const visibleCount = getVisibleCount(cardWidth, gap);
+                const delta = visibleCount * (cardWidth + gap) * direction;
+                const target = clampScroll(wrapper.scrollLeft + delta);
+                wrapper.scrollTo({ left: target, behavior: 'smooth' });
+            }
+
+            if (leftBtn) leftBtn.addEventListener('click', () => scrollByPage(-1));
+            if (rightBtn) rightBtn.addEventListener('click', () => scrollByPage(1));
+            wrapper.addEventListener('scroll', updateActiveDot, { passive: true });
+
+            let resizeDebounce;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeDebounce);
+                resizeDebounce = setTimeout(buildDots, 120);
+            });
+
+            const mo = new MutationObserver(() => buildDots());
+            mo.observe(wrapper, { childList: true, subtree: true });
+
+            // Init
+            buildDots();
+        })();
+    </script>
+    <script>
+        (function () {
+            const wrapper = document.getElementById('bcWrapper');
+            if (!wrapper) return;
+
+            function replaceButton(id) {
+                const old = document.getElementById(id);
+                if (!old) return null;
+                const clone = old.cloneNode(true);
+                old.parentNode.replaceChild(clone, old);
+                return clone;
+            }
+
+            const leftBtn = replaceButton('bcScrollLeft');
+            const rightBtn = replaceButton('bcScrollRight');
+            const dotsContainer = document.getElementById('bcDots');
+            if (!dotsContainer) return;
+
+            function getGap() {
+                const style = window.getComputedStyle(wrapper);
+                return parseFloat(style.columnGap || style.gap || 0) || 0;
+            }
+
+            function getCardWidth() {
+                const card = wrapper.querySelector('.bc-card');
+                if (!card) return wrapper.clientWidth;
+                return card.getBoundingClientRect().width;
+            }
+
+            function getVisibleCount(cardWidth, gap) {
+                const total = cardWidth + gap;
+                if (!total || total <= 0) return 1;
+                return Math.max(1, Math.floor((wrapper.clientWidth + gap + 0.5) / total));
+            }
+
+            function clampScroll(x) {
+                const max = Math.max(0, wrapper.scrollWidth - wrapper.clientWidth);
+                return Math.max(0, Math.min(x, max));
+            }
+
+            function buildDots() {
+                const cards = wrapper.querySelectorAll('.bc-card');
+                if (!cards.length) {
+                    dotsContainer.innerHTML = '';
+                    dotsContainer.style.display = 'none';
+                    if (leftBtn) leftBtn.disabled = true;
+                    if (rightBtn) rightBtn.disabled = true;
+                    return;
+                }
+
+                // Hide controls if no overflow
+                if (wrapper.scrollWidth <= wrapper.clientWidth + 1) {
+                    dotsContainer.innerHTML = '';
+                    dotsContainer.style.display = 'none';
+                    if (leftBtn) leftBtn.disabled = true;
+                    if (rightBtn) rightBtn.disabled = true;
+                    return;
+                } else {
+                    dotsContainer.style.display = '';
+                }
+
+                const cardWidth = getCardWidth();
+                const gap = getGap();
+                const visible = getVisibleCount(cardWidth, gap);
+                const pages = Math.max(1, Math.ceil(cards.length / visible));
+
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < pages; i++) {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'bc-dot';
+                    dot.setAttribute('role', 'tab');
+                    dot.setAttribute('aria-label', `Show page ${i + 1} of ${pages}`);
+                    dot.dataset.page = i;
+                    dot.addEventListener('click', () => {
+                        const target = clampScroll(i * visible * (cardWidth + gap));
+                        wrapper.scrollTo({ left: target, behavior: 'smooth' });
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+
+                updateActiveDot();
+            }
+
+            let rafPending = false;
+            function updateActiveDot() {
+                if (rafPending) return;
+                rafPending = true;
+                requestAnimationFrame(() => {
+                    const dots = dotsContainer.querySelectorAll('.bc-dot');
+                    if (!dots.length) {
+                        if (leftBtn) leftBtn.disabled = true;
+                        if (rightBtn) rightBtn.disabled = true;
+                        rafPending = false;
+                        return;
+                    }
+
+                    const cardWidth = getCardWidth();
+                    const gap = getGap();
+                    const visible = getVisibleCount(cardWidth, gap);
+                    const pages = Math.max(1, Math.ceil(wrapper.querySelectorAll('.bc-card').length / visible));
+                    const pageWidth = visible * (cardWidth + gap) || wrapper.clientWidth;
+                    const raw = pageWidth ? (wrapper.scrollLeft + pageWidth / 2) / pageWidth : 0;
+                    const pageIndex = Math.min(pages - 1, Math.max(0, Math.floor(raw)));
+
+                    dots.forEach((d, idx) => {
+                        d.classList.toggle('bc-active', idx === pageIndex);
+                        d.setAttribute('aria-selected', idx === pageIndex ? 'true' : 'false');
+                    });
+
+                    if (leftBtn) leftBtn.disabled = wrapper.scrollLeft <= 5;
+                    if (rightBtn) {
+                        const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+                        rightBtn.disabled = wrapper.scrollLeft + 5 >= maxScroll;
+                    }
+
+                    rafPending = false;
+                });
+            }
+
+            function scrollByPage(direction = 1) {
+                const cardWidth = getCardWidth();
+                const gap = getGap();
+                const visible = getVisibleCount(cardWidth, gap);
+                const delta = visible * (cardWidth + gap) * direction;
+                const target = clampScroll(wrapper.scrollLeft + delta);
+                wrapper.scrollTo({ left: target, behavior: 'smooth' });
+            }
+
+            if (leftBtn) leftBtn.addEventListener('click', () => scrollByPage(-1));
+            if (rightBtn) rightBtn.addEventListener('click', () => scrollByPage(1));
+            wrapper.addEventListener('scroll', updateActiveDot, { passive: true });
+
+            let resizeDebounce;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeDebounce);
+                resizeDebounce = setTimeout(buildDots, 120);
+            });
+
+            const mo = new MutationObserver(() => buildDots());
+            mo.observe(wrapper, { childList: true, subtree: true });
+
+            // Init
+            buildDots();
+        })();
+    </script>
+    <script>
+        (function () {
+            const faqSection = document.querySelector('.faq-section');
+            if (!faqSection) return;
+
+            const header = faqSection.querySelector('.faq-header');
+            const items = Array.from(faqSection.querySelectorAll('.faq-item'));
+
+            // If header image path is wrong (lowercase), attempt a safe fix
+            const hdrImg = faqSection.querySelector('.why-heading-icon');
+            if (hdrImg && hdrImg.src && hdrImg.src.indexOf('/images/') !== -1) {
+                hdrImg.src = hdrImg.src.replace('/images/', '/Images/');
+            }
+
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    // reveal header immediately
+                    if (header) header.classList.add('animate-in');
+
+                    // stagger reveal of faq items (similar feel to map icons)
+                    items.forEach((item, i) => {
+                        // small incremental delay so they cascade upward
+                        window.setTimeout(() => item.classList.add('animate-in'), i * 120);
+                    });
+
+                    // only run once
+                    obs.unobserve(entry.target);
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -10% 0px'
+            });
+
+            io.observe(faqSection);
+        })();
+    </script>
+    <script>
+        // Journey Section Animation
+        (function () {
+            const journeySection = document.querySelector('.journey-section');
+            if (!journeySection) return;
+
+            const title = journeySection.querySelector('.journey-title');
+            const desc = journeySection.querySelector('.journey-desc');
+            const ctaWrapper = journeySection.querySelector('.journey-cta-wrapper');
+            const image = journeySection.querySelector('.journey-main-image');
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            // Animate text elements
+                            if (title) {
+                                setTimeout(() => {
+                                    title.classList.add('animate-in');
+                                }, 100);
+                            }
+                            if (desc) {
+                                setTimeout(() => {
+                                    desc.classList.add('animate-in');
+                                }, 300);
+                            }
+                            if (ctaWrapper) {
+                                setTimeout(() => {
+                                    ctaWrapper.classList.add('animate-in');
+                                }, 500);
+                            }
+                            // Animate image
+                            if (image) {
+                                setTimeout(() => {
+                                    image.classList.add('animate-in');
+                                }, 200);
+                            }
+
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -50px 0px'
+                }
+            );
+
+            observer.observe(journeySection);
         })();
     </script>
 </body>
