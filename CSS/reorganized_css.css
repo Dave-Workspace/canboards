@@ -4123,3 +4123,24 @@ body:not(.loading) #fws-panel-aside {
     width: 100%;
     height: auto;
 }
+
+/* Bigger titles for Why Canboards flip cards */
+.why-copy-flip .flip-container .front h3,
+.why-copy-flip .flip-container .back h3 {
+    font-size: clamp(20px, 3.8vw, 25px); /* much larger, responsive */
+    font-weight: 700;
+    color: #2d3958; /* keep brand dark blue */
+    margin: 0;
+    text-align: center;
+}
+
+/* Ensure later card-set also looks larger and consistent */
+.why-copy-flip .card-title {
+    font-size: clamp(22px, 2.8vw, 36px);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.why-copy-flip .card-desc {
+    font-size: clamp(14px, 1.6vw, 18px);
+}
