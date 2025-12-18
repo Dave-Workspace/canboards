@@ -3871,8 +3871,8 @@ body:not(.loading) #fws-panel-aside {
 }
 
 .news-heading {
-    font-size: clamp(45px, 6vw, 48px);
-    font-weight: 500;
+    font-size: clamp(45px, 6vw, 3em);
+    font-weight: 700;
     color: #2D3958;
     margin-bottom: 12px;
 }
