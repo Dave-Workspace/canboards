@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
     startTyping(document.getElementById('study-anim'), 'Study Services', 90, 1800);
     startTyping(document.getElementById('card-anim'), 'Pay only if your visa is approved....', 90, 1800);
 
+    startTyping(document.getElementById('can-services-anim'), 'Can Services', 90, 1800);
+
     // Subtle cursor-direction-following motion for hero image boxes (index hero tiles) + Work hero floater
     (function initHeroParallax() {
         const items = [
