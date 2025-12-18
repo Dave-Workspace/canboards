@@ -3669,7 +3669,7 @@
                 }
 
                 /* =====================
-           PANEL SECTION
+           PANEL SECTION - UPDATED COLORS
         ===================== */
 
                 /* Container */
@@ -3681,10 +3681,9 @@
                     gap: 10px;
                 }
 
-                /* Panel */
+                /* Panel base styles */
                 .panel {
                     flex: 1;
-                    background: #222;
                     color: #fff;
                     border-radius: 10px;
                     cursor: pointer;
@@ -3693,11 +3692,38 @@
                     display: flex;
                 }
 
-                /* Left column (always visible) */
+                    /* First panel - Red/Crimson theme */
+                    .panel:nth-child(1) {
+                        background: #b91c4a; /* Darker red for inactive */
+                    }
+
+                        .panel:nth-child(1).active {
+                            background: #c9356e; /* Brighter red/pink when active */
+                        }
+
+                    /* Second panel - Purple theme */
+                    .panel:nth-child(2) {
+                        background: #6b2c91; /* Darker purple for inactive */
+                    }
+
+                        .panel:nth-child(2).active {
+                            background: #7b3da1; /* Brighter purple when active */
+                        }
+
+                    /* Third panel - Green/Teal theme */
+                    .panel:nth-child(3) {
+                        background: #0d7a6a; /* Darker teal for inactive */
+                    }
+
+                        .panel:nth-child(3).active {
+                            background: #0f9884; /* Brighter teal when active */
+                        }
+
+                /* Left column (always visible) - darker shade */
                 .panel-left {
                     width: 120px;
                     min-width: 120px;
-                    background: rgba(0,0,0,0.3);
+                    background: rgba(0,0,0,0.3); /* Darker overlay */
                     padding: 20px;
                     display: flex;
                     flex-direction: column;
@@ -3708,15 +3734,20 @@
                 /* Right column */
                 .panel-right {
                     flex: 1;
-                    padding: 20px;
+                    padding: 32px;
                     opacity: 0;
                     transition: opacity 0.4s ease;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.75rem;
+                    text-align: center;
                 }
 
                 /* Active panel (desktop only) */
                 .panel.active {
                     flex: 5;
-                    background: #4caf50;
                 }
 
                     .panel.active .panel-right {
@@ -3731,6 +3762,21 @@
                 .panel-left h2 {
                     font-size: 18px;
                     text-align: center;
+                }
+
+                .panel-right .panel-title {
+                    font-size: clamp(1.4rem, 2vw, 1.9rem);
+                    font-weight: 600;
+                    text-align: center;
+                    margin-bottom: 0.75rem;
+                    color: inherit;
+                }
+
+                .panel-right p {
+                    font-size: clamp(1rem, 1.5vw, 1.2rem);
+                    line-height: 1.7;
+                    text-align: center;
+                    margin-bottom: 0;
                 }
 
                 /* =====================
@@ -3748,65 +3794,26 @@
                         cursor: default;
                     }
 
-                        .panel,
-                        .panel.active {
-                            background: #4caf50;
+                        /* Show active colors on mobile */
+                        .panel:nth-child(1),
+                        .panel:nth-child(1).active {
+                            background: #c9356e;
+                        }
+
+                        .panel:nth-child(2),
+                        .panel:nth-child(2).active {
+                            background: #7b3da1;
+                        }
+
+                        .panel:nth-child(3),
+                        .panel:nth-child(3).active {
+                            background: #0f9884;
                         }
 
                     .panel-right {
                         opacity: 1 !important;
                     }
                 }
-
-                /* Left column (always visible) */
-                .panel-left {
-                    width: 120px;
-                    min-width: 120px;
-                    background: rgba(0,0,0,0.3);
-                    padding: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                /* Right column */
-                .panel-right {
-                    flex: 1;
-                    padding: 20px;
-                    opacity: 0;
-                    transition: opacity 0.4s ease;
-                }
-
-                    .panel-right .panel-title {
-                        font-size: clamp(1.4rem, 2vw, 1.9rem);
-                        font-weight: 600;
-                        text-align: center;
-                        margin-bottom: 0.75rem;
-                        color: inherit;
-                    }
-
-                    .panel-right p {
-                        font-size: clamp(1rem, 1.5vw, 1.2rem);
-                        line-height: 1.7;
-                        text-align: center;
-                        margin-bottom: 0;
-                    }
-
-                /* Right column */
-                .panel-right {
-                    flex: 1;
-                    padding: 32px;
-                    opacity: 0;
-                    transition: opacity 0.4s ease;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 0.75rem;
-                    text-align: center;
-                }
-
                 /* =====================
            GAP FIXES SECTION
         ===================== */
@@ -3814,7 +3821,6 @@
                 .rcic-line-process {
                     min-height: auto;
                     padding: 30px 5% 50px;
-                    margin-top: -90px;
                 }
 
                 .process .pl1234x-line-process.site-section {
@@ -3848,15 +3854,141 @@
                     margin-bottom: 0;
                 }
 
-                .rcic-line-process {
-                    min-height: auto;
-                    padding: 30px 5% 40px;
-                    margin-top: -90px;
-                }
-
                 .map-section.site-section {
                     margin-top: 3rem;
                     margin-bottom: 2rem;
+                }
+
+                .rcic-line-process {
+                    min-height: auto;
+                    padding: 30px 5% 40px;
+                    margin-top: 2rem; /* restores spacing without overlap */
+                }
+
+                .process .pl1234x-line-process.site-section {
+                    padding-bottom: 80px;
+                    margin-bottom: 3.5rem !important;
+                }
+
+                @media (max-width: 991px) {
+                    .process .pl1234x-line-process.site-section {
+                        padding-bottom: 140px;
+                        margin-bottom: 5rem !important;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .process .pl1234x-line-process.site-section {
+                        padding-bottom: 200px;
+                        margin-bottom: 7rem !important;
+                    }
+                }
+
+                .rcic-line-process {
+                    min-height: auto;
+                    padding: 30px 5% 40px;
+                }
+
+                .process .pl1234x-line-process.site-section {
+                    padding-bottom: 80px;
+                    margin-bottom: 3.5rem !important;
+                    margin-top: 0 !important; /* Add this to remove any inherited negative margin */
+                }
+
+                /* FIX THE 1234 PROCESS OVERLAP - Replace existing .pl1234x-line-process rules */
+                .pl1234x-line-process {
+                    background: #fff;
+                    padding: 60px 5% 60px; /* Reduced bottom padding */
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 0 !important; /* Remove any top margin */
+                }
+
+                .pl1234x-timeline-container {
+                    position: relative;
+                    width: 100%;
+                    max-width: 1000px;
+                    padding: 0 40px; /* Remove excessive top/bottom padding */
+                }
+
+                /* Reduce the height of the timeline steps container */
+                .pl1234x-timeline-steps {
+                    position: relative;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    height: 300px; /* Reduced from 400px */
+                    padding-top: 100px; /* Reduced from 120px */
+                    padding-bottom: 100px; /* Reduced from 120px */
+                    z-index: 3;
+                }
+
+                /* Adjust image wrapper position to compensate */
+                .pl1234x-node-image-wrapper {
+                    position: absolute;
+                    top: -120px; /* Reduced from -140px */
+                    width: 120px;
+                    height: 120px;
+                    opacity: 0.4;
+                    transform: scale(0.9);
+                    transition: all 0.5s ease;
+                    border-radius: 16px;
+                    background: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                    padding: 20px;
+                }
+
+                /* Add spacing between RCIC section and 1234 timeline */
+                .rcic-line-process {
+                    min-height: auto;
+                    padding: 30px 5% 40px;
+                    margin-top: 2rem;
+                    margin-bottom: 3rem !important; /* Add bottom margin for separation */
+                }
+
+                /* Ensure proper spacing on the process wrapper */
+                .process .pl1234x-line-process.site-section {
+                    padding-bottom: 60px; /* Reduced from 80px */
+                    margin-bottom: 3rem !important;
+                    margin-top: 0 !important;
+                }
+
+                /* Mobile adjustments */
+                @media (max-width: 991px) {
+                    .pl1234x-timeline-steps {
+                        height: 280px;
+                        padding-top: 80px;
+                        padding-bottom: 80px;
+                    }
+
+                    .process .pl1234x-line-process.site-section {
+                        padding-bottom: 100px;
+                        margin-bottom: 4rem !important;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .pl1234x-timeline-container {
+                        padding: 40px 20px; /* Reduced from 80px 20px */
+                    }
+
+                    .pl1234x-timeline-steps {
+                        flex-direction: column;
+                        height: auto;
+                        gap: 100px; /* Reduced from 120px */
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+
+                    .process .pl1234x-line-process.site-section {
+                        padding-bottom: 140px;
+                        margin-bottom: 5rem !important;
+                    }
                 }
     </style>
 </head>
@@ -4262,7 +4394,7 @@
 
             <div class="panel">
                 <div class="panel-left">
-                    <div the panel-icon">🚀</div>
+                    <div class="panel-icon">🚀</div>
                 </div>
                 <div class="panel-right">
                     <h3 class="panel-title">Peace of Mind</h3>
