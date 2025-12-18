@@ -134,7 +134,7 @@
 
         /* Make the Why Canboards heading image larger */
         .why-heading-img {
-            max-width: 350px; /* Increased from default */
+            max-width: 300px; /* Increased from default */
             width: 100%;
             height: auto;
         }
@@ -176,6 +176,7 @@
             height: 100%;
             transform-style: preserve-3d;
             transition: transform 0.8s ease-in-out;
+            margin-bottom: -10px;
         }
 
         /* Hover-driven flip (desktop/laptop only) */
@@ -1001,8 +1002,8 @@
         }
 
             .rcic-line-process h2 {
-                color: #333;
-                font-size: 2.5em;
+                color: #2b3959;
+                font-size: 3em;
                 margin-bottom: 60px;
                 text-align: center;
             }
@@ -1145,7 +1146,7 @@
 
         .rcic-node-text h3 {
             margin: 0 0 8px 0;
-            font-size: 1.1em;
+            font-size: 1.4em;
             font-weight: 600;
             line-height: 1.3;
             color: #2c3e50;
@@ -1513,7 +1514,7 @@
 
         /* Increase card height on touch devices to accommodate description */
         .service-flip-link {
-            height: clamp(340px, 35vw, 380px);
+            height: 300px;
         }
 
         /* SERVICE FLIP SECTION - 2-2-1 Layout for medium screens */
@@ -1540,6 +1541,45 @@
                     margin-right: auto;
                 }
         }
+
+        .service-flip-back .service-flip-title {
+            font-size: clamp(1.9rem, 2.4vw, 2.4rem) !important; /* was ~1.5–1.8rem */
+            font-weight: 700 !important;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        .service-flip-back .service-flip-desc {
+            font-size: clamp(1.05rem, 1.4vw, 1.25rem) !important; /* was ~0.95rem */
+            line-height: 1.7 !important;
+            max-width: 92%;
+            margin-top: 0.25rem;
+        }
+
+        /* Front face mobile copy can also scale up slightly without affecting desktop */
+        @media (hover: none), (pointer: coarse) {
+            .service-flip-front .service-flip-title {
+                font-size: clamp(1.9rem, 6vw, 2.2rem) !important;
+                font-weight: 700 !important;
+            }
+
+            .service-flip-desc--mobile {
+                font-size: clamp(0.95rem, 3.5vw, 1.1rem) !important;
+                line-height: 1.6 !important;
+            }
+        }
+
+        /* Small phones: keep readability tight but avoid overflow */
+        @media (max-width: 575.98px) {
+            .service-flip-back .service-flip-title {
+                font-size: clamp(1.7rem, 7vw, 2rem) !important;
+            }
+
+            .service-flip-back .service-flip-desc {
+                font-size: clamp(1rem, 3.8vw, 1.15rem) !important;
+            }
+        }
+
 
         @media (min-width: 992px) and (max-width: 1999px) {
             .hero-img-box-2 {
@@ -3286,7 +3326,7 @@
             display: block;
             width: 100%;
             height: auto;
-            max-width: 420px; /* same comfortable desktop cap as stats */
+            max-width: 500px; /* same comfortable desktop cap as stats */
             margin: 0 auto;
         }
 
@@ -3312,6 +3352,319 @@
             .webinar-heading-img {
                 max-width: 260px; /* slight reduction to prevent overflow */
             }
+        }
+
+        /* ========================================
+         1234 LINE SECTION
+         ======================================== */
+        .pl1234x-line-process {
+            background: #fff;
+            padding: 60px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pl1234x-timeline-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 40px;
+        }
+
+        /* Base line (gray) */
+        .pl1234x-timeline-base {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+
+        /* Progress line — was green, now blue */
+        .pl1234x-timeline-progress {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #333379, #333379);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.6s ease-in-out, height 0.6s ease-in-out;
+            z-index: 2;
+            transform: translateY(-50%);
+        }
+
+        /* Steps row */
+        .pl1234x-timeline-steps {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 400px;
+            padding-top: 120px;
+            padding-bottom: 120px;
+            z-index: 3;
+        }
+
+        /* Nodes */
+        .pl1234x-timeline-node {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            z-index: 3;
+            background: transparent;
+            border: 0;
+            padding: 0;
+        }
+
+            /* Align ends to start/end like RCIC */
+            .pl1234x-timeline-node:first-child {
+                margin-left: -40px;
+            }
+
+            .pl1234x-timeline-node:last-child {
+                margin-right: -40px;
+            }
+
+        /* Image wrapper above the line */
+        .pl1234x-node-image-wrapper {
+            position: absolute;
+            top: -140px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.4;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+            border-radius: 16px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+        }
+
+        /* Active image glow — was green, now blue */
+        .pl1234x-timeline-node.active .pl1234x-node-image-wrapper {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 8px 30px rgba(51, 51, 121, 0.25);
+        }
+
+        /* Dot on the line (centered visually) */
+        .pl1234x-node-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            border: 3px solid #fff;
+            transition: all 0.4s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 4;
+            position: relative;
+            top: -2px;
+        }
+
+        /* Active/hover dot — was green, now blue */
+        .pl1234x-timeline-node.active .pl1234x-node-dot {
+            background: #333379;
+            transform: scale(1.4);
+            box-shadow: 0 4px 15px rgba(51, 51, 121, 0.5);
+        }
+
+        .pl1234x-timeline-node:hover .pl1234x-node-dot {
+            transform: scale(1.2);
+            background: #333379;
+        }
+
+        /* Text below the line */
+        .pl1234x-node-text {
+            position: absolute;
+            top: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+            min-width: 350px;
+            max-width: 400px;
+            transition: all 0.3s ease;
+        }
+
+        .pl1234x-timeline-node.active .pl1234x-node-text {
+            color: #333;
+        }
+
+        .pl1234x-node-text h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #2c3e50;
+        }
+
+        .pl1234x-timeline-node.active .pl1234x-node-text h3 {
+            font-weight: 700;
+        }
+
+        .pl1234x-node-text p {
+            margin: 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+            opacity: 0.85;
+            color: #666;
+        }
+
+        /* PNG/GIF sizing */
+        .pl1234x-node-img {
+            width: 80px !important;
+            height: 80px !important;
+            max-width: 80px !important;
+            max-height: 80px !important;
+            min-width: 80px !important;
+            min-height: 80px !important;
+            object-fit: contain !important;
+            object-position: center;
+            display: block;
+            transition: width 0.3s ease, height 0.3s ease;
+        }
+
+            .pl1234x-node-img.is-gif {
+                width: 150px !important;
+                height: 150px !important;
+                max-width: 150px !important;
+                max-height: 150px !important;
+                min-width: 150px !important;
+                min-height: 150px !important;
+            }
+
+        /* Mobile vertical layout */
+        @media (max-width: 768px) {
+            .pl1234x-timeline-container {
+                padding: 80px 20px;
+            }
+
+            .pl1234x-timeline-steps {
+                flex-direction: column;
+                height: auto;
+                gap: 120px;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .pl1234x-timeline-node {
+                width: 100%;
+            }
+
+                .pl1234x-timeline-node:first-child,
+                .pl1234x-timeline-node:last-child {
+                    margin: 0;
+                }
+
+            .pl1234x-timeline-base,
+            .pl1234x-timeline-progress {
+                width: 4px;
+                height: 100%;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .pl1234x-node-image-wrapper {
+                position: relative;
+                top: auto;
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
+            }
+
+            .pl1234x-node-text {
+                position: relative;
+                top: auto;
+                max-width: 80%;
+                min-width: auto;
+                margin-top: 20px;
+            }
+        }
+
+        /* 1234x — tighter text boxes under timeline nodes */
+        .pl1234x-node-text {
+            top: 36px;
+            min-width: 0;
+            max-width: 280px;
+            width: 260px;
+            padding: 0 6px;
+            line-height: 1.45;
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
+        }
+
+            .pl1234x-node-text h3 {
+                font-size: 1.4em;
+                margin: 0 0 6px 0;
+                line-height: 1.25;
+                color: #333379;
+            }
+
+            .pl1234x-node-text p {
+                font-size: 0.85em;
+                line-height: 1.45;
+            }
+
+        /* Medium screens: give a touch more width to match spacing */
+        @media (max-width: 1200px) {
+            .pl1234x-node-text {
+                max-width: 260px;
+                width: 240px;
+            }
+        }
+
+        /* Mobile: compact boxes and sizing */
+        @media (max-width: 768px) {
+            .pl1234x-node-text {
+                max-width: 85%;
+                width: auto;
+                top: auto;
+                margin-top: 12px;
+            }
+
+                .pl1234x-node-text h3 {
+                    font-size: 1.0em;
+                }
+
+                .pl1234x-node-text p {
+                    font-size: 0.9em;
+                }
+        }
+
+        /* Hide base/progress completely on small screens where needed */
+        @media (max-width: 768px) {
+            .pl1234x-timeline-base,
+            .pl1234x-timeline-progress {
+                display: none !important;
+                visibility: hidden !important;
+                width: 0 !important;
+                height: 0 !important;
+            }
+
+            .pl1234x-timeline-container::before,
+            .pl1234x-timeline-container::after,
+            .pl1234x-timeline-steps::before,
+            .pl1234x-timeline-steps::after {
+                content: none !important;
+                display: none !important;
+            }
+        }
+
+        /* Match old spacing for this section inside .process wrapper */
+        .process .pl1234x-line-process.site-section {
+            margin-top: 0 !important;
         }
     </style>
 </head>
@@ -3438,7 +3791,7 @@
     <section class="service-flip-section my-3">
         <div class="container">
             <div class="services-header text-center">
-                <img src="Images/Can_Services.jpg" alt="Can Services" class="services-title-img" />
+                <img src="Images/Can_Services.png" alt="Can Services" class="services-title-img" />
                 <p class="services-intro mt-3">
                     Canboards offers expert RCIC guidance, AI-assisted SOPs, secure document handling, and real-time application tracking all in one seamless platform.
                 </p>
@@ -3585,11 +3938,11 @@
     </section>
 
     <section class="process">
-        <div class="col-12 mb-3 d-flex justify-content-center">
+        <div class="col-12 mb-4 d-flex justify-content-center">
             <img src="Images/How.png" alt="How" class="img-fluid how-title-img">
         </div>
 
-        <div class="flow">
+        <div class="flow" style="display:none;">
             <div class="step step1" data-step="1" tabindex="0" aria-label="Step 1 - Choose Your Service">
                 <div class="icon"><i class="fa-solid fa-globe"></i></div>
                 <div class="big-number">1</div>
@@ -3626,13 +3979,72 @@
                 </div>
             </div>
         </div>
+
+        <!-- 1234x-process-line: RCIC-like four-step timeline (unique names) -->
+        <section class="pl1234x-line-process site-section" aria-label="Four-step process line">
+            <div class="pl1234x-timeline-container">
+                <!-- Base and Progress Lines -->
+                <div class="pl1234x-timeline-base"></div>
+                <div class="pl1234x-timeline-progress" id="pl1234xTimelineProgress"></div>
+
+                <!-- Timeline Steps -->
+                <div class="pl1234x-timeline-steps" id="pl1234xTimelineSteps">
+                    <!-- Node 1 -->
+                    <button class="pl1234x-timeline-node" type="button" data-step="0" aria-label="Choose Your Service">
+                        <div class="pl1234x-node-image-wrapper">
+                            <img src="Images/moodboard_13971336.png" alt="Choose Your Service" class="pl1234x-node-img">
+                        </div>
+                        <span class="pl1234x-node-dot" aria-hidden="true"></span>
+                        <div class="pl1234x-node-text">
+                            <h3>Choose Your Service</h3>
+                            <p>Select any Canadian immigration service and receive guidance from a licensed RCIC expert.</p>
+                        </div>
+                    </button>
+
+                    <!-- Node 2 -->
+                    <button class="pl1234x-timeline-node" type="button" data-step="1" aria-label="Create Your Application">
+                        <div class="pl1234x-node-image-wrapper">
+                            <img src="Images/computer_18993215.png" alt="Create Your Application" class="pl1234x-node-img">
+                        </div>
+                        <span class="pl1234x-node-dot" aria-hidden="true"></span>
+                        <div class="pl1234x-node-text">
+                            <h3>Create Your Application</h3>
+                            <p>Upload all required documents as specified in the RCIC portal to complete your application.</p>
+                        </div>
+                    </button>
+
+                    <!-- Node 3 (new extra node, placed after the second node) -->
+                    <button class="pl1234x-timeline-node" type="button" data-step="2" aria-label="Review & Verify">
+                        <div class="pl1234x-node-image-wrapper">
+                            <img src="Images/document-analysis_19013039.png" alt="Review & Verify" class="pl1234x-node-img">
+                        </div>
+                        <span class="pl1234x-node-dot" aria-hidden="true"></span>
+                        <div class="pl1234x-node-text">
+                            <h3>Review & Verify</h3>
+                            <p>Our licensed RCIC experts will review your application and verify all submitted documents for accuracy.</p>
+                        </div>
+                    </button>
+
+                    <!-- Node 4 -->
+                    <button class="pl1234x-timeline-node" type="button" data-step="3" aria-label="Payment After An Approval">
+                        <div class="pl1234x-node-image-wrapper">
+                            <img src="Images/passport_18998027.png" alt="Payment After Approval" class="pl1234x-node-img">
+                        </div>
+                        <span class="pl1234x-node-dot" aria-hidden="true"></span>
+                        <div class="pl1234x-node-text">
+                            <h3>Payment After Approval</h3>
+                            <p>Your visa will be processed by our licensed RCIC experts. Pay only after approval.</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
     </section>
 
 
     <div class="rcic-line-process">
         <div class="text-center mb-4">
             <h2 class="rcic-title">Why Choose a Licensed <span class="rcic-accent">R.C.I.C.?</span></h2>
-            <div class="rcic-underline mx-auto" aria-hidden="true" style="margin-top: -30px;"></div>
         </div>
 
         <div class="rcic-timeline-container">
@@ -3681,11 +4093,11 @@
         </div>
     </div>
 
+
     <!-- New Map section: animated icons appear when scrolled into view -->
     <section class="map-section site-section">
         <div class="container text-center">
             <h2 class="map-title">One Global Platform With <span class="rcic-accent">R.C.I.C.</span></h2>
-            <div class="rcic-underline mx-auto" aria-hidden="true"></div>
 
             <div class="map-wrap mt-4">
                 <img src="Images/Map.png" alt="World map" class="img-fluid map-img">
@@ -3801,73 +4213,118 @@
     <div class="why-section why-copy-flip my-5 d-flex justify-content-center align-items-center">
         <div class="why-card-bg">
             <div class="why-inner container d-flex align-items-center">
-                <!-- Background lines (decor) -->
                 <img src="Images/bg-lines.png" alt="Background Lines" class="why-bg-lines">
 
-                <!-- Left: Title image -->
                 <div class="why-left d-flex align-items-center">
                     <img src="Images/New_Can_Help.png" alt="Why Canboards" class="why-heading-img">
                 </div>
 
-                <!-- Right: Flip cards -->
                 <div class="why-right d-flex align-items-center justify-content-center">
                     <div class="why-feature-stack flip-stack-v2">
-                        <div class="flip-container card-top" tabindex="0" aria-label="Pay After An Approval">
+                        <!-- Blog & Articles -->
+                        <div class="flip-container card-top" tabindex="0" aria-label="Blog & Articles">
                             <div class="flipper">
                                 <div class="front">
                                     <div class="card-icon" aria-hidden="true">
                                         <i class="bi bi-journal-text fs-3" aria-hidden="true"></i>
                                         <span class="visually-hidden">Blog and Articles</span>
                                     </div>
-                                    <div class="card-title">Blog &amp; Articles</div>
-                                    <div class="card-desc">Stay informed with the latest immigration news, tips, and guides.</div>
+                                    <div class="card-title"
+                                         style="color:#2D3958; font-weight:700; font-size:clamp(1.6rem,2.4vw,1.8rem); line-height:1.2; margin:6px 0 8px 0; text-shadow:none;">
+                                        Blog &amp; Articles
+                                    </div>
+                                    <div class="card-desc"
+                                         style="color:#6b7280; font-size:0.95rem; line-height:1.7; margin:0; max-width:36ch;">
+                                        Stay informed with the latest immigration news, tips, and guides.
+                                    </div>
                                 </div>
                                 <div class="back">
-                                    <div class="card-title">Blog &amp; Articles</div>
-                                    <div class="card-desc">Stay informed with the latest immigration news, tips, and guides.</div>
-                                    <a class="card-readmore" href="press-media.html" aria-label="Read more about Blog and Articles">READ MORE <span class="arrow">→</span></a>
+                                    <div class="card-title"
+                                         style="color:#2D3958; font-weight:700; font-size:clamp(1.6rem,2.4vw,1.8rem); line-height:1.2; margin:6px 0 8px 0; text-shadow:none;">
+                                        Blog &amp; Articles
+                                    </div>
+                                    <div class="card-desc"
+                                         style="color:#6b7280; font-size:0.95rem; line-height:1.7; margin:0; max-width:36ch;">
+                                        Stay informed with the latest immigration news, tips, and guides.
+                                    </div>
+                                    <a class="card-readmore" href="press-media.html" aria-label="Read more about Blog and Articles"
+                                       style="display:inline-flex; align-items:center; gap:8px; color:#e62939; font-weight:700; text-decoration:none; margin-top:10px;">
+                                        READ MORE <span class="arrow">→</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flip-container card-center" tabindex="0" aria-label="Licenced RCIC Portal">
+                        <!-- FAQs -->
+                        <div class="flip-container card-center" tabindex="0" aria-label="FAQs">
                             <div class="flipper">
                                 <div class="front">
                                     <div class="card-icon" aria-hidden="true">
                                         <i class="bi bi-question-circle fs-3" aria-hidden="true"></i>
                                         <span class="visually-hidden">Frequently Asked Questions</span>
                                     </div>
-                                    <div class="card-title">FAQs</div>
-                                    <div class="card-desc">Find answers to commonly asked questions about immigration processes.</div>
+                                    <div class="card-title"
+                                         style="color:#2D3958; font-weight:700; font-size:clamp(1.6rem,2.4vw,1.8rem); line-height:1.2; margin:6px 0 8px 0; text-shadow:none;">
+                                        FAQs
+                                    </div>
+                                    <div class="card-desc"
+                                         style="color:#6b7280; font-size:0.95rem; line-height:1.7; margin:0; max-width:36ch;">
+                                        Find answers to commonly asked questions about immigration processes.
+                                    </div>
                                 </div>
                                 <div class="back">
-                                    <div class="card-title">FAQs</div>
-                                    <div class="card-desc">Find answers to commonly asked questions about immigration processes.</div>
-                                    <a class="card-readmore" href="privacy-policy.html" aria-label="Read more FAQs">READ MORE <span class="arrow">→</span></a>
+                                    <div class="card-title"
+                                         style="color:#2D3958; font-weight:700; font-size:clamp(1.6rem,2.4vw,1.8rem); line-height:1.2; margin:6px 0 8px 0; text-shadow:none;">
+                                        FAQs
+                                    </div>
+                                    <div class="card-desc"
+                                         style="color:#6b7280; font-size:0.95rem; line-height:1.7; margin:0; max-width:36ch;">
+                                        Find answers to commonly asked questions about immigration processes.
+                                    </div>
+                                    <a class="card-readmore" href="privacy-policy.html" aria-label="Read more FAQs"
+                                       style="display:inline-flex; align-items:center; gap:8px; color:#e62939; font-weight:700; text-decoration:none; margin-top:10px;">
+                                        READ MORE <span class="arrow">→</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flip-container card-bottom" tabindex="0" aria-label="24/7 Global Platform">
+                        <!-- Webinars & Events -->
+                        <div class="flip-container card-bottom" tabindex="0" aria-label="Webinars & Events">
                             <div class="flipper">
                                 <div class="front">
                                     <div class="card-icon" aria-hidden="true">
                                         <i class="bi bi-calendar-event fs-3" aria-hidden="true"></i>
                                         <span class="visually-hidden">Webinars and Events</span>
                                     </div>
-                                    <div class="card-title">Webinars &amp; Events</div>
-                                    <div class="card-desc">Join our expert-led sessions for in-depth insights and live Q&amp;A.</div>
+                                    <div class="card-title"
+                                         style="color:#2D3958; font-weight:700; font-size:clamp(1.6rem,2.4vw,1.8rem); line-height:1.2; margin:6px 0 8px 0; text-shadow:none;">
+                                        Webinars &amp; Events
+                                    </div>
+                                    <div class="card-desc"
+                                         style="color:#6b7280; font-size:0.95rem; line-height:1.7; margin:0; max-width:36ch;">
+                                        Join our expert-led sessions for in-depth insights and live Q&amp;A.
+                                    </div>
                                 </div>
                                 <div class="back">
-                                    <div class="card-title">Webinars &amp; Events</div>
-                                    <div class="card-desc">Join our expert-led sessions for in-depth insights and live Q&amp;A.</div>
-                                    <a class="card-readmore" href="contact.html" aria-label="Read more about Webinars and Events">READ MORE <span class="arrow">→</span></a>
+                                    <div class="card-title"
+                                         style="color:#2D3958; font-weight:700; font-size:clamp(1.6rem,2.4vw,1.8rem); line-height:1.2; margin:6px 0 8px 0; text-shadow:none;">
+                                        Webinars &amp; Events
+                                    </div>
+                                    <div class="card-desc"
+                                         style="color:#6b7280; font-size:0.95rem; line-height:1.7; margin:0; max-width:36ch;">
+                                        Join our expert-led sessions for in-depth insights and live Q&amp;A.
+                                    </div>
+                                    <a class="card-readmore" href="contact.html" aria-label="Read more about Webinars and Events"
+                                       style="display:inline-flex; align-items:center; gap:8px; color:#e62939; font-weight:700; text-decoration:none; margin-top:10px;">
+                                        READ MORE <span class="arrow">→</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
+                        <!-- /cards -->
                     </div>
                 </div>
-                <!-- /Right -->
             </div>
         </div>
     </div>
@@ -5466,6 +5923,107 @@
             buildDots();
         })();
     </script>
+    <script>
+        /* 1234x — RCIC-like behavior, 4 nodes, unique names */
+        (function () {
+            const nodes = Array.from(document.querySelectorAll('.pl1234x-timeline-node'));
+            const progressEl = document.getElementById('pl1234xTimelineProgress');
+            let currentStep = 0;
+            let autoPlayInterval;
 
+            const isMobile = () => window.innerWidth <= 768;
+
+            // Cache PNG/GIF sources per node image (same convention as RCIC)
+            const nodeImageData = nodes.map(n => {
+                const img = n.querySelector('.pl1234x-node-img');
+                const pngSrc = img?.src || '';
+                const gifSrc = pngSrc.endsWith('.png') ? pngSrc.replace('.png', '.gif') : pngSrc;
+                return { img, pngSrc, gifSrc, animating: false };
+            });
+
+            function playNodeAnimation(stepIndex) {
+                const data = nodeImageData[stepIndex];
+                if (!data || !data.img || !data.gifSrc) return;
+                if (data.animating) return;
+
+                data.animating = true;
+                const img = data.img;
+
+                img.classList.add('is-gif');
+                img.src = data.gifSrc;
+
+                // Return to PNG after one GIF cycle
+                setTimeout(() => {
+                    img.classList.remove('is-gif');
+                    img.src = data.pngSrc;
+                    data.animating = false;
+                }, 2000);
+            }
+
+            function updateTimeline(stepIndex, instant = false) {
+                currentStep = stepIndex;
+
+                // Active classes up to current
+                nodes.forEach((node, i) => {
+                    node.classList.toggle('active', i <= stepIndex);
+                });
+
+                // Play GIF swap for current
+                playNodeAnimation(stepIndex);
+
+                // Progress percentage (RCIC style)
+                const total = nodes.length;
+                const percent = (stepIndex / (total - 1)) * 100;
+
+                if (instant) {
+                    progressEl.style.transition = 'none';
+                } else {
+                    progressEl.style.transition = 'width 0.6s ease-in-out, height 0.6s ease-in-out';
+                }
+
+                if (isMobile()) {
+                    progressEl.style.width = '4px';
+                    progressEl.style.height = `${percent}%`;
+                } else {
+                    progressEl.style.width = `${percent}%`;
+                    progressEl.style.height = '4px';
+                }
+
+                if (instant) {
+                    void progressEl.offsetWidth;
+                    progressEl.style.transition = 'width 0.6s ease-in-out, height 0.6s ease-in-out';
+                }
+            }
+
+            function startAutoPlay() {
+                stopAutoPlay();
+                autoPlayInterval = setInterval(() => {
+                    currentStep = (currentStep + 1) % nodes.length;
+                    updateTimeline(currentStep);
+                }, 3000);
+            }
+            function stopAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+            }
+
+            // Click handlers (pause briefly)
+            nodes.forEach((node, i) => {
+                node.addEventListener('click', () => {
+                    stopAutoPlay();
+                    updateTimeline(i);
+                    setTimeout(startAutoPlay, 5000);
+                });
+            });
+
+            // Init
+            updateTimeline(0, true);
+            startAutoPlay();
+
+            // Resize: recompute percent semantics smoothly
+            window.addEventListener('resize', () => {
+                updateTimeline(currentStep, true);
+            });
+        })();
+    </script>
 </body>
 </html>

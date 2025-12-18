@@ -978,7 +978,7 @@ body:not(.loading) #fws-panel-aside {
 
 /* Increased title image size to match reference */
 .services-title-img {
-    max-width: 420px;
+    max-width: 350px;
     width: 100%;
     height: auto;
     display: block;
@@ -1299,7 +1299,7 @@ body:not(.loading) #fws-panel-aside {
 /* How section heading ? force smaller size than following image */
 .how-title-img {
     /* use a firm max-width and !important to override inline or other cascading rules */
-    max-width: clamp(280px, 60vw, 500px) !important;
+    max-width: 550px !important;
     width: 100% !important;
     height: auto !important;
     display: block;
@@ -1419,9 +1419,9 @@ body:not(.loading) #fws-panel-aside {
    ======================================== */
 
 .rcic-title {
-    font-size: clamp(1.75rem, 4vw, 2.8rem);
-    font-weight: 500;
-    color: #222; /* primary heading color */
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #2b3959; /* primary heading color */
     margin-bottom: 6px;
 }
 
@@ -1837,8 +1837,9 @@ body:not(.loading) #fws-panel-aside {
 /* Map section title styling */
 .map-title {
     padding-top: 24px;
-    font-size: clamp(1.75rem, 4vw, 2.8rem);
-    color: #2f2e78;
+    font-size: 3em;
+    font-weight: 700;
+    color: #2b3959;
     margin-bottom: 1rem;
     line-height: 1.3;
 }
