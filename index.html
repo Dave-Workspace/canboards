@@ -4448,6 +4448,96 @@
             -webkit-text-fill-color: transparent !important;
             background-clip: text !important;
         }
+
+        .service-page-flip-front,
+        .service-page-flip-back {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+            /* Body text sits above CTA; CTA pushes to bottom */
+            .service-page-flip-front .service-page-flip-desc,
+            .service-page-flip-front .service-page-flip-desc--mobile,
+            .service-page-flip-back .service-page-flip-desc {
+                margin-top: 0.6rem;
+                margin-bottom: auto;
+                text-align: center;
+            }
+
+            .service-page-flip-front .service-page-flip-cta,
+            .service-page-flip-front .service-page-flip-cta--mobile,
+            .service-page-flip-back .service-page-flip-cta {
+                margin-top: auto;
+            }
+
+        /* Keep mobile desc color per request */
+        @media (hover: none), (pointer: coarse) {
+            .service-page-flip-front .service-page-flip-desc--mobile {
+                color: #7b889f !important;
+            }
+        }
+
+        /* Top-align icon, title, desc; keep CTA pinned to bottom and equal heights */
+        .service-page-flip-box {
+            height: 360px;
+        }
+
+        @media (max-width: 991px) {
+            .service-page-flip-box {
+                height: 320px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .service-page-flip-box {
+                height: 280px;
+            }
+        }
+
+        .service-page-flip-front,
+        .service-page-flip-back {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.9rem;
+            padding: 2rem 1.75rem;
+        }
+
+            /* tighten top spacing */
+            .service-page-flip-front .work-service-icon-wrapper {
+                margin-top: 0.25rem;
+                margin-bottom: 1rem;
+            }
+
+        .service-page-flip-title {
+            margin: 0;
+        }
+
+        /* description sits above CTA, CTA stays at bottom */
+        .service-page-flip-front .service-page-flip-desc,
+        .service-page-flip-front .service-page-flip-desc--mobile,
+        .service-page-flip-back .service-page-flip-desc {
+            margin-bottom: auto;
+            text-align: center;
+        }
+
+        .service-page-flip-front .service-page-flip-cta,
+        .service-page-flip-front .service-page-flip-cta--mobile,
+        .service-page-flip-back .service-page-flip-cta {
+            margin-top: auto;
+        }
+
+        /* Make front/back padding consistent on mobile */
+        @media (max-width: 767px) {
+            .service-page-flip-front,
+            .service-page-flip-back {
+                padding: 1.5rem;
+                gap: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -4506,7 +4596,7 @@
                     <h1 class="mb-2 hero-main-text">Through <span style="color:#e62939;">R.C.I.C.</span></h1>
                     <p class="fs-6 fs-md-5 mb-4 hero-small-text">Canboards is a fully digital, RCIC-licensed platform offering<br> end-to-end services to simplify your journey to Canada.</p>
                     <div class="d-flex justify-content-center gap-3 mb-4">
-                        <a href="register.html" class="btn btn-primary px-4 py-2">Register Now</a>
+                        <a href="register.html" class="fancy_button px-4 py-2 fancy">Register Now</a>
                     </div>
                 </div>
             </div>
@@ -5668,7 +5758,7 @@
                                 Join hundreds of successful immigrants who chose Canboards for their seamless transition to Canada.
                             </p>
                             <div class="journey-cta-wrapper">
-                                <a href="https://canada.teqcoder.com/client/register" class="journey-cta-btn">Register Now</a>
+                                <a href="https://canada.teqcoder.com/client/register" class="fancy_button px-4 py-2 fancy">Register Now</a>
                             </div>
                         </div>
                     </div>

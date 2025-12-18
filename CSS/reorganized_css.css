@@ -1741,94 +1741,6 @@ body:not(.loading) #fws-panel-aside {
     }
 }
 
-/* ========================================
-   JOURNEY SECTION
-   ======================================== */
-
-.journey-section {
-    position: relative;
-    overflow: visible;
-}
-
-.journey-haze {
-    position: absolute;
-    left: -15vw; /* Extended further left */
-    top: -10%; /* Extended upward for more coverage */
-    width: 900px; /* Much larger than the original 420px */
-    height: 850px; /* Larger and less circular (not equal width/height) */
-    border-radius: 60% 40% 50% 70% / 60% 50% 70% 40%; /* Organic, irregular blob shape */
-    background: radial-gradient( ellipse at 35% 45%, rgba(120,103,255,0.16) 0%, rgba(120,103,255,0.12) 15%, rgba(120,103,255,0.08) 30%, rgba(120,103,255,0.04) 50%, rgba(120,103,255,0.02) 70%, rgba(255,255,255,0) 100% );
-    filter: blur(80px); /* Heavy blur for foggy effect */
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.85; /* Slightly more visible */
-}
-
-@media (max-width: 991px) {
-    .journey-haze {
-        left: -20vw;
-        top: -8%;
-        width: 650px;
-        height: 600px;
-        filter: blur(60px);
-    }
-}
-
-@media (max-width: 575px) {
-    .journey-haze {
-        left: -30vw;
-        top: -5%;
-        width: 480px;
-        height: 450px;
-        filter: blur(45px);
-    }
-}
-
-.journey-section .container {
-    position: relative;
-    z-index: 2;
-}
-
-.journey-title {
-    font-size: clamp(1.75rem, 4vw, 2.8rem);
-    ;
-    font-weight: 500;
-    color: #111;
-}
-
-.journey-desc {
-    padding-top: 20px;
-    padding-bottom: 30px;
-    font-size: 22px;
-    color: #111;
-    font-weight: 75;
-    max-width: 680px;
-    margin: 0 auto;
-}
-
-.journey-cta {
-    background-color: #23235b;
-    border: none;
-    padding: 8px 18px;
-}
-
-@media (max-width: 991px) {
-    .journey-desc {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 575px) {
-    .journey-desc {
-        font-size: 0.95rem;
-    }
-
-    .journey-section {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-}
-
 
 /* ========================================
    MAP SECTION
@@ -4144,4 +4056,71 @@ body:not(.loading) #fws-panel-aside {
 
 .why-copy-flip .card-desc {
     font-size: clamp(14px, 1.6vw, 18px);
+}
+
+/* ========================================
+   Fancy Button Animation
+   ======================================== */
+
+.fancy_button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.85rem 1.85rem;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(120deg, #23235b, #3b82f6);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 22px;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(35, 35, 91, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Fancy animated border */
+a.fancy {
+    --offset: 3px;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+    a.fancy::before {
+        content: '';
+        position: absolute;
+        inset: -50%;
+        background: conic-gradient(transparent 270deg, white, transparent);
+        animation: rotate 2s linear infinite;
+        z-index: -2;
+    }
+
+    a.fancy::after {
+        content: '';
+        position: absolute;
+        inset: var(--offset);
+        background: inherit;
+        border-radius: inherit;
+        z-index: -1;
+    }
+
+    a.fancy:hover {
+        background: #e62939;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 16px 36px rgba(230, 41, 57, 0.45);
+    }
+
+        a.fancy:hover::before {
+            background: conic-gradient(transparent 270deg, #fff, transparent);
+        }
+
+@keyframes rotate {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
 }
