@@ -470,6 +470,36 @@ window.addEventListener('load', () => {
     observer.observe(journeySection);
 })();
 
+(function () {
+    const container = document.querySelector('.pl1234x-timeline-container');
+    const base = document.querySelector('.pl1234x-timeline-base');
+    const progress = document.querySelector('.pl1234x-timeline-progress');
+    const dots = Array.from(document.querySelectorAll('.pl1234x-node-dot'));
+
+    function alignLine() {
+        if (!container || !base || !progress || dots.length < 2) return;
+        const crect = container.getBoundingClientRect();
+        const first = dots[0].getBoundingClientRect();
+        const last = dots[dots.length - 1].getBoundingClientRect();
+        const start = (first.left + first.right) / 2 - crect.left;
+        const end = (last.left + last.right) / 2 - crect.left;
+        const width = Math.max(0, end - start);
+        base.style.left = `${start}px`;
+        base.style.width = `${width}px`;
+        progress.style.left = `${start}px`;
+        // height stays fixed for horizontal layout
+        base.style.height = '4px';
+        progress.style.height = '4px';
+        // notify listeners to recompute progress width
+        window.dispatchEvent(new Event('pl1234x-line-aligned'));
+    }
+
+    window.addEventListener('resize', alignLine);
+    window.addEventListener('load', alignLine);
+    document.fonts?.ready?.then(alignLine);
+    alignLine();
+})();
+
 /* 1234x — RCIC-like behavior, 4 nodes, unique names */
 (function () {
     if (window.__pl1234xInitDone) {
