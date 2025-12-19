@@ -419,3 +419,320 @@ window.addEventListener('load', () => {
     footer.style.height = "0px";
     updateFooter();
 });
+
+// Journey Section Animation
+(function () {
+    const journeySection = document.querySelector('.journey-section');
+    if (!journeySection) return;
+
+    const title = journeySection.querySelector('.journey-title');
+    const desc = journeySection.querySelector('.journey-desc');
+    const ctaWrapper = journeySection.querySelector('.journey-cta-wrapper');
+    const image = journeySection.querySelector('.journey-main-image');
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Animate text elements
+                    if (title) {
+                        setTimeout(() => {
+                            title.classList.add('animate-in');
+                        }, 100);
+                    }
+                    if (desc) {
+                        setTimeout(() => {
+                            desc.classList.add('animate-in');
+                        }, 300);
+                    }
+                    if (ctaWrapper) {
+                        setTimeout(() => {
+                            ctaWrapper.classList.add('animate-in');
+                        }, 500);
+                    }
+                    // Animate image
+                    if (image) {
+                        setTimeout(() => {
+                            image.classList.add('animate-in');
+                        }, 200);
+                    }
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        }
+    );
+
+    observer.observe(journeySection);
+})();
+
+/* 1234x — RCIC-like behavior, 4 nodes, unique names */
+(function () {
+    if (window.__pl1234xInitDone) {
+        return;
+    }
+    window.__pl1234xInitDone = true;
+
+    const nodes = Array.from(document.querySelectorAll('.pl1234x-timeline-node'));
+    const progressEl = document.getElementById('pl1234xTimelineProgress');
+    const baseEl = document.querySelector('.pl1234x-timeline-base');
+    const container = document.querySelector('.pl1234x-timeline-container');
+
+    // Bail out if the timeline isn’t present on this page
+    if (!nodes.length || !progressEl || !baseEl || !container) {
+        return;
+    }
+
+    let currentStep = 0;
+    let autoPlayInterval;
+
+    const isMobile = () => window.innerWidth <= 768;
+
+    const nodeImageData = nodes.map(n => {
+        const img = n.querySelector('.pl1234x-node-img');
+        const pngSrc = img?.src || '';
+        const gifSrc = pngSrc.endsWith('.png') ? pngSrc.replace('.png', '.gif') : pngSrc;
+        return { img, pngSrc, gifSrc, animating: false };
+    });
+
+    function getLineMetrics() {
+        if (!container || !baseEl) return { left: 0, width: container?.clientWidth || 0 };
+        const c = container.getBoundingClientRect();
+        const b = baseEl.getBoundingClientRect();
+        return { left: b.left - c.left, width: b.width };
+    }
+
+    function playNodeAnimation(stepIndex) {
+        const data = nodeImageData[stepIndex];
+        if (!data || !data.img || !data.gifSrc || data.animating) return;
+
+        data.animating = true;
+        const img = data.img;
+        img.classList.add('is-gif');
+        img.src = data.gifSrc;
+
+        setTimeout(() => {
+            img.classList.remove('is-gif');
+            img.src = data.pngSrc;
+            data.animating = false;
+        }, 2000);
+    }
+
+    function updateTimeline(stepIndex, instant = false) {
+        currentStep = stepIndex;
+
+        nodes.forEach((node, i) => {
+            node.classList.toggle('active', i <= stepIndex);
+        });
+
+        playNodeAnimation(stepIndex);
+
+        const total = nodes.length;
+        const ratio = (total > 1) ? (stepIndex / (total - 1)) : 0;
+
+        if (instant) {
+            progressEl.style.transition = 'none';
+        } else {
+            progressEl.style.transition = 'width 0.6s ease-in-out, height 0.6s ease-in-out';
+        }
+
+        if (isMobile()) {
+            progressEl.style.width = '4px';
+            progressEl.style.height = `${ratio * 100}%`;
+        } else {
+            const { left, width } = getLineMetrics();
+            const progressWidth = width * ratio;
+            progressEl.style.left = `${left}px`;
+            progressEl.style.width = `${progressWidth}px`;
+            progressEl.style.height = '4px';
+        }
+
+        if (instant) {
+            void progressEl.offsetWidth;
+            progressEl.style.transition = 'width 0.6s ease-in-out, height 0.6s ease-in-out';
+        }
+    }
+
+    function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(() => {
+            currentStep = (currentStep + 1) % nodes.length;
+            updateTimeline(currentStep);
+        }, 3000);
+    }
+    function stopAutoPlay() {
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
+    }
+
+    nodes.forEach((node, i) => {
+        node.addEventListener('click', () => {
+            stopAutoPlay();
+            updateTimeline(i);
+            setTimeout(startAutoPlay, 5000);
+        });
+    });
+
+    window.addEventListener('pl1234x-line-aligned', () => updateTimeline(currentStep, true));
+
+    updateTimeline(0, true);
+    startAutoPlay();
+    window.addEventListener('resize', () => updateTimeline(currentStep, true));
+})();
+
+
+(function () {
+    const wrapper = document.getElementById('newsWrapper');
+    if (!wrapper) return;
+
+    function replaceButton(id) {
+        const old = document.getElementById(id);
+        if (!old) return null;
+        const clone = old.cloneNode(true);
+        old.parentNode.replaceChild(clone, old);
+        return clone;
+    }
+    const leftBtn = replaceButton('scrollLeft');
+    const rightBtn = replaceButton('scrollRight');
+    const dotsContainer = document.getElementById('newsDots');
+    if (!dotsContainer) return;
+
+    function getGap() {
+        const style = window.getComputedStyle(wrapper);
+        return parseFloat(style.columnGap || style.gap || 0) || 0;
+    }
+
+    function getCardWidth() {
+        const card = wrapper.querySelector('.news-card');
+        if (!card) return wrapper.clientWidth;
+        return card.getBoundingClientRect().width;
+    }
+
+    function getVisibleCount(cardWidth, gap) {
+        // account for fractional pixels and small layout differences with an epsilon
+        const total = cardWidth + gap;
+        if (!total || total <= 0) return 1;
+        const visible = Math.floor((wrapper.clientWidth + gap + 0.5) / total);
+        return Math.max(1, visible);
+    }
+
+    function clampScroll(x) {
+        const max = Math.max(0, wrapper.scrollWidth - wrapper.clientWidth);
+        return Math.max(0, Math.min(x, max));
+    }
+
+    function buildDots() {
+        const cards = wrapper.querySelectorAll('.news-card');
+        // If there are no cards, clear and hide
+        if (!cards.length) {
+            dotsContainer.innerHTML = '';
+            dotsContainer.style.display = 'none';
+            if (leftBtn) leftBtn.disabled = true;
+            if (rightBtn) rightBtn.disabled = true;
+            return;
+        }
+
+        // If there's no horizontal overflow, hide dots and disable arrows
+        // (use a small tolerance to avoid off-by-one from fractional pixels)
+        if (wrapper.scrollWidth <= wrapper.clientWidth + 1) {
+            dotsContainer.innerHTML = '';
+            dotsContainer.style.display = 'none';
+            if (leftBtn) leftBtn.disabled = true;
+            if (rightBtn) rightBtn.disabled = true;
+            return;
+        } else {
+            dotsContainer.style.display = '';
+        }
+
+        const cardWidth = getCardWidth();
+        const gap = getGap();
+        const visibleCount = getVisibleCount(cardWidth, gap);
+        const pages = Math.max(1, Math.ceil(cards.length / visibleCount));
+
+        // Rebuild dots
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < pages; i++) {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'news-dot';
+            dot.setAttribute('role', 'tab');
+            dot.setAttribute('aria-label', `Show page ${i + 1} of ${pages}`);
+            dot.dataset.page = i;
+            dot.addEventListener('click', () => {
+                const target = clampScroll(i * visibleCount * (cardWidth + gap));
+                wrapper.scrollTo({ left: target, behavior: 'smooth' });
+            });
+            dotsContainer.appendChild(dot);
+        }
+
+        updateActiveDot();
+    }
+
+    let rafPending = false;
+    function updateActiveDot() {
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(() => {
+            const dots = dotsContainer.querySelectorAll('.news-dot');
+            // No dots => nothing to update
+            if (!dots.length) {
+                // Ensure arrows reflect no-scroll state
+                if (leftBtn) leftBtn.disabled = true;
+                if (rightBtn) rightBtn.disabled = true;
+                rafPending = false;
+                return;
+            }
+
+            const cardWidth = getCardWidth();
+            const gap = getGap();
+            const visibleCount = getVisibleCount(cardWidth, gap);
+            const pages = Math.max(1, Math.ceil(wrapper.querySelectorAll('.news-card').length / visibleCount));
+            const pageWidth = visibleCount * (cardWidth + gap) || wrapper.clientWidth;
+
+            // Use center-based rounding so partial scroll selects nearest page
+            const raw = pageWidth ? (wrapper.scrollLeft + pageWidth / 2) / pageWidth : 0;
+            const pageIndex = Math.min(pages - 1, Math.max(0, Math.floor(raw)));
+
+            dots.forEach((d, idx) => {
+                d.classList.toggle('active', idx === pageIndex);
+                d.setAttribute('aria-selected', idx === pageIndex ? 'true' : 'false');
+            });
+
+            if (leftBtn) leftBtn.disabled = wrapper.scrollLeft <= 5;
+            if (rightBtn) {
+                const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+                rightBtn.disabled = wrapper.scrollLeft + 5 >= maxScroll;
+            }
+
+            rafPending = false;
+        });
+    }
+
+    function scrollByPage(direction = 1) {
+        const cardWidth = getCardWidth();
+        const gap = getGap();
+        const visibleCount = getVisibleCount(cardWidth, gap);
+        const delta = visibleCount * (cardWidth + gap) * direction;
+        const target = clampScroll(wrapper.scrollLeft + delta);
+        wrapper.scrollTo({ left: target, behavior: 'smooth' });
+    }
+
+    if (leftBtn) leftBtn.addEventListener('click', () => scrollByPage(-1));
+    if (rightBtn) rightBtn.addEventListener('click', () => scrollByPage(1));
+    wrapper.addEventListener('scroll', updateActiveDot, { passive: true });
+
+    let resizeDebounce;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeDebounce);
+        resizeDebounce = setTimeout(buildDots, 120);
+    });
+
+    const mo = new MutationObserver(() => buildDots());
+    mo.observe(wrapper, { childList: true, subtree: true });
+
+    // Init
+    buildDots();
+})();
