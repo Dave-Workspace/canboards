@@ -9,936 +9,199 @@
     <link rel="stylesheet" href="CSS/reorganized_css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
-             /* Add additional top spacing so the hero visual doesn't sit flush under the sticky header */
-             .hero-section {
-                 padding-top: 7rem; /* base spacing for small screens */
-             }
-
-             @media (min-width: 768px) {
-                 .hero-section {
-                     padding-top: 4.5rem;
-                 }
-             }
-
-             @media (min-width: 992px) {
-                 .hero-section {
-                     padding-top: 9rem; /* larger spacing for desktop where header is horizontal */
-                 }
-
-                 .work-hero-visual {
-                     margin-top: 4rem; /* slight additional offset for the image column */
-                 }
-             }
-
-             /* Services header styling to match index.html hero section */
-             .services-header h1,
-             .services-header h2,
-             .services-header h3 {
-                 display: block;
-                 width: 100%;
-                 max-width: 96vw;
-                 margin: 0 auto;
-                 white-space: nowrap;
-                 word-break: keep-all;
-                 hyphens: none;
-                 overflow: visible;
-                 font-family: 'Segoe UI', Arial, sans-serif;
-                 font-weight: 500;
-                 line-height: 1 !important;
-             }
-
-             /* First h1 and h3 - solid color */
-             .services-header h1,
-             .services-header h3 {
-                 color: #2d3958;
-                 padding-bottom: 45px;
-             }
-
-             /* Middle h2 - gradient */
-             .services-header h2 {
-                 background: linear-gradient(180deg, #61dcdf 0%, #886cff 100%);
-                 -webkit-background-clip: text;
-                 -webkit-text-fill-color: transparent;
-                 background-clip: text;
-                 color: transparent;
-             }
-
-             /* R.C.I.C. accent color */
-             .services-header .rcic-accent {
-                 color: #e62939;
-             }
-
-             /* Desktop font size (≥925px) = 72px */
-             @media (min-width: 925px) {
-                 .services-header h1,
-                 .services-header h2,
-                 .services-header h3 {
-                     font-size: 72px;
-                 }
-             }
-
-             /* Mobile/Tablet font size (<925px) = 40px with clamp */
-             @media (max-width: 924.98px) {
-                 .services-header h1,
-                 .services-header h2,
-                 .services-header h3 {
-                     font-size: clamp(28px, 8vw, 40px) !important;
-                 }
-             }
-
-             /* Custom SVG icon styling for work services */
-             .work-service-icon {
-                 width: 60px;
-                 height: 60px;
-                 fill: #2f2e78;
-                 display: inline-block;
-             }
-
-             .work-service-icon-wrapper {
-                 display: inline-flex;
-                 align-items: center;
-                 justify-content: center;
-                 margin-bottom: 1rem;
-             }
-
-             /* Override service box background to transparent */
-             .work-page .service-box {
-                 background: transparent !important;
-                 padding: 3rem 2rem !important; /* Increased from default padding */
-                 margin-bottom: 1.5rem; /* Add space between rows */
-             }
-
-                 /* Add hover effect with subtle background */
-                 .work-page .service-box:hover {
-                     background: rgba(255, 255, 255, 0.5) !important;
-                     transform: translateY(-5px);
-                     box-shadow: 0 12px 35px rgba(47, 46, 120, 0.1);
-                 }
-
-             /* Add more spacing between icon and title */
-             .work-page .work-service-icon-wrapper {
-                 margin-bottom: 1.5rem !important; /* Increased from 1rem */
-                 margin-top: 0.5rem; /* Add top margin */
-             }
-
-             /* Add more spacing between title and description */
-             .work-page .service-box h5 {
-                 margin-bottom: 1rem !important; /* Increased spacing */
-                 padding-top: 0.5rem; /* Add padding above title */
-                 font-size: 22px;
-                 font-weight: 600;
-             }
-
-             /* Add more spacing between description and CTA link */
-             .work-page .service-box p {
-                 margin-bottom: 1.5rem !important; /* Increased from 1rem */
-                 padding-bottom: 0.5rem; /* Add padding below description */
-             }
-
-             /* Adjust CTA link spacing */
-             .work-page .service-box a {
-                 margin-top: 0.5rem; /* Add top margin to CTA */
-                 display: inline-block;
-             }
-
-             /* Responsive adjustments for mobile */
-             @media (max-width: 767px) {
-                 .work-page .service-box {
-                     padding: 2.5rem 1.5rem !important;
-                     margin-bottom: 1.25rem;
-                 }
-
-                 .work-page .work-service-icon-wrapper {
-                     margin-bottom: 1.25rem !important;
-                 }
-             }
-
-             /* Extra small screens */
-             @media (max-width: 575px) {
-                 .work-page .service-box {
-                     padding: 2rem 1.25rem !important;
-                     margin-bottom: 1rem;
-                 }
-             }
-
-             /* Make hero-small-text wider and limit wrapping */
-             @media (min-width: 992px) {
-                 #service-hero .hero-small-text {
-                     max-width: none;
-                     width: 120%;
-                     line-height: 1.6;
-                 }
-             }
-
-             @media (min-width: 1200px) {
-                 #service-hero .hero-small-text {
-                     width: 135%;
-                 }
-             }
-
-             .can-title-img {
-                 width: 100% !important;
-                 height: auto !important;
-                 display: block;
-                 margin: 0 auto;
-             }
-
-             /* Desktop (≥925px) = 180px max with minimal bottom spacing */
-             @media (min-width: 925px) {
-                 .can-title-img {
-                     max-width: 180px !important;
-                     margin-bottom: 0px !important; /* Reduced from 8px to match line spacing */
-                 }
-             }
-
-             /* Mobile/Tablet (<925px) = 100px max with tighter spacing */
-             @media (max-width: 924.98px) {
-                 .can-title-img {
-                     max-width: clamp(75px, 20vw, 100px) !important;
-                     margin-bottom: 4px !important; /* Reduced from 8px for tighter spacing */
-                 }
-             }
-
-             .mb-3 {
-                 margin-bottom: 0.6rem !important;
-             }
-
-             /* Add this CSS to the <style> block in work.html */
-
-             /* ========================================
-             SERVICE PAGE FLIP BOXES SECTION
-             ======================================== */
-
-             .service-page-flip-section {
-                 padding: 60px 0;
-                 background: linear-gradient(135deg, #f8f9fc 0%, #f0f2f8 100%);
-             }
-
-             /* 3D Flip Box Container */
-             .service-page-flip-box {
-                 perspective: 1200px;
-                 height: 320px;
-                 cursor: pointer;
-                 transition: transform 0.3s ease;
-             }
-
-             .service-page-flip-inner {
-                 position: relative;
-                 width: 100%;
-                 height: 100%;
-                 transform-style: preserve-3d;
-                 transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
-             }
-
-             /* Hover effect - flip on desktop */
-             @media (hover: hover) and (pointer: fine) {
-                 .service-page-flip-box:hover .service-page-flip-inner,
-                 .service-page-flip-box.active .service-page-flip-inner {
-                     transform: rotateY(180deg);
-                 }
-             }
-
-             /* Front and Back faces */
-             .service-page-flip-front,
-             .service-page-flip-back {
-                 position: absolute;
-                 width: 100%;
-                 height: 100%;
-                 backface-visibility: hidden;
-                 border-radius: 20px;
-                 display: flex;
-                 flex-direction: column;
-                 align-items: center;
-                 padding: 2rem;
-                 box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
-                 transition: box-shadow 0.3s ease;
-             }
-
-             /* Front side - white background matching original service boxes */
-             .service-page-flip-front {
-                 background: #ffffff;
-                 border: 1px solid rgba(47, 46, 120, 0.04);
-                 justify-content: center;
-                 text-align: center;
-             }
-
-             .service-page-flip-box:hover .service-page-flip-front {
-                 box-shadow: 0 15px 50px rgba(47, 46, 120, 0.12);
-             }
-
-             /* Icon styling on front - matching original */
-             .service-page-flip-front .work-service-icon-wrapper {
-                 display: inline-flex;
-                 align-items: center;
-                 justify-content: center;
-                 margin-bottom: 1.5rem;
-                 margin-top: 0.5rem;
-             }
-
-             .service-page-flip-front .work-service-icon {
-                 width: 60px;
-                 height: 60px;
-                 fill: #2f2e78;
-                 display: inline-block;
-             }
-
-             /* Title styling on front - matching original */
-             .service-page-flip-front .service-page-flip-title {
-                 font-size: 22px;
-                 font-weight: 600;
-                 color: #2d3958;
-                 text-align: center;
-                 margin-bottom: 1rem;
-                 padding-top: 0.5rem;
-             }
-
-             /* APPLY NOW button on front - RED styling matching original */
-             .service-page-flip-cta {
-                 color: #dc3545 !important;
-                 text-decoration: none !important;
-                 font-weight: 600;
-                 font-size: 14px;
-                 display: inline-block;
-                 margin-top: 0.5rem;
-                 transition: all 0.3s ease;
-             }
-
-                 .service-page-flip-cta:hover {
-                     color: #bb2d3b !important;
-                 }
-
-                 .service-page-flip-cta i {
-                     font-size: 1.3rem;
-                     transition: transform 0.3s ease;
-                     vertical-align: middle;
-                 }
-
-                 .service-page-flip-cta:hover i {
-                     transform: translateX(4px);
-                 }
-
-             /* Back side - gradient background with description */
-             .service-page-flip-back {
-                 background: linear-gradient(180deg, #5fd6d8 0%, #7867ff 100%) !important;
-                 color: #ffffff;
-                 transform: rotateY(180deg);
-                 padding: 2.5rem 2rem;
-                 justify-content: center;
-                 align-items: center;
-                 text-align: center;
-             }
-
-                 .service-page-flip-back .service-page-flip-title {
-                     font-size: 1.5rem;
-                     font-weight: 600;
-                     color: #ffffff !important;
-                     margin-bottom: 1.5rem;
-                     text-align: center;
-                     line-height: 1.3;
-                     letter-spacing: -0.02em;
-                     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-                 }
-
-             .service-page-flip-desc {
-                 font-size: 1rem;
-                 line-height: 1.7;
-                 color: #ffffff !important;
-                 text-align: center;
-                 margin-bottom: 0;
-                 font-weight: 400;
-                 opacity: 0.95;
-                 padding: 0 0.5rem;
-             }
-
-
-             /* Disable 3D flip on touch devices */
-             /*
-                  @media (hover: none), (any-hover: none), (pointer: coarse) {
-                      .service-page-flip-inner {
-                          transform-style: flat !important;
-                      }
-
-                      .service-page-flip-box {
-                          perspective: none !important;
-                          cursor: default !important;
-                      }
-
-                          .service-page-flip-box .service-page-flip-inner {
-                              transform: none !important;
-                          }
-
-
-                      .service-page-flip-front {
-                          position: relative;
-                      }
-
-                      .service-page-flip-back {
-                          display: none;
-                      }
-                  }
-                      */
-
-             /* Responsive adjustments */
-             @media (max-width: 991px) {
-                 .service-page-flip-section {
-                     padding: 50px 0;
-                 }
-
-                 .service-page-flip-box {
-                     height: 300px;
-                     margin-bottom: 1.5rem;
-                 }
-
-                 .service-page-flip-back {
-                     padding: 2rem 1.75rem;
-                 }
-
-                     .service-page-flip-back .service-page-flip-title {
-                         font-size: 1.35rem;
-                         margin-bottom: 1.25rem;
-                     }
-
-                 .service-page-flip-desc {
-                     font-size: 0.95rem;
-                     line-height: 1.65;
-                 }
-             }
-
-             @media (max-width: 767px) {
-                 .service-page-flip-section {
-                     padding: 40px 0;
-                 }
-
-                 .service-page-flip-box {
-                     height: 280px;
-                 }
-
-                 .service-page-flip-front,
-                 .service-page-flip-back {
-                     padding: 1.5rem;
-                 }
-
-                     .service-page-flip-back .service-page-flip-title {
-                         font-size: 1.25rem;
-                         margin-bottom: 1rem;
-                     }
-
-                 .service-page-flip-desc {
-                     font-size: 0.9rem;
-                     line-height: 1.6;
-                 }
-
-                 .service-page-flip-front .work-service-icon {
-                     width: 60px;
-                     height: 60px;
-                 }
-
-                 .service-page-flip-front .work-service-icon-wrapper {
-                     margin-bottom: 1.25rem;
-                 }
-             }
-
-             /* 3D Flip Box Container */
-             .service-page-flip-box {
-                 perspective: 1200px;
-                 height: 320px;
-                 cursor: pointer;
-                 transition: transform 0.3s ease;
-             }
-
-             .service-page-flip-inner {
-                 position: relative;
-                 width: 100%;
-                 height: 100%;
-                 transform-style: preserve-3d;
-                 transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
-             }
-
-             /* Apply flip when active class is added - works on ALL devices */
-             .service-page-flip-box.active .service-page-flip-inner {
-                 transform: rotateY(180deg);
-             }
-
-             /* Hover effect - flip on desktop (additional trigger for hover-capable devices) */
-             @media (hover: hover) and (pointer: fine) {
-                 .service-page-flip-box:hover .service-page-flip-inner {
-                     transform: rotateY(180deg);
-                 }
-             }
-
-             /* Push anchor links to the bottom */
-             .work-page .service-box > a {
-                 margin-top: auto !important;
-                 display: inline-block;
-             }
-
-             /* Disable flip and show front-only on touch / no-hover devices */
-             @media (hover: none), (pointer: coarse) {
-                 .service-page-flip-box {
-                     perspective: none;
-                     height: auto;
-                     cursor: default;
-                 }
-
-                 .service-page-flip-inner {
-                     transform: none !important;
-                     transform-style: flat !important;
-                 }
-
-                 .service-page-flip-front,
-                 .service-page-flip-back {
-                     position: relative;
-                     backface-visibility: visible !important;
-                 }
-
-                 .service-page-flip-back {
-                     display: none !important;
-                 }
-
-                 .service-page-flip-front {
-                     box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
-                     border: 1px solid rgba(47, 46, 120, 0.08);
-                 }
-             }
-
-             .service-page-flip-front .service-page-flip-desc,
-             .service-page-flip-front .service-page-flip-cta {
-                 display: none;
-             }
-
-             /* Disable flip and show front-only (with desc + CTA) on touch / no-hover devices */
-             @media (hover: none), (pointer: coarse) {
-                 .service-page-flip-box {
-                     perspective: none;
-                     height: auto;
-                     cursor: default;
-                 }
-
-                 .service-page-flip-inner {
-                     transform: none !important;
-                     transform-style: flat !important;
-                 }
-
-                 .service-page-flip-front,
-                 .service-page-flip-back {
-                     position: relative;
-                     backface-visibility: visible !important;
-                 }
-
-                 .service-page-flip-back {
-                     display: none !important;
-                 }
-
-                 .service-page-flip-front {
-                     box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
-                     border: 1px solid rgba(47, 46, 120, 0.08);
-                 }
-
-                     /* Show desc + CTA on the front for touch */
-                     .service-page-flip-front .service-page-flip-desc,
-                     .service-page-flip-front .service-page-flip-cta {
-                         display: block;
-                         margin-top: 0.5rem;
-                     }
-
-                     .service-page-flip-front .service-page-flip-desc {
-                         color: #2d3958;
-                         opacity: 0.9;
-                     }
-             }
-
-             .service-page-flip-front .service-page-flip-desc--mobile,
-             .service-page-flip-front .service-page-flip-cta--mobile {
-                 display: none;
-             }
-
-             @media (hover: none), (pointer: coarse) {
-                 .service-page-flip-box {
-                     perspective: none;
-                     height: auto;
-                     cursor: default;
-                 }
-
-                 .service-page-flip-inner {
-                     transform: none !important;
-                     transform-style: flat !important;
-                 }
-
-                 .service-page-flip-front,
-                 .service-page-flip-back {
-                     position: relative;
-                     backface-visibility: visible !important;
-                 }
-
-                 .service-page-flip-back {
-                     display: none !important;
-                 }
-
-                 .service-page-flip-front {
-                     box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
-                     border: 1px solid rgba(47, 46, 120, 0.08);
-                     justify-content: flex-end;
-                     gap: 0.5rem;
-                     padding-bottom: 24px;
-                 }
-
-                     /* Show mobile description + CTA */
-                     .service-page-flip-front .service-page-flip-desc--mobile,
-                     .service-page-flip-front .service-page-flip-cta--mobile {
-                         display: block;
-                         margin-top: 0.5rem;
-                     }
-
-                     .service-page-flip-front .service-page-flip-desc--mobile {
-                         color: #2d3958;
-                         opacity: 0.9;
-                         line-height: 1.6;
-                     }
-             }
-
-             @media (hover: none), (pointer: coarse) {
-                 /* existing mobile flip overrides ... */
-
-                 .service-page-flip-front .service-page-flip-desc--mobile {
-                     color: #7b889f;
-                     opacity: 1;
-                     line-height: 1.6;
-                 }
-             }
-
-             .service-page-flip-front .service-page-flip-desc:not(.service-page-flip-desc--mobile),
-             .service-page-flip-front .service-page-flip-cta:not(.service-page-flip-cta--mobile) {
-                 display: none;
-             }
-
-             .service-page-flip-front .service-page-flip-desc--mobile,
-             .service-page-flip-front .service-page-flip-cta--mobile {
-                 display: none;
-             }
-
-             @media (hover: none), (pointer: coarse) {
-                 .service-page-flip-box {
-                     perspective: none;
-                     height: auto;
-                     cursor: default;
-                 }
-
-                 .service-page-flip-inner {
-                     transform: none !important;
-                     transform-style: flat !important;
-                 }
-
-                 .service-page-flip-front,
-                 .service-page-flip-back {
-                     position: relative;
-                     backface-visibility: visible !important;
-                 }
-
-                 .service-page-flip-back {
-                     display: none !important;
-                 }
-
-                 .service-page-flip-front {
-                     box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
-                     border: 1px solid rgba(47, 46, 120, 0.08);
-                     justify-content: flex-end;
-                     gap: 0.5rem;
-                     padding-bottom: 24px;
-                 }
-
-                     /* Show mobile description + CTA and set color */
-                     .service-page-flip-front .service-page-flip-desc--mobile,
-                     .service-page-flip-front .service-page-flip-cta--mobile {
-                         display: block !important;
-                         margin-top: 0.5rem;
-                     }
-
-                     .service-page-flip-front .service-page-flip-desc--mobile {
-                         color: #7b889f !important;
-                         opacity: 1;
-                         line-height: 1.6;
-                     }
-             }
-
-             /* ========================================
-        REFERENCE FLIP SECTION - UNIFORM HEIGHTS WITH CSS GRID
-        ======================================== */
-
-             .reference-flip-section {
-                 padding: 60px 0;
-                 background: linear-gradient(135deg, #f8f9fc 0%, #f0f2f8 100%);
-             }
-
-                 /* Use CSS Grid for equal height columns */
-                 .reference-flip-section .row {
-                     display: grid;
-                     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                     gap: 1.5rem;
-                 }
-
-                 /* Override Bootstrap column classes for grid */
-                 .reference-flip-section .col-md-4,
-                 .reference-flip-section .col-sm-6 {
-                     width: auto;
-                     max-width: none;
-                     padding: 0;
-                 }
-
-             /* 3D Flip Container - Auto height that matches siblings */
-             .reference-flip-container {
-                 perspective: 1200px;
-                 cursor: pointer;
-                 transition: transform 0.3s ease;
-                 height: 100%; /* Fill grid cell */
-                 min-height: 350px; /* Minimum comfortable height */
-             }
-
-             @media (min-width: 768px) {
-                 .reference-flip-section .row {
-                     grid-template-columns: repeat(3, 1fr); /* 3 columns on tablet+ */
-                 }
-             }
-
-             @media (max-width: 767px) {
-                 .reference-flip-section .row {
-                     grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
-                 }
-             }
-
-             @media (max-width: 575px) {
-                 .reference-flip-section .row {
-                     grid-template-columns: 1fr; /* 1 column on small phones */
-                 }
-             }
-
-             .reference-flipper {
-                 position: relative;
-                 width: 100%;
-                 height: 100%;
-                 transform-style: preserve-3d;
-                 transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
-             }
-
-             /* Hover effect - flip on desktop */
-             @media (hover: hover) and (pointer: fine) {
-                 .reference-flip-container:hover .reference-flipper {
-                     transform: rotateY(180deg);
-                 }
-             }
-
-             /* Front and Back faces */
-             .reference-flip-front,
-             .reference-flip-back {
-                 position: absolute;
-                 width: 100%;
-                 height: 100%;
-                 backface-visibility: hidden;
-                 border-radius: 20px;
-                 display: flex;
-                 flex-direction: column;
-                 align-items: center;
-                 justify-content: center;
-                 padding: 2rem 1.5rem;
-                 box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
-                 transition: box-shadow 0.3s ease;
-             }
-
-             /* Front side - white background */
-             .reference-flip-front {
-                 background: #ffffff;
-                 border: 1px solid rgba(47, 46, 120, 0.04);
-                 text-align: center;
-             }
-
-             .reference-flip-container:hover .reference-flip-front {
-                 box-shadow: 0 15px 50px rgba(47, 46, 120, 0.12);
-             }
-
-             /* Back side - gradient background */
-             .reference-flip-back {
-                 background: linear-gradient(180deg, #5fd6d8 0%, #7867ff 100%) !important;
-                 color: #ffffff;
-                 transform: rotateY(180deg);
-                 padding: 2.5rem 2rem;
-                 justify-content: center;
-                 align-items: center;
-                 text-align: center;
-             }
-
-             /* Title styling */
-             .reference-flip-title {
-                 font-size: 20px;
-                 font-weight: 600;
-                 color: #2d3958;
-                 text-align: center;
-                 margin-bottom: 0;
-                 padding-top: 0.5rem;
-                 line-height: 1.3;
-             }
-
-             .reference-flip-back .reference-flip-title {
-                 font-size: 1.4rem;
-                 font-weight: 600;
-                 color: #ffffff !important;
-                 margin-bottom: 1.5rem;
-                 line-height: 1.3;
-                 letter-spacing: -0.02em;
-                 text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-             }
-
-             /* Description - HIDDEN on desktop front, shown on back */
-             .reference-flip-desc {
-                 font-size: 0.95rem;
-                 line-height: 1.6;
-                 color: #ffffff !important;
-                 text-align: center;
-                 margin-bottom: 1.5rem;
-                 font-weight: 400;
-                 opacity: 0.95;
-                 padding: 0 0.5rem;
-                 display: none;
-             }
-
-             .reference-flip-back .reference-flip-desc {
-                 display: block;
-             }
-
-             /* Mobile-specific description */
-             .reference-flip-desc--mobile {
-                 display: none;
-                 font-size: 0.9rem;
-                 line-height: 1.6;
-                 color: #6b7280;
-                 text-align: center;
-                 margin-top: 1rem;
-                 margin-bottom: 1rem;
-                 padding: 0 0.5rem;
-             }
-
-             /* CTA Link - HIDDEN on desktop front, shown on back */
-             .reference-flip-cta {
-                 color: #ffffff !important;
-                 text-decoration: none !important;
-                 font-weight: 700;
-                 font-size: 15px;
-                 display: none;
-                 align-items: center;
-                 gap: 8px;
-                 padding: 12px 24px;
-                 background: rgba(255, 255, 255, 0.2);
-                 border-radius: 8px;
-                 transition: all 0.3s ease;
-                 margin-top: auto;
-             }
-
-             .reference-flip-back .reference-flip-cta {
-                 display: inline-flex;
-             }
-
-             .reference-flip-cta:hover {
-                 background: rgba(255, 255, 255, 0.3);
-                 transform: translateX(4px);
-             }
-
-             .reference-flip-cta i {
-                 font-size: 1.2rem;
-                 transition: transform 0.3s ease;
-             }
-
-             .reference-flip-cta:hover i {
-                 transform: translateX(4px);
-             }
-
-             /* Mobile-specific CTA */
-             .reference-flip-cta--mobile {
-                 display: none;
-                 color: #dc3545 !important;
-                 text-decoration: none !important;
-                 font-weight: 600;
-                 font-size: 14px;
-                 margin-top: auto;
-                 transition: all 0.3s ease;
-             }
-
-                 .reference-flip-cta--mobile:hover {
-                     color: #bb2d3b !important;
-                 }
-
-                 .reference-flip-cta--mobile i {
-                     font-size: 1.3rem;
-                     transition: transform 0.3s ease;
-                     vertical-align: middle;
-                 }
-
-                 .reference-flip-cta--mobile:hover i {
-                     transform: translateX(4px);
-                 }
-
-             /* Icon wrapper styling */
-             .reference-flip-front .work-service-icon-wrapper {
-                 display: inline-flex;
-                 align-items: center;
-                 justify-content: center;
-                 margin-bottom: 1.25rem;
-                 margin-top: 0.5rem;
-                 flex-shrink: 0;
-             }
-
-             .reference-flip-front .work-service-icon {
-                 width: 60px;
-                 height: 60px;
-                 fill: #2f2e78;
-                 display: inline-block;
-             }
-
-             /* Disable 3D flip on touch devices */
-             @media (hover: none), (any-hover: none), (pointer: coarse) {
-                 .reference-flipper {
-                     transform-style: flat !important;
-                 }
-
-                 .reference-flip-container {
-                     perspective: none !important;
-                     cursor: default !important;
-                 }
-
-                 .reference-flipper {
-                     transform: none !important;
-                 }
-
-                 .reference-flip-front,
-                 .reference-flip-back {
-                     position: relative;
-                     backface-visibility: visible !important;
-                 }
-
-                 .reference-flip-back {
-                     display: none !important;
-                 }
-
-                 .reference-flip-front {
-                     box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
-                     border: 1px solid rgba(47, 46, 120, 0.08);
-                     padding: 2rem 1.5rem;
-                     justify-content: flex-start;
-                     gap: 0.75rem;
-                     height: 100%;
-                 }
-
-                     /* Show mobile description and CTA */
-                     .reference-flip-front .reference-flip-desc--mobile,
-                     .reference-flip-front .reference-flip-cta--mobile {
-                         display: block !important;
-                     }
-
-                     .reference-flip-front .work-service-icon-wrapper {
-                         margin-bottom: 1rem;
-                     }
-
-                     .reference-flip-front .reference-flip-title {
-                         margin-bottom: 0.75rem;
-                     }
-             }
+        /* Add additional top spacing so the hero visual doesn't sit flush under the sticky header */
+        .hero-section {
+            padding-top: 7rem; /* base spacing for small screens */
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                padding-top: 4.5rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .hero-section {
+                padding-top: 9rem; /* larger spacing for desktop where header is horizontal */
+            }
+
+            .work-hero-visual {
+                margin-top: 4rem; /* slight additional offset for the image column */
+            }
+        }
+
+        /* Services header styling to match index.html hero section */
+        .services-header h1,
+        .services-header h2,
+        .services-header h3 {
+            display: block;
+            width: 100%;
+            max-width: 96vw;
+            margin: 0 auto;
+            white-space: nowrap;
+            word-break: keep-all;
+            hyphens: none;
+            overflow: visible;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: 500;
+            line-height: 1 !important;
+        }
+
+        /* First h1 and h3 - solid color */
+        .services-header h1,
+        .services-header h3 {
+            color: #2d3958;
+            padding-bottom: 45px;
+        }
+
+        /* Middle h2 - gradient */
+        .services-header h2 {
+            background: linear-gradient(180deg, #61dcdf 0%, #886cff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* R.C.I.C. accent color */
+        .services-header .rcic-accent {
+            color: #e62939;
+        }
+
+        /* Desktop font size (≥925px) = 72px */
+        @media (min-width: 925px) {
+            .services-header h1,
+            .services-header h2,
+            .services-header h3 {
+                font-size: 72px;
+            }
+        }
+
+        /* Mobile/Tablet font size (<925px) = 40px with clamp */
+        @media (max-width: 924.98px) {
+            .services-header h1,
+            .services-header h2,
+            .services-header h3 {
+                font-size: clamp(28px, 8vw, 40px) !important;
+            }
+        }
+
+        /* Custom SVG icon styling for work services */
+        .work-service-icon {
+            width: 60px;
+            height: 60px;
+            fill: #2f2e78;
+            display: inline-block;
+        }
+
+        .work-service-icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Override service box background to transparent */
+        .work-page .service-box {
+            background: transparent !important;
+            padding: 3rem 2rem !important; /* Increased from default padding */
+            margin-bottom: 1.5rem; /* Add space between rows */
+        }
+
+            /* Add hover effect with subtle background */
+            .work-page .service-box:hover {
+                background: rgba(255, 255, 255, 0.5) !important;
+                transform: translateY(-5px);
+                box-shadow: 0 12px 35px rgba(47, 46, 120, 0.1);
+            }
+
+        /* Add more spacing between icon and title */
+        .work-page .work-service-icon-wrapper {
+            margin-bottom: 1.5rem !important; /* Increased from 1rem */
+            margin-top: 0.5rem; /* Add top margin */
+        }
+
+        /* Add more spacing between title and description */
+        .work-page .service-box h5 {
+            margin-bottom: 1rem !important; /* Increased spacing */
+            padding-top: 0.5rem; /* Add padding above title */
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        /* Add more spacing between description and CTA link */
+        .work-page .service-box p {
+            margin-bottom: 1.5rem !important; /* Increased from 1rem */
+            padding-bottom: 0.5rem; /* Add padding below description */
+        }
+
+        /* Adjust CTA link spacing */
+        .work-page .service-box a {
+            margin-top: 0.5rem; /* Add top margin to CTA */
+            display: inline-block;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 767px) {
+            .work-page .service-box {
+                padding: 2.5rem 1.5rem !important;
+                margin-bottom: 1.25rem;
+            }
+
+            .work-page .work-service-icon-wrapper {
+                margin-bottom: 1.25rem !important;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 575px) {
+            .work-page .service-box {
+                padding: 2rem 1.25rem !important;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Make hero-small-text wider and limit wrapping */
+        @media (min-width: 992px) {
+            #service-hero .hero-small-text {
+                max-width: none;
+                width: 120%;
+                line-height: 1.6;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            #service-hero .hero-small-text {
+                width: 135%;
+            }
+        }
+
+        .can-title-img {
+            width: 100% !important;
+            height: auto !important;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Desktop (≥925px) = 180px max with minimal bottom spacing */
+        @media (min-width: 925px) {
+            .can-title-img {
+                max-width: 180px !important;
+                margin-bottom: 0px !important; /* Reduced from 8px to match line spacing */
+            }
+        }
+
+        /* Mobile/Tablet (<925px) = 100px max with tighter spacing */
+        @media (max-width: 924.98px) {
+            .can-title-img {
+                max-width: clamp(75px, 20vw, 100px) !important;
+                margin-bottom: 4px !important; /* Reduced from 8px for tighter spacing */
+            }
+        }
+
+        .mb-3 {
+            margin-bottom: 0.6rem !important;
+        }
     </style>
 </head>
 
@@ -1016,7 +279,8 @@
     </section>
 
     <!-- Work Services section (reuses .service-box styles) -->
-    <section class="services-section my-5">
+
+    <section class="reference-flip-section my-5">
         <div class="container">
             <div class="services-header text-center">
                 <div class="col-12 mb-3 d-flex justify-content-center">
@@ -1026,84 +290,7 @@
                 <h3 class="mb-3">with Licensed <span class="rcic-accent">R.C.I.C.</span></h3>
             </div>
 
-            <div class="row mt-4 g-4 justify-content-center">
-                <!-- Work Permit Application -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="service-box h-100 p-4 text-center border rounded-4">
-                        <div class="work-service-icon-wrapper mb-3">
-                            <svg aria-hidden="true" class="work-service-icon e-font-icon-svg e-fas-briefcase" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"></path>
-                            </svg>
-                        </div>
-                        <h5 class="mb-2">Work Permit Application</h5>
-                        <p class="mb-3 service-desc">Expert assistance for various work permit applications, including employer-specific and open work permits.</p>
-                        <a class="text-danger text-decoration-none" href="Work_Permit_App.html">APPLY NOW <i class="bi bi-arrow-right-short"></i></a>
-                    </div>
-                </div>
-
-                <!-- PGWP -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="service-box h-100 p-4 text-center border rounded-4">
-                        <div class="work-service-icon-wrapper mb-3">
-                            <svg aria-hidden="true" class="work-service-icon e-font-icon-svg e-fas-user-tie" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm95.8 32.6L272 480l-32-136 32-56h-96l32 56-32 136-47.8-191.4C56.9 292 0 350.3 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z"></path>
-                            </svg>
-                        </div>
-                        <h5 class="mb-2">Post-Graduation Work Permit (PGWP)</h5>
-                        <p class="mb-3 service-desc">Assistance for international students to apply for a PGWP after graduating from a Canadian institution.</p>
-                        <a class="text-danger text-decoration-none" href="PGWP.html">APPLY NOW <i class="bi bi-arrow-right-short"></i></a>
-                    </div>
-                </div>
-
-                <!-- BOWP -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="service-box h-100 p-4 text-center border rounded-4">
-                        <div class="work-service-icon-wrapper mb-3">
-                            <svg aria-hidden="true" class="work-service-icon e-font-icon-svg e-fas-stream" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16 128h416c8.84 0 16-7.16 16-16V48c0-8.84-7.16-16-16-16H16C7.16 32 0 39.16 0 48v64c0 8.84 7.16 16 16 16zm480 80H80c-8.84 0-16 7.16-16 16v64c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-64c0-8.84-7.16-16-16-16zm-64 176H16c-8.84 0-16 7.16-16 16v64c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-64c0-8.84-7.16-16-16-16z"></path>
-                            </svg>
-                        </div>
-                        <h5 class="mb-2">Bridging Open Work Permit (BOWP)</h5>
-                        <p class="mb-3 service-desc">Assistance for eligible permanent resident applicants to apply for a BOWP while awaiting a decision.</p>
-                        <a class="text-danger text-decoration-none" href="BOWP.html">APPLY NOW <i class="bi bi-arrow-right-short"></i></a>
-                    </div>
-                </div>
-
-                <!-- Dependent Work Permit -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="service-box h-100 p-4 text-center border rounded-4">
-                        <div class="work-service-icon-wrapper mb-3">
-                            <svg aria-hidden="true" class="work-service-icon" xmlns="http://www.w3.org/2000/svg" id="_Ñëîé_1" data-name="Ñëîé_1" viewBox="0 0 231 287">
-                                <g>
-                                    <circle cx="60.34" cy="38.19" r="21.46"></circle>
-                                    <path d="M29.57,65.17c20.87-2.91,42.11-2.91,62.98,0,10.38.94,18.63,9.65,18.63,20.27v75.86c0,4.91-3.98,8.88-8.88,8.88-4.91,0-8.88-3.98-8.88-8.88v-68.28s-1.76,0-1.76,0l-5.8,77.1-4.69,107.94h-19.28s.29-108.06.29-108.06h-2.96s.29,108.06.29,108.06h-19.28s-4.69-107.94-4.69-107.94l-5.8-77.1h-.7s0,68.28,0,68.28c0,4.91-3.98,8.88-8.88,8.88-4.91,0-8.88-3.98-8.88-8.88v-75.86c0-10.62,7.94-19.33,18.31-20.27Z"></path>
-                                </g>
-                                <g>
-                                    <circle cx="157.39" cy="38.19" r="21.46"></circle>
-                                    <path d="M96.28,162.82l21.14-76.1c3.94-14.16,16.83-24.04,31.52-24.04h16.89c14.69,0,27.58,9.89,31.52,24.04l21.14,75.96c1.13,4.07-1.93,8.06-6.16,8.06h0c-2.81,0-5.29-1.84-6.11-4.53l-23.19-76.15h-2.19s28.07,114.72,28.07,114.72h-30.54s-2.99,73.27-2.99,73.27h-16.42s.26-73.27.26-73.27h-3.68s.26,73.27.26,73.27h-16.42s-2.99-73.27-2.99-73.27h-30.54s28.07-114.72,28.07-114.72h-2.35s-23.03,76.23-23.03,76.23c-.82,2.7-13.41.6-12.27-3.47Z"></path>
-                                </g>
-                            </svg>
-                        </div>
-                        <h5 class="mb-2">Dependent Work Permit</h5>
-                        <p class="mb-3 service-desc">Enabling spouses and common-law partners of eligible workers/students to obtain open work permits.</p>
-                        <a class="text-danger text-decoration-none" href="Dependent_Work_Permit.html">APPLY NOW <i class="bi bi-arrow-right-short"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="reference-flip-section my-5">
-        <div class="container">
-            <div class="services-header text-center">
-                <div class="col-12 mb-3 d-flex justify-content-center">
-                    <img src="Images/Can.png" alt="Can" class="img-fluid can-title-img">
-                </div>
-                <h2 class="mb-2 gradient-text">Work Services</h2>
-                <h3 class="mb-3">with Licensed <span class="rcic-accent">R.C.I.C.</span></h3>
-            </div>
-
-            <div class="row mt-4 g-4 justify-content-center">
+            <div class="row justify-content-center">
                 <!-- Work Permit Application -->
                 <div class="col-md-4 col-sm-6">
                     <div class="reference-flip-container">
@@ -1210,96 +397,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Service Page Flip Boxes -->
-    <section class="service-page-flip-section">
-        <div class="container">
-            <div class="row mt-4 g-4 justify-content-center">
-                <!-- Work Permit Application -->
-                <div class="col-md-4 col-sm-6">
-                    <a class="service-page-flip-box d-block text-decoration-none" href="Work_Permit_App.html">
-                        <div class="service-page-flip-inner">
-                            <div class="service-page-flip-front">
-                                <div class="work-service-icon-wrapper">
-                                    <svg aria-hidden="true" class="work-service-icon e-font-icon-svg e-fas-briefcase" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"></path>
-                                    </svg>
-                                </div>
-                                <div class="service-page-flip-title">Work Permit Application</div>
-                                <p class="service-page-flip-desc service-page-flip-desc--mobile">
-                                    Expert assistance for various work permit applications, including employer-specific and open work permits.
-                                </p>
-                                <span class="service-page-flip-cta service-page-flip-cta--mobile">READ MORE <i class="bi bi-arrow-right-short"></i></span>
-                            </div>
-                            <div class="service-page-flip-back">
-                                <div class="service-page-flip-title">Work Permit Application</div>
-                                <p class="service-page-flip-desc">
-                                    Expert assistance for various work permit applications, including employer-specific and open work permits.
-                                </p>
-                                <span class="service-page-flip-cta">READ MORE <i class="bi bi-arrow-right-short"></i></span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Post-Graduation Work Permit (PGWP) -->
-                <div class="col-md-4 col-sm-6">
-                    <a class="service-page-flip-box d-block text-decoration-none" href="PGWP.html">
-                        <div class="service-page-flip-inner">
-                            <div class="service-page-flip-front">
-                                <div class="work-service-icon-wrapper">
-                                    <svg aria-hidden="true" class="work-service-icon e-font-icon-svg e-fas-user-tie" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm95.8 32.6L272 480l-32-136 32-56h-96l32 56-32 136-47.8-191.4C56.9 292 0 350.3 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z"></path>
-                                    </svg>
-                                </div>
-                                <div class="service-page-flip-title">Post-Graduation Work Permit</div>
-                                <p class="service-page-flip-desc service-page-flip-desc--mobile">
-                                    Assistance for international students to apply for a PGWP after graduating from a Canadian institution.
-                                </p>
-                                <span class="service-page-flip-cta service-page-flip-cta--mobile">READ MORE <i class="bi bi-arrow-right-short"></i></span>
-                            </div>
-                            <div class="service-page-flip-back">
-                                <div class="service-page-flip-title">Post-Graduation Work Permit</div>
-                                <p class="service-page-flip-desc">
-                                    Assistance for international students to apply for a PGWP after graduating from a Canadian institution.
-                                </p>
-                                <span class="service-page-flip-cta">READ MORE <i class="bi bi-arrow-right-short"></i></span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Bridging Open Work Permit (BOWP) -->
-                <div class="col-md-4 col-sm-6">
-                    <a class="service-page-flip-box d-block text-decoration-none" href="BOWP.html">
-                        <div class="service-page-flip-inner">
-                            <div class="service-page-flip-front">
-                                <div class="work-service-icon-wrapper">
-                                    <svg aria-hidden="true" class="work-service-icon e-font-icon-svg e-fas-stream" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M16 128h416c8.84 0 16-7.16 16-16V48c0-8.84-7.16-16-16-16H16C7.16 32 0 39.16 0 48v64c0 8.84 7.16 16 16 16zm480 80H80c-8.84 0-16 7.16-16 16v64c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-64c0-8.84-7.16-16-16-16zm-64 176H16c-8.84 0-16 7.16-16 16v64c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-64c0-8.84-7.16-16-16-16z"></path>
-                                    </svg>
-                                </div>
-                                <div class="service-page-flip-title">Bridging Open Work Permit</div>
-                                <p class="service-page-flip-desc service-page-flip-desc--mobile">
-                                    Assistance for eligible permanent resident applicants to apply for a BOWP while awaiting a decision.
-                                </p>
-                                <span class="service-page-flip-cta service-page-flip-cta--mobile">READ MORE <i class="bi bi-arrow-right-short"></i></span>
-                            </div>
-                            <div class="service-page-flip-back">
-                                <div class="service-page-flip-title">Bridging Open Work Permit</div>
-                                <p class="service-page-flip-desc">
-                                    Assistance for eligible permanent resident applicants to apply for a BOWP while awaiting a decision.
-                                </p>
-                                <span class="service-page-flip-cta">READ MORE <i class="bi bi-arrow-right-short"></i></span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- (Repeat the same front mobile desc/cta pattern for the remaining flip cards in this section) -->
             </div>
         </div>
     </section>

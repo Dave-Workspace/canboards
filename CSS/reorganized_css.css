@@ -4124,3 +4124,682 @@ a.fancy {
         transform: rotate(1turn);
     }
 }
+
+/* ========================================
+        REFERENCE FLIP SECTION - UNIFORM HEIGHTS WITH CSS GRID
+        ======================================== */
+
+.reference-flip-section {
+    padding: 60px 0;
+}
+
+    /* Use CSS Grid for equal height columns */
+    .reference-flip-section .row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    /* Override Bootstrap column classes for grid */
+    .reference-flip-section .col-md-4,
+    .reference-flip-section .col-sm-6 {
+        width: auto;
+        max-width: none;
+        padding: 0;
+    }
+
+/* 3D Flip Container - Auto height that matches siblings */
+.reference-flip-container {
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    height: 100%; /* Fill grid cell */
+    min-height: 350px; /* Minimum comfortable height */
+}
+
+@media (min-width: 768px) {
+    .reference-flip-section .row {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on tablet+ */
+    }
+}
+
+@media (max-width: 767px) {
+    .reference-flip-section .row {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    }
+}
+
+@media (max-width: 575px) {
+    .reference-flip-section .row {
+        grid-template-columns: 1fr; /* 1 column on small phones */
+    }
+}
+
+.reference-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+/* Hover effect - flip on desktop */
+@media (hover: hover) and (pointer: fine) {
+    .reference-flip-container:hover .reference-flipper {
+        transform: rotateY(180deg);
+    }
+}
+
+/* Front and Back faces */
+.reference-flip-front,
+.reference-flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Front side - white background */
+.reference-flip-front {
+    background: #ffffff;
+    border: 1px solid rgba(47, 46, 120, 0.04);
+    text-align: center;
+}
+
+.reference-flip-container:hover .reference-flip-front {
+    box-shadow: 0 15px 50px rgba(47, 46, 120, 0.12);
+}
+
+/* Back side - gradient background */
+.reference-flip-back {
+    background: linear-gradient(180deg, #5fd6d8 0%, #7867ff 100%) !important;
+    color: #ffffff;
+    transform: rotateY(180deg);
+    padding: 2.5rem 2rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Title styling */
+.reference-flip-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d3958;
+    text-align: center;
+    margin-bottom: 0;
+    padding-top: 0.5rem;
+    line-height: 1.3;
+}
+
+.reference-flip-back .reference-flip-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #ffffff !important;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Description - HIDDEN on desktop front, shown on back */
+.reference-flip-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ffffff !important;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0.95;
+    padding: 0 0.5rem;
+    display: none;
+}
+
+.reference-flip-back .reference-flip-desc {
+    display: block;
+}
+
+/* Mobile-specific description */
+.reference-flip-desc--mobile {
+    display: none;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #6b7280;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+}
+
+/* CTA Link - HIDDEN on desktop front, shown on back */
+.reference-flip-cta {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 15px;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.reference-flip-back .reference-flip-cta {
+    display: inline-flex;
+}
+
+.reference-flip-cta:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(4px);
+}
+
+.reference-flip-cta i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.reference-flip-cta:hover i {
+    transform: translateX(4px);
+}
+
+/* Mobile-specific CTA */
+.reference-flip-cta--mobile {
+    display: none;
+    color: #dc3545 !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: auto;
+    transition: all 0.3s ease;
+}
+
+    .reference-flip-cta--mobile:hover {
+        color: #bb2d3b !important;
+    }
+
+    .reference-flip-cta--mobile i {
+        font-size: 1.3rem;
+        transition: transform 0.3s ease;
+        vertical-align: middle;
+    }
+
+    .reference-flip-cta--mobile:hover i {
+        transform: translateX(4px);
+    }
+
+/* Icon wrapper styling */
+.reference-flip-front .work-service-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+}
+
+.reference-flip-front .work-service-icon {
+    width: 60px;
+    height: 60px;
+    fill: #2f2e78;
+    display: inline-block;
+}
+
+/* Disable 3D flip on touch devices */
+@media (hover: none), (any-hover: none), (pointer: coarse) {
+    .reference-flipper {
+        transform-style: flat !important;
+    }
+
+    .reference-flip-container {
+        perspective: none !important;
+        cursor: default !important;
+    }
+
+    .reference-flipper {
+        transform: none !important;
+    }
+
+    .reference-flip-front,
+    .reference-flip-back {
+        position: relative;
+        backface-visibility: visible !important;
+    }
+
+    .reference-flip-back {
+        display: none !important;
+    }
+
+    .reference-flip-front {
+        box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
+        border: 1px solid rgba(47, 46, 120, 0.08);
+        padding: 2rem 1.5rem;
+        justify-content: flex-start;
+        gap: 0.75rem;
+        height: 100%;
+    }
+
+        /* Show mobile description and CTA */
+        .reference-flip-front .reference-flip-desc--mobile,
+        .reference-flip-front .reference-flip-cta--mobile {
+            display: block !important;
+        }
+
+        .reference-flip-front .work-service-icon-wrapper {
+            margin-bottom: 1rem;
+        }
+
+        .reference-flip-front .reference-flip-title {
+            margin-bottom: 0.75rem;
+        }
+}
+
+/* CTA Link - transparent with blur effect on back face */
+.reference-flip-cta {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 15px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.reference-flip-back .reference-flip-cta {
+    display: inline-flex;
+}
+
+.reference-flip-cta:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.reference-flip-cta i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.reference-flip-cta:hover i {
+    transform: translateX(4px);
+}
+
+/* Mobile-specific CTA */
+.reference-flip-cta--mobile {
+    display: none;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: auto;
+    transition: all 0.3s ease;
+    padding: 10px 24px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+    .reference-flip-cta--mobile:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        color: #ffffff !important;
+    }
+
+    .reference-flip-cta--mobile i {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .reference-flip-cta--mobile:hover i {
+        transform: translateX(4px);
+    }
+
+/* Mobile-specific CTA */
+.reference-flip-cta--mobile {
+    display: none;
+    color: #2d3958 !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: auto;
+    transition: all 0.3s ease;
+    padding: 10px 24px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(47, 46, 120, 0.3);
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+    .reference-flip-cta--mobile:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(47, 46, 120, 0.5);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        color: #1f2937 !important;
+    }
+
+    .reference-flip-cta--mobile i {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+        color: #2d3958;
+    }
+
+    .reference-flip-cta--mobile:hover i {
+        transform: translateX(4px);
+    }
+
+.reference-flip-section {
+    padding: 60px 0;
+}
+
+    /* Use CSS Grid for equal height columns */
+    .reference-flip-section .row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem; /* This applies to both rows and columns */
+        row-gap: 1.5rem; /* Explicitly set row gap */
+        column-gap: 1.5rem; /* Explicitly set column gap */
+    }
+
+    /* Override Bootstrap column classes for grid */
+    .reference-flip-section .col-md-4,
+    .reference-flip-section .col-sm-6 {
+        width: auto;
+        max-width: none;
+        padding: 0;
+    }
+
+/* 3D Flip Container - Auto height that matches siblings */
+.reference-flip-container {
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    height: 100%; /* Fill grid cell */
+    min-height: 350px; /* Minimum comfortable height */
+}
+
+@media (min-width: 768px) {
+    .reference-flip-section .row {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on tablet+ */
+        gap: 1.5rem;
+        row-gap: 1.5rem;
+        column-gap: 1.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .reference-flip-section .row {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+        gap: 1.25rem;
+        row-gap: 1.25rem;
+        column-gap: 1.25rem;
+    }
+
+    .reference-flip-container {
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 575px) {
+    .reference-flip-section .row {
+        grid-template-columns: 1fr; /* 1 column on small phones */
+        gap: 1rem;
+        row-gap: 1rem;
+        column-gap: 1rem;
+    }
+
+    .reference-flip-container {
+        min-height: auto;
+    }
+}
+
+.reference-flip-section {
+    padding: 60px 0;
+}
+
+    /* Use CSS Grid for equal height columns */
+    .reference-flip-section .row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem !important;
+        row-gap: 1.5rem !important;
+        column-gap: 1.5rem !important;
+        margin-top: 0 !important;
+        justify-items: center; /* Center all items horizontally */
+    }
+
+    /* Override Bootstrap column classes for grid */
+    .reference-flip-section .col-md-4,
+    .reference-flip-section .col-sm-6 {
+        width: 100%;
+        max-width: 450px; /* Prevent cards from getting too wide */
+        padding: 0 !important;
+    }
+
+/* 3D Flip Container - Auto height that matches siblings */
+.reference-flip-container {
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    height: 100%;
+    min-height: 350px;
+    width: 100%; /* Fill the column width */
+}
+
+@media (min-width: 768px) {
+    .reference-flip-section .row {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem !important;
+        row-gap: 1.5rem !important;
+        column-gap: 1.5rem !important;
+        justify-items: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .reference-flip-section .row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem !important;
+        row-gap: 1.25rem !important;
+        column-gap: 1.25rem !important;
+        justify-items: center;
+    }
+
+    .reference-flip-container {
+        min-height: 320px;
+    }
+
+    .reference-flip-section .col-md-4,
+    .reference-flip-section .col-sm-6 {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 575px) {
+    .reference-flip-section .row {
+        grid-template-columns: 1fr;
+        gap: 1rem !important;
+        row-gap: 1rem !important;
+        column-gap: 1rem !important;
+        justify-items: center;
+    }
+
+    .reference-flip-container {
+        min-height: auto;
+    }
+
+    .reference-flip-section .col-md-4,
+    .reference-flip-section .col-sm-6 {
+        max-width: 100%;
+    }
+}
+
+/* Flex layout so the last row centers 1 or 2 cards */
+.reference-flip-section .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+    row-gap: 1.5rem !important;
+    column-gap: 1.5rem !important;
+}
+
+.reference-flip-section .col-md-4,
+.reference-flip-section .col-sm-6 {
+    flex: 0 1 340px !important;
+    max-width: 340px !important;
+    padding: 0 !important;
+}
+
+.reference-flip-container {
+    width: 100% !important;
+    max-width: 340px !important;
+    min-height: 350px !important;
+}
+
+@media (max-width: 767px) {
+    .reference-flip-section .row {
+        gap: 1.25rem !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .reference-flip-section .row {
+        gap: 1rem !important;
+    }
+
+    .reference-flip-section .col-md-4,
+    .reference-flip-section .col-sm-6 {
+        flex: 0 1 100% !important;
+        max-width: 100% !important;
+    }
+
+    .reference-flip-container {
+        max-width: 100% !important;
+        min-height: auto !important;
+    }
+}
+
+/* Gradient fronts for first eight cards */
+.reference-flip-section .col-md-4:nth-child(1) .reference-flip-front,
+.reference-flip-section .col-sm-6:nth-child(1) .reference-flip-front {
+    background: linear-gradient(135deg, #fff5f7 0%, #ffeef2 100%) !important;
+    border-color: rgba(47, 46, 120, 0.04) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(2) .reference-flip-front,
+.reference-flip-section .col-sm-6:nth-child(2) .reference-flip-front {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+    border-color: rgba(47, 46, 120, 0.04) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(3) .reference-flip-front,
+.reference-flip-section .col-sm-6:nth-child(3) .reference-flip-front {
+    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%) !important;
+    border-color: rgba(47, 46, 120, 0.04) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(4) .reference-flip-front,
+.reference-flip-section .col-sm-6:nth-child(4) .reference-flip-front {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%) !important;
+    border-color: rgba(47, 46, 120, 0.04) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(5) .reference-flip-front,
+.reference-flip-section .col-sm-6:nth-child(5) .reference-flip-front {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%) !important;
+    border-color: rgba(47, 46, 120, 0.04) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(6) .reference-flip-front,
+.reference-flip-section .col-sm-6:nth-child(6) .reference-flip-front {
+    background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%) !important;
+    border-color: rgba(47, 46, 120, 0.04) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(7) .reference-flip-front,
+.reference-flip-section .col-sm-6:nth-child(7) .reference-flip-front {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%) !important;
+    border-color: rgba(47, 46, 120, 0.04) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(8) .reference-flip-front,
+.reference-flip-section .col-sm-6:nth-child(8) .reference-flip-front {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%) !important;
+    border-color: rgba(47, 46, 120, 0.04) !important;
+}
+
+/* Back gradients for first eight cards */
+.reference-flip-section .col-md-4:nth-child(1) .reference-flip-back,
+.reference-flip-section .col-sm-6:nth-child(1) .reference-flip-back {
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(2) .reference-flip-back,
+.reference-flip-section .col-sm-6:nth-child(2) .reference-flip-back {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(3) .reference-flip-back,
+.reference-flip-section .col-sm-6:nth-child(3) .reference-flip-back {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(4) .reference-flip-back,
+.reference-flip-section .col-sm-6:nth-child(4) .reference-flip-back {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(5) .reference-flip-back,
+.reference-flip-section .col-sm-6:nth-child(5) .reference-flip-back {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(6) .reference-flip-back,
+.reference-flip-section .col-sm-6:nth-child(6) .reference-flip-back {
+    background: linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #db2777 100%) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(7) .reference-flip-back,
+.reference-flip-section .col-sm-6:nth-child(7) .reference-flip-back {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%) !important;
+}
+
+.reference-flip-section .col-md-4:nth-child(8) .reference-flip-back,
+.reference-flip-section .col-sm-6:nth-child(8) .reference-flip-back {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%) !important;
+}
