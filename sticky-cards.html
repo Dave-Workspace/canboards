@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Proficiency Test Booking &amp; Preparation - Digital Gateway to Canada</title>
+    <link rel="icon" type="image/png" href="Images/Favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/reorganized_css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        /* Set background color for this page's hero section */
+        #service-hero {
+            background: #F7F5F1 !important;
+        }
+
+        /* Smoothly scale image between 373px and 991px */
+        @media (min-width: 373px) and (max-width: 991px) {
+            #service-hero .work-hero-frame {
+                max-width: clamp(260px, 65vw, 400px) !important;
+                margin-top: 1.5rem !important;
+            }
+
+            #service-hero .hero-content {
+                margin-bottom: 2rem !important;
+            }
+        }
+
+        /* Disable fog layer for this page's hero section */
+        #service-hero .hero-fog-layer,
+        #service-hero::before,
+        #service-hero::after {
+            display: none !important;
+        }
+
+
+/* ========================================
+   ASPIRIA STYLE PROGRESS STEPS SECTION
+   ======================================== */
+
+.aspiria-progress-section {
+  position: relative;
+  padding-top: 20px;
+  background: #ffffff;
+  transition: padding-top 0.3s ease;
+}
+
+.aspiria-progress-section .container {
+  max-width: 1280px;
+  position: relative;
+}
+
+/* Progress Bar - Sticky position */
+.progress-bar-sticky {
+  position: sticky;
+  top: 140px;
+  left: 0;
+  right: 0;
+  padding: 15px 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.progress-bar-sticky .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background: #e8e8e8;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.progress-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #5fa8ff 0%, #8aa0ff 45%, #6d62ff 100%);
+  border-radius: 3px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cards Container - Like example */
+.aspiria-cards-container {
+  position: relative;
+}
+
+/* Card Wrapper - Creates spacing for sticky effect */
+.aspiria-card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
+  margin: 0 auto;
+  opacity: 1;
+  margin-bottom: 30px;
+}
+
+/* Card Backgrounds - Pastel Colors with different top values for stacking */
+/* Cards stack on top of each other as they become sticky */
+.aspiria-card-1 {
+  background: linear-gradient(135deg, rgba(232, 237, 255, 0.98) 0%, rgba(200, 210, 255, 0.98) 100%);
+  top: 180px;
+  position: sticky;
+}
+
+.aspiria-card-2 {
+  background: linear-gradient(135deg, rgba(255, 242, 238, 0.98) 0%, rgba(255, 230, 240, 0.98) 100%);
+  top: 200px;
+  /* Stacks on top of card 1 */
+  position: sticky;
+}
+
+.aspiria-card-3 {
+  background: linear-gradient(135deg, rgba(238, 255, 242, 0.98) 0%, rgba(220, 250, 240, 0.98) 100%);
+  top: 220px;
+  /* Stacks on top of card 2 */
+  position: sticky;
+}
+
+/* Decorative SVG Dots */
+.aspiria-card-dots {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  top: 0;
+  left: 8rem;
+  transform: translateY(-60%);
+  opacity: 0.6;
+}
+
+.aspiria-card-1 .aspiria-card-dots {
+  color: rgba(200, 210, 255, 0.4);
+}
+
+.aspiria-card-2 .aspiria-card-dots {
+  color: rgba(255, 220, 240, 0.4);
+}
+
+.aspiria-card-3 .aspiria-card-dots {
+  color: rgba(180, 250, 220, 0.4);
+}
+
+/* Decorative Blobs */
+.aspiria-card-blob {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.aspiria-card-blob-1 {
+  width: 140px;
+  height: 140px;
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+
+.aspiria-card-blob-2 {
+  width: 218px;
+  height: 218px;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.aspiria-card-1 .aspiria-card-blob {
+  background: rgba(200, 210, 255, 0.5);
+}
+
+.aspiria-card-2 .aspiria-card-blob {
+  background: rgba(255, 220, 240, 0.5);
+}
+
+.aspiria-card-3 .aspiria-card-blob {
+  background: rgba(180, 250, 220, 0.5);
+}
+
+/* Step Content Wrapper Styles */
+.step-content-wrapper {
+  position: relative;
+  z-index: 50;
+  padding: 20px 0;
+}
+
+.step-bar {
+  height: 6px;
+  width: 60px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.step-bar-2 {
+  background: linear-gradient(90deg, #5fa8ff 0%, #8aa0ff 100%);
+}
+
+.step-bar-3 {
+  background: linear-gradient(90deg, #8aa0ff 0%, #6d62ff 100%);
+}
+
+.step-bar-4 {
+  background: linear-gradient(90deg, #6d62ff 0%, #8067ff 100%);
+}
+
+.step-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #626262;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.step-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 500;
+  color: #2d3958;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.step-content {
+  color: #6b7a95;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.step-content p {
+  margin: 0;
+}
+
+.step-img-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+.step-img {
+  max-width: 100%;
+  height: 300px;
+  border-radius: 12px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991.98px) {
+  .aspiria-progress-section {
+    padding: 60px 0;
+    min-height: auto;
+  }
+
+  .progress-bar-sticky {
+    top: 100px;
+    margin-bottom: 3rem;
+  }
+
+  .aspiria-card-wrapper {
+    min-height: auto;
+    margin-bottom: 0px;
+  }
+
+  .aspiria-card {
+    position: relative;
+    top: 0 !important;
+    min-height: auto;
+    padding: 32px 24px;
+  }
+
+  .aspiria-card-dots {
+    display: none;
+  }
+
+  .aspiria-card-blob {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .step-img {
+    height: 100%;
+  }
+
+  .step-img-container {
+    padding: 0;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+
+
+  .aspiria-progress-section {
+    padding: 40px 0;
+  }
+
+  .aspiria-card {
+    padding: 28px 20px;
+  }
+
+  .aspiria-card-title {
+    font-size: 1.5rem;
+  }
+
+  .aspiria-card-desc {
+    font-size: 0.95rem;
+  }
+
+  .aspiria-card-btn {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .aspiria-card-image {
+    height: 200px;
+    margin-top: 2rem;
+  }
+
+  .aspiria-card-1 .aspiria-card-image {
+    height: 150px;
+  }
+}
+
+.process-section {
+  margin-bottom: 50px;
+}
+    </style>
+</head>
+<body class="work-page">
+    <!-- Header/Navbar -->
+    <header role="banner">
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-header" role="navigation" aria-label="Main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="Images/Banner_1.png" alt="Canboards" class="navbar-brand-img">
+                </a>
+                <button class="navbar-toggler d-flex d-md-none ms-auto" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-md-center">
+                        <li class="nav-item"><a class="nav-link" href="study.html">Study</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="work.html">Work</a></li>
+                        <li class="nav-item"><a class="nav-link" href="visit.html">Visit</a></li>
+                        <li class="nav-item"><a class="nav-link" href="settle.html">Settle</a></li>
+                        <li class="nav-item"><a class="nav-link" href="other.html">Other</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="register.html">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-btn nav-btn--filled" href="calculator.html">Calculator</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-section py-4 py-md-5" id="service-hero">
+        <img src="Images/dots1.svg" alt="" class="dots-decoration dots-top-right" aria-hidden="true">
+        <img src="Images/dots2.svg" alt="" class="dots-decoration dots-bottom-right" aria-hidden="true">
+
+        <div class="container position-relative">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-lg-5 text-center text-lg-start mb-4 mb-lg-0 hero-content">
+                    <h1 class="mb-3 hero-main-text">
+                        Master Your English:<br />Your Path to Studying<br />in Canada
+                    </h1>
+                    <p class="hero-small-text mb-4">Book and prepare for IELTS or CELPIP tests with expert guidance to meet your Canadian study or immigration goals.</p>
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                        <a href="register.html" class="btn btn-primary px-4 py-2">Start Your Application</a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7 d-flex justify-content-center">
+                    <div class="work-hero-visual">
+                        <div class="work-hero-frame">
+                            <div class="work-hero-floater">
+                                <img src="Images/Can_Study_3.png" alt="Language proficiency test booking visual" class="work-hero-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- Sticky Progress Steps Section - Aspiria Style -->
+        <section class="aspiria-progress-section">
+          <!-- Sticky Progress Bar - Outside container for proper sticky behavior -->
+          <div class="progress-bar-sticky">
+            <div class="container">
+              <div class="progress-bar-container">
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill" id="aspiriaProgressFill" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <!-- Step Cards Container -->
+            <div class="aspiria-cards-container position-relative">
+              <!-- Step 1: Search -->
+              <div class="aspiria-card-wrapper aspiria-card-1">
+                <div class="aspiria-card-content">
+                  <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                      <div class="step-content-wrapper">
+                        <div class="step-bar step-bar-2"></div>
+                        <div class="step-label">SEARCH</div>
+                        <h3 class="step-title">Select a Study Service</h3>
+                        <div class="step-content">
+                          <p>Easily search and explore programs worldwide that match your interests and career goals all
+                            in one place.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                      <div class="step-img-container">
+                        <img src="./Study - Canboards_files/Search.png" alt="Search for study programs" class="step-img img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Apply -->
+              <div class="aspiria-card-wrapper aspiria-card-2">
+                <div class="aspiria-card-content">
+                  <div class="row align-items-center">
+                    <div class="col-md-6">
+                      <div class="step-content-wrapper">
+                        <div class="step-bar step-bar-3"></div>
+                        <div class="step-label">APPLY</div>
+                        <h3 class="step-title">Submit Your Application</h3>
+                        <div class="step-content">
+                          <p>Create your account, share your study goals, and get personalized recommendations all in
+                            just a few minutes!</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="step-img-container">
+                        <img src="./Study - Canboards_files/Submit.png" alt="Submit application" class="step-img img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Approval -->
+              <div class="aspiria-card-wrapper aspiria-card-3">
+                <div class="aspiria-card-content">
+                  <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                      <div class="step-content-wrapper">
+                        <div class="step-bar step-bar-4"></div>
+                        <div class="step-label">APPROVAL</div>
+                        <h3 class="step-title">Pay After Your Application Gets Approved</h3>
+                        <div class="step-content">
+                          <p>With Canboards, you only pay once your application is officially approved for risk-free
+                            upfront cost.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                      <div class="step-img-container">
+                        <img src="./Study - Canboards_files/Visa.png" alt="Visa approval" class="step-img img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+
+
+    <!-- Special Service Boxes Section -->
+    <section class="special-service-boxes">
+        <div class="container">
+            <h2 class="special-service-boxes-title">Understanding Language Tests</h2>
+            <div class="row g-4">
+                <!-- Box1: What is a Study Permit? -->
+                <div class="col-lg-6">
+                    <div class="special-service-info-box">
+                        <!-- Column 1: Number with background circle -->
+                        <div class="special-service-number-circle">
+                            <div class="special-service-circle-bg"></div>
+                            <span class="special-service-number">01</span>
+                        </div>
+
+                        <!-- Column 2: All content (heading, description, list) -->
+                        <div class="special-service-info-content-wrapper">
+                            <h3 class="special-service-info-title">
+                                IELTS (International English Language Testing System)
+                                <span class="underline"></span>
+                            </h3>
+                            <p class="special-service-info-description">
+                                IELTS is one of the most popular English language proficiency tests for international students and immigrants. It assesses your abilities in Listening, Reading, Writing, and Speaking.
+                            </p>
+                            <ul class="special-service-info-list">
+                                <li>Widely accepted by universities globally.</li>
+                                <li>
+                                    Two modules: Academic (for study) and General Training (for immigration/work).
+                                </li>
+                                <li>
+                                    Available in paper-based and computer-delivered formats.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box2: Key Application Requirements -->
+                <div class="col-lg-6">
+                    <div class="special-service-info-box">
+                        <!-- Column 1: Number with background circle -->
+                        <div class="special-service-number-circle">
+                            <div class="special-service-circle-bg"></div>
+                            <span class="special-service-number">02</span>
+                        </div>
+
+                        <!-- Column 2: All content (heading, description, list) -->
+                        <div class="special-service-info-content-wrapper">
+                            <h3 class="special-service-info-title">
+                                CELPIP (Canadian English Language Proficiency Index Program)
+                                <span class="underline"></span>
+                            </h3>
+                            <p class="special-service-info-description">
+                                CELPIP is a Canadian English language proficiency test designated by IRCC for permanent residence and citizenship applications, and professional designation.
+                            </p>
+                            <ul class="special-service-info-list">
+                                <li>Fully computer-delivered, Canadian-focused content.</li>
+                                <li>Two versions: General (for immigration) and General LS (for citizenship).</li>
+                                <li>Integrated speaking and writing components.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Canboards Works Section-->
+    <section class="how-section my-3">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-12 mb-3 d-flex justify-content-center">
+                    <img src="Images/How.png" alt="How" class="img-fluid how-title-img">
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <img src="Images/Process_Language.png" alt="Process" class="img-fluid" style="max-width:900px; height:auto;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebrate Section -->
+    <section class="celebrate-section">
+        <div class="celebrate-sprite celebrate-sprite-1"></div>
+        <div class="celebrate-sprite celebrate-sprite-2"></div>
+        <div class="celebrate-sprite celebrate-sprite-3"></div>
+        <div class="celebrate-sprite celebrate-sprite-4"></div>
+        <div class="celebrate-sprite celebrate-sprite-5"></div>
+        <div class="celebrate-sprite celebrate-sprite-6"></div>
+        <div class="celebrate-sprite celebrate-sprite-7"></div>
+        <div class="celebrate-sprite celebrate-sprite-8"></div>
+
+        <div class="celebrate-container">
+            <h2 class="celebrate-title">Begin Your Language Test Process Now</h2>
+            <p class="celebrate-subtitle">Prepare, book, and manage your language test with RCIC-backed support all in one portal.</p>
+            <a href="register.html" class="celebrate-cta">
+                Book Your IELTS/CELPIP Exam
+            </a>
+        </div>
+    </section>
+
+    <div id="footer-spacer" style="background-color: #F7F5F1;"></div>
+
+    <footer id="site-footer" class="mt-5">
+        <div class="container py-5" id="footer-content">
+            <!-- Top row (above the line) -->
+            <div class="row footer-top gy-4">
+                <!-- Column1: logo + address + social stacked -->
+                <div class="col-12 col-lg-4">
+                    <div class="row g-3">
+                        <!-- Row1: Logo -->
+                        <div class="col-12">
+                            <div class="footer-logo d-flex align-items-center">
+                                <img src="Images/Logo_White.png" alt="Canboards logo" class="footer-logo-large">
+                            </div>
+                        </div>
+                        <!-- Row2: Address -->
+                        <div class="col-12">
+                            <address>
+                                Suite 505, 171 Queens Ave<br>
+                                London, ON<br>
+                                N6A 5J7
+                            </address>
+                        </div>
+                        <!-- Row3: Social icons -->
+                        <div class="col-12">
+                            <div class="footer-social">
+                                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grouped link columns: evenly spaced on large screens, stacked on small -->
+                <div class="col-12 col-lg-8">
+                    <div class="row g-4">
+                        <!-- Can Services -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Can Services</h6>
+                            <ul>
+                                <li><a class="footer-link" href="study.html">Study</a></li>
+                                <li><a class="footer-link" href="work.html">Work</a></li>
+                                <li><a class="footer-link" href="visit.html">Visit</a></li>
+                                <li><a class="footer-link" href="settle.html">Settle</a></li>
+                                <li><a class="footer-link" href="other.html">Other</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Important Links -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Important Links</h6>
+                            <ul>
+                                <li><a class="footer-link" href="our-story.html">Our Story</a></li>
+                                <li><a class="footer-link" href="careers.html">Careers</a></li>
+                                <li><a class="footer-link" href="press-media.html">Press and Media</a></li>
+                                <li><a class="footer-link" href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Can Resources -->
+                        <div class="col-12 col-md-4">
+                            <h6 class="mb-2">Can Resources</h6>
+                            <ul>
+                                <li><a class="footer-link" href="#">Blog</a></li>
+                                <li><a class="footer-link" href="#">Webinar</a></li>
+                                <li><a class="footer-link" href="#">Can Insight</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom row (under the line) -->
+            <div class="row footer-bottom align-items-center pt-3 mt-4">
+                <div class="col-md-6 text-md-start text-white-50">©2025 Canboards Inc.</div>
+                <div class="col-md-6 text-md-end mt-2 mt-md-0"><a href="privacy-policy.html">Privacy Policy</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/script.js"></script>
+
+<script>
+
+
+    // Aspiria Style Progress Steps Section
+    (function () {
+        const progressSection = document.querySelector('.aspiria-progress-section');
+        if (!progressSection) {
+            console.log('Progress section not found');
+            return;
+        }
+
+        const progressBarFill = document.getElementById('aspiriaProgressFill');
+        const progressBarSticky = progressSection.querySelector('.progress-bar-sticky');
+        const cardWrappers = document.querySelectorAll('.aspiria-card-wrapper');
+        const aspiriaCards = document.querySelectorAll('.aspiria-card-content');
+
+        if (!progressBarFill || !cardWrappers.length || !aspiriaCards.length) return;
+
+        const totalCards = aspiriaCards.length;
+        // Different sticky top values for each card (from CSS)
+        const stickyTops = [180, 200, 220]; // Card 1: 130px, Card 2: 160px, Card 3: 190px
+
+        function updateProgress() {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            let activeCardIndex = 0;
+            let highestStickyIndex = -1;
+
+            // Get section boundaries for progress calculation
+            const sectionRect = progressSection.getBoundingClientRect();
+            const sectionTop = progressSection.offsetTop;
+            const sectionHeight = progressSection.offsetHeight;
+            const sectionBottom = sectionTop + sectionHeight;
+            const headerHeight = 140;
+            
+            // Progress bar is now always sticky via CSS, no need to toggle fixed class
+
+            // Determine which cards are sticky (one by one as you scroll)
+            const stickyCards = [];
+            cardWrappers.forEach((wrapper, index) => {
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const wrapperTop = wrapperRect.top;
+                const wrapperBottom = wrapperRect.bottom;
+                const cardStickyTop = stickyTops[index] || stickyTops[0];
+                
+                // Card is sticky when its wrapper has scrolled enough that the card would stick
+                // Check if the wrapper's top has reached or passed the sticky position
+                // The card becomes sticky when wrapper top <= sticky position
+                const hasReachedSticky = wrapperTop <= cardStickyTop;
+                // Check if wrapper is still in viewport (hasn't scrolled completely past)
+                const isStillInView = wrapperBottom > cardStickyTop;
+                const isSticky = hasReachedSticky && isStillInView;
+                
+                if (isSticky) {
+                    stickyCards.push(index);
+                    if (index > highestStickyIndex) {
+                        highestStickyIndex = index;
+                    }
+                }
+            });
+
+            // Calculate smooth progress bar fill based on card positions
+            let progressPercentage = 0;
+            const progressPerCard = 100 / totalCards; // 33.33% per card
+            
+            // Check if we're before the section
+            if (scrollY < sectionTop - 100) {
+                progressPercentage = 0;
+            } 
+            // Within the section - smooth progress calculation
+            else {
+                if (highestStickyIndex >= 0) {
+                    // A card is sticky - base progress
+                    const baseProgress = ((highestStickyIndex + 1) / totalCards) * 100;
+                    
+                    // Add smooth interpolation if next card is approaching
+                    if (highestStickyIndex < totalCards - 1) {
+                        const nextCardIndex = highestStickyIndex + 1;
+                        const nextWrapper = cardWrappers[nextCardIndex];
+                        if (nextWrapper) {
+                            const nextWrapperRect = nextWrapper.getBoundingClientRect();
+                            const nextWrapperTop = nextWrapperRect.top;
+                            const nextCardStickyTop = stickyTops[nextCardIndex] || stickyTops[0];
+                            
+                            // Calculate how close the next card is to becoming sticky
+                            const distanceToSticky = nextCardStickyTop - nextWrapperTop;
+                            const interpolationRange = 200; // Smooth transition over 200px
+                            
+                            if (distanceToSticky > 0 && distanceToSticky < interpolationRange) {
+                                // Smoothly interpolate between current and next card progress
+                                const interpolationFactor = 1 - (distanceToSticky / interpolationRange);
+                                const nextProgress = ((nextCardIndex + 1) / totalCards) * 100;
+                                progressPercentage = baseProgress + (nextProgress - baseProgress) * interpolationFactor;
+                            } else {
+                                progressPercentage = baseProgress;
+                            }
+                        } else {
+                            progressPercentage = baseProgress;
+                        }
+                    } else {
+                        // Last card is sticky - show 100%
+                        progressPercentage = 100;
+                    }
+                } else {
+                    // No card is sticky yet - calculate progress based on first card approach
+                    const firstWrapper = cardWrappers[0];
+                    if (firstWrapper) {
+                        const firstWrapperRect = firstWrapper.getBoundingClientRect();
+                        const firstWrapperTop = firstWrapperRect.top;
+                        const firstCardStickyTop = stickyTops[0];
+                        const distanceToSticky = firstCardStickyTop - firstWrapperTop;
+                        const approachRange = 300;
+                        
+                        if (distanceToSticky > 0 && distanceToSticky < approachRange) {
+                            // Smoothly fill as approaching first card
+                            const approachFactor = 1 - (distanceToSticky / approachRange);
+                            progressPercentage = progressPerCard * approachFactor;
+                        } else {
+                            progressPercentage = 0;
+                        }
+                    }
+                }
+            }
+            
+            // Clamp between 0 and 100
+            progressPercentage = Math.max(0, Math.min(100, progressPercentage));
+            
+            // Apply progress bar fill with smooth transition
+            progressBarFill.style.width = progressPercentage + '%';
+        }
+
+        // Throttle scroll events
+        let ticking = false;
+        function onScroll() {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateProgress();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', updateProgress);
+        
+        // Initial update (will set progress bar based on visible card)
+        setTimeout(() => {
+            updateProgress();
+        }, 100);
+        
+        // Also update on load
+        window.addEventListener('load', () => {
+            updateProgress();
+        });
+    })();
+
+
+
+ 
+
+</script>
+</body>
+</html>

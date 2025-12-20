@@ -175,40 +175,106 @@
     </section>
 
     <!-- How Canboards Works Section-->
-    <section class="how-section my-3">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-12 mb-3 d-flex justify-content-center">
-                    <img src="Images/How.png" alt="How" class="img-fluid how-title-img">
+    <section class="process">
+        <div class="col-12 mb-4 d-flex justify-content-center">
+            <img src="Images/How.png" alt="How" class="img-fluid how-title-img">
+        </div>
+
+        <!-- 1234x-process-line: RCIC-like four-step timeline (unique names) -->
+        <section class="pl1234x-line-process site-section" aria-label="Four-step process line">
+            <div class="pl1234x-timeline-container">
+                <!-- Base and Progress Lines -->
+                <div class="pl1234x-timeline-base"></div>
+                <div class="pl1234x-timeline-progress" id="pl1234xTimelineProgress"></div>
+
+                <!-- Timeline Steps -->
+                <div class="pl1234x-timeline-steps" id="pl1234xTimelineSteps">
+                    <!-- Node 1 -->
+                    <button class="pl1234x-timeline-node" type="button" data-step="0" aria-label="Choose Your Service">
+                        <div class="pl1234x-node-image-wrapper">
+                            <img src="Images/moodboard_13971336.png" alt="Choose Your Service" class="pl1234x-node-img">
+                        </div>
+                        <span class="pl1234x-node-dot" aria-hidden="true"></span>
+                        <div class="pl1234x-node-text">
+                            <h3>Choose Your Service</h3>
+                            <p>Select any Canadian immigration service and receive guidance from a licensed RCIC expert.</p>
+                        </div>
+                    </button>
+
+                    <!-- Node 2 -->
+                    <button class="pl1234x-timeline-node" type="button" data-step="1" aria-label="Create Your Application">
+                        <div class="pl1234x-node-image-wrapper">
+                            <img src="Images/computer_18993215.png" alt="Create Your Application" class="pl1234x-node-img">
+                        </div>
+                        <span class="pl1234x-node-dot" aria-hidden="true"></span>
+                        <div class="pl1234x-node-text">
+                            <h3>Create Your Application</h3>
+                            <p>Upload all required documents as specified in the RCIC portal to complete your application.</p>
+                        </div>
+                    </button>
+
+                    <!-- Node 3 (new extra node, placed after the second node) -->
+                    <button class="pl1234x-timeline-node" type="button" data-step="2" aria-label="Review & Verify">
+                        <div class="pl1234x-node-image-wrapper">
+                            <img src="Images/document-analysis_19013039.png" alt="Review & Verify" class="pl1234x-node-img">
+                        </div>
+                        <span class="pl1234x-node-dot" aria-hidden="true"></span>
+                        <div class="pl1234x-node-text">
+                            <h3>Review & Verify</h3>
+                            <p>Our licensed RCIC experts will review your application and verify all submitted documents for accuracy.</p>
+                        </div>
+                    </button>
+
+                    <!-- Node 4 -->
+                    <button class="pl1234x-timeline-node" type="button" data-step="3" aria-label="Payment After An Approval">
+                        <div class="pl1234x-node-image-wrapper">
+                            <img src="Images/passport_18998027.png" alt="Payment After Approval" class="pl1234x-node-img">
+                        </div>
+                        <span class="pl1234x-node-dot" aria-hidden="true"></span>
+                        <div class="pl1234x-node-text">
+                            <h3>Payment After Approval</h3>
+                            <p>Your visa will be processed by our licensed RCIC experts. Pay only after approval.</p>
+                        </div>
+                    </button>
                 </div>
-                <div class="col-12 d-flex justify-content-center">
-                    <img src="Images/Process_Study_SOP-1.png" alt="Process" class="img-fluid" style="max-width:900px; height:auto;">
+            </div>
+        </section>
+    </section>
+
+    <section class="journey-section">
+        <div class="journey-dark-strip"></div>
+        <div class="container position-relative">
+            <div class="journey-content-wrapper">
+                <div class="row align-items-center position-relative">
+                    <!-- Left Side: Content -->
+                    <div class="col-lg-8 col-md-12 journey-text-col">
+                        <div class="journey-text-content">
+                            <h2 class="journey-title">
+                                Get Your SOP Written by RCIC Licensed Experts
+                            </h2>
+                            <p class="journey-desc">
+                                Get a professionally written SOP that highlights your strengths and increases your chances of approval. With Canboards, your story is presented with clarity, impact, and compliance.
+                            </p>
+                            <div class="journey-cta-wrapper">
+                                <a href="https://canada.teqcoder.com/client/register" class="fancy_button px-4 py-2 fancy">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Image -->
+                    <div class="col-lg-4 col-md-12 journey-image-col">
+                        <div class="journey-image-wrapper">
+                            <img src="Images/cta-img02.png"
+                                 alt="Student with smartphone"
+                                 class="journey-main-image" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Celebrate Section -->
-    <section class="celebrate-section">
-        <div class="celebrate-sprite celebrate-sprite-1"></div>
-        <div class="celebrate-sprite celebrate-sprite-2"></div>
-        <div class="celebrate-sprite celebrate-sprite-3"></div>
-        <div class="celebrate-sprite celebrate-sprite-4"></div>
-        <div class="celebrate-sprite celebrate-sprite-5"></div>
-        <div class="celebrate-sprite celebrate-sprite-6"></div>
-        <div class="celebrate-sprite celebrate-sprite-7"></div>
-        <div class="celebrate-sprite celebrate-sprite-8"></div>
-
-        <div class="celebrate-container">
-            <h2 class="celebrate-title">Get Your SOP Written by RCIC Licenced Experts</h2>
-            <p class="celebrate-subtitle">Get a professionally written SOP that highlights your strengths and increases your chances of approval. With Canboards, your story is presented with clarity, impact, and compliance.</p>
-            <a href="register.html" class="celebrate-cta">
-                Write My SOP
-            </a>
-        </div>
-    </section>
-
-    <div id="footer-spacer" style="background-color: #F7F5F1;"></div>
+    <div id="footer-spacer" style="background-color: #23235b;"></div>
 
     <footer id="site-footer" class="mt-5">
         <div class="container py-5" id="footer-content">
