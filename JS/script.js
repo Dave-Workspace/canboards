@@ -766,3 +766,287 @@ window.addEventListener('load', () => {
     // Init
     buildDots();
 })();
+
+
+
+// Aspiria Style Progress Steps Section
+(function () {
+    const progressSection = document.querySelector('.aspiria-progress-section');
+    if (!progressSection) {
+        console.log('Progress section not found');
+        return;
+    }
+
+    const progressBarFill = document.getElementById('aspiriaProgressFill');
+    const progressBarSticky = progressSection.querySelector('.progress-bar-sticky');
+    const cardWrappers = document.querySelectorAll('.aspiria-card-wrapper');
+    const aspiriaCards = document.querySelectorAll('.aspiria-card-content');
+
+    if (!progressBarFill || !cardWrappers.length || !aspiriaCards.length) return;
+
+    const totalCards = aspiriaCards.length;
+    // Different sticky top values for each card (from CSS)
+    const stickyTops = [180, 200, 220]; // Card 1: 130px, Card 2: 160px, Card 3: 190px
+
+    function updateProgress() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        let activeCardIndex = 0;
+        let highestStickyIndex = -1;
+
+        // Get section boundaries for progress calculation
+        const sectionRect = progressSection.getBoundingClientRect();
+        const sectionTop = progressSection.offsetTop;
+        const sectionHeight = progressSection.offsetHeight;
+        const sectionBottom = sectionTop + sectionHeight;
+        const headerHeight = 140;
+
+        // Progress bar is now always sticky via CSS, no need to toggle fixed class
+
+        // Determine which cards are sticky (one by one as you scroll)
+        const stickyCards = [];
+        cardWrappers.forEach((wrapper, index) => {
+            const wrapperRect = wrapper.getBoundingClientRect();
+            const wrapperTop = wrapperRect.top;
+            const wrapperBottom = wrapperRect.bottom;
+            const cardStickyTop = stickyTops[index] || stickyTops[0];
+
+            // Card is sticky when its wrapper has scrolled enough that the card would stick
+            // Check if the wrapper's top has reached or passed the sticky position
+            // The card becomes sticky when wrapper top <= sticky position
+            const hasReachedSticky = wrapperTop <= cardStickyTop;
+            // Check if wrapper is still in viewport (hasn't scrolled completely past)
+            const isStillInView = wrapperBottom > cardStickyTop;
+            const isSticky = hasReachedSticky && isStillInView;
+
+            if (isSticky) {
+                stickyCards.push(index);
+                if (index > highestStickyIndex) {
+                    highestStickyIndex = index;
+                }
+            }
+        });
+
+        // Calculate smooth progress bar fill based on card positions
+        let progressPercentage = 0;
+        const progressPerCard = 100 / totalCards; // 33.33% per card
+
+        // Check if we're before the section
+        if (scrollY < sectionTop - 100) {
+            progressPercentage = 0;
+        }
+        // Within the section - smooth progress calculation
+        else {
+            if (highestStickyIndex >= 0) {
+                // A card is sticky - base progress
+                const baseProgress = ((highestStickyIndex + 1) / totalCards) * 100;
+
+                // Add smooth interpolation if next card is approaching
+                if (highestStickyIndex < totalCards - 1) {
+                    const nextCardIndex = highestStickyIndex + 1;
+                    const nextWrapper = cardWrappers[nextCardIndex];
+                    if (nextWrapper) {
+                        const nextWrapperRect = nextWrapper.getBoundingClientRect();
+                        const nextWrapperTop = nextWrapperRect.top;
+                        const nextCardStickyTop = stickyTops[nextCardIndex] || stickyTops[0];
+
+                        // Calculate how close the next card is to becoming sticky
+                        const distanceToSticky = nextCardStickyTop - nextWrapperTop;
+                        const interpolationRange = 200; // Smooth transition over 200px
+
+                        if (distanceToSticky > 0 && distanceToSticky < interpolationRange) {
+                            // Smoothly interpolate between current and next card progress
+                            const interpolationFactor = 1 - (distanceToSticky / interpolationRange);
+                            const nextProgress = ((nextCardIndex + 1) / totalCards) * 100;
+                            progressPercentage = baseProgress + (nextProgress - baseProgress) * interpolationFactor;
+                        } else {
+                            progressPercentage = baseProgress;
+                        }
+                    } else {
+                        progressPercentage = baseProgress;
+                    }
+                } else {
+                    // Last card is sticky - show 100%
+                    progressPercentage = 100;
+                }
+            } else {
+                // No card is sticky yet - calculate progress based on first card approach
+                const firstWrapper = cardWrappers[0];
+                if (firstWrapper) {
+                    const firstWrapperRect = firstWrapper.getBoundingClientRect();
+                    const firstWrapperTop = firstWrapperRect.top;
+                    const firstCardStickyTop = stickyTops[0];
+                    const distanceToSticky = firstCardStickyTop - firstWrapperTop;
+                    const approachRange = 300;
+
+                    if (distanceToSticky > 0 && distanceToSticky < approachRange) {
+                        // Smoothly fill as approaching first card
+                        const approachFactor = 1 - (distanceToSticky / approachRange);
+                        progressPercentage = progressPerCard * approachFactor;
+                    } else {
+                        progressPercentage = 0;
+                    }
+                }
+            }
+        }
+
+        // Clamp between 0 and 100
+        progressPercentage = Math.max(0, Math.min(100, progressPercentage));
+
+        // Apply progress bar fill with smooth transition
+        progressBarFill.style.width = progressPercentage + '%';
+    }
+
+    // Throttle scroll events
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateProgress();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updateProgress);
+
+    // Initial update (will set progress bar based on visible card)
+    setTimeout(() => {
+        updateProgress();
+    }, 100);
+
+    // Also update on load
+    window.addEventListener('load', () => {
+        updateProgress();
+    });
+})();
+
+// Special Services Boxes Sticky Cards (RENAMED COPY)
+(function () {
+    const specialServicesBoxesStickyCardsSection = document.querySelector('.special-services-boxes-sticky-cards-section');
+    if (!specialServicesBoxesStickyCardsSection) {
+        console.log('Special services boxes sticky cards section not found');
+        return;
+    }
+
+    const specialServicesBoxesStickyCardsProgressFill = document.getElementById('specialServicesBoxesStickyCardsProgressFill');
+    const specialServicesBoxesStickyCardsProgressBarSticky = specialServicesBoxesStickyCardsSection.querySelector('.special-services-boxes-sticky-cards-progress-bar-sticky');
+    const specialServicesBoxesStickyCardsCardWrappers = document.querySelectorAll('.special-services-boxes-sticky-cards-card-wrapper');
+    const specialServicesBoxesStickyCardsCardContents = document.querySelectorAll('.special-services-boxes-sticky-cards-card-content');
+
+    if (!specialServicesBoxesStickyCardsProgressFill || !specialServicesBoxesStickyCardsCardWrappers.length || !specialServicesBoxesStickyCardsCardContents.length) return;
+
+    const specialServicesBoxesStickyCardsTotalCards = specialServicesBoxesStickyCardsCardContents.length;
+    const specialServicesBoxesStickyCardsStickyTops = [180, 200];
+
+    function specialServicesBoxesStickyCardsUpdateProgress() {
+        const specialServicesBoxesStickyCardsScrollY = window.scrollY;
+        let specialServicesBoxesStickyCardsHighestStickyIndex = -1;
+
+        const specialServicesBoxesStickyCardsSectionTop = specialServicesBoxesStickyCardsSection.offsetTop;
+        const specialServicesBoxesStickyCardsSectionHeight = specialServicesBoxesStickyCardsSection.offsetHeight;
+
+        specialServicesBoxesStickyCardsCardWrappers.forEach((specialServicesBoxesStickyCardsWrapper, specialServicesBoxesStickyCardsIndex) => {
+            const specialServicesBoxesStickyCardsWrapperRect = specialServicesBoxesStickyCardsWrapper.getBoundingClientRect();
+            const specialServicesBoxesStickyCardsWrapperTop = specialServicesBoxesStickyCardsWrapperRect.top;
+            const specialServicesBoxesStickyCardsWrapperBottom = specialServicesBoxesStickyCardsWrapperRect.bottom;
+
+            const specialServicesBoxesStickyCardsCardStickyTop =
+                specialServicesBoxesStickyCardsStickyTops[specialServicesBoxesStickyCardsIndex] || specialServicesBoxesStickyCardsStickyTops[0];
+
+            const specialServicesBoxesStickyCardsHasReachedSticky = specialServicesBoxesStickyCardsWrapperTop <= specialServicesBoxesStickyCardsCardStickyTop;
+            const specialServicesBoxesStickyCardsIsStillInView = specialServicesBoxesStickyCardsWrapperBottom > specialServicesBoxesStickyCardsCardStickyTop;
+            const specialServicesBoxesStickyCardsIsSticky = specialServicesBoxesStickyCardsHasReachedSticky && specialServicesBoxesStickyCardsIsStillInView;
+
+            if (specialServicesBoxesStickyCardsIsSticky && specialServicesBoxesStickyCardsIndex > specialServicesBoxesStickyCardsHighestStickyIndex) {
+                specialServicesBoxesStickyCardsHighestStickyIndex = specialServicesBoxesStickyCardsIndex;
+            }
+        });
+
+        let specialServicesBoxesStickyCardsProgressPercentage = 0;
+
+        if (specialServicesBoxesStickyCardsScrollY < specialServicesBoxesStickyCardsSectionTop - 100) {
+            specialServicesBoxesStickyCardsProgressPercentage = 0;
+        } else {
+            if (specialServicesBoxesStickyCardsHighestStickyIndex >= 0) {
+                const specialServicesBoxesStickyCardsBaseProgress =
+                    ((specialServicesBoxesStickyCardsHighestStickyIndex + 1) / specialServicesBoxesStickyCardsTotalCards) * 100;
+
+                if (specialServicesBoxesStickyCardsHighestStickyIndex < specialServicesBoxesStickyCardsTotalCards - 1) {
+                    const specialServicesBoxesStickyCardsNextCardIndex = specialServicesBoxesStickyCardsHighestStickyIndex + 1;
+                    const specialServicesBoxesStickyCardsNextWrapper = specialServicesBoxesStickyCardsCardWrappers[specialServicesBoxesStickyCardsNextCardIndex];
+
+                    if (specialServicesBoxesStickyCardsNextWrapper) {
+                        const specialServicesBoxesStickyCardsNextWrapperTop = specialServicesBoxesStickyCardsNextWrapper.getBoundingClientRect().top;
+                        const specialServicesBoxesStickyCardsNextCardStickyTop =
+                            specialServicesBoxesStickyCardsStickyTops[specialServicesBoxesStickyCardsNextCardIndex] || specialServicesBoxesStickyCardsStickyTops[0];
+
+                        const specialServicesBoxesStickyCardsDistanceToSticky = specialServicesBoxesStickyCardsNextCardStickyTop - specialServicesBoxesStickyCardsNextWrapperTop;
+                        const specialServicesBoxesStickyCardsInterpolationRange = 200;
+
+                        if (specialServicesBoxesStickyCardsDistanceToSticky > 0 && specialServicesBoxesStickyCardsDistanceToSticky < specialServicesBoxesStickyCardsInterpolationRange) {
+                            const specialServicesBoxesStickyCardsInterpolationFactor =
+                                1 - (specialServicesBoxesStickyCardsDistanceToSticky / specialServicesBoxesStickyCardsInterpolationRange);
+
+                            const specialServicesBoxesStickyCardsNextProgress =
+                                ((specialServicesBoxesStickyCardsNextCardIndex + 1) / specialServicesBoxesStickyCardsTotalCards) * 100;
+
+                            specialServicesBoxesStickyCardsProgressPercentage =
+                                specialServicesBoxesStickyCardsBaseProgress + (specialServicesBoxesStickyCardsNextProgress - specialServicesBoxesStickyCardsBaseProgress) * specialServicesBoxesStickyCardsInterpolationFactor;
+                        } else {
+                            specialServicesBoxesStickyCardsProgressPercentage = specialServicesBoxesStickyCardsBaseProgress;
+                        }
+                    } else {
+                        specialServicesBoxesStickyCardsProgressPercentage = specialServicesBoxesStickyCardsBaseProgress;
+                    }
+                } else {
+                    specialServicesBoxesStickyCardsProgressPercentage = 100;
+                }
+            } else {
+                const specialServicesBoxesStickyCardsFirstWrapper = specialServicesBoxesStickyCardsCardWrappers[0];
+                if (specialServicesBoxesStickyCardsFirstWrapper) {
+                    const specialServicesBoxesStickyCardsFirstWrapperTop = specialServicesBoxesStickyCardsFirstWrapper.getBoundingClientRect().top;
+                    const specialServicesBoxesStickyCardsFirstCardStickyTop = specialServicesBoxesStickyCardsStickyTops[0];
+                    const specialServicesBoxesStickyCardsDistanceToSticky = specialServicesBoxesStickyCardsFirstCardStickyTop - specialServicesBoxesStickyCardsFirstWrapperTop;
+                    const specialServicesBoxesStickyCardsApproachRange = 300;
+
+                    if (specialServicesBoxesStickyCardsDistanceToSticky > 0 && specialServicesBoxesStickyCardsDistanceToSticky < specialServicesBoxesStickyCardsApproachRange) {
+                        const specialServicesBoxesStickyCardsApproachFactor =
+                            1 - (specialServicesBoxesStickyCardsDistanceToSticky / specialServicesBoxesStickyCardsApproachRange);
+
+                        specialServicesBoxesStickyCardsProgressPercentage =
+                            (100 / specialServicesBoxesStickyCardsTotalCards) * specialServicesBoxesStickyCardsApproachFactor;
+                    }
+                }
+            }
+        }
+
+        specialServicesBoxesStickyCardsProgressPercentage = Math.max(0, Math.min(100, specialServicesBoxesStickyCardsProgressPercentage));
+        specialServicesBoxesStickyCardsProgressFill.style.width = specialServicesBoxesStickyCardsProgressPercentage + '%';
+    }
+
+    let specialServicesBoxesStickyCardsTicking = false;
+
+    function specialServicesBoxesStickyCardsOnScroll() {
+        if (!specialServicesBoxesStickyCardsTicking) {
+            window.requestAnimationFrame(() => {
+                specialServicesBoxesStickyCardsUpdateProgress();
+                specialServicesBoxesStickyCardsTicking = false;
+            });
+            specialServicesBoxesStickyCardsTicking = true;
+        }
+    }
+
+    window.addEventListener('scroll', specialServicesBoxesStickyCardsOnScroll, { passive: true });
+    window.addEventListener('resize', specialServicesBoxesStickyCardsUpdateProgress);
+
+    setTimeout(() => {
+        specialServicesBoxesStickyCardsUpdateProgress();
+    }, 100);
+
+    window.addEventListener('load', () => {
+        specialServicesBoxesStickyCardsUpdateProgress();
+    });
+})();
