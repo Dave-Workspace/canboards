@@ -68,9 +68,6 @@ html.loading {
     }
 
 /* On mobile/tablet ensure no overflow on x-axis from any transforms */
-body, html {
-    overflow-x: hidden;
-}
 
 header {
     margin: 0 !important;
@@ -1310,7 +1307,7 @@ body:not(.loading) #fws-panel-aside {
 /* ========================================
    CANBOARD STEPS SECTION
    ======================================== */
-
+/*
 .canboard-steps {
     padding: 80px 0;
     background-color: #fff;
@@ -1412,6 +1409,7 @@ body:not(.loading) #fws-panel-aside {
         margin-bottom: 40px;
     }
 }
+*/
 
 
 /* ========================================
@@ -6421,3 +6419,534 @@ a.fancy {
 .panel:nth-child(3) .panel-left {
     border-color: #0a715e;
 }
+
+/* ========================================
+        SPECIAL-SERVICES-BOXES-STICKY-CARDS SECTION (RENAMED COPY)
+        ======================================== */
+
+.special-services-boxes-sticky-cards-section {
+    position: relative;
+    padding-top: 20px;
+    background: #ffffff;
+    transition: padding-top 0.3s ease;
+}
+
+    .special-services-boxes-sticky-cards-section .container {
+        max-width: 1280px;
+        position: relative;
+    }
+
+/* Progress Bar - Sticky position */
+.special-services-boxes-sticky-cards-progress-bar-sticky {
+    position: sticky;
+    top: 140px;
+    left: 0;
+    right: 0;
+    padding: 15px 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+    .special-services-boxes-sticky-cards-progress-bar-sticky .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+.special-services-boxes-sticky-cards-progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #e8e8e8;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.special-services-boxes-sticky-cards-progress-bar-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.special-services-boxes-sticky-cards-progress-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #5fa8ff 0%, #8aa0ff 45%, #6d62ff 100%);
+    border-radius: 3px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cards Container - Like example */
+.special-services-boxes-sticky-cards-cards-container {
+    position: relative;
+}
+
+/* Card Wrapper - Creates spacing for sticky effect */
+.special-services-boxes-sticky-cards-card-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
+    margin: 0 auto;
+    opacity: 1;
+    margin-bottom: 30px;
+}
+
+/* Card Backgrounds - Pastel Colors with different top values for stacking */
+.special-services-boxes-sticky-cards-card-1 {
+    background: linear-gradient(135deg, rgba(232, 237, 255, 0.98) 0%, rgba(200, 210, 255, 0.98) 100%);
+    top: 180px;
+    position: sticky;
+}
+
+.special-services-boxes-sticky-cards-card-2 {
+    background: linear-gradient(135deg, rgba(255, 242, 238, 0.98) 0%, rgba(255, 230, 240, 0.98) 100%);
+    top: 200px;
+    position: sticky;
+}
+
+/* Step Content Wrapper Styles */
+.special-services-boxes-sticky-cards-step-content-wrapper {
+    position: relative;
+    z-index: 50;
+    padding: 20px 0;
+}
+
+.special-services-boxes-sticky-cards-step-bar {
+    height: 6px;
+    width: 60px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.special-services-boxes-sticky-cards-step-bar-2 {
+    background: linear-gradient(90deg, #5fa8ff 0%, #8aa0ff 100%);
+}
+
+.special-services-boxes-sticky-cards-step-bar-3 {
+    background: linear-gradient(90deg, #8aa0ff 0%, #6d62ff 100%);
+}
+
+.special-services-boxes-sticky-cards-step-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #626262;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.special-services-boxes-sticky-cards-step-title {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 500;
+    color: #2d3958;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.special-services-boxes-sticky-cards-step-content {
+    color: #6b7a95;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+    .special-services-boxes-sticky-cards-step-content p {
+        margin: 0;
+    }
+
+.special-services-boxes-sticky-cards-step-img-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+}
+
+.special-services-boxes-sticky-cards-step-img {
+    max-width: 100%;
+    height: 300px;
+    border-radius: 12px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991.98px) {
+    .special-services-boxes-sticky-cards-section {
+        padding: 60px 0;
+        min-height: auto;
+    }
+
+    .special-services-boxes-sticky-cards-progress-bar-sticky {
+        top: 100px;
+        margin-bottom: 3rem;
+    }
+
+    .special-services-boxes-sticky-cards-card-wrapper {
+        min-height: auto;
+        margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .special-services-boxes-sticky-cards-step-img {
+        height: 100%;
+    }
+
+    .special-services-boxes-sticky-cards-step-img-container {
+        padding: 0;
+    }
+
+    .special-services-boxes-sticky-cards-section {
+        padding: 40px 0;
+    }
+}
+
+/* ========================================
+        ASPIRIA STYLE PROGRESS STEPS SECTION
+        ======================================== */
+
+.aspiria-progress-section {
+    position: relative;
+    padding-top: 20px;
+    background: #ffffff;
+    transition: padding-top 0.3s ease;
+}
+
+    .aspiria-progress-section .container {
+        max-width: 1280px;
+        position: relative;
+    }
+
+/* Progress Bar - Sticky position */
+.progress-bar-sticky {
+    position: sticky;
+    top: 140px;
+    left: 0;
+    right: 0;
+    padding: 15px 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+    .progress-bar-sticky .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #e8e8e8;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.progress-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #5fa8ff 0%, #8aa0ff 45%, #6d62ff 100%);
+    border-radius: 3px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cards Container - Like example */
+.aspiria-cards-container {
+    position: relative;
+}
+
+/* Card Wrapper - Creates spacing for sticky effect */
+.aspiria-card-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(47, 46, 120, 0.08);
+    margin: 0 auto;
+    opacity: 1;
+    margin-bottom: 30px;
+}
+
+/* Card Backgrounds - Pastel Colors with different top values for stacking */
+/* Cards stack on top of each other as they become sticky */
+.aspiria-card-1 {
+    background: linear-gradient(135deg, rgba(232, 237, 255, 0.98) 0%, rgba(200, 210, 255, 0.98) 100%);
+    top: 180px;
+    position: sticky;
+}
+
+.aspiria-card-2 {
+    background: linear-gradient(135deg, rgba(255, 242, 238, 0.98) 0%, rgba(255, 230, 240, 0.98) 100%);
+    top: 200px;
+    /* Stacks on top of card 1 */
+    position: sticky;
+}
+
+.aspiria-card-3 {
+    background: linear-gradient(135deg, rgba(238, 255, 242, 0.98) 0%, rgba(220, 250, 240, 0.98) 100%);
+    top: 220px;
+    /* Stacks on top of card 2 */
+    position: sticky;
+}
+
+/* Decorative SVG Dots */
+.aspiria-card-dots {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    top: 0;
+    left: 8rem;
+    transform: translateY(-60%);
+    opacity: 0.6;
+}
+
+.aspiria-card-1 .aspiria-card-dots {
+    color: rgba(200, 210, 255, 0.4);
+}
+
+.aspiria-card-2 .aspiria-card-dots {
+    color: rgba(255, 220, 240, 0.4);
+}
+
+.aspiria-card-3 .aspiria-card-dots {
+    color: rgba(180, 250, 220, 0.4);
+}
+
+/* Decorative Blobs */
+.aspiria-card-blob {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.aspiria-card-blob-1 {
+    width: 140px;
+    height: 140px;
+    bottom: 0;
+    left: 0;
+    transform: translate(-50%, 50%);
+}
+
+.aspiria-card-blob-2 {
+    width: 218px;
+    height: 218px;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.aspiria-card-1 .aspiria-card-blob {
+    background: rgba(200, 210, 255, 0.5);
+}
+
+.aspiria-card-2 .aspiria-card-blob {
+    background: rgba(255, 220, 240, 0.5);
+}
+
+.aspiria-card-3 .aspiria-card-blob {
+    background: rgba(180, 250, 220, 0.5);
+}
+
+/* Step Content Wrapper Styles */
+.step-content-wrapper {
+    position: relative;
+    z-index: 50;
+    padding: 20px 0;
+}
+
+.step-bar {
+    height: 6px;
+    width: 60px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.step-bar-2 {
+    background: linear-gradient(90deg, #5fa8ff 0%, #8aa0ff 100%);
+}
+
+.step-bar-3 {
+    background: linear-gradient(90deg, #8aa0ff 0%, #6d62ff 100%);
+}
+
+.step-bar-4 {
+    background: linear-gradient(90deg, #6d62ff 0%, #8067ff 100%);
+}
+
+.step-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #626262;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.step-title {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 500;
+    color: #2d3958;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.step-content {
+    color: #6b7a95;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+    .step-content p {
+        margin: 0;
+    }
+
+.step-img-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+}
+
+.step-img {
+    max-width: 100%;
+    height: 300px;
+    border-radius: 12px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991.98px) {
+    .aspiria-progress-section {
+        padding: 60px 0;
+        min-height: auto;
+    }
+
+    .progress-bar-sticky {
+        top: 100px;
+        margin-bottom: 3rem;
+    }
+
+    .aspiria-card-wrapper {
+        min-height: auto;
+        margin-bottom: 0px;
+    }
+
+    .aspiria-card {
+        position: relative;
+        top: 0 !important;
+        min-height: auto;
+        padding: 32px 24px;
+    }
+
+    .aspiria-card-dots {
+        display: none;
+    }
+
+    .aspiria-card-blob {
+        opacity: 0.5;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .step-img {
+        height: 100%;
+    }
+
+    .step-img-container {
+        padding: 0;
+    }
+}
+
+
+
+@media (max-width: 767px) {
+
+
+    .aspiria-progress-section {
+        padding: 40px 0;
+    }
+
+    .aspiria-card {
+        padding: 28px 20px;
+    }
+
+    .aspiria-card-title {
+        font-size: 1.5rem;
+    }
+
+    .aspiria-card-desc {
+        font-size: 0.95rem;
+    }
+
+    .aspiria-card-btn {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .aspiria-card-image {
+        height: 200px;
+        margin-top: 2rem;
+    }
+
+    .aspiria-card-1 .aspiria-card-image {
+        height: 150px;
+    }
+}
+
+
+/* PANEL SECTION: prevent horizontal overflow but keep expand animation */
+.panel-container {
+    max-width: 100%;
+    overflow-x: hidden; /* clips the off-screen expansion instead of pushing page width */
+}
+
+/* Let flex children shrink inside the row (prevents flex overflow issues) */
+.panel {
+    min-width: 0;
+}
+
+/* Prevent the left column from forcing extra width */
+.panel-left {
+    flex: 0 0 120px; /* same as your width/min-width */
+}
+
+/* IMPORTANT: allow the right side text to wrap instead of widening the panel */
+.panel-right {
+    min-width: 0;
+}
+
+    .panel-right p,
+    .panel-right .panel-title {
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
