@@ -288,7 +288,7 @@ h1, h2, h3 {
     }
 
 /* Custom Register button styling - transparent with dark outline - THINNER text */
-.navbar-nav .nav-link[href*="register.html"] {
+.navbar-nav .nav-link[href*="#"] {
     background: transparent !important;
     color: #23235b !important;
     border: 1px solid #23235b !important;
@@ -297,7 +297,7 @@ h1, h2, h3 {
     font-weight: 400 !important;
 }
 
-    .navbar-nav .nav-link[href*="register.html"]:hover {
+    .navbar-nav .nav-link[href*="#"]:hover {
         background: transparent !important;
         color: #e62939 !important;
         border-color: #e62939 !important;
@@ -446,7 +446,7 @@ h1, h2, h3 {
     }
 
     /* Mobile/tablet adjustments for Register button */
-    .navbar-nav .nav-link[href*="register.html"] {
+    .navbar-nav .nav-link[href*="#"] {
         text-align: center;
         justify-content: center;
         width: auto !important;
@@ -6991,6 +6991,68 @@ a.fancy {
         word-break: normal;
     }
 
+.panel-container {
+    display: flex;
+    height: 300px;
+    max-width: 1200px; /* ADD THIS LINE */
+    margin: auto;
+    gap: 10px;
+}
+
+/* Rest of the panel styles remain exactly the same */
+.panel {
+    flex: 1;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: flex 0.6s ease;
+    overflow: hidden;
+    display: flex;
+}
+
+/* =====================
+   PANEL SECTION: Mobile/vertical = static cards (no expand animation)
+   ===================== */
+@media (max-width: 768px) {
+    .panel-container {
+        flex-direction: column !important;
+        height: auto !important;
+        gap: 12px !important;
+        overflow-x: visible !important;
+    }
+
+    .panel {
+        flex: none !important; /* stop flex-grow behavior */
+        transition: none !important; /* kill expand animation */
+        cursor: default !important;
+        height: auto !important; /* allow natural height */
+        display: flex !important;
+        align-items: stretch !important;
+    }
+
+        /* If JS is adding .active, neutralize it on mobile */
+        .panel.active {
+            flex: none !important;
+        }
+
+    /* Always show the right content on mobile */
+    .panel-right {
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    /* Optional: reduce padding to match reference tighter cards */
+    .panel-left {
+        flex: 0 0 110px !important; /* slightly narrower */
+        width: 110px !important;
+        min-width: 110px !important;
+        padding: 16px !important;
+    }
+
+    .panel-right {
+        padding: 18px !important;
+    }
+}
 /* ========================================
                              SERVICE FLIP SECTION - UPDATED
                              ======================================== */
