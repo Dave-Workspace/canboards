@@ -1060,7 +1060,7 @@
 
         @media (min-width: 992px) and (max-width: 1999px) {
             .hero-img-box-2 {
-                top: 55% !important; /* Move it down from the current 40% */
+                top: 45% !important; /* Move it down from the current 40% */
             }
         }
 
@@ -2112,6 +2112,54 @@
             -webkit-background-clip: text !important;
             -webkit-text-fill-color: transparent !important;
             background-clip: text !important;
+        }
+
+        /* Move hero bubbles down between 1024px and 1199px */
+        @media (min-width: 1024px) and (max-width: 1199.98px) {
+            .hero-img-box-1 {
+                top: 74% !important;
+            }
+
+            .hero-img-box-2 {
+                top: 76% !important;
+            }
+
+            .hero-img-box-3 {
+                top: 105% !important;
+            }
+
+            .hero-img-box-4 {
+                top: 92% !important;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-section {
+                min-height: 480px !important;
+                padding-top: calc(var(--header-h) + 48px) !important;
+                padding-bottom: 40px !important;
+            }
+
+            .hero-content {
+                padding-top: 20px !important;
+            }
+
+            .hero-section .row.g-2, .hero-section .hero-img-box, .hero-section .hero-img {
+                display: none !important;
+                visibility: hidden !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+
+            .hero-section::before, .hero-section::after {
+                filter: blur(28px) saturate(95%);
+                opacity: 0.6;
+            }
+
+            .hero-section .hero-fog-layer {
+                opacity: 0.9;
+                backdrop-filter: blur(4px) saturate(90%);
+            }
         }
     </style>
 </head>
@@ -4196,10 +4244,16 @@
             }
 
             function startLoopAnimation() {
+                if (intervalId) return; // prevent multiple intervals
                 intervalId = setInterval(() => {
                     activatePanel(currentIndex);
                     currentIndex = (currentIndex + 1) % panels.length;
                 }, 1800);
+            }
+
+            function stopLoopAnimation() {
+                clearInterval(intervalId);
+                intervalId = null;
             }
 
             const observer = new IntersectionObserver(
@@ -4215,9 +4269,21 @@
             observer.observe(container);
 
             panels.forEach((panel, index) => {
+                // Click: stop and activate selected
                 panel.addEventListener('click', () => {
-                    clearInterval(intervalId);
+                    stopLoopAnimation();
+                    currentIndex = index;
                     activatePanel(index);
+                });
+
+                // Hover: pause
+                panel.addEventListener('mouseenter', () => {
+                    stopLoopAnimation();
+                });
+
+                // Mouse out: resume
+                panel.addEventListener('mouseleave', () => {
+                    startLoopAnimation();
                 });
             });
         }

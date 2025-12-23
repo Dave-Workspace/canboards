@@ -3338,7 +3338,7 @@ body:not(.loading) #fws-panel-aside {
     right: -4%;
     top: 40%;
     width: clamp(160px, 12vw, 280px);
-    height: clamp(160 12vw,280px);
+    height: clamp(160px, 12vw,280px);
 }
 
 .hero-img-box-3 {
@@ -4577,6 +4577,14 @@ a.fancy {
     }
 }
 
+/* Make entire reference flip cards clickable without underlines */
+.reference-flip-link {
+    text-decoration: none;
+}
+
+    .reference-flip-link * {
+        text-decoration: none !important;
+    }
 /* ========================================
                         Journey Section - Let's Start Your Canadian Journey
                         ======================================== */
@@ -5635,7 +5643,7 @@ a.fancy {
     }
 
         .pl1234x-node-text h3 {
-            font-size: 1.0em;
+            font-size: 2em;
         }
 
         .pl1234x-node-text p {
@@ -7448,7 +7456,7 @@ a.fancy {
 }
 
 #can-services-anim {
-    font-size: 3em;
+    font-size: 4em;
     font-weight: 700;
 }
 
@@ -7641,4 +7649,99 @@ a.fancy {
     padding-top: 80px; /* was 20px */
     background: #ffffff;
     transition: padding-top 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+    #service-hero {
+        padding-bottom: 3rem !important;
+    }
+
+        #service-hero .container {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            padding-bottom: 2rem !important;
+        }
+
+        #service-hero .row {
+            --bs-gutter-x: 0;
+        }
+
+        #service-hero .hero-content {
+            align-self: center !important;
+            margin: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            text-align: center !important;
+            margin-bottom: 2rem !important;
+        }
+
+            #service-hero .hero-content .d-flex {
+                justify-content: center !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+        #service-hero .hero-main-text,
+        #service-hero .hero-small-text {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        #service-hero .col-lg-7 {
+            display: flex !important;
+            justify-content: center !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            padding-bottom: 2rem !important;
+        }
+
+        /* Hide work hero visuals on ≤991.98px */
+        #service-hero .work-hero-visual,
+        #service-hero .work-hero-frame,
+        #service-hero .work-hero-floater,
+        #service-hero .work-hero-img {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+}
+
+@media (max-width: 575.98px) {
+    #service-hero {
+        padding-bottom: 4rem !important;
+    }
+
+        #service-hero .col-lg-7 {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+            padding-bottom: 2.5rem !important;
+        }
+
+        /* Keep work hero visuals hidden on small phones */
+        #service-hero .work-hero-visual,
+        #service-hero .work-hero-frame,
+        #service-hero .work-hero-floater,
+        #service-hero .work-hero-img {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+}
+
+/* Swap How image at ≤613px (fix relative path: CSS → ../Images) */
+@media (max-width: 613px) {
+    .how-title-img {
+        content: url("../Images/How_2.png");
+    }
+}
+
+@media (max-width: 768.98px) {
+    .process  {
+        margin-bottom: -150px;
+    }
 }
